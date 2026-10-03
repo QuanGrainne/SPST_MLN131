@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tư Tưởng Hồ Chí Minh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="polish.css">
+  <link rel="stylesheet" href="../../css/game-back.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <main class="game-shell">
+    <header><div class="logo"><span>15</span><div>TƯ TƯỞNG<br><b>HỒ CHÍ MINH</b></div></div><div class="status"><span id="chapter">TRÒ CHƠI TRẮC NGHIỆM</span><strong id="levelLabel">CÂU 1 / 15</strong></div></header>
+    <section class="stage">
+      <aside class="lifelines">
+        <button id="fifty" title="Loại hai đáp án sai" aria-label="Quyền trợ giúp 50:50"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="29" ry="20"/><text x="32" y="37">50:50</text></svg></button>
+        <button id="book" title="Xem gợi ý từ giáo trình" aria-label="Tra cứu giáo trình"><svg viewBox="0 0 64 64"><path d="M9 14c10-3 18-1 23 5v33c-6-6-14-8-23-5zM55 14c-10-3-18-1-23 5v33c6-6 14-8 23-5z"/><path d="M32 19v33"/></svg></button>
+        <button id="audience" title="Hỏi hội trường" aria-label="Hỏi ý kiến hội trường"><svg viewBox="0 0 64 64"><circle cx="20" cy="22" r="7"/><circle cx="44" cy="22" r="7"/><circle cx="32" cy="15" r="7"/><path d="M8 48c1-11 7-16 16-16M56 48c-1-11-7-16-16-16M18 50c1-13 6-20 14-20s13 7 14 20"/></svg></button>
+      </aside>
+      <section class="hot-seat">
+        <div class="timer idle" aria-label="Thời gian còn lại"><div class="timer-track"><i id="timerBar"></i></div><b id="timerText">15</b></div>
+        <div class="question-card"><small id="difficulty">NHẬN BIẾT</small><h1 id="question">Nhấn BẮT ĐẦU để vào ghế nóng.</h1></div>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="actions"><button class="primary" id="start">BẮT ĐẦU</button><button class="primary hidden" id="next">CÂU TIẾP THEO</button></div>
+      </section>
+      <aside class="ladder" id="ladder"></aside>
+    </section>
+  </main>
+  <dialog id="modal"><button class="close">×</button><h2 id="modalTitle"></h2><div id="modalBody"></div></dialog>
+  <script src="questions.js"></script><script src="difficulty.js"></script><script src="more-questions.js"></script><script src="chapter1-pack.js"></script><script src="chapter1-final.js"></script><script src="validate-questions.js"></script><script src="game.js"></script>
+  <a class="game-back-btn" href="../../games.html" aria-label="Về trang game">← VỀ TRANG GAME</a>
+</body></html>

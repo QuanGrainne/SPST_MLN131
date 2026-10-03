@@ -1,0 +1,2413 @@
+<!doctype html>
+<html class="dark" lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>PhiloVerse - Thực hành tư duy</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config-global.js"></script>
+  <link rel="stylesheet" href="css/philoverse-ui.css" />
+  <style>
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Tabs active indicators */
+    .tab-btn {
+      transition: all 0.3s ease;
+    }
+    
+    /* Quiz option grading states (Ôn tập + Thi thử) */
+    .fe-opt.correct-answer {
+      border-color: #10b981 !important;
+      background-color: #ecfdf5 !important;
+    }
+    .fe-opt.wrong-answer {
+      border-color: #ef4444 !important;
+      background-color: #fef2f2 !important;
+    }
+    .fe-opt.correct-answer .radio-circle {
+      background-color: #10b981;
+      border-color: #10b981;
+    }
+    .fe-opt.wrong-answer .radio-circle {
+      background-color: #ef4444;
+      border-color: #ef4444;
+    }
+
+    .tab-btn.active {
+      background-color: #D4A017 !important;
+      color: #FAF8F3 !important;
+      box-shadow: 0 4px 14px rgba(212, 160, 23, 0.25);
+    }
+
+    /* Glowing animations */
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(212, 160, 23, 0.4), 0 0 10px rgba(212, 160, 23, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(212, 160, 23, 0.8), 0 0 30px rgba(212, 160, 23, 0.4);
+      }
+    }
+    .leap-ready {
+      animation: glow-pulse 1.5s infinite;
+    }
+
+    /* Spiral path animation */
+    @keyframes draw-path {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    .spiral-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .spiral-draw {
+      stroke-dashoffset: 0;
+    }
+
+    /* Pulse scale animation */
+    @keyframes pulse-scale {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    .animate-pulse-scale {
+      animation: pulse-scale 2s ease-in-out infinite;
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Practice hero */
+    .practice-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, #0D0101 0%, #3A0505 60%, #140303 100%);
+      padding: 3rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .practice-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('assets/images/shared/practice-bg.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.2;
+    }
+    .practice-hero > * { position: relative; z-index: 1; }
+    .practice-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,166,46,0.4), transparent);
+    }
+
+    /* Tab button active gold state */
+    .tab-btn.active {
+      background: linear-gradient(90deg, rgba(217,166,46,0.15), rgba(217,166,46,0.08)) !important;
+      color: #FFD34E !important;
+      border: 1px solid rgba(217,166,46,0.4) !important;
+      box-shadow: 0 4px 14px rgba(212,160,23,0.2);
+    }
+
+    /* Glassmorphism utility */
+    .glass-card {
+      background: rgba(58, 5, 5, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(217,166,46,0.15);
+    }
+  </style>
+</head>
+
+<body class="bg-philo-blackBurgundy text-philo-ivory font-body min-h-screen flex flex-col overflow-x-hidden">
+  <!-- Confetti Canvas for Leap Effect -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-10 py-10">
+    <!-- Hero Section -->
+    <section class="practice-hero mb-10">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div class="flex flex-col gap-4 items-start">
+          <div class="philo-breadcrumb">
+            <a href="home.html">TRANG CHỦ</a>
+            <span class="sep">/</span>
+            <span>THỰC HÀNH TƯ DUY</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-heading font-bold text-philo-ivory leading-tight max-w-3xl">
+            Thực hành Tư tưởng Hồ Chí Minh<br /><span class="text-philo-gold italic font-normal">cho đời sống cá nhân</span>
+          </h1>
+          <p class="text-philo-ivory/70 max-w-2xl text-sm leading-relaxed">
+            Chào mừng bạn đến với <strong class="text-philo-ivory">Phòng thực hành Tư tưởng Hồ Chí Minh Tương tác</strong>. Tại đây, những bài học về đạo đức, con đường cách mạng và tư tưởng của Bác sẽ trở thành các mô phỏng trực quan giúp bạn phản tư cuộc sống và rèn luyện bản thân mỗi ngày.
+          </p>
+        </div>
+        <a href="assets/docs/1. Giao trinh Tu tuong Ho Chi Minh.pdf" download="SGK_Tu_Tuong_HCM.pdf">
+          <button
+            class="philo-btn-ghost flex items-center gap-2 shrink-0">
+            <span class="material-symbols-outlined text-[20px]">download</span>
+            <span>Tải tài liệu SGK PDF</span>
+          </button>
+        </a>
+      </div>
+    </section>
+
+    <!-- Interactive Dashboard Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      <div class="philo-card p-6 flex items-center gap-4">
+        <div class="size-12 rounded-xl bg-philo-gold/10 text-philo-gold flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-2xl">eco</span>
+        </div>
+        <div>
+          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Vườn ươm Phản tư</h4>
+          <p id="dashboard-garden-count" class="text-lg font-bold text-philo-ivory">🌱 0 hạt giống</p>
+        </div>
+      </div>
+      <div class="philo-card p-6 flex items-center gap-4">
+        <div class="size-12 rounded-xl bg-philo-gold/10 text-philo-gold flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-2xl">explore</span>
+        </div>
+        <div>
+          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Thế giới quan của bạn</h4>
+          <p id="dashboard-worldview-title" class="text-sm font-bold text-philo-ivory truncate max-w-[200px]">Chưa trắc nghiệm</p>
+        </div>
+      </div>
+      <div class="philo-card p-6 flex items-center gap-4">
+        <div class="size-12 rounded-xl bg-philo-gold/10 text-philo-gold flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-2xl">insights</span>
+        </div>
+        <div>
+          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Cấp độ Tu dưỡng Đạo đức</h4>
+          <p id="dashboard-dialectics-level" class="text-lg font-bold text-philo-ivory">Cấp 1: Sơ cấp</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Navigation Tab Bar -->
+    <div class="flex flex-wrap gap-2 border-b border-philo-gold/20 pb-4 mb-8">
+      <button onclick="switchTab('sandbox')" id="tab-sandbox"
+        class="tab-btn active flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
+        <span class="material-symbols-outlined text-[20px]">science</span>
+        1. Hộp cát Thực hành Tư tưởng HCM
+      </button>
+      <button onclick="switchTab('compass')" id="tab-compass"
+        class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
+        <span class="material-symbols-outlined text-[20px]">explore</span>
+        2. Bản đồ Thế giới quan
+      </button>
+      <button onclick="switchTab('greenhouse')" id="tab-greenhouse"
+        class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
+        <span class="material-symbols-outlined text-[20px]">yard</span>
+        3. Vườn ươm Phản tư
+      </button>
+      <button onclick="switchTab('fereview')" id="tab-fereview"
+        class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
+        <span class="material-symbols-outlined text-[20px]">quiz</span>
+        4. Ôn thi FE
+      </button>
+    </div>
+
+    <!-- TAB 1: DIALECTICAL LAW SANDBOX -->
+    <div id="content-sandbox" class="tab-content block">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Sidebar controls -->
+        <div class="lg:col-span-4 flex flex-col gap-4">
+          <div class="bg-philo-blackBurgundy  p-6 rounded-2xl shadow-cinematic border border-philo-warmGold/30">
+            <h3 class="text-lg font-heading font-bold text-philo-ivory mb-4 flex items-center gap-2">
+              <span class="text-philo-warmGold material-symbols-outlined">tune</span>
+              Chọn nội dung thực hành
+            </h3>
+            <div class="flex flex-col gap-2">
+              <button onclick="switchSandboxLaw('quantity')" id="law-btn-quantity"
+ class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 bg-philo-warmGold/10 text-philo-warmGold font-bold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/20">
+                <span class="material-symbols-outlined text-lg">water_drop</span>
+                Tu dưỡng Đạo đức Cách mạng
+              </button>
+              <button onclick="switchSandboxLaw('contradiction')" id="law-btn-contradiction"
+ class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
+                <span class="material-symbols-outlined text-lg">balance</span>
+                Độc lập Dân tộc & CNXH
+              </button>
+              <button onclick="switchSandboxLaw('negation')" id="law-btn-negation"
+ class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
+                <span class="material-symbols-outlined text-lg">cyclone</span>
+                Hành trình Tìm đường Cứu nước
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-philo-warmGold/10 p-6 rounded-2xl border border-philo-warmGold/30 text-philo-ivory/80 text-xs leading-relaxed">
+            <span class="font-bold text-philo-warmGold text-sm block mb-1">💡 Hướng dẫn</span>
+            Hãy chọn một trong ba nội dung cốt lõi của Tư tưởng Hồ Chí Minh để tương tác. Các mô phỏng trực quan giúp bạn thấu hiểu và tự soi lại quá trình tu dưỡng, con đường cách mạng của dân tộc qua góc nhìn tư tưởng của Bác.
+          </div>
+        </div>
+
+        <!-- Simulator View Area -->
+        <div class="lg:col-span-8">
+          <!-- SUB-LAW 1: QUANTITY AND QUALITY -->
+          <div id="sandbox-quantity" class="law-sandbox-content block bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+              <div>
+                <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block">TƯ TƯỞNG HỒ CHÍ MINH VỀ ĐẠO ĐỨC</span>
+                <h4 class="text-2xl font-heading font-bold text-philo-ivory">Đạo đức Cách mạng: rèn luyện bền bỉ như rửa mặt hằng ngày</h4>
+              </div>
+              <div class="px-3.5 py-1.5 bg-philo-warmGold/10 border border-philo-warmGold/30 text-philo-warmGold text-xs font-bold rounded-lg">
+                Cấp độ hiện tại: <span id="current-quality-badge" class="uppercase">Sơ cấp</span>
+              </div>
+            </div>
+
+            <p class="text-philo-ivory/70 text-sm mb-8 leading-relaxed">
+              Hồ Chí Minh dạy rằng "Đạo đức cách mạng không phải trên trời sa xuống. Nó do đấu tranh, rèn luyện bền bỉ hằng ngày mà phát triển và củng cố. Cũng như ngọc càng mài càng sáng, vàng càng luyện càng trong." Hãy tích lũy <strong>Cần - Kiệm - Liêm - Chính</strong> qua từng hành động nhỏ mỗi ngày. Khi tích lũy đạt tới <strong>Điểm Nút (100)</strong>, bạn sẽ thực hiện một <strong>Bước Nhảy</strong> lên cấp độ đạo đức mới!
+            </p>
+
+            <!-- Visual simulation tank -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-8">
+              <div class="md:col-span-4 flex justify-center">
+                <div class="relative w-28 h-60 bg-philo-warmGold/20  border-4 border-slate-700 rounded-b-2xl rounded-t-lg overflow-hidden shadow-inner flex flex-col justify-end">
+                  <!-- Measurement markings -->
+                  <div class="absolute inset-y-0 right-1.5 flex flex-col justify-between text-[9px] text-philo-ivory/50 /50 py-4 font-mono select-none">
+                    <span>- 100 (Điểm Nút)</span>
+                    <span>- 75</span>
+                    <span>- 50</span>
+                    <span>- 25</span>
+                    <span>- 0</span>
+                  </div>
+                  <!-- Liquid / Energy level -->
+                  <div id="liquid-energy" class="w-full bg-gradient-to-t from-blue-600 to-cyan-400 transition-all duration-500 shadow-lg relative" style="height: 0%;">
+                    <!-- Bubbles or glowing effect inside -->
+                    <div class="absolute inset-0 bg-philo-blackBurgundy /20 animate-pulse"></div>
+                  </div>
+                  <!-- Level text -->
+                  <div class="absolute inset-0 flex items-center justify-center font-bold text-lg text-philo-ivory mix-blend-difference" id="tank-percent-text">
+                    0 / 100
+                  </div>
+                </div>
+              </div>
+              
+              <div class="md:col-span-8 flex flex-col gap-4">
+                <h5 class="text-xs font-bold uppercase text-philo-ivory/50 /50 tracking-wider">Hành động rèn luyện hằng ngày</h5>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <button onclick="addQuantity(10)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
+                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+10</span>
+                    <span class="font-bold text-philo-ivory text-xs block mb-1">Cần - Kiệm</span>
+                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Chăm chỉ, tiết kiệm trong học tập & công việc</span>
+                  </button>
+                  <button onclick="addQuantity(15)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
+                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+15</span>
+                    <span class="font-bold text-philo-ivory text-xs block mb-1">Liêm - Chính</span>
+                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Trung thực, ngay thẳng trong mọi việc</span>
+                  </button>
+                  <button onclick="addQuantity(20)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
+                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+20</span>
+                    <span class="font-bold text-philo-ivory text-xs block mb-1">Nêu gương</span>
+                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Nói đi đôi với làm, làm gương cho tập thể</span>
+                  </button>
+                </div>
+
+                <!-- Leap control -->
+                <div class="mt-4 pt-4 border-t border-philo-warmGold/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div class="text-xs text-philo-ivory/70 text-center sm:text-left">
+                    Nhấn các nút trên để rèn luyện mỗi ngày. Khi tích đủ 100%, nút <strong>Thực hiện Bước nhảy</strong> sẽ phát sáng!
+                  </div>
+                  <button id="leap-btn" disabled onclick="executeLeap()"
+ class="px-6 py-3 bg-slate-200 text-philo-ivory/70 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-lg">bolt</span>
+                    Thực hiện Bước nhảy
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Leap Success Panel (Hidden by default) -->
+            <div id="leap-success-panel" class="hidden bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-6 rounded-2xl border border-amber-200 flex flex-col md:flex-row items-center gap-6 animate-pulse-scale">
+              <div class="size-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
+                <span class="material-symbols-outlined text-3xl">emoji_events</span>
+              </div>
+              <div class="flex-grow text-center md:text-left">
+                <h4 class="font-bold text-philo-ivory text-md">🎉 Chúc mừng bạn đã thực hiện thành công BƯỚC NHẢY!</h4>
+                <p id="leap-explanation" class="text-xs text-philo-ivory/70 leading-relaxed mt-1">
+                  Đang phân tích ý nghĩa tu dưỡng...
+                </p>
+              </div>
+              <button onclick="dismissLeapPanel()" class="text-xs text-philo-ivory/50 /50 hover:text-philo-ivory/70 font-bold shrink-0 self-end md:self-center border border-philo-warmGold/30 px-3 py-1.5 rounded-lg bg-philo-blackBurgundy ">Đóng</button>
+            </div>
+          </div>
+
+          <!-- SUB-LAW 2: CONTRADICTION -->
+          <div id="sandbox-contradiction" class="law-sandbox-content hidden bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
+            <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block mb-1">NỘI DUNG CỐT LÕI CỦA TƯ TƯỞNG HỒ CHÍ MINH</span>
+            <h4 class="text-2xl font-heading font-bold text-philo-ivory mb-4">Độc lập Dân tộc gắn liền với Chủ nghĩa Xã hội</h4>
+            <p class="text-philo-ivory/70 text-sm mb-6 leading-relaxed">
+              Hồ Chí Minh khẳng định: chỉ có giành độc lập dân tộc mới tạo tiền đề đi lên chủ nghĩa xã hội, và chỉ có chủ nghĩa xã hội mới giữ vững được độc lập dân tộc một cách trọn vẹn, lâu dài. Hai mục tiêu tưởng như tách biệt lại <strong>kết hợp</strong> thành một con đường cách mạng duy nhất, tạo nên sức mạnh vượt trội cho dân tộc Việt Nam.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center py-6">
+              <!-- Visual conflict representation -->
+              <div class="md:col-span-6 flex flex-col items-center justify-center relative min-h-[220px] bg-philo-warmGold/5  border border-philo-warmGold/30/60 rounded-3xl overflow-hidden p-6">
+                <!-- Opposing Orb Left -->
+                <div id="orb-left" class="absolute w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg left-10 flex items-center justify-center text-white text-[10px] font-bold text-center p-1 transition-all duration-1000 z-10">
+                  Độc lập Dân tộc
+                </div>
+                <!-- Clash / Shockwave effect (hidden initially) -->
+                <div id="orb-shockwave" class="absolute w-20 h-20 rounded-full border-4 border-yellow-400 scale-0 opacity-0 transition-all duration-700 z-20"></div>
+                <!-- Opposing Orb Right -->
+                <div id="orb-right" class="absolute w-14 h-14 bg-gradient-to-br from-red-500 to-orange-600 rounded-full shadow-lg right-10 flex items-center justify-center text-white text-[10px] font-bold text-center p-1 transition-all duration-1000 z-10">
+                  Chủ nghĩa Xã hội
+                </div>
+                <!-- Unified result (hidden initially) -->
+                <div id="orb-unified" class="absolute w-18 h-18 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full shadow-2xl scale-0 opacity-0 flex flex-col items-center justify-center text-philo-ivory text-[10px] font-extrabold text-center p-2 transition-all duration-1000 z-30">
+                  Con đường Cách mạng Việt Nam
+                </div>
+                <div class="text-[10px] text-philo-ivory/50 /50 absolute bottom-4">Mô phỏng Sức mạnh Kết hợp</div>
+              </div>
+
+              <!-- Interactive Controls -->
+              <div class="md:col-span-6 flex flex-col gap-4">
+                <div>
+                  <label class="text-xs font-bold text-philo-ivory/50 /50 block mb-2 uppercase tracking-wide">Chọn cặp yếu tố kết hợp</label>
+                  <select id="contradiction-preset" onchange="applyContradictionPreset()"
+ class="w-full text-sm border-gray-200 rounded-xl focus:border-philo-warmGold focus:ring-1 focus:ring-primary shadow-sm">
+                    <option value="custom">-- Tự thiết lập --</option>
+                    <option value="laziness" selected>Độc lập dân tộc vs. Chủ nghĩa xã hội</option>
+                    <option value="theory">Sức mạnh dân tộc vs. Sức mạnh thời đại</option>
+                    <option value="economy">Truyền thống dân tộc vs. Tinh hoa văn hóa nhân loại</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-[10px] font-bold text-philo-ivory/50 /50 block mb-1 uppercase">Yếu tố 1</label>
+                    <input type="text" id="opp-a-input" value="Độc lập dân tộc" oninput="updateOpporOrbs()"
+ class="w-full text-xs border-gray-200 rounded-xl focus:border-philo-warmGold focus:ring-1 focus:ring-primary" />
+                  </div>
+                  <div>
+                    <label class="text-[10px] font-bold text-philo-ivory/50 /50 block mb-1 uppercase">Yếu tố 2</label>
+                    <input type="text" id="opp-b-input" value="Chủ nghĩa xã hội" oninput="updateOpporOrbs()"
+ class="w-full text-xs border-gray-200 rounded-xl focus:border-philo-warmGold focus:ring-1 focus:ring-primary" />
+                  </div>
+                </div>
+
+                <button onclick="simulateContradictionConflict()"
+ class="mt-2 w-full py-3 bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                  <span class="material-symbols-outlined text-lg">bolt</span>
+                  Kết hợp Sức mạnh
+                </button>
+              </div>
+            </div>
+
+            <!-- Contradiction analysis feedback -->
+            <div id="contradiction-analysis-box" class="hidden bg-philo-warmGold/5  p-5 rounded-2xl border border-philo-warmGold/30 text-xs text-philo-ivory/70 leading-relaxed mt-4">
+              <span class="font-bold text-philo-ivory text-sm block mb-1">🔬 Ý nghĩa của sự kết hợp:</span>
+              <p id="contradiction-explanation-text">Đang tổng hợp đấu tranh các mặt đối lập...</p>
+            </div>
+          </div>
+
+          <!-- SUB-LAW 3: NEGATION OF NEGATION -->
+          <div id="sandbox-negation" class="law-sandbox-content hidden bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
+            <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block mb-1">QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN</span>
+            <h4 class="text-2xl font-heading font-bold text-philo-ivory mb-4">Hành trình Tìm đường Cứu nước của Hồ Chí Minh</h4>
+            <p class="text-philo-ivory/70 text-sm mb-6 leading-relaxed">
+              Tư tưởng Hồ Chí Minh không hình thành trong một sớm một chiều, mà trải qua một hành trình dài — mỗi giai đoạn đều kế thừa và nâng cao giai đoạn trước, giống như một <strong>đường xoắn ốc đi lên</strong> chứ không phải một đường thẳng. Hãy khám phá 3 mốc quan trọng đầu tiên trong hành trình ấy.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <!-- Visual Spiral representation -->
+              <div class="md:col-span-5 flex justify-center bg-philo-warmGold/5  border border-philo-warmGold/30/60 rounded-3xl p-4">
+                <svg id="spiral-svg" width="220" height="220" viewBox="0 0 200 200" class="overflow-visible">
+                  <!-- Main spiral path -->
+                  <path id="development-spiral-path" d="M 100,100 A 10,10 0 0,0 90,90 A 20,20 0 0,1 110,80 A 30,30 0 0,0 80,60 A 45,45 0 0,1 125,45 A 60,60 0 0,0 65,25 A 75,75 0 0,1 140,15"
+                    fill="none" stroke="#cbd5e1" stroke-width="3" class="spiral-path" />
+                  
+                  <!-- Spiral Progress Path (Colored) -->
+                  <path id="development-spiral-progress" d="M 100,100 A 10,10 0 0,0 90,90 A 20,20 0 0,1 110,80 A 30,30 0 0,0 80,60 A 45,45 0 0,1 125,45 A 60,60 0 0,0 65,25 A 75,75 0 0,1 140,15"
+                    fill="none" stroke="url(#spiral-grad)" stroke-width="4.5" stroke-linecap="round" class="spiral-path" />
+                  
+                  <defs>
+                    <linearGradient id="spiral-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#308ce8" />
+                      <stop offset="50%" stop-color="#8b5cf6" />
+                      <stop offset="100%" stop-color="#10b981" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Node labels along spiral -->
+                  <circle cx="100" cy="100" r="5" fill="#308ce8" id="spiral-node-start" class="transition-transform duration-500 scale-0" />
+                  <circle cx="90" cy="90" r="5.5" fill="#8b5cf6" id="spiral-node-neg1" class="transition-transform duration-500 scale-0" />
+                  <circle cx="125" cy="45" r="6" fill="#10b981" id="spiral-node-neg2" class="transition-transform duration-500 scale-0" />
+
+                  <!-- Tiny glowing pointer -->
+                  <circle cx="100" cy="100" r="8" fill="#f59e0b" id="spiral-pointer" class="hidden animate-ping" />
+                </svg>
+              </div>
+
+              <!-- Interactive steps -->
+              <div class="md:col-span-7 flex flex-col gap-4">
+                <div class="bg-philo-warmGold/5  border border-philo-warmGold/30/50 p-4 rounded-xl relative">
+                  <div class="flex items-start gap-3">
+                    <span class="size-6 bg-blue-500 text-white flex items-center justify-center rounded-full text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <div>
+                      <h5 class="text-xs font-bold text-philo-ivory mb-1">1890 - 1911: Hình thành tư tưởng yêu nước</h5>
+                      <p class="text-[10px] text-philo-ivory/70 leading-normal">Sinh ra trong gia đình nhà Nho yêu nước, chứng kiến cảnh nước mất nhà tan, hun đúc chí hướng cứu nước từ thuở thiếu thời.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-philo-warmGold/5  border border-philo-warmGold/30/50 p-4 rounded-xl relative group">
+                  <div class="flex items-start gap-3">
+                    <span class="size-6 bg-purple-500 text-white flex items-center justify-center rounded-full text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <div>
+                      <h5 class="text-xs font-bold text-philo-ivory mb-1">1911 - 1920: Tìm thấy con đường cứu nước</h5>
+                      <p class="text-[10px] text-philo-ivory/70 leading-normal mb-2">Ra đi tìm đường cứu nước (5/6/1911), bôn ba khắp thế giới, và tháng 7/1920 đọc Sơ thảo Luận cương của Lênin — tìm ra con đường cách mạng vô sản.</p>
+                      <button id="negation-btn-1" onclick="applyNegation(1)"
+ class="px-3 py-1 bg-philo-warmGold/10 hover:bg-purple-100 border border-purple-200 text-philo-warmGold font-bold text-[10px] rounded-lg transition-colors">
+                        Khám phá giai đoạn 2
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-philo-warmGold/5  border border-philo-warmGold/30/50 p-4 rounded-xl relative group">
+                  <div class="flex items-start gap-3">
+                    <span class="size-6 bg-emerald-500 text-white flex items-center justify-center rounded-full text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <div>
+                      <h5 class="text-xs font-bold text-philo-ivory mb-1">1921 - 1930: Hình thành cơ bản tư tưởng cách mạng Việt Nam</h5>
+                      <p class="text-[10px] text-philo-ivory/70 leading-normal mb-2">Chuẩn bị về chính trị, tư tưởng và tổ chức, tiến tới sáng lập Đảng Cộng sản Việt Nam đầu năm 1930 — đưa lý luận thành con đường cách mạng cụ thể cho dân tộc.</p>
+                      <button id="negation-btn-2" disabled onclick="applyNegation(2)"
+ class="px-3 py-1 bg-philo-warmGold/20  border border-philo-warmGold/30 text-philo-ivory/50 /50 font-bold text-[10px] rounded-lg transition-colors cursor-not-allowed">
+                        Khám phá giai đoạn 3
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spiral Summary text (hidden by default) -->
+            <div id="negation-summary-box" class="hidden bg-philo-warmGold/10 border border-philo-warmGold/30 p-5 rounded-2xl text-xs text-philo-ivory/70 leading-relaxed mt-6 flex gap-4 items-start">
+              <span class="material-symbols-outlined text-philo-warmGold text-2xl shrink-0">cyclone</span>
+              <div>
+                <span class="font-bold text-emerald-700 text-sm block mb-1">🌀 Ý nghĩa của hành trình:</span>
+                <p id="negation-explanation-text">Ba giai đoạn này cho thấy tư tưởng Hồ Chí Minh không đến từ một khoảnh khắc "bừng ngộ" duy nhất, mà là kết quả của một quá trình bền bỉ: từ ý chí yêu nước, đến tìm tòi con đường đúng đắn, rồi hiện thực hóa thành tổ chức cách mạng. Con đường học tập và tu dưỡng của chính bạn cũng có thể đi theo hành trình xoắn ốc đi lên như vậy!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: WORLDVIEW COMPASS -->
+    <div id="content-compass" class="tab-content hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Coordinate and Results view -->
+        <div class="lg:col-span-6 bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30 flex flex-col">
+          <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block mb-1">PHONG CÁCH TƯ DUY THEO TƯ TƯỞNG HỒ CHÍ MINH</span>
+          <h4 class="text-2xl font-heading font-bold text-philo-ivory mb-4">Bản đồ Con đường Cách mạng của bạn</h4>
+
+          <p class="text-philo-ivory/70 text-sm mb-6 leading-relaxed">
+            Hệ trục tọa độ 2D đo lường hai chiều tư duy mà Hồ Chí Minh luôn coi trọng kết hợp:
+            Trục ngang biểu thị xu hướng từ <strong>Lý luận (Suy ngẫm, nghiên cứu sâu)</strong> đến <strong>Thực tiễn (Hành động, trải nghiệm trực tiếp)</strong>.
+            Trục đứng biểu thị tầm nhìn từ <strong>Dân tộc (Tập trung vào đất nước mình)</strong> đến <strong>Quốc tế (Gắn với phong trào cách mạng thế giới)</strong>.
+          </p>
+
+          <!-- SVG Graph -->
+          <div class="flex justify-center items-center py-6 bg-philo-warmGold/5  border border-philo-warmGold/30/50 rounded-2xl relative">
+            <svg id="compass-svg" width="300" height="300" viewBox="0 0 200 200" class="overflow-visible select-none">
+              <!-- Grid lines -->
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5" />
+              
+              <!-- Dotted helper lines -->
+              <line x1="20" y1="20" x2="180" y2="20" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="20" y1="180" x2="180" y2="180" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="20" y1="20" x2="20" y2="180" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="180" y1="20" x2="180" y2="180" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2,2" />
+              
+              <!-- Direction labels -->
+              <text x="188" y="103" fill="#308ce8" font-size="6.5" font-weight="bold">Thực tiễn</text>
+              <text x="15" y="103" fill="#d97706" font-size="6.5" font-weight="bold">Lý luận</text>
+              <text x="100" y="13" fill="#10b981" font-size="6.5" font-weight="bold" text-anchor="middle">Quốc tế</text>
+              <text x="100" y="193" fill="#64748b" font-size="6.5" font-weight="bold" text-anchor="middle">Dân tộc</text>
+
+              <!-- Quadrant text markers (light grey) -->
+              <text x="140" y="60" fill="#e2e8f0" font-size="5" font-weight="extrabold" text-anchor="middle">Chiến sĩ Hành động</text>
+              <text x="60" y="60" fill="#e2e8f0" font-size="5" font-weight="extrabold" text-anchor="middle">Nhà Lý luận Quốc tế</text>
+              <text x="140" y="140" fill="#e2e8f0" font-size="5" font-weight="extrabold" text-anchor="middle">Người Vì Dân tộc</text>
+              <text x="60" y="140" fill="#e2e8f0" font-size="5" font-weight="extrabold" text-anchor="middle">Người Ươm mầm</text>
+
+              <!-- Plotted Point (Hidden initially) -->
+              <circle cx="100" cy="100" r="6" fill="#8b5cf6" id="compass-plot-dot" class="hidden transition-all duration-1000 ease-out" style="filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.8));" />
+              <circle cx="100" cy="100" r="12" fill="none" stroke="#8b5cf6" stroke-width="1" id="compass-plot-ring" class="hidden animate-ping" />
+            </svg>
+          </div>
+
+          <!-- Analysis of plotted coordinates (Hidden initially) -->
+          <div id="compass-result-panel" class="hidden mt-6 bg-philo-warmGold/5  border border-philo-warmGold/30 p-5 rounded-2xl">
+            <span class="text-[10px] font-bold text-philo-warmGold block uppercase tracking-wider mb-1">Kết quả phân tích thế giới quan</span>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="material-symbols-outlined text-philo-warmGold">psychology</span>
+              <h5 class="text-base font-bold text-philo-ivory" id="result-title">Chiến sĩ Cách mạng Hành động</h5>
+            </div>
+            <p id="result-desc" class="text-xs text-philo-ivory/70 leading-relaxed mb-4">
+              Đặc điểm: Bạn thiên về hành động thực tiễn và có tầm nhìn hướng ra thế giới, sẵn sàng dấn thân và học hỏi để phụng sự mục tiêu lớn...
+            </p>
+            <div class="bg-philo-blackBurgundy  p-3.5 rounded-xl border border-philo-warmGold/30 text-[10px] text-philo-ivory/70 italic flex gap-3">
+              <span class="font-bold text-philo-warmGold shrink-0">Trích dẫn:</span>
+              <span id="result-quote">"Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công." - Hồ Chí Minh</span>
+            </div>
+            <button onclick="resetCompassTest()" class="mt-4 w-full py-2.5 bg-philo-warmGold/20  hover:bg-slate-200 border border-philo-warmGold/30 text-philo-ivory/70 text-xs font-bold rounded-xl transition-all">Làm lại bài trắc nghiệm</button>
+          </div>
+        </div>
+
+        <!-- Assessment Area -->
+        <div class="lg:col-span-6 bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
+          <div id="compass-intro">
+            <h4 class="text-xl font-heading font-bold text-philo-ivory mb-4">Tìm kiếm điểm Tọa độ Con đường Cách mạng của bạn</h4>
+            <p class="text-philo-ivory/70 text-sm leading-relaxed mb-6">
+              Bạn thiên về lý luận hay thực tiễn? Quan tâm trước hết đến dân tộc mình hay tầm nhìn quốc tế rộng lớn? Hãy trả lời 5 tình huống thực tế sau để khám phá phong cách tư duy của chính bạn, soi chiếu qua Tư tưởng Hồ Chí Minh!
+            </p>
+
+            <div class="bg-gradient-to-r from-philo-warmGold to-philo-antiqueGold p-6 rounded-2xl text-white mb-6">
+              <ul class="space-y-3 text-xs leading-normal">
+                <li class="flex gap-2.5"><span class="font-bold">•</span> <span><strong>5 Tình huống cụ thể</strong> trong học tập & cuộc sống</span></li>
+                <li class="flex gap-2.5"><span class="font-bold">•</span> <span><strong>Không có đáp án sai</strong> - chỉ có phong cách tư duy phù hợp nhất</span></li>
+                <li class="flex gap-2.5"><span class="font-bold">•</span> <span><strong>Đo lường & Phân tích chuyên sâu</strong> dựa trên Tư tưởng Hồ Chí Minh</span></li>
+              </ul>
+            </div>
+
+            <button onclick="startCompassTest()" class="w-full py-3.5 bg-philo-blackBurgundy text-white rounded-xl font-bold text-sm hover:bg-philo-warmGold shadow-lg transition-all flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-lg">play_arrow</span>
+              Bắt đầu Trắc nghiệm
+            </button>
+          </div>
+
+          <!-- Active Question Container -->
+          <div id="compass-test-box" class="hidden flex-col h-full">
+            <!-- Progress bar -->
+            <div class="flex justify-between items-center text-xs text-philo-ivory/50 /50 mb-4">
+              <span>Tiến trình trắc nghiệm</span>
+              <span id="question-progress-text">Câu 1/5</span>
+            </div>
+            <div class="w-full h-1.5 bg-philo-warmGold/20  rounded-full mb-6 overflow-hidden">
+              <div id="question-progress-bar" class="h-full bg-gradient-to-r from-philo-warmGold to-philo-antiqueGold transition-all duration-300" style="width: 20%;"></div>
+            </div>
+
+            <!-- Question statement -->
+            <h5 id="question-statement" class="text-md font-bold text-philo-ivory mb-6 leading-snug">
+              Câu hỏi mẫu đang được tải...
+            </h5>
+
+            <!-- Options buttons list -->
+            <div class="flex flex-col gap-3 flex-grow" id="options-container">
+              <!-- Dynamically populated options -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: REFLECTION GREENHOUSE -->
+    <div id="content-greenhouse" class="tab-content hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Planting section (Left) -->
+        <div class="lg:col-span-5 bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="size-10 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center">
+              <span class="material-symbols-outlined">psychology_alt</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-philo-ivory">
+              Gieo hạt mầm phản tư
+            </h3>
+          </div>
+          
+          <p class="text-philo-ivory/70 text-sm leading-relaxed mb-6">
+            "Lý luận mà không có thực tiễn là lý luận suông." Hãy gieo một <strong>Hạt mầm Phản tư</strong> để tự soi lại bản thân, học tập, công việc theo Tư tưởng Hồ Chí Minh. Cây non của bạn sẽ sinh trưởng qua quá trình tưới nước bằng hành động cụ thể!
+          </p>
+
+          <form id="plant-seed-form" onsubmit="plantSeed(event)" class="space-y-4">
+            <div>
+              <label class="text-xs font-bold text-philo-ivory/50 /50 block mb-2 uppercase tracking-wide">Chủ đề phản tư</label>
+              <select id="reflection-topic" onchange="updateReflectionPrompts()"
+ class="w-full text-sm border-gray-200 rounded-xl focus:border-philo-warmGold focus:ring-1 focus:ring-primary shadow-sm">
+                <option value="quantity-quality">Tu dưỡng Đạo đức Cần - Kiệm - Liêm - Chính</option>
+                <option value="contradiction">Kết hợp Lý luận với Thực tiễn trong học tập</option>
+                <option value="negation">Tinh thần Đoàn kết trong tập thể</option>
+                <option value="theory-practice">Chiến lược "Trồng người" cho bản thân</option>
+                <option value="self">Con người là mục tiêu và động lực của chính mình</option>
+              </select>
+            </div>
+
+            <!-- Dynamic guide bullet prompts -->
+            <div class="bg-philo-warmGold/10/50 p-4 rounded-xl border border-philo-warmGold/30/50">
+              <span class="text-[10px] font-bold text-amber-800 uppercase tracking-widest block mb-2">🧭 Định hướng Phản tư theo Tư tưởng HCM</span>
+              <ul id="reflection-guide-bullets" class="space-y-2 text-xs text-philo-ivory/70 leading-normal">
+                <!-- Bullet list items populated by script -->
+              </ul>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-philo-ivory/50 /50 block mb-2 uppercase tracking-wide">Nội dung chiêm nghiệm</label>
+              <textarea id="reflection-content" required rows="5"
+ class="w-full text-sm border-gray-200 rounded-xl focus:border-philo-warmGold focus:ring-1 focus:ring-primary shadow-sm"
+                placeholder="Hãy viết suy ngẫm chân thật của bạn theo hướng dẫn phía trên..."></textarea>
+            </div>
+
+            <button type="submit"
+ class="w-full py-3 bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-lg">eco</span>
+              Gieo hạt phản tư 🌱
+            </button>
+          </form>
+        </div>
+
+        <!-- Greenhouse Grid View (Right) -->
+        <div class="lg:col-span-7 flex flex-col">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="size-10 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center">
+                <span class="material-symbols-outlined">yard</span>
+              </div>
+              <h3 class="text-xl font-heading font-bold text-philo-ivory">
+                Khu vườn Tri thức Phản tư
+              </h3>
+            </div>
+            <div class="text-xs font-medium text-philo-ivory/50 /50" id="garden-statistics">
+              Đang tính toán...
+            </div>
+          </div>
+
+          <!-- Empty state illustration -->
+          <div id="greenhouse-empty-state" class="hidden flex-col items-center justify-center bg-philo-blackBurgundy  border border-dashed border-philo-warmGold/30 rounded-3xl p-12 text-center flex-grow">
+            <span class="material-symbols-outlined text-5xl text-slate-300 mb-3">yard</span>
+            <h4 class="font-bold text-slate-700 text-sm">Khu vườn hiện đang trống</h4>
+            <p class="text-xs text-philo-ivory/50 /50 max-w-sm mt-1">
+              Hãy viết bài chiêm nghiệm đầu tiên ở bảng bên cạnh để gieo những hạt giống tri thức đầu tiên vào mảnh đất tâm hồn!
+            </p>
+          </div>
+
+          <!-- Plant cards list -->
+          <div id="greenhouse-plants-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-auto max-h-[580px] pr-2 hide-scrollbar flex-grow">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: FE REVIEW QUIZ -->
+    <div id="content-fereview" class="tab-content hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Sidebar: scope filter + AI helper note -->
+        <div class="lg:col-span-4 flex flex-col gap-4">
+          <div class="bg-philo-blackBurgundy  p-6 rounded-2xl shadow-cinematic border border-philo-warmGold/30">
+            <h3 class="text-lg font-heading font-bold text-philo-ivory mb-4 flex items-center gap-2">
+              <span class="text-philo-warmGold material-symbols-outlined">filter_list</span>
+              Chọn phạm vi ôn tập
+            </h3>
+            <div id="fe-module-filters" class="flex flex-col gap-2">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl shadow-cinematic text-white">
+            <h3 class="text-sm font-heading font-bold mb-1 flex items-center gap-2">
+              <span class="material-symbols-outlined text-amber-400">timer</span>
+              Thi thử
+            </h3>
+            <p class="text-[11px] text-slate-300 mb-4 leading-relaxed">50 câu ngẫu nhiên · 60 phút · giống hệt format thi thật, không lặp câu giữa các lượt.</p>
+            <button onclick="openExamMode()"
+ class="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-philo-ivory rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">play_arrow</span>
+              Bắt đầu thi thử
+            </button>
+          </div>
+
+          <div class="bg-philo-warmGold/10/50 p-6 rounded-2xl border border-philo-warmGold/30 text-slate-700 text-xs leading-relaxed">
+            <span class="font-bold text-philo-warmGold text-sm block mb-1">🤖 Trợ giảng AI</span>
+            Câu nào chưa hiểu rõ, bấm nút <strong>"Hỏi AI"</strong> ngay dưới câu hỏi đó. Trợ giảng sẽ giải thích sâu hơn và bạn có thể hỏi tiếp thoải mái để hiểu tận gốc.
+          </div>
+
+          <div id="fe-score-summary" class="hidden bg-philo-blackBurgundy  p-6 rounded-2xl shadow-cinematic border border-philo-warmGold/30">
+            <span class="text-xs text-philo-ivory/50 /50 font-bold uppercase tracking-wider block mb-1">Kết quả lần gần nhất</span>
+            <p id="fe-score-text" class="text-2xl font-bold text-philo-ivory">0/0</p>
+          </div>
+
+          <!-- Quick-fire practice link (Quizlet blocks iframe embedding via X-Frame-Options) -->
+          <div class="bg-philo-blackBurgundy  p-6 rounded-2xl shadow-cinematic border border-philo-warmGold/30">
+            <h3 class="text-sm font-heading font-bold text-philo-ivory mb-3 flex items-center gap-2">
+              <span class="text-philo-warmGold material-symbols-outlined text-lg">bolt</span>
+              Luyện phản xạ nhanh
+            </h3>
+            <p class="text-[10px] text-philo-ivory/70 mb-3 leading-relaxed">Bộ thẻ ghép nhanh gốc trên Quizlet (mở tab mới):</p>
+            <a href="https://quizlet.com/1199763659/match/embed?i=50tz2x&x=1jj1" target="_blank" rel="noopener"
+ class="flex items-center justify-center gap-2 w-full py-2.5 bg-philo-warmGold/10 hover:bg-emerald-100 border border-philo-warmGold/30 text-emerald-700 rounded-xl text-xs font-bold transition-colors">
+              <span class="material-symbols-outlined text-base">open_in_new</span>
+              Mở game Match trên Quizlet
+            </a>
+          </div>
+        </div>
+
+        <!-- Quiz area -->
+        <div class="lg:col-span-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+              <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block">ÔN THI CUỐI KỲ (FE)</span>
+              <h4 id="fe-quiz-title" class="text-2xl font-heading font-bold text-philo-ivory">Toàn bộ chương trình</h4>
+              <p id="fe-quiz-count-text" class="text-xs text-philo-ivory/70 mt-1">0 câu hỏi</p>
+            </div>
+            <button onclick="shuffleFeQuiz()"
+ class="flex items-center gap-2 px-4 py-2 bg-philo-warmGold/20  hover:bg-slate-200 rounded-xl text-xs font-bold text-philo-ivory/70 transition-colors shrink-0">
+              <span class="material-symbols-outlined text-base">shuffle</span>
+              Xáo trộn & Làm lại
+            </button>
+          </div>
+
+          <div id="fe-quiz-empty" class="hidden bg-philo-blackBurgundy  border border-dashed border-philo-warmGold/30 rounded-3xl p-12 text-center">
+            <span class="material-symbols-outlined text-5xl text-slate-300 mb-3">quiz</span>
+            <h4 class="font-bold text-slate-700 text-sm">Ngân hàng câu hỏi đang được cập nhật</h4>
+            <p class="text-xs text-philo-ivory/50 /50 max-w-sm mx-auto mt-1">Vui lòng quay lại sau nhé!</p>
+          </div>
+
+          <div id="fe-quiz-container" class="space-y-6"></div>
+
+          <div id="fe-quiz-actions" class="mt-8 flex justify-center pb-4">
+            <button onclick="submitFeQuiz()" id="fe-submit-btn"
+ class="px-8 py-3 bg-philo-warmGold hover:bg-philo-warmGold/90 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              Nộp bài & Xem kết quả
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal to View/Edit details -->
+  <div id="view-reflection-modal" class="fixed inset-0 z-50 bg-philo-blackBurgundy/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-philo-blackBurgundy  rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-philo-warmGold/30 flex flex-col max-h-[90vh]">
+      <div class="p-6 border-b border-philo-warmGold/30 flex justify-between items-start">
+        <div>
+          <span id="modal-tag" class="px-2.5 py-1 bg-philo-warmGold/10 text-philo-warmGold text-[10px] font-bold rounded-md uppercase tracking-wider">CHỦ ĐỀ</span>
+          <h4 id="modal-title" class="text-lg font-heading font-bold text-philo-ivory mt-2">Tiêu đề suy ngẫm</h4>
+          <span id="modal-date" class="text-[10px] text-philo-ivory/50 /50 block mt-1">📅 Ngày gieo hạt: 01/01/2026</span>
+        </div>
+        <button onclick="closeReflectionModal()" class="text-philo-ivory/50 /50 hover:text-philo-ivory/70">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto flex-grow text-sm text-slate-700 leading-relaxed whitespace-pre-line" id="modal-content">
+        Nội dung chi tiết...
+      </div>
+      <div class="p-6 bg-philo-warmGold/5  border-t border-philo-warmGold/30 flex justify-between items-center gap-3">
+        <button onclick="closeReflectionModal()" class="px-4 py-2 border border-philo-warmGold/30 bg-philo-blackBurgundy  rounded-xl text-philo-ivory/70 font-bold text-xs hover:bg-philo-warmGold/5  transition-colors">Đóng</button>
+        <button id="modal-water-btn" class="px-5 py-2 bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white rounded-xl font-bold text-xs shadow flex items-center gap-2 transition-colors">
+          <span class="material-symbols-outlined text-sm">water_drop</span>
+          Tưới nước Thực tiễn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FE Quiz Score Modal -->
+  <div id="fe-score-modal" class="hidden fixed inset-0 bg-black/50 z-50 items-center justify-center p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <div class="bg-philo-blackBurgundy  rounded-3xl p-8 max-w-md w-full shadow-2xl transform scale-90 transition-transform duration-300">
+      <div class="text-center">
+        <div class="size-20 bg-philo-warmGold/10 rounded-full flex items-center justify-center mx-auto mb-4 text-secondary">
+          <span class="material-symbols-outlined text-4xl">emoji_events</span>
+        </div>
+        <h2 class="text-2xl font-bold text-philo-ivory mb-2">Kết quả ôn tập</h2>
+        <div class="text-5xl font-black text-secondary mb-4" id="fe-final-score">0/0</div>
+        <p class="text-philo-ivory/70 mb-8" id="fe-feedback-text">Hãy xem lại các câu sai để hiểu rõ hơn nhé!</p>
+        <button onclick="closeFeScoreModal()" class="w-full py-3 bg-philo-warmGold text-white font-bold rounded-xl hover:bg-philo-warmGold/90 transition-colors">
+          Xem chi tiết đáp án
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FE Exam Mode (Thi thử) Overlay -->
+  <div id="fe-exam-overlay" class="hidden fixed inset-0 z-50 bg-philo-blackBurgundy">
+    <!-- EXAM START SCREEN -->
+    <div id="exam-start-screen" class="h-full flex flex-col items-center justify-center p-6 text-center overflow-y-auto relative">
+      <button onclick="closeExamMode()" class="absolute top-4 right-4 text-philo-ivory/50 /50 hover:text-philo-ivory/70">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="text-5xl mb-2">📝</div>
+      <h2 class="text-2xl font-heading font-bold text-philo-ivory">Thi thử FE</h2>
+      <p class="text-sm text-philo-ivory/70 mt-1 mb-6">Tư tưởng Hồ Chí Minh · 50 câu · 60 phút</p>
+      <div class="flex gap-3 mb-6 flex-wrap justify-center">
+        <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-xl px-6 py-3.5">
+          <div class="text-2xl font-extrabold text-philo-warmGold" id="exam-stat-total">423</div>
+          <div class="text-[11px] text-philo-ivory/50 /50 mt-0.5">Câu hỏi</div>
+        </div>
+        <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-xl px-6 py-3.5">
+          <div class="text-2xl font-extrabold text-philo-warmGold">50</div>
+          <div class="text-[11px] text-philo-ivory/50 /50 mt-0.5">Mỗi đề</div>
+        </div>
+        <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-xl px-6 py-3.5">
+          <div class="text-2xl font-extrabold text-philo-warmGold">60'</div>
+          <div class="text-[11px] text-philo-ivory/50 /50 mt-0.5">Thời gian</div>
+        </div>
+      </div>
+      <div id="exam-history-box" class="hidden bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-xl p-4 w-full max-w-sm mb-6 text-left">
+        <h3 class="text-[11px] font-bold text-philo-ivory/50 /50 uppercase tracking-wide mb-2">Lịch sử làm bài</h3>
+        <div id="exam-history-list" class="space-y-1"></div>
+      </div>
+      <button onclick="startExam()"
+ class="px-8 py-3.5 bg-philo-warmGold hover:bg-philo-warmGold/90 text-white rounded-xl font-bold text-sm shadow-lg transition-all w-full max-w-xs">
+        Bắt đầu làm bài →
+      </button>
+    </div>
+
+    <!-- EXAM QUIZ SCREEN -->
+    <div id="exam-quiz-screen" class="hidden h-full flex-col">
+      <div class="shrink-0 bg-philo-blackBurgundy  border-b border-philo-warmGold/30 px-4 pt-3">
+        <div class="flex justify-between items-center mb-2">
+          <div class="flex items-center gap-3">
+            <button onclick="exitExamEarly()" title="Thoát khỏi bài thi" class="text-philo-ivory/50 /50 hover:text-philo-ivory/70">
+              <span class="material-symbols-outlined text-lg">arrow_back</span>
+            </button>
+            <span id="exam-progress-text" class="text-sm font-semibold text-philo-ivory/70">Câu 1/50</span>
+          </div>
+          <span id="exam-timer" class="text-xl font-extrabold text-philo-ivory">60:00</span>
+        </div>
+        <div class="h-1.5 bg-philo-warmGold/20  rounded-full overflow-hidden mb-2">
+          <div id="exam-progress-fill" class="h-full bg-philo-warmGold transition-all duration-300" style="width:2%"></div>
+        </div>
+        <div class="flex justify-between items-center pb-2">
+          <button onclick="toggleExamNav()" class="text-xs text-philo-warmGold font-bold">☰ Nhảy câu</button>
+          <span id="exam-answered-count" class="text-xs text-philo-ivory/50 /50">0/50 đã trả lời</span>
+        </div>
+        <div id="exam-nav-grid-wrap" class="overflow-hidden max-h-0 transition-all duration-200">
+          <div id="exam-nav-grid" class="flex flex-wrap gap-1.5 py-2 max-h-36 overflow-y-auto"></div>
+        </div>
+      </div>
+      <div id="exam-body" class="flex-1 overflow-y-auto p-4">
+        <div id="exam-card-area"></div>
+      </div>
+      <div class="shrink-0 bg-philo-blackBurgundy  border-t border-philo-warmGold/30 px-4 py-2.5 flex justify-between items-center gap-2">
+        <button id="exam-btn-prev" onclick="examGoTo(examCurIdx-1)"
+ class="px-4 py-2.5 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-lg text-xs font-bold text-philo-ivory/70 disabled:opacity-40">← Trước</button>
+        <button onclick="openExamSubmitModal()"
+ class="px-5 py-2.5 bg-philo-warmGold text-white rounded-lg text-xs font-bold hover:bg-philo-warmGold/90">Nộp bài</button>
+        <button id="exam-btn-next" onclick="examGoTo(examCurIdx+1)"
+ class="px-4 py-2.5 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-lg text-xs font-bold text-philo-ivory/70 disabled:opacity-40">Tiếp →</button>
+      </div>
+    </div>
+
+    <!-- EXAM RESULT SCREEN -->
+    <div id="exam-result-screen" class="hidden h-full overflow-y-auto">
+      <div class="max-w-2xl mx-auto px-4 py-8 w-full min-h-full flex flex-col justify-center">
+        <div class="text-center mb-6">
+          <div class="text-6xl font-black text-philo-warmGold leading-none" id="exam-res-score">--<span class="text-2xl font-normal text-philo-ivory/50 /50">/50</span></div>
+          <div class="text-lg font-bold mt-2" id="exam-res-label">--</div>
+          <div class="text-xs text-philo-ivory/70 mt-1" id="exam-res-meta">--</div>
+        </div>
+        <div class="flex gap-2.5 justify-center mb-6 flex-wrap">
+          <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-lg px-4 py-3 text-center">
+            <div class="text-xl font-extrabold text-philo-warmGold" id="exam-res-correct">0</div>
+            <div class="text-[10px] text-philo-ivory/50 /50">Đúng</div>
+          </div>
+          <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-lg px-4 py-3 text-center">
+            <div class="text-xl font-extrabold text-red-500" id="exam-res-wrong">0</div>
+            <div class="text-[10px] text-philo-ivory/50 /50">Sai</div>
+          </div>
+          <div class="bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-lg px-4 py-3 text-center">
+            <div class="text-xl font-extrabold text-philo-ivory/50 /50" id="exam-res-skip">0</div>
+            <div class="text-[10px] text-philo-ivory/50 /50">Bỏ qua</div>
+          </div>
+        </div>
+        <div class="flex gap-2 justify-center mb-6 flex-wrap">
+          <button onclick="toggleExamReview()" class="px-5 py-2.5 bg-philo-blackBurgundy  border border-philo-warmGold/30 rounded-lg text-xs font-bold text-philo-ivory/70">📖 Xem đáp án</button>
+          <button onclick="startExam()" class="px-6 py-2.5 bg-philo-warmGold text-white rounded-lg text-xs font-bold">Làm lại →</button>
+          <button onclick="closeExamMode()" class="px-5 py-2.5 bg-philo-blackBurgundy text-white rounded-lg text-xs font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>
+            Về trang Thực hành
+          </button>
+        </div>
+        <div id="exam-review-section" class="hidden">
+          <div class="flex gap-1.5 mb-3 flex-wrap">
+            <button class="exam-filter-btn active px-3 py-1.5 rounded-md text-xs font-bold border border-philo-warmGold/30 bg-philo-warmGold text-white" onclick="setExamFilter('all',this)">Tất cả</button>
+            <button class="exam-filter-btn px-3 py-1.5 rounded-md text-xs font-bold border border-philo-warmGold/30 bg-philo-blackBurgundy  text-philo-ivory/70" id="exam-filter-wrong-btn" onclick="setExamFilter('wrong',this)">Sai</button>
+            <button class="exam-filter-btn px-3 py-1.5 rounded-md text-xs font-bold border border-philo-warmGold/30 bg-philo-blackBurgundy  text-philo-ivory/70" id="exam-filter-correct-btn" onclick="setExamFilter('correct',this)">Đúng</button>
+            <button class="exam-filter-btn px-3 py-1.5 rounded-md text-xs font-bold border border-philo-warmGold/30 bg-philo-blackBurgundy  text-philo-ivory/70" id="exam-filter-skipped-btn" onclick="setExamFilter('skipped',this)">Bỏ qua</button>
+          </div>
+          <div id="exam-review-list" class="space-y-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM SUBMIT CONFIRM MODAL -->
+  <div id="exam-submit-modal" class="hidden fixed inset-0 z-[60] bg-black/50 items-center justify-center p-4">
+    <div class="bg-philo-blackBurgundy  rounded-2xl p-6 max-w-xs w-full text-center">
+      <h3 class="font-bold text-philo-ivory mb-2">Nộp bài?</h3>
+      <p id="exam-modal-msg" class="text-xs text-philo-ivory/70 mb-5 leading-relaxed"></p>
+      <div class="flex gap-2">
+        <button onclick="closeExamSubmitModal()" class="flex-1 py-2.5 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-lg text-xs font-bold text-philo-ivory/70">Hủy</button>
+        <button onclick="submitExam()" class="flex-1 py-2.5 bg-philo-warmGold text-white rounded-lg text-xs font-bold">Nộp bài</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- FE Review Quiz Question Bank -->
+  <script src="js/quiz-fe-review.js"></script>
+
+  <!-- Javascript Logic for PhiloLab -->
+  <script>
+    // ------------------------------------------------------------------------
+    // TAB MANAGEMENT
+    // ------------------------------------------------------------------------
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.remove('bg-philo-warmGold', 'text-white');
+        btn.classList.add('text-philo-ivory/70', 'hover:bg-philo-warmGold/20');
+      });
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+        content.classList.remove('block');
+      });
+
+      const activeBtn = document.getElementById('tab-' + tabId);
+      activeBtn.classList.add('active');
+      activeBtn.classList.add('bg-philo-warmGold', 'text-white');
+      activeBtn.classList.remove('text-philo-ivory/70', 'hover:bg-philo-warmGold/20');
+      
+      const activeContent = document.getElementById('content-' + tabId);
+      activeContent.classList.remove('hidden');
+      activeContent.classList.add('block');
+      
+      if (tabId === 'greenhouse') {
+        renderGreenhouse();
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // TABS FOR DIALECTICAL LAWS SIMULATOR
+    // ------------------------------------------------------------------------
+    function switchSandboxLaw(lawId) {
+      document.querySelectorAll('.law-sandbox-content').forEach(content => {
+        content.classList.add('hidden');
+        content.classList.remove('block');
+      });
+
+      document.getElementById('sandbox-' + lawId).classList.remove('hidden');
+      document.getElementById('sandbox-' + lawId).classList.add('block');
+
+      // Update sidebar buttons style
+      const lawBtns = {
+        quantity: document.getElementById('law-btn-quantity'),
+        contradiction: document.getElementById('law-btn-contradiction'),
+        negation: document.getElementById('law-btn-negation')
+      };
+
+      Object.keys(lawBtns).forEach(key => {
+        if (key === lawId) {
+          lawBtns[key].className = "w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 bg-philo-warmGold/10 text-philo-warmGold font-bold text-sm flex items-center gap-3 transition-all hover:bg-blue-100";
+        } else {
+          lawBtns[key].className = "w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold";
+        }
+      });
+
+      if (lawId === 'negation') {
+        resetSpiral();
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // LAW 1: QUANTITY AND QUALITY
+    // ------------------------------------------------------------------------
+    let quantityValue = parseInt(localStorage.getItem('philosophyQty')) || 0;
+    let qualityLevel = parseInt(localStorage.getItem('philosophyQualLevel')) || 1;
+    const qualityTitles = ["Sơ cấp: Học và làm theo", "Trung cấp: Thực hành thường xuyên", "Cao cấp: Nêu gương", "Gương mẫu: Chuẩn mực Đạo đức mới"];
+
+    function updateQuantityUI() {
+      const liquid = document.getElementById('liquid-energy');
+      const text = document.getElementById('tank-percent-text');
+      const leapBtn = document.getElementById('leap-btn');
+      const dialLevelText = document.getElementById('dashboard-dialectics-level');
+      
+      // Update local storage
+      localStorage.setItem('philosophyQty', quantityValue);
+      localStorage.setItem('philosophyQualLevel', qualityLevel);
+
+      // Clamp values
+      quantityValue = Math.min(100, Math.max(0, quantityValue));
+
+      // Visual progress fill
+      liquid.style.height = quantityValue + "%";
+      text.innerText = quantityValue + " / 100";
+      
+      // Badges
+      const qualTitle = qualityTitles[qualityLevel - 1] || qualityTitles[0];
+      document.getElementById('current-quality-badge').innerText = qualTitle;
+      dialLevelText.innerText = `Cấp ${qualityLevel}: ${qualTitle.split(' ')[0]}`;
+
+      // Enable leap when full
+      if (quantityValue >= 100) {
+        leapBtn.removeAttribute('disabled');
+        leapBtn.className = "px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-2xl hover:scale-105 shrink-0 flex items-center gap-2 leap-ready animate-pulse-scale";
+      } else {
+        leapBtn.setAttribute('disabled', 'true');
+        leapBtn.className = "px-6 py-3 bg-slate-200 text-philo-ivory/70 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2";
+      }
+    }
+
+    function addQuantity(amount) {
+      if (quantityValue >= 100) return;
+      quantityValue += amount;
+      updateQuantityUI();
+    }
+
+    function executeLeap() {
+      if (quantityValue < 100) return;
+      
+      // Upgrade Quality level
+      const oldLevel = qualityLevel;
+      if (qualityLevel < 4) {
+        qualityLevel++;
+      } else {
+        qualityLevel = 1; // loop back for gameplay
+      }
+
+      quantityValue = 0; // Reset quantity
+      updateQuantityUI();
+
+      // Trigger Confetti
+      startConfetti();
+
+      // Show success explanation
+      const successPanel = document.getElementById('leap-success-panel');
+      const expText = document.getElementById('leap-explanation');
+      successPanel.classList.remove('hidden');
+
+      const explanations = [
+        "", // index 0 unused
+        "Chúc mừng! Bạn quay lại cấp Sơ cấp để bắt đầu một vòng rèn luyện mới. Đạo đức cách mạng không có điểm dừng — mỗi vòng lặp lại giúp bạn thấm nhuần Cần - Kiệm - Liêm - Chính sâu sắc hơn.",
+        "Bạn đã đạt cấp TRUNG CẤP: Thực hành thường xuyên. Những hành động nhỏ mỗi ngày đã trở thành thói quen — bạn không còn phải cố gắng để Cần - Kiệm - Liêm - Chính, mà nó đã tự nhiên trong cách bạn sống và làm việc.",
+        "XUẤT SẮC! Đạt cấp CAO CẤP: Nêu gương. Đúng như lời Bác dạy 'một tấm gương sống còn có giá trị hơn một trăm bài diễn văn tuyên truyền' — giờ đây chính bạn là tấm gương truyền cảm hứng cho người xung quanh.",
+        "PHI THƯỜNG! Bạn đã vươn tới cấp GƯƠNG MẪU. Đạo đức cách mạng đã trở thành chuẩn mực sống của bạn — nói đi đôi với làm, đặt lợi ích tập thể lên trên lợi ích cá nhân trong mọi việc."
+      ];
+
+      expText.innerText = explanations[qualityLevel] || "Bạn vừa chuyển hóa thành công lượng thành chất!";
+      
+      // Auto dismiss success panel in 12s
+      setTimeout(dismissLeapPanel, 12000);
+    }
+
+    function dismissLeapPanel() {
+      document.getElementById('leap-success-panel').classList.add('hidden');
+    }
+
+    // ------------------------------------------------------------------------
+    // LAW 2: CONTRADICTION SIMULATION
+    // ------------------------------------------------------------------------
+    function applyContradictionPreset() {
+      const select = document.getElementById('contradiction-preset');
+      const oppAInput = document.getElementById('opp-a-input');
+      const oppBInput = document.getElementById('opp-b-input');
+
+      const presets = {
+        laziness: { a: "Độc lập dân tộc", b: "Chủ nghĩa xã hội" },
+        theory: { a: "Sức mạnh dân tộc", b: "Sức mạnh thời đại" },
+        economy: { a: "Truyền thống dân tộc", b: "Tinh hoa văn hóa nhân loại" }
+      };
+
+      if (select.value in presets) {
+        oppAInput.value = presets[select.value].a;
+        oppBInput.value = presets[select.value].b;
+      }
+      updateOpporOrbs();
+    }
+
+    function updateOpporOrbs() {
+      const aVal = document.getElementById('opp-a-input').value || "Yếu tố 1";
+      const bVal = document.getElementById('opp-b-input').value || "Yếu tố 2";
+      document.getElementById('orb-left').innerText = aVal;
+      document.getElementById('orb-right').innerText = bVal;
+      
+      // Reset state if inputs change
+      document.getElementById('orb-left').style.left = "2.5rem";
+      document.getElementById('orb-right').style.right = "2.5rem";
+      document.getElementById('orb-shockwave').className = "absolute w-20 h-20 rounded-full border-4 border-yellow-400 scale-0 opacity-0 transition-all duration-700 z-20";
+      document.getElementById('orb-unified').className = "absolute w-18 h-18 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full shadow-2xl scale-0 opacity-0 flex flex-col items-center justify-center text-philo-ivory text-[10px] font-extrabold text-center p-2 transition-all duration-1000 z-30";
+      document.getElementById('contradiction-analysis-box').classList.add('hidden');
+    }
+
+    function simulateContradictionConflict() {
+      const orbLeft = document.getElementById('orb-left');
+      const orbRight = document.getElementById('orb-right');
+      const shockwave = document.getElementById('orb-shockwave');
+      const unified = document.getElementById('orb-unified');
+      const analysisBox = document.getElementById('contradiction-analysis-box');
+      const expText = document.getElementById('contradiction-explanation-text');
+
+      const aVal = document.getElementById('opp-a-input').value || "Yếu tố 1";
+      const bVal = document.getElementById('opp-b-input').value || "Yếu tố 2";
+
+      // 1. Trigger movements - collision
+      orbLeft.style.left = "calc(50% - 28px)";
+      orbRight.style.right = "calc(50% - 28px)";
+
+      // 2. Trigger shockwave and merge
+      setTimeout(() => {
+        shockwave.classList.remove('scale-0', 'opacity-0');
+        shockwave.classList.add('scale-150', 'opacity-100');
+        
+        // Hide opposing orbs
+        orbLeft.style.opacity = "0";
+        orbRight.style.opacity = "0";
+      }, 900);
+
+      // 3. Show unified orb
+      setTimeout(() => {
+        unified.classList.remove('scale-0', 'opacity-0');
+        unified.classList.add('scale-100', 'opacity-100');
+        unified.innerHTML = `<span class="font-bold text-xs text-amber-950">Sức mạnh<br>Kết hợp</span>`;
+      }, 1300);
+
+      // 4. Render explanation text
+      setTimeout(() => {
+        analysisBox.classList.remove('hidden');
+
+        const explanations = {
+          laziness: `Hồ Chí Minh khẳng định độc lập dân tộc phải gắn liền với chủ nghĩa xã hội — đây là **nội dung cốt lõi** của tư tưởng của Người. Chỉ giành độc lập thôi thì dân tộc vẫn chưa thật sự tự do, hạnh phúc; chỉ có đi lên chủ nghĩa xã hội mới giữ vững được độc lập một cách trọn vẹn, lâu dài.`,
+          theory: `Cách mạng Việt Nam chỉ giành thắng lợi khi kết hợp được sức mạnh dân tộc (chủ nghĩa yêu nước, tinh thần đoàn kết) với sức mạnh thời đại (xu thế cách mạng thế giới, sự ủng hộ quốc tế). Đây là bài học Hồ Chí Minh rút ra xuyên suốt hành trình tìm đường cứu nước.`,
+          economy: `Tư tưởng Hồ Chí Minh hình thành từ sự kết hợp giữa truyền thống tốt đẹp của dân tộc Việt Nam (yêu nước, đoàn kết, nhân nghĩa) với tinh hoa văn hóa nhân loại (phương Đông và phương Tây). Sự kết hợp này tạo nên một tư tưởng vừa đậm bản sắc dân tộc, vừa mang tầm vóc thời đại.`
+        };
+
+        expText.innerHTML = explanations[document.getElementById('contradiction-preset').value] ||
+          `**"${aVal}"** và **"${bVal}"** không loại trừ nhau mà bổ sung cho nhau. Theo tư tưởng Hồ Chí Minh, việc kết hợp hài hòa các yếu tố tưởng chừng khác biệt chính là chìa khóa tạo nên sức mạnh tổng hợp, đưa cách mạng và bản thân mỗi người đi lên.`;
+      }, 1600);
+    }
+
+    // ------------------------------------------------------------------------
+    // LAW 3: NEGATION OF NEGATION
+    // ------------------------------------------------------------------------
+    function resetSpiral() {
+      const p1 = document.getElementById('development-spiral-progress');
+      const ns = document.getElementById('spiral-node-start');
+      const n1 = document.getElementById('spiral-node-neg1');
+      const n2 = document.getElementById('spiral-node-neg2');
+      const btn2 = document.getElementById('negation-btn-2');
+      const pointer = document.getElementById('spiral-pointer');
+
+      p1.style.strokeDashoffset = "1000";
+      ns.classList.remove('scale-100');
+      ns.classList.add('scale-0');
+      n1.classList.remove('scale-100');
+      n1.classList.add('scale-0');
+      n2.classList.remove('scale-100');
+      n2.classList.add('scale-0');
+      
+      btn2.setAttribute('disabled', 'true');
+      btn2.className = "px-3 py-1 bg-philo-warmGold/20  border border-philo-warmGold/30 text-philo-ivory/50 /50 font-bold text-[10px] rounded-lg transition-colors cursor-not-allowed";
+
+      pointer.classList.add('hidden');
+      document.getElementById('negation-summary-box').classList.add('hidden');
+    }
+
+    function applyNegation(step) {
+      const p1 = document.getElementById('development-spiral-progress');
+      const ns = document.getElementById('spiral-node-start');
+      const n1 = document.getElementById('spiral-node-neg1');
+      const n2 = document.getElementById('spiral-node-neg2');
+      const btn2 = document.getElementById('negation-btn-2');
+      const pointer = document.getElementById('spiral-pointer');
+
+      if (step === 1) {
+        // Draw first half of spiral
+        p1.style.strokeDashoffset = "600";
+        ns.classList.remove('scale-0');
+        ns.classList.add('scale-100');
+        
+        setTimeout(() => {
+          n1.classList.remove('scale-0');
+          n1.classList.add('scale-100');
+          pointer.classList.remove('hidden');
+          pointer.setAttribute('cx', '90');
+          pointer.setAttribute('cy', '90');
+
+          btn2.removeAttribute('disabled');
+          btn2.className = "px-3 py-1 bg-philo-warmGold/10 hover:bg-emerald-100 border border-philo-warmGold/30 text-philo-warmGold font-bold text-[10px] rounded-lg transition-colors";
+        }, 1000);
+      } else if (step === 2) {
+        // Draw rest of spiral
+        p1.style.strokeDashoffset = "0";
+        
+        setTimeout(() => {
+          n2.classList.remove('scale-0');
+          n2.classList.add('scale-100');
+          pointer.setAttribute('cx', '125');
+          pointer.setAttribute('cy', '45');
+          
+          document.getElementById('negation-summary-box').classList.remove('hidden');
+        }, 1000);
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // COMPASS: WORLDVIEW & METHODOLOGY COMPASS ASSESSMENT
+    // ------------------------------------------------------------------------
+    let worldviewCoords = JSON.parse(localStorage.getItem('philosophyWorldviewCoords')) || null;
+    let compassAnswers = [];
+    let currentQuestionIdx = 0;
+
+    const compassQuestions = [
+      {
+        text: "1. Khi bắt đầu một dự án học tập hay công việc lớn, bạn ưu tiên điều gì trước tiên?",
+        options: [
+          { text: "A. Nghiên cứu thật kỹ lý luận, nguyên lý nền tảng trước khi bắt tay vào làm.", mv: -2, mc: 0 },
+          { text: "B. Bắt tay hành động ngay, vừa làm vừa rút kinh nghiệm và điều chỉnh.", mv: 2, mc: 0 },
+          { text: "C. Tìm hiểu xem các nước, tổ chức quốc tế đã giải quyết vấn đề tương tự thế nào.", mv: -1, mc: 2 },
+          { text: "D. Bắt tay làm cùng đội nhóm ngay, ưu tiên hoàn thành lợi ích trước mắt của tập thể mình.", mv: 1, mc: -1 }
+        ]
+      },
+      {
+        text: "2. Khi đất nước hoặc cộng đồng của bạn đối mặt với một khó khăn lớn, bạn nghĩ trước hết đến điều gì?",
+        options: [
+          { text: "A. Tìm hiểu xem thế giới đã đối mặt với vấn đề tương tự ra sao, học hỏi kinh nghiệm quốc tế.", mv: -1, mc: 2 },
+          { text: "B. Cần dựa vào chính sức mình, nội lực của dân tộc mình là quyết định trước hết.", mv: 1, mc: -2 },
+          { text: "C. Ngồi phân tích sâu nguyên nhân, cơ sở lý luận của vấn đề trước khi hành động.", mv: -2, mc: -1 },
+          { text: "D. Lập tức bắt tay hành động cụ thể để bảo vệ lợi ích của Tổ quốc mình.", mv: 2, mc: -2 }
+        ]
+      },
+      {
+        text: "3. Theo bạn, tri thức và chân lý mà một người có được đến từ đâu là chủ yếu?",
+        options: [
+          { text: "A. Từ việc đọc, suy ngẫm sâu sắc các học thuyết, tư tưởng lớn của nhân loại.", mv: -2, mc: 1 },
+          { text: "B. Từ chính trải nghiệm thực tế, va chạm và kiểm nghiệm qua công việc hàng ngày.", mv: 2, mc: -1 },
+          { text: "C. Từ việc giao lưu, học hỏi kinh nghiệm của bạn bè quốc tế và các nền văn hóa khác.", mv: 0, mc: 2 },
+          { text: "D. Từ truyền thống, kinh nghiệm được cha ông truyền lại trong chính dân tộc mình.", mv: 0, mc: -2 }
+        ]
+      },
+      {
+        text: "4. Khi có cơ hội đóng góp cho cộng đồng, bạn thấy mình phù hợp với vai trò nào nhất?",
+        options: [
+          { text: "A. Người trực tiếp hành động, xắn tay làm những việc cụ thể vì lợi ích của quê hương.", mv: 2, mc: -2 },
+          { text: "B. Người nghiên cứu, viết lách, truyền bá tư tưởng và lý luận cho nhiều người cùng hiểu.", mv: -2, mc: -1 },
+          { text: "C. Người kết nối, vận động sự ủng hộ và hợp tác từ bạn bè, tổ chức quốc tế.", mv: 1, mc: 2 },
+          { text: "D. Người nghiên cứu sâu các phong trào, học thuyết cách mạng trên thế giới để rút kinh nghiệm.", mv: -1, mc: 2 }
+        ]
+      },
+      {
+        text: "5. Bạn tin điều gì quyết định thành công lâu dài nhất của một sự nghiệp?",
+        options: [
+          { text: "A. Kết hợp chặt chẽ giữa lý luận vững chắc và hành động thực tiễn liên tục kiểm nghiệm lẫn nhau.", mv: 1, mc: 0 },
+          { text: "B. Dựa vào chính nội lực, tinh thần tự lực tự cường của bản thân và dân tộc mình.", mv: 0, mc: -2 },
+          { text: "C. Biết tranh thủ sự ủng hộ, hợp tác và học hỏi từ bạn bè quốc tế.", mv: 0, mc: 2 },
+          { text: "D. Chỉ cần chăm chỉ hành động thật nhiều, không cần suy nghĩ nhiều về lý luận.", mv: 2, mc: 0 }
+        ]
+      }
+    ];
+
+    function startCompassTest() {
+      document.getElementById('compass-intro').classList.add('hidden');
+      document.getElementById('compass-test-box').classList.remove('hidden');
+      document.getElementById('compass-test-box').classList.add('flex');
+      
+      compassAnswers = [];
+      currentQuestionIdx = 0;
+      showCompassQuestion();
+    }
+
+    function showCompassQuestion() {
+      const q = compassQuestions[currentQuestionIdx];
+      const progText = document.getElementById('question-progress-text');
+      const progBar = document.getElementById('question-progress-bar');
+      const statement = document.getElementById('question-statement');
+      const optionsBox = document.getElementById('options-container');
+
+      progText.innerText = `Câu ${currentQuestionIdx + 1}/${compassQuestions.length}`;
+      progBar.style.width = ((currentQuestionIdx + 1) / compassQuestions.length * 100) + "%";
+      statement.innerText = q.text;
+
+      optionsBox.innerHTML = "";
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 border border-philo-warmGold/30 hover:border-philo-warmGold hover:bg-philo-warmGold/10 rounded-2xl text-xs font-medium text-philo-ivory/90 transition-all active:scale-[0.98]";
+        btn.innerText = opt.text;
+        btn.onclick = () => selectCompassOption(opt.mv, opt.mc);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function selectCompassOption(mv, mc) {
+      compassAnswers.push({ mv, mc });
+      
+      if (currentQuestionIdx < compassQuestions.length - 1) {
+        currentQuestionIdx++;
+        showCompassQuestion();
+      } else {
+        calculateCompassResult();
+      }
+    }
+
+    function calculateCompassResult() {
+      // Sum up points
+      let totalMV = 0; // Materialism vs Idealism
+      let totalMC = 0; // Dialectics vs Metaphysics
+
+      compassAnswers.forEach(ans => {
+        totalMV += ans.mv;
+        totalMC += ans.mc;
+      });
+
+      // Map scale from -10 to +10
+      // Maximum score possible in absolute: 5 questions * 2 points = 10. Perfect!
+      
+      worldviewCoords = { x: totalMV, y: totalMC };
+      localStorage.setItem('philosophyWorldviewCoords', JSON.stringify(worldviewCoords));
+
+      // Close test box, display result
+      document.getElementById('compass-test-box').classList.remove('flex');
+      document.getElementById('compass-test-box').classList.add('hidden');
+      
+      renderCompassPlot();
+    }
+
+    function renderCompassPlot() {
+      if (!worldviewCoords) return;
+
+      const dot = document.getElementById('compass-plot-dot');
+      const ring = document.getElementById('compass-plot-ring');
+      const panel = document.getElementById('compass-result-panel');
+      const dbTitle = document.getElementById('dashboard-worldview-title');
+
+      // Convert coordinate -10 to +10 into SVG coordinates 20 to 180 (Center is 100)
+      // x: -10 -> 20, 0 -> 100, +10 -> 180 => (x + 10) * 8 + 20
+      // y: -10 -> 180, 0 -> 100, +10 -> 20 (Note Y axis goes down, so invert Y) => 100 - (y * 8)
+      
+      const svgX = (worldviewCoords.x + 10) * 8;
+      const svgY = 100 - (worldviewCoords.y * 8);
+
+      dot.classList.remove('hidden');
+      ring.classList.remove('hidden');
+
+      dot.setAttribute('cx', svgX);
+      dot.setAttribute('cy', svgY);
+      ring.setAttribute('cx', svgX);
+      ring.setAttribute('cy', svgY);
+
+      // Determine quadrant and feedback
+      let title = "";
+      let desc = "";
+      let quote = "";
+
+      const x = worldviewCoords.x;
+      const y = worldviewCoords.y;
+
+      if (x >= 0 && y >= 0) {
+        title = "Chiến sĩ Cách mạng Hành động";
+        desc = "Đặc điểm: Bạn thiên về hành động thực tiễn và có tầm nhìn hướng ra thế giới. Giống tinh thần Hồ Chí Minh bôn ba khắp năm châu tìm đường cứu nước, bạn không ngại dấn thân, trải nghiệm trực tiếp và sẵn sàng kết nối, học hỏi bạn bè quốc tế để phụng sự mục tiêu lớn.";
+        quote = '"Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công." - Hồ Chí Minh';
+      } else if (x < 0 && y >= 0) {
+        title = "Nhà Lý luận Cách mạng Quốc tế";
+        desc = "Đặc điểm: Bạn coi trọng nghiên cứu, suy ngẫm sâu sắc và có tầm nhìn rộng mở ra thế giới. Như Hồ Chí Minh đã dày công tìm hiểu các học thuyết cách mạng khắp nơi trước khi chọn con đường cho dân tộc, bạn tin rằng lý luận vững chắc kết hợp góc nhìn quốc tế sẽ dẫn đường cho hành động đúng đắn.";
+        quote = '"Lý luận mà không có thực tiễn là lý luận suông. Thực tiễn mà không có lý luận là thực tiễn mù quáng." - Hồ Chí Minh';
+      } else if (x >= 0 && y < 0) {
+        title = "Người Vì Độc lập Dân tộc";
+        desc = "Đặc điểm: Bạn ưu tiên hành động cụ thể, thiết thực vì lợi ích của chính đất nước, cộng đồng mình. Tinh thần tự lực tự cường và đặt Tổ quốc lên hàng đầu trong bạn rất gần với tư tưởng \"đem sức ta mà tự giải phóng cho ta\" của Hồ Chí Minh.";
+        quote = '"Không có gì quý hơn độc lập, tự do!" - Hồ Chí Minh';
+      } else {
+        title = "Người Ươm mầm Tương lai";
+        desc = "Đặc điểm: Bạn thiên về suy ngẫm, nghiên cứu và gắn bó sâu sắc với những giá trị của dân tộc mình. Bạn có xu hướng nhìn xa, đầu tư cho những điều bền vững lâu dài — giống tinh thần \"trồng người\" mà Hồ Chí Minh luôn coi là chiến lược căn bản của cách mạng.";
+        quote = '"Vì lợi ích mười năm thì phải trồng cây, vì lợi ích trăm năm thì phải trồng người." - Hồ Chí Minh';
+      }
+
+      document.getElementById('result-title').innerText = title;
+      document.getElementById('result-desc').innerText = desc;
+      document.getElementById('result-quote').innerText = quote;
+      
+      dbTitle.innerText = title;
+      dbTitle.title = title;
+
+      panel.classList.remove('hidden');
+    }
+
+    function resetCompassTest() {
+      worldviewCoords = null;
+      localStorage.removeItem('philosophyWorldviewCoords');
+
+      // Hide results & dots
+      document.getElementById('compass-plot-dot').classList.add('hidden');
+      document.getElementById('compass-plot-ring').classList.add('hidden');
+      document.getElementById('compass-result-panel').classList.add('hidden');
+      document.getElementById('dashboard-worldview-title').innerText = "Chưa trắc nghiệm";
+
+      // Show intro
+      document.getElementById('compass-intro').classList.remove('hidden');
+    }
+
+    // ------------------------------------------------------------------------
+    // GREENHOUSE: GAMIFIED REFLECTION JOURNAL
+    // ------------------------------------------------------------------------
+    let greenhouseReflections = JSON.parse(localStorage.getItem('philosophyGreenhouseReflections')) || [];
+
+    const reflectionPrompts = {
+      "quantity-quality": [
+        "1. Trong tuần qua, bạn đã thực hành Cần (chăm chỉ), Kiệm (tiết kiệm), Liêm (trong sạch), Chính (ngay thẳng) cụ thể ra sao?",
+        "2. Đâu là điều bạn cảm thấy chưa làm được trọn vẹn trong 4 chữ đó?",
+        "3. Kế hoạch rèn luyện bền bỉ (như \"rửa mặt hằng ngày\") của bạn trong tuần tới là gì?"
+      ],
+      "contradiction": [
+        "1. Kiến thức, lý luận nào bạn vừa học được trên giảng đường gần đây?",
+        "2. Bạn đã (hoặc sẽ) áp dụng kiến thức đó vào thực tiễn cuộc sống như thế nào?",
+        "3. Thực tiễn đó xác nhận, bổ sung hay điều chỉnh lại lý luận ban đầu ra sao?"
+      ],
+      "negation": [
+        "1. Trong một tập thể (lớp học, nhóm, gia đình) bạn đang tham gia, đâu là điểm chưa đoàn kết bạn nhận thấy?",
+        "2. Bạn học được gì từ tinh thần \"Đoàn kết, đoàn kết, đại đoàn kết\" để áp dụng vào tình huống đó?",
+        "3. Hành động cụ thể nào bạn sẽ làm để góp phần gắn kết tập thể của mình hơn?"
+      ],
+      "theory-practice": [
+        "1. Bạn muốn \"trồng\" điều gì cho tương lai của chính mình (kỹ năng, thói quen, kiến thức)?",
+        "2. Việc đầu tư này có lợi ích trước mắt hay chỉ phát huy giá trị lâu dài?",
+        "3. Bạn sẽ kiên trì vun đắp \"cái cây\" đó như thế nào trong những năm tới?"
+      ],
+      "self": [
+        "1. Bạn đang là động lực (người hành động, đóng góp) hay đang là mục tiêu (người được thụ hưởng) nhiều hơn trong cuộc sống hiện tại?",
+        "2. Điều gì đang thôi thúc bạn phấn đấu, phát triển bản thân mỗi ngày?",
+        "3. Bạn muốn trở thành phiên bản nào của chính mình trong 5 năm tới, và vì sao?"
+      ]
+    };
+
+    function updateReflectionPrompts() {
+      const topic = document.getElementById('reflection-topic').value;
+      const bulletsBox = document.getElementById('reflection-guide-bullets');
+      
+      bulletsBox.innerHTML = "";
+      const guides = reflectionPrompts[topic] || [];
+      guides.forEach(text => {
+        const li = document.createElement('li');
+        li.className = "flex gap-2 items-start";
+        li.innerHTML = `<span class="text-philo-warmGold font-bold shrink-0">•</span><span class="text-philo-ivory/70 text-xs">${text}</span>`;
+        bulletsBox.appendChild(li);
+      });
+    }
+
+    function plantSeed(event) {
+      event.preventDefault();
+      
+      const topicSelect = document.getElementById('reflection-topic');
+      const contentArea = document.getElementById('reflection-content');
+      
+      const newSeed = {
+        id: 'seed_' + new Date().getTime(),
+        topic: topicSelect.value,
+        topicText: topicSelect.options[topicSelect.selectedIndex].text,
+        content: contentArea.value,
+        stage: 1, // Stage 1: Seed 🌱, 2: Sprout 🌿, 3: Bloom 🌳
+        date: new Date().toLocaleDateString('vi-VN'),
+        waterCount: 0
+      };
+
+      greenhouseReflections.unshift(newSeed);
+      localStorage.setItem('philosophyGreenhouseReflections', JSON.stringify(greenhouseReflections));
+      
+      contentArea.value = "";
+      renderGreenhouse();
+      
+      // Flash a quick alert
+      alert("Bạn đã gieo hạt giống phản tư thành công! Hãy theo dõi hạt mầm lớn lên ở bảng bên cạnh.");
+    }
+
+    function deleteSeed(id) {
+      if (confirm("Bạn có chắc chắn muốn nhổ bỏ cây phản tư này không? Dữ liệu chiêm nghiệm sẽ mất vĩnh viễn!")) {
+        greenhouseReflections = greenhouseReflections.filter(item => item.id !== id);
+        localStorage.setItem('philosophyGreenhouseReflections', JSON.stringify(greenhouseReflections));
+        renderGreenhouse();
+      }
+    }
+
+    function waterSeed(id) {
+      const idx = greenhouseReflections.findIndex(item => item.id === id);
+      if (idx > -1) {
+        const item = greenhouseReflections[idx];
+        item.waterCount++;
+        
+        if (item.waterCount >= 3) {
+          item.stage = 3; // Fully grown bloom
+        } else if (item.waterCount >= 1) {
+          item.stage = 2; // Sprout
+        }
+        
+        localStorage.setItem('philosophyGreenhouseReflections', JSON.stringify(greenhouseReflections));
+        renderGreenhouse();
+        
+        // Visual trigger for modal button if open
+        const modalBtn = document.getElementById('modal-water-btn');
+        if (modalBtn && modalBtn.dataset.id === id) {
+          modalBtn.innerHTML = `💧 Đã tưới (${item.waterCount} lần)`;
+        }
+      }
+    }
+
+    let activeModalSeedId = null;
+    function openReflectionModal(id) {
+      const item = greenhouseReflections.find(seed => seed.id === id);
+      if (!item) return;
+
+      activeModalSeedId = id;
+      document.getElementById('modal-tag').innerText = item.topicText;
+      document.getElementById('modal-title').innerText = `Chiêm nghiệm ngày ${item.date}`;
+      document.getElementById('modal-date').innerText = `📅 Tiến trình tưới nước: ${item.waterCount} lần thực tiễn.`;
+      document.getElementById('modal-content').innerText = item.content;
+
+      const waterBtn = document.getElementById('modal-water-btn');
+      waterBtn.dataset.id = id;
+      waterBtn.innerHTML = `💧 Tưới nước Thực tiễn (${item.waterCount})`;
+      waterBtn.onclick = () => {
+        waterSeed(id);
+        waterBtn.innerHTML = `💧 Đã tưới (${item.waterCount} lần)`;
+      };
+
+      document.getElementById('view-reflection-modal').classList.remove('hidden');
+      document.getElementById('view-reflection-modal').classList.add('flex');
+    }
+
+    function closeReflectionModal() {
+      document.getElementById('view-reflection-modal').classList.add('hidden');
+      document.getElementById('view-reflection-modal').classList.remove('flex');
+      activeModalSeedId = null;
+    }
+
+    function renderGreenhouse() {
+      const emptyState = document.getElementById('greenhouse-empty-state');
+      const grid = document.getElementById('greenhouse-plants-grid');
+      const stats = document.getElementById('garden-statistics');
+      const dbGardenCount = document.getElementById('dashboard-garden-count');
+
+      // Update counters
+      dbGardenCount.innerText = `🌱 ${greenhouseReflections.length} hạt giống`;
+      stats.innerText = `${greenhouseReflections.length} Cây phản tư`;
+
+      if (greenhouseReflections.length === 0) {
+        emptyState.classList.remove('hidden');
+        grid.classList.add('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.classList.remove('hidden');
+
+      grid.innerHTML = "";
+      greenhouseReflections.forEach(seed => {
+        const card = document.createElement('div');
+        card.className = "bg-philo-blackBurgundy  p-5 rounded-2xl border border-philo-warmGold/30/80 shadow-cinematic hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between group relative overflow-hidden";
+        
+        // Define SVG plant graphic depending on stage
+        let plantSvg = "";
+        let stageBadge = "";
+        
+        if (seed.stage === 1) {
+          stageBadge = `<span class="px-2 py-0.5 bg-philo-warmGold/10 text-philo-warmGold text-[9px] font-bold rounded">🌱 HẠT MẦM</span>`;
+          plantSvg = `
+            <svg class="size-16" viewBox="0 0 64 64" fill="none">
+              <!-- Seed in ground -->
+              <ellipse cx="32" cy="52" rx="16" ry="6" fill="#78350f" opacity="0.3"/>
+              <circle cx="32" cy="46" r="4" fill="#a16207" />
+              <path d="M30 46 Q26 40 24 38 Q22 36 20 40" stroke="#10b981" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M32 46 Q34 38 38 36" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          `;
+        } else if (seed.stage === 2) {
+          stageBadge = `<span class="px-2 py-0.5 bg-philo-warmGold/10 text-philo-warmGold text-[9px] font-bold rounded">🌿 CÂY NON</span>`;
+          plantSvg = `
+            <svg class="size-16" viewBox="0 0 64 64" fill="none">
+              <ellipse cx="32" cy="52" rx="18" ry="6" fill="#78350f" opacity="0.3"/>
+              <!-- Stems -->
+              <path d="M32 50 C32 40 28 30 24 24" stroke="#059669" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M32 50 C34 42 38 34 42 30" stroke="#059669" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- Leaves -->
+              <path d="M24 24 Q18 20 18 26 Q24 28 24 24" fill="#10b981" stroke="#059669" stroke-width="1"/>
+              <path d="M42 30 Q48 28 46 34 Q42 34 42 30" fill="#10b981" stroke="#059669" stroke-width="1"/>
+            </svg>
+          `;
+        } else {
+          stageBadge = `<span class="px-2 py-0.5 bg-philo-warmGold/10 text-philo-warmGold text-[9px] font-bold rounded">🌳 TRƯỞNG THÀNH</span>`;
+          plantSvg = `
+            <svg class="size-16" viewBox="0 0 64 64" fill="none" class="animate-pulse-scale">
+              <ellipse cx="32" cy="52" rx="20" ry="6" fill="#78350f" opacity="0.3"/>
+              <!-- Main Trunk -->
+              <path d="M32 50 C32 36 32 26 32 20" stroke="#78350f" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+              <!-- Branches & Foliage -->
+              <circle cx="32" cy="18" r="14" fill="#10b981" opacity="0.9"/>
+              <circle cx="24" cy="20" r="10" fill="#059669" opacity="0.95"/>
+              <circle cx="40" cy="22" r="9" fill="#34d399" opacity="0.95"/>
+              <!-- Flowers/Fruit -->
+              <circle cx="32" cy="12" r="2.5" fill="#f59e0b"/>
+              <circle cx="20" cy="22" r="2.5" fill="#f59e0b"/>
+              <circle cx="38" cy="20" r="2" fill="#ef4444"/>
+            </svg>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="flex justify-between items-start gap-4 mb-4">
+            <div class="flex-grow">
+              <div class="flex flex-wrap gap-2 items-center mb-2">
+                ${stageBadge}
+                <span class="text-[9px] text-philo-ivory/50 /50">📅 ${seed.date}</span>
+              </div>
+              <h4 class="font-bold text-philo-ivory text-xs line-clamp-1">${seed.topicText}</h4>
+              <p class="text-[10px] text-philo-ivory/70 line-clamp-2 mt-1 leading-normal">${seed.content}</p>
+            </div>
+            <div class="shrink-0">
+              ${plantSvg}
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between border-t border-philo-warmGold/30 pt-3 mt-auto">
+            <div class="flex items-center gap-1.5">
+              <button onclick="waterSeed('${seed.id}')" 
+ class="size-8 rounded-lg bg-philo-warmGold/10 hover:bg-blue-100 text-philo-warmGold flex items-center justify-center transition-colors"
+                title="Tưới nước thực tiễn (Đưa lý thuyết áp dụng thực tế)">
+                <span class="material-symbols-outlined text-base">water_drop</span>
+              </button>
+              <button onclick="openReflectionModal('${seed.id}')" 
+ class="size-8 rounded-lg bg-philo-warmGold/5  hover:bg-philo-warmGold/20  text-philo-ivory/70 flex items-center justify-center transition-colors"
+                title="Đọc chi tiết">
+                <span class="material-symbols-outlined text-base">visibility</span>
+              </button>
+            </div>
+            
+            <button onclick="deleteSeed('${seed.id}')" 
+ class="size-8 rounded-lg bg-philo-warmGold/10 hover:bg-philo-warmGold/20 text-philo-warmGold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              title="Xóa suy ngẫm">
+              <span class="material-symbols-outlined text-base">delete</span>
+            </button>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // CONFETTI EFFECTS (PURE CANVAS SCRIPT)
+    // ------------------------------------------------------------------------
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    let confettiParticles = [];
+    let isConfettiRunning = false;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function startConfetti() {
+      confettiParticles = [];
+      for (let i = 0; i < 150; i++) {
+        confettiParticles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 4,
+          color: `hsl(${Math.random() * 360}, 90%, 60%)`,
+          speed: Math.random() * 4 + 3,
+          angle: Math.random() * 2 * Math.PI,
+          spin: Math.random() * 0.2 - 0.1
+        });
+      }
+      
+      if (!isConfettiRunning) {
+        isConfettiRunning = true;
+        animateConfetti();
+      }
+      
+      // Stop spawning and fade out confetti after 4 seconds
+      setTimeout(() => {
+        isConfettiRunning = false;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 4000);
+    }
+
+    function animateConfetti() {
+      if (!isConfettiRunning) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      confettiParticles.forEach(p => {
+        p.y += p.speed;
+        p.angle += p.spin;
+        p.x += Math.sin(p.angle) * 1.5;
+
+        ctx.fillStyle = p.color;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      });
+
+      // Filter out off-screen particles
+      confettiParticles = confettiParticles.filter(p => p.y < canvas.height);
+
+      if (confettiParticles.length > 0 && isConfettiRunning) {
+        requestAnimationFrame(animateConfetti);
+      } else {
+        isConfettiRunning = false;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // TAB 4: FE REVIEW QUIZ + AI TUTOR
+    // ------------------------------------------------------------------------
+    const feState = {
+      activeModule: 'all',
+      questions: [],
+      answered: [],
+      correctCount: 0,
+      answeredCount: 0
+    };
+
+    function getFeQuestionPool() {
+      return typeof FE_REVIEW_QUESTIONS !== 'undefined' && Array.isArray(FE_REVIEW_QUESTIONS) ? FE_REVIEW_QUESTIONS : [];
+    }
+
+    function getFeModules() {
+      return typeof FE_REVIEW_MODULES !== 'undefined' && Array.isArray(FE_REVIEW_MODULES) ? FE_REVIEW_MODULES : [];
+    }
+
+    function feModuleTitle(moduleId) {
+      const mod = getFeModules().find(m => m.id === moduleId);
+      return mod ? mod.title : 'Không rõ chương';
+    }
+
+    function shuffleArray(list) {
+      const arr = list.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function renderFeModuleFilters() {
+      const box = document.getElementById('fe-module-filters');
+      if (!box) return;
+      const pool = getFeQuestionPool();
+      const modules = getFeModules();
+
+      const chipClass = (active) => active
+        ? "w-full text-left p-3 rounded-xl border border-philo-warmGold/30 bg-philo-warmGold/10 text-philo-warmGold font-bold text-xs flex items-center justify-between gap-2 transition-all hover:bg-blue-100"
+        : "w-full text-left p-3 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-xs flex items-center justify-between gap-2 transition-all hover:bg-philo-warmGold/10 ";
+
+      let html = `
+        <button onclick="selectFeModule('all')" class="${chipClass(feState.activeModule === 'all')}">
+          <span>Toàn bộ chương trình</span>
+          <span class="text-[10px] opacity-70">${pool.length} câu</span>
+        </button>
+      `;
+
+      modules.forEach(mod => {
+        const count = pool.filter(q => q.module === mod.id).length;
+        html += `
+          <button onclick="selectFeModule('${mod.id}')" class="${chipClass(feState.activeModule === mod.id)}">
+            <span class="truncate pr-2">${mod.title}</span>
+            <span class="text-[10px] opacity-70 shrink-0">${count} câu</span>
+          </button>
+        `;
+      });
+
+      box.innerHTML = html;
+    }
+
+    function resetFeProgress() {
+      feState.answered = feState.questions.map(() => false);
+      feState.correctCount = 0;
+      feState.answeredCount = 0;
+      updateFeScoreSummary();
+    }
+
+    function updateFeScoreSummary() {
+      const summaryBox = document.getElementById('fe-score-summary');
+      if (feState.answeredCount === 0) {
+        summaryBox.classList.add('hidden');
+        return;
+      }
+      summaryBox.classList.remove('hidden');
+      document.getElementById('fe-score-text').innerText = `${feState.correctCount}/${feState.answeredCount}`;
+    }
+
+    function selectFeModule(moduleId) {
+      feState.activeModule = moduleId;
+      const pool = getFeQuestionPool();
+      const filtered = moduleId === 'all' ? pool : pool.filter(q => q.module === moduleId);
+      feState.questions = shuffleArray(filtered);
+      resetFeProgress();
+
+      document.getElementById('fe-quiz-title').innerText = moduleId === 'all'
+        ? 'Toàn bộ chương trình'
+        : feModuleTitle(moduleId);
+      document.getElementById('fe-quiz-count-text').innerText = `${feState.questions.length} câu hỏi`;
+
+      renderFeModuleFilters();
+      renderFeQuiz();
+    }
+
+    function shuffleFeQuiz() {
+      feState.questions = shuffleArray(feState.questions);
+      resetFeProgress();
+      renderFeQuiz();
+    }
+
+    function renderFeQuiz() {
+      const container = document.getElementById('fe-quiz-container');
+      const empty = document.getElementById('fe-quiz-empty');
+      const actions = document.getElementById('fe-quiz-actions');
+      const submitBtn = document.getElementById('fe-submit-btn');
+
+      if (!feState.questions.length) {
+        container.innerHTML = '';
+        empty.classList.remove('hidden');
+        actions.classList.add('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      actions.classList.remove('hidden');
+      submitBtn.classList.remove('hidden');
+
+      container.innerHTML = feState.questions.map((item, index) => `
+        <div class="bg-philo-blackBurgundy  rounded-2xl p-6 md:p-8 shadow-cinematic border border-philo-warmGold/30 fe-question-block" id="fe-question-${index}">
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 size-8 bg-philo-warmGold/10 text-secondary font-bold rounded-lg flex items-center justify-center text-sm">
+              ${index + 1}
+            </span>
+            <h3 class="text-base md:text-lg font-bold text-philo-ivory leading-relaxed pt-1">
+              ${item.question}
+            </h3>
+          </div>
+          <div class="space-y-3 pl-0 md:pl-12" id="fe-options-${index}">
+            ${item.options.map((opt, optIndex) => `
+              <div class="fe-opt cursor-pointer p-4 rounded-xl border border-gray-200 hover:bg-gray-50 transition-all flex items-center gap-3"
+                onclick="feCheckAnswer(${index}, ${optIndex})" id="fe-opt-${index}-${optIndex}">
+                <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-300 relative flex items-center justify-center transition-colors shrink-0"></div>
+                <span class="text-philo-ivory font-medium text-sm">${opt}</span>
+                <span class="material-symbols-outlined text-green-500 ml-auto correct-icon hidden">check_circle</span>
+                <span class="material-symbols-outlined text-red-500 ml-auto wrong-icon hidden">cancel</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="explanation hidden mt-6 p-4 bg-philo-warmGold/10/40 rounded-xl border border-philo-warmGold/30/50">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary mt-1">lightbulb</span>
+              <div>
+                <h4 class="font-bold text-secondary text-sm uppercase mb-1">Giải thích chi tiết</h4>
+                <p class="text-sm text-philo-ivory/90 leading-relaxed">${item.explanation}</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pl-0 md:pl-12">
+            <button onclick="askMinhAboutQuestion(${index})"
+ class="flex items-center gap-1.5 px-3.5 py-2 bg-philo-warmGold/5  hover:bg-philo-warmGold/20  border border-philo-warmGold/30 rounded-lg text-[11px] font-bold text-philo-ivory/70 transition-colors">
+              <span class="material-symbols-outlined text-sm">smart_toy</span>
+              Hỏi AI về câu này
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function feCheckAnswer(qIndex, optIndex) {
+      if (feState.answered[qIndex]) return; // lock after first pick
+
+      const item = feState.questions[qIndex];
+      const block = document.getElementById(`fe-question-${qIndex}`);
+      const optionsWrap = document.getElementById(`fe-options-${qIndex}`);
+      const clickedDiv = document.getElementById(`fe-opt-${qIndex}-${optIndex}`);
+      const correctDiv = document.getElementById(`fe-opt-${qIndex}-${item.correct}`);
+
+      feState.answered[qIndex] = true;
+      feState.answeredCount++;
+
+      if (optIndex === item.correct) {
+        feState.correctCount++;
+        clickedDiv.classList.add('correct-answer');
+        clickedDiv.querySelector('.correct-icon').classList.remove('hidden');
+      } else {
+        clickedDiv.classList.add('wrong-answer');
+        clickedDiv.querySelector('.wrong-icon').classList.remove('hidden');
+        correctDiv.classList.add('correct-answer');
+        correctDiv.querySelector('.correct-icon').classList.remove('hidden');
+      }
+
+      optionsWrap.classList.add('pointer-events-none');
+      block.querySelector('.explanation').classList.remove('hidden');
+      updateFeScoreSummary();
+    }
+
+    function submitFeQuiz() {
+      // Reveal correct answers for any question the user skipped, without counting them as correct
+      feState.questions.forEach((item, index) => {
+        if (feState.answered[index]) return;
+        feState.answered[index] = true;
+
+        const block = document.getElementById(`fe-question-${index}`);
+        const optionsWrap = document.getElementById(`fe-options-${index}`);
+        const correctDiv = document.getElementById(`fe-opt-${index}-${item.correct}`);
+
+        correctDiv.classList.add('correct-answer');
+        correctDiv.querySelector('.correct-icon').classList.remove('hidden');
+        optionsWrap.classList.add('pointer-events-none');
+        block.querySelector('.explanation').classList.remove('hidden');
+      });
+
+      const score = feState.correctCount;
+      const total = feState.questions.length;
+      document.getElementById('fe-submit-btn').classList.add('hidden');
+      updateFeScoreSummary();
+      document.getElementById('fe-score-text').innerText = `${score}/${total}`;
+
+      const modal = document.getElementById('fe-score-modal');
+      const feedback = document.getElementById('fe-feedback-text');
+      document.getElementById('fe-final-score').innerText = `${score}/${total}`;
+
+      if (score === total) {
+        feedback.innerText = "Xuất sắc! Bạn đã nắm vững toàn bộ phạm vi ôn tập này!";
+      } else if (total > 0 && score / total >= 0.7) {
+        feedback.innerText = "Làm tốt lắm! Chỉ còn vài lỗi nhỏ thôi.";
+      } else {
+        feedback.innerText = "Cần ôn lại thêm nhé! Hỏi AI ngay dưới các câu sai để hiểu rõ hơn.";
+      }
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.querySelector('div').classList.remove('scale-90');
+        modal.querySelector('div').classList.add('scale-100');
+      }, 10);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeFeScoreModal() {
+      const modal = document.getElementById('fe-score-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    // ------------------------------------------------------------------------
+    // "HỎI AI" → redirect to the site's existing AI assistant (Minh) with the
+    // quiz question + correct answer + explanation pre-filled and auto-sent
+    // ------------------------------------------------------------------------
+    function askMinhAboutQuestion(questionIndex) {
+      const q = feState.questions[questionIndex];
+      if (!q) return;
+
+      const correctAnswer = q.options[q.correct];
+      const cleanExplanation = (q.explanation || '')
+        .replace(/\s*Bấm\s*"Hỏi AI"[^.]*\.?\s*$/i, '')
+        .trim();
+      const composed = `Giải thích giúp mình câu hỏi ôn tập sau (chương: ${feModuleTitle(q.module)}):\n"${q.question}"\nĐáp án đúng: ${correctAnswer}${cleanExplanation ? `\nGiải thích trong giáo trình: ${cleanExplanation}` : ''}\n\nBạn có thể phân tích sâu hơn và cho ví dụ thực tế không?`;
+
+      const url = 'ai-assistants.html?q=' + encodeURIComponent(composed);
+      window.open(url, '_blank');
+    }
+
+    // ------------------------------------------------------------------------
+    // FE EXAM MODE (THI THỬ) — 50 random questions, 60-min countdown
+    // ------------------------------------------------------------------------
+    const EXAM_SIZE = 50;
+    const EXAM_SECONDS = 3600;
+    const EXAM_DECK_KEY = 'feExamDeck';
+    const EXAM_HISTORY_KEY = 'feExamHistory';
+
+    let examQuestions = [];
+    let examUserAnswers = []; // index -> selected option index or null
+    let examCurIdx = 0;
+    let examTimerInterval = null;
+    let examSecondsLeft = EXAM_SECONDS;
+    let examReviewVisible = false;
+
+    function shuffleArr(list) {
+      const arr = list.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function getExamDeck() {
+      const total = getFeQuestionPool().length;
+      try {
+        const d = JSON.parse(localStorage.getItem(EXAM_DECK_KEY));
+        if (d && Array.isArray(d.pool) && Array.isArray(d.used) && d.total === total) return d;
+      } catch (e) {}
+      return { pool: shuffleArr([...Array(total).keys()]), used: [], total };
+    }
+
+    function saveExamDeck(d) {
+      localStorage.setItem(EXAM_DECK_KEY, JSON.stringify(d));
+    }
+
+    function pickExamSet() {
+      const pool = getFeQuestionPool();
+      let d = getExamDeck();
+      if (d.pool.length < EXAM_SIZE) {
+        const recent = d.used.slice(-EXAM_SIZE);
+        d.pool = shuffleArr([...d.pool, ...d.used.filter(i => !recent.includes(i))]);
+        d.used = recent;
+      }
+      const picked = d.pool.splice(0, Math.min(EXAM_SIZE, pool.length));
+      d.used = [...d.used, ...picked].slice(-(EXAM_SIZE * 3));
+      saveExamDeck(d);
+      return picked.map(i => pool[i]);
+    }
+
+    function getExamHistory() {
+      try { return JSON.parse(localStorage.getItem(EXAM_HISTORY_KEY)) || []; } catch (e) { return []; }
+    }
+
+    function saveExamHistory(entry) {
+      const h = getExamHistory();
+      h.unshift(entry);
+      if (h.length > 5) h.length = 5;
+      localStorage.setItem(EXAM_HISTORY_KEY, JSON.stringify(h));
+    }
+
+    function renderExamHistory() {
+      const h = getExamHistory();
+      const box = document.getElementById('exam-history-box');
+      if (!h.length) { box.classList.add('hidden'); return; }
+      box.classList.remove('hidden');
+      document.getElementById('exam-history-list').innerHTML = h.map(e => `
+        <div class="flex justify-between items-center text-xs py-1 border-b border-philo-warmGold/30 last:border-0">
+          <span class="text-philo-ivory/70">${e.date} ${e.time}</span>
+          <span class="font-bold text-philo-warmGold">${e.correct}/${EXAM_SIZE} · ${e.score10}/10</span>
+        </div>
+      `).join('');
+    }
+
+    function openExamMode() {
+      document.getElementById('exam-stat-total').innerText = getFeQuestionPool().length;
+      renderExamHistory();
+      showExamScreen('exam-start-screen');
+      document.getElementById('fe-exam-overlay').classList.remove('hidden');
+    }
+
+    function closeExamMode() {
+      clearInterval(examTimerInterval);
+      document.getElementById('fe-exam-overlay').classList.add('hidden');
+      document.getElementById('fe-exam-overlay').classList.remove('flex');
+    }
+
+    function exitExamEarly() {
+      if (confirm('Thoát khỏi bài thi? Tiến trình làm bài hiện tại sẽ không được lưu.')) {
+        closeExamMode();
+      }
+    }
+
+    function showExamScreen(id) {
+      ['exam-start-screen', 'exam-quiz-screen', 'exam-result-screen'].forEach(sid => {
+        const el = document.getElementById(sid);
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      });
+      const target = document.getElementById(id);
+      target.classList.remove('hidden');
+      // exam-result-screen is a plain block scroll container; its inner div
+      // handles its own centering. Only the start/quiz screens are flex layouts.
+      if (id !== 'exam-result-screen') {
+        target.classList.add('flex');
+      }
+    }
+
+    function startExam() {
+      examQuestions = pickExamSet();
+      examUserAnswers = examQuestions.map(() => null);
+      examCurIdx = 0;
+      examSecondsLeft = EXAM_SECONDS;
+      examReviewVisible = false;
+      showExamScreen('exam-quiz-screen');
+      buildExamNavGrid();
+      renderExamQuestion(0);
+      startExamTimer();
+    }
+
+    function startExamTimer() {
+      clearInterval(examTimerInterval);
+      renderExamTimer();
+      examTimerInterval = setInterval(() => {
+        examSecondsLeft--;
+        if (examSecondsLeft <= 0) {
+          clearInterval(examTimerInterval);
+          submitExam();
+        } else {
+          renderExamTimer();
+        }
+      }, 1000);
+    }
+
+    function renderExamTimer() {
+      const m = String(Math.floor(examSecondsLeft / 60)).padStart(2, '0');
+      const s = String(examSecondsLeft % 60).padStart(2, '0');
+      const el = document.getElementById('exam-timer');
+      el.textContent = m + ':' + s;
+      el.className = 'text-xl font-extrabold ' + (examSecondsLeft <= 300 ? 'text-red-500' : examSecondsLeft <= 600 ? 'text-amber-500' : 'text-philo-ivory');
+    }
+
+    function buildExamNavGrid() {
+      document.getElementById('exam-nav-grid').innerHTML = examQuestions.map((_, i) =>
+        `<button class="exam-nav-btn size-8 rounded-md border border-philo-warmGold/30 text-xs font-bold" id="exam-nav-${i}" onclick="examGoTo(${i})">${i + 1}</button>`
+      ).join('');
+    }
+
+    function toggleExamNav() {
+      document.getElementById('exam-nav-grid-wrap').classList.toggle('max-h-36');
+    }
+
+    function updateExamNavBtn(i) {
+      const b = document.getElementById('exam-nav-' + i);
+      if (!b) return;
+      const answered = examUserAnswers[i] !== null;
+      const current = i === examCurIdx;
+      b.className = 'exam-nav-btn size-8 rounded-md border text-xs font-bold transition-colors ' +
+        (answered ? 'bg-philo-warmGold border-philo-warmGold text-white ' : 'border-philo-warmGold/30 text-philo-ivory/70 ') +
+        (current ? 'ring-2 ring-offset-1 ring-slate-800' : '');
+    }
+
+    function updateExamAnsweredCount() {
+      const n = examUserAnswers.filter(a => a !== null).length;
+      document.getElementById('exam-answered-count').innerText = `${n}/${examQuestions.length} đã trả lời`;
+    }
+
+    function renderExamQuestion(i) {
+      examCurIdx = i;
+      const q = examQuestions[i];
+      const selected = examUserAnswers[i];
+
+      examQuestions.forEach((_, idx) => updateExamNavBtn(idx));
+      updateExamAnsweredCount();
+
+      document.getElementById('exam-progress-text').innerText = `Câu ${i + 1}/${examQuestions.length}`;
+      document.getElementById('exam-progress-fill').style.width = ((i + 1) / examQuestions.length * 100) + '%';
+      document.getElementById('exam-btn-prev').disabled = i === 0;
+      document.getElementById('exam-btn-next').disabled = i === examQuestions.length - 1;
+
+      document.getElementById('exam-card-area').innerHTML = `
+        <div class="bg-philo-blackBurgundy  rounded-2xl border border-philo-warmGold/30 p-6 max-w-2xl mx-auto">
+          <div class="text-[11px] font-bold text-philo-warmGold uppercase tracking-wide mb-2">Câu ${i + 1}</div>
+          <div class="text-base font-medium text-philo-ivory leading-relaxed mb-5">${q.question}</div>
+          <div class="flex flex-col gap-2.5">
+            ${q.options.map((opt, idx) => `
+              <div class="exam-opt flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-colors ${selected === idx ? 'border-philo-warmGold bg-philo-warmGold/10/40' : 'border-philo-warmGold/30 hover:bg-philo-warmGold/5 '}"
+                onclick="examToggleOpt(${i}, ${idx})">
+                <div class="size-6 rounded-md flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${selected === idx ? 'bg-philo-warmGold text-white' : 'bg-philo-warmGold/20  text-philo-ivory/70'}">${String.fromCharCode(65 + idx)}</div>
+                <div class="text-sm text-philo-ivory leading-snug">${opt.replace(/^[A-D]\.\s*/, '')}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      document.getElementById('exam-body').scrollTop = 0;
+    }
+
+    function examToggleOpt(qIdx, optIdx) {
+      examUserAnswers[qIdx] = examUserAnswers[qIdx] === optIdx ? null : optIdx;
+      renderExamQuestion(qIdx);
+    }
+
+    function examGoTo(i) {
+      if (i < 0 || i >= examQuestions.length) return;
+      renderExamQuestion(i);
+      document.getElementById('exam-nav-grid-wrap').classList.remove('max-h-36');
+    }
+
+    function openExamSubmitModal() {
+      const unanswered = examUserAnswers.filter(a => a === null).length;
+      document.getElementById('exam-modal-msg').innerHTML = unanswered > 0
+        ? `Còn <strong>${unanswered}</strong> câu chưa trả lời. Chắc chắn nộp bài?`
+        : `Đã trả lời hết ${examQuestions.length} câu. Nộp bài ngay?`;
+      document.getElementById('exam-submit-modal').classList.remove('hidden');
+      document.getElementById('exam-submit-modal').classList.add('flex');
+    }
+
+    function closeExamSubmitModal() {
+      document.getElementById('exam-submit-modal').classList.add('hidden');
+      document.getElementById('exam-submit-modal').classList.remove('flex');
+    }
+
+    function submitExam() {
+      clearInterval(examTimerInterval);
+      closeExamSubmitModal();
+
+      const used = EXAM_SECONDS - examSecondsLeft;
+      const mm = String(Math.floor(used / 60)).padStart(2, '0');
+      const ss = String(used % 60).padStart(2, '0');
+
+      let correct = 0, wrong = 0, skipped = 0;
+      examQuestions.forEach((q, i) => {
+        const a = examUserAnswers[i];
+        if (a === null) skipped++;
+        else if (a === q.correct) correct++;
+        else wrong++;
+      });
+
+      const total = examQuestions.length;
+      const score10 = (correct / total * 10).toFixed(1);
+      const pct = correct / total * 100;
+
+      document.getElementById('exam-res-score').innerHTML = `${correct}<span class="text-2xl font-normal text-philo-ivory/50 /50">/${total}</span>`;
+      document.getElementById('exam-res-label').innerText =
+        pct >= 80 ? '🏆 Xuất sắc!' : pct >= 65 ? '✅ Đạt' : pct >= 50 ? '⚠️ Cần cố gắng thêm' : '❌ Chưa đạt';
+      document.getElementById('exam-res-meta').innerText = `Điểm: ${score10}/10 · Thời gian làm bài: ${mm}:${ss}`;
+      document.getElementById('exam-res-correct').innerText = correct;
+      document.getElementById('exam-res-wrong').innerText = wrong;
+      document.getElementById('exam-res-skip').innerText = skipped;
+
+      document.getElementById('exam-filter-wrong-btn').innerText = `Sai (${wrong})`;
+      document.getElementById('exam-filter-correct-btn').innerText = `Đúng (${correct})`;
+      document.getElementById('exam-filter-skipped-btn').innerText = `Bỏ qua (${skipped})`;
+
+      saveExamHistory({
+        date: new Date().toLocaleDateString('vi-VN'),
+        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+        correct, score10
+      });
+
+      showExamScreen('exam-result-screen');
+      document.getElementById('exam-review-section').classList.add('hidden');
+      examReviewVisible = false;
+    }
+
+    function toggleExamReview() {
+      examReviewVisible = !examReviewVisible;
+      document.getElementById('exam-review-section').classList.toggle('hidden', !examReviewVisible);
+      if (examReviewVisible) renderExamReview('all');
+    }
+
+    function setExamFilter(filter, btn) {
+      document.querySelectorAll('.exam-filter-btn').forEach(b => {
+        b.classList.remove('active', 'bg-philo-warmGold', 'text-white');
+        b.classList.add('bg-philo-blackBurgundy', 'text-philo-ivory/70');
+      });
+      btn.classList.add('active', 'bg-philo-warmGold', 'text-white');
+      btn.classList.remove('bg-philo-blackBurgundy', 'text-philo-ivory/70');
+      renderExamReview(filter);
+    }
+
+    function renderExamReview(filter) {
+      let html = '';
+      examQuestions.forEach((q, i) => {
+        const a = examUserAnswers[i];
+        let status = a === null ? 'skipped' : (a === q.correct ? 'correct' : 'wrong');
+        if (filter !== 'all' && filter !== status) return;
+
+        const labelMap = { correct: '✅ Đúng', wrong: '❌ Sai', skipped: '➖ Bỏ qua' };
+        const borderMap = { correct: 'border-l-emerald-500', wrong: 'border-l-red-500', skipped: 'border-l-slate-300' };
+        const labelColorMap = { correct: 'text-philo-warmGold', wrong: 'text-red-500', skipped: 'text-philo-ivory/50 /50' };
+
+        const optHTML = q.options.map((opt, idx) => {
+          const userPicked = a === idx;
+          const isCorrect = q.correct === idx;
+          let cls = 'border-philo-warmGold/30';
+          let tag = '';
+          if (userPicked && isCorrect) { cls = 'border-emerald-500 bg-philo-warmGold/10'; tag = '<span class="text-[10px] font-bold text-philo-warmGold ml-auto">Đúng</span>'; }
+          else if (userPicked && !isCorrect) { cls = 'border-red-500 bg-philo-warmGold/10'; tag = '<span class="text-[10px] font-bold text-red-500 ml-auto">Bạn chọn</span>'; }
+          else if (!userPicked && isCorrect) { cls = 'border-emerald-400 bg-philo-warmGold/10/60'; tag = '<span class="text-[10px] font-bold text-philo-warmGold ml-auto">Đáp án đúng</span>'; }
+          return `<div class="flex items-center gap-2.5 p-2.5 rounded-lg border ${cls} text-xs">
+            <div class="size-5 rounded bg-philo-warmGold/20  flex items-center justify-center font-bold shrink-0">${String.fromCharCode(65 + idx)}</div>
+            <div class="text-philo-ivory">${opt.replace(/^[A-D]\.\s*/, '')}</div>
+            ${tag}
+          </div>`;
+        }).join('');
+
+        html += `
+          <div class="bg-philo-blackBurgundy  rounded-xl border border-philo-warmGold/30 border-l-4 ${borderMap[status]} p-4">
+            <div class="text-[11px] font-bold uppercase tracking-wide mb-1.5 ${labelColorMap[status]}">${labelMap[status]} · Câu ${i + 1}</div>
+            <div class="text-sm text-philo-ivory mb-3">${q.question}</div>
+            <div class="flex flex-col gap-1.5">${optHTML}</div>
+          </div>`;
+      });
+      document.getElementById('exam-review-list').innerHTML = html || '<p class="text-xs text-philo-ivory/50 /50 text-center py-6">Không có câu nào.</p>';
+    }
+
+    // ------------------------------------------------------------------------
+    // PAGE INITIALIZATION
+    // ------------------------------------------------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+      updateQuantityUI();
+      updateReflectionPrompts();
+      renderGreenhouse();
+
+      if (worldviewCoords) {
+        renderCompassPlot();
+      }
+
+      selectFeModule('all');
+    });
+  </script>
+
+  <!-- Component Loader -->
+  <script src="js/load-components.js"></script>
+  <script src="js/tet-effect.js"></script>
+</body>
+
+</html>

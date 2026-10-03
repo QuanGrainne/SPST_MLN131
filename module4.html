@@ -1,0 +1,783 @@
+﻿<!DOCTYPE html>
+<html lang="vi" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Module 4: Tư tưởng HCM về Đoàn kết — PhiloVerse HCM</title>
+    <meta name="description"
+        content="Tìm hiểu Tư tưởng Hồ Chí Minh về đoàn kết dân tộc và đoàn kết quốc tế qua 6 bài học tương tác." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="js/tailwind-config-global.js"></script>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        #m4-progress-bar {
+            transition: width 0.6s ease;
+        }
+
+        .reflection-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s;
+            opacity: 0;
+        }
+
+        .reflection-answer.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        @keyframes badge-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .achievement-earned {
+            animation: badge-pulse 0.6s ease 2;
+        }
+
+        .hidden-panel {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .lesson-header-academic {
+            padding: 2rem;
+        }
+            /* Lesson tab active state */
+        .lesson-tab.active-tab { border-color: #FFD34E !important; background: rgba(217,166,46,0.12) !important; box-shadow: 0 0 20px rgba(217,166,46,0.2); }
+        .lesson-tab.active-tab .tab-label { color: #FFD34E !important; }
+        .lesson-dot.completed { background-color: #D9A62E !important; }
+        /* Lesson header */
+        .lesson-header-academic { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(20,3,3,0.95) 0%, rgba(101,7,7,0.85) 100%); border-bottom: 1px solid rgba(217,166,46,0.2); }
+        /* Module page hero */
+        .module-page-hero { position: relative; padding: 3rem 2rem 2.5rem; overflow: hidden; background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%); }
+        .module-page-hero > * { position: relative; z-index: 1; }
+        .module-page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent); }</style>
+</head>
+
+<body
+ class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+            <!-- ===== MODULE HERO HEADER ===== -->
+        <div class="module-page-hero -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="assets/images/modules/module4-economy.jpg" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0D0101] via-[#3A0505]/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#140303] via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="philo-breadcrumb mb-5">
+                    <a href="home.html">TRANG CHỦ</a>
+                    <span class="sep">/</span>
+                    <a href="home.html#overview">MODULES</a>
+                    <span class="sep">/</span>
+                    <span>MODULE 4 • ĐẠI ĐOÀN KẾT DÂN TỘC</span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">school</span> MODULE 04</span>
+                        <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight text-philo-ivory mt-2">
+                            Đại đoàn kết<br class="hidden md:block" />
+                            <span class="text-philo-gold italic">Dân tộc và Quốc tế</span>
+                        </h1>
+                        <p class="mt-3 text-philo-ivory/70 text-sm md:text-base max-w-xl leading-relaxed">6 bài học về tư tưởng đại đoàn kết dân tộc và đoàn kết quốc tế của Hồ Chí Minh — nền tảng chiến lược cách mạng.</p>
+                    </div>
+                    <div class="md:min-w-[220px]">
+                        <div class="flex items-center justify-between text-xs text-philo-ivory/60 mb-2">
+                            <span id="m4-progress-label">0 / 6 bài hoàn thành</span>
+                            <span id="m4-progress-pct" class="text-philo-gold font-bold">0%</span>
+                        </div>
+                        <div class="philo-progress-track">
+                            <div id="m4-progress-bar" class="philo-progress-fill" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <section class="mb-10">
+            <div class="philo-section-divider"><span class="philo-section-title">✦ 6
+                    Bài học ✦</span></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="showLesson('M4-L1')" id="tab-M4-L1" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">🤝</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.1</span><span class="text-xs font-medium text-philo-ivory/80">Vai trò ĐĐK</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L1"></span></button>
+                <button onclick="showLesson('M4-L2')" id="tab-M4-L2" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">👥</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.2</span><span class="text-xs font-medium text-philo-ivory/80">Lực lượng ĐĐK</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L2"></span></button>
+                <button onclick="showLesson('M4-L3')" id="tab-M4-L3" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">🛡️</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.3</span><span class="text-xs font-medium text-philo-ivory/80">Mặt trận thống nhất</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L3"></span></button>
+                <button onclick="showLesson('M4-L4')" id="tab-M4-L4" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">🌏</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.4</span><span class="text-xs font-medium text-philo-ivory/80">Đoàn kết quốc tế</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L4"></span></button>
+                <button onclick="showLesson('M4-L5')" id="tab-M4-L5" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">⚖️</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.5</span><span class="text-xs font-medium text-philo-ivory/80">Nguyên tắc ĐKQT</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L5"></span></button>
+                <button onclick="showLesson('M4-L6')" id="tab-M4-L6" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
+ class="text-2xl">🎯</span><span
+ class="text-xs font-semibold text-philo-ivory/70">Bài
+                        4.6</span><span class="text-xs font-medium text-philo-ivory/80">Vận dụng hiện nay</span><span
+ class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
+                        id="dot-M4-L6"></span></button>
+            </div>
+        </section>
+
+
+        <section id="lesson-area" class="mb-16 min-h-[500px]">
+
+            <!-- BÀI 4.1: VAI TRÒ ĐĐK -->
+            <div id="lesson-M4-L1" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🤝</span><span
+ class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 4.1 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Vai trò của đại đoàn kết toàn dân
+                            tộc</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu tại sao Hồ Chí Minh coi
+                            đại đoàn kết dân tộc là vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng.
+                        </p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div
+ class="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-600 rounded-r-2xl p-6">
+                            <p class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">📖 Trích dẫn
+                                kinh điển</p>
+                            <blockquote
+ class="font-heading text-xl italic text-philo-ivory leading-relaxed">
+                                "Đoàn kết, đoàn kết, đại đoàn kết.<br />Thành công, thành công, đại thành công."
+                            </blockquote>
+                            <p class="text-right text-sm text-philo-ivory/70 mt-3">— Hồ Chí
+                                Minh | <em>Toàn tập, tập 13, tr.119</em></p>
+                        </div>
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Đại đoàn kết toàn dân tộc là vấn đề có ý nghĩa
+                                chiến lược</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Hồ Chí Minh khẳng định đại đoàn kết không phải là một thủ đoạn chính trị nhất thời, mà
+                                là một <strong>chiến lược lâu dài</strong>, nhất quán trong suốt quá trình cách mạng. Nó
+                                quyết định sự sống còn của dân tộc và sự thành bại của mọi công cuộc cách mạng. Kẻ thù
+                                lớn nhất của cách mạng không chỉ là đế quốc, phong kiến, mà còn là sự chia rẽ.
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Đại đoàn kết là mục tiêu, nhiệm vụ hàng
+                                đầu của cách mạng</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-l-4 border-blue-500">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Đoàn kết là mục tiêu</h4>
+                                    <p class="text-sm text-philo-ivory/70">Không chỉ là
+                                        phương tiện để giành độc lập, mà bản thân khối đại đoàn kết bền vững chính là
+                                        một mục tiêu phải đạt được để xây dựng xã hội mới vững mạnh.</p>
+                                </div>
+                                <div
+ class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border-l-4 border-amber-500">
+                                    <h4 class="font-bold text-amber-600 mb-2">Đoàn kết là nhiệm vụ</h4>
+                                    <p class="text-sm text-philo-ivory/70">Phải được quán
+                                        triệt trong mọi đường lối, chủ trương của Đảng. Đảng phải có nhiệm vụ thức tỉnh,
+                                        tập hợp, đoàn kết quần chúng tạo thành sức mạnh vô địch.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-philo-warmGold/20  pt-6">
+                            <h3 class="font-heading text-lg font-bold mb-4 flex items-center gap-2"><span
+ class="material-symbols-outlined text-emerald-600">psychology</span> Câu hỏi phản tư
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="reflection-item">
+                                    <button onclick="toggleReflection(this)"
+ class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                        <span>1. Sự khác biệt giữa "đoàn kết mang tính sách lược" và "đoàn kết mang tính
+                                            chiến lược" là gì?</span>
+                                        <span
+ class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                                    </button>
+                                    <div
+ class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                        <strong class="text-emerald-600 block mb-1">Gợi ý:</strong> Sách lược là tập hợp
+                                        lực lượng tạm thời để giải quyết một mục tiêu ngắn hạn, có thể tan rã khi mục
+                                        tiêu hoàn thành. Chiến lược là sự gắn kết lâu dài, xuyên suốt toàn bộ quá trình
+                                        cách mạng, tạo thành nền tảng vững chắc không thể phá vỡ cho cả hiện tại và
+                                        tương lai xây dựng đất nước.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end mt-6">
+                            <button onclick="completeLesson('M4-L1')" id="btn-complete-M4-L1"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">check_circle</span> Đánh dấu hoàn thành
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4.2: LỰC LƯỢNG VÀ ĐIỀU KIỆN ĐĐK -->
+            <div id="lesson-M4-L2" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">👥</span><span
+ class="text-blue-100 text-sm font-semibold uppercase tracking-wider">Bài 4.2 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Lực lượng và điều kiện đại đoàn kết
+                        </h2>
+                        <p class="text-blue-100 text-sm">🎯 <strong>Mục tiêu:</strong> Xác định rõ chủ thể, nền tảng của
+                            khối đại đoàn kết và những điều kiện bắt buộc để xây dựng khối đại đoàn kết.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Lực lượng đại đoàn kết toàn dân tộc</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Chủ thể: Toàn dân</h4>
+                                    <p class="text-sm text-philo-ivory/70">"Dân" bao gồm mọi
+                                        người Việt Nam yêu nước, không phân biệt dân tộc, tôn giáo, giai cấp, giới tính,
+                                        lứa tuổi. Bất cứ ai có lòng yêu nước đều được tập hợp vào khối đại đoàn kết.</p>
+                                </div>
+                                <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Nền tảng: Liên minh Công - Nông - Trí thức
+                                    </h4>
+                                    <p class="text-sm text-philo-ivory/70">Đại đoàn kết rất
+                                        rộng rãi, nhưng phải có cốt lõi vững chắc. Đó là liên minh giữa giai cấp công
+                                        nhân, giai cấp nông dân và tầng lớp trí thức, dưới sự lãnh đạo của Đảng.</p>
+                                </div>
+                            </div>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Điều kiện để xây dựng khối đại đoàn kết
+                            </h3>
+                            <ul class="space-y-3 mt-4 text-sm text-philo-ivory/70">
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-green-600">done</span>
+                                    <span><strong>Phải kế thừa truyền thống yêu nước, nhân nghĩa:</strong> Đây là cội
+                                        nguồn sức mạnh ngàn đời của dân tộc Việt Nam.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-green-600">done</span>
+                                    <span><strong>Phải có lòng khoan dung, độ lượng:</strong> Hồ Chí Minh nhấn mạnh:
+                                        "Năm ngón tay có ngón ngắn ngón dài, nhưng ngắn dài đều họp nhau lại nơi bàn
+                                        tay...". Phải xóa bỏ thành kiến, khoan dung với những người từng lầm đường lạc
+                                        lối nhưng nay đã hối cải.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-green-600">done</span>
+                                    <span><strong>Phải có Đảng Cộng sản vững mạnh lãnh đạo:</strong> Đây là điều kiện
+                                        tiên quyết để khối đại đoàn kết có định hướng đúng đắn, không bị phân tán, chệch
+                                        hướng.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M4-L1')"
+ class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
+ class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M4-FQ1')"
+ class="bg-blue-500 hover:bg-philo-warmGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
+                                    (4.1–4.2)</button>
+                                <button onclick="completeLesson('M4-L2')" id="btn-complete-M4-L2"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">check_circle</span> Hoàn
+                                    thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4.3: MẶT TRẬN THỐNG NHẤT -->
+            <div id="lesson-M4-L3" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🛡️</span><span
+ class="text-amber-100 text-sm font-semibold uppercase tracking-wider">Bài 4.3 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Hình thức tổ chức: Mặt trận dân tộc
+                            thống nhất</h2>
+                        <p class="text-amber-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ cách thức tổ chức và các
+                            nguyên tắc hoạt động của Mặt trận dân tộc thống nhất.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Mặt trận Dân tộc Thống nhất</h3>
+                            <p class="text-philo-ivory/70">Đại đoàn kết toàn dân tộc không
+                                thể chỉ nằm trong tư tưởng mà phải được quy tụ vào một tổ chức thực tế. Đó là
+                                <strong>Mặt trận dân tộc thống nhất</strong> (nay là Mặt trận Tổ quốc Việt Nam). Mặt
+                                trận là nơi quy tụ mọi tổ chức và cá nhân yêu nước, tập hợp sức mạnh của toàn dân tộc.
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Nguyên tắc hoạt động của Mặt trận</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div
+ class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border-t-4 border-amber-500">
+                                    <h4 class="font-bold text-amber-700 mb-2">Nền tảng Liên minh</h4>
+                                    <p class="text-sm text-philo-ivory/70">Xây dựng trên nền
+                                        tảng liên minh công nhân - nông dân - trí thức, dưới sự lãnh đạo của Đảng (Đảng
+                                        vừa là thành viên, vừa là lực lượng lãnh đạo).</p>
+                                </div>
+                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-t-4 border-blue-500">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Hiệp thương dân chủ</h4>
+                                    <p class="text-sm text-philo-ivory/70">Mọi vấn đề đều
+                                        được bàn bạc, thỏa thuận dân chủ, tôn trọng ý kiến các thành viên, không áp đặt,
+                                        mệnh lệnh.</p>
+                                </div>
+                                <div
+ class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-t-4 border-green-500">
+                                    <h4 class="font-bold text-green-700 mb-2">Đoàn kết lâu dài, chặt chẽ</h4>
+                                    <p class="text-sm text-philo-ivory/70">Đoàn kết rộng
+                                        rãi, chân thành; tôn trọng những điểm khác biệt không trái với lợi ích chung của
+                                        dân tộc.</p>
+                                </div>
+                                <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-t-4 border-red-500">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Tự phê bình và phê bình</h4>
+                                    <p class="text-sm text-philo-ivory/70">Đoàn kết gắn liền
+                                        với đấu tranh. Phê bình và tự phê bình chân thành để giải quyết mâu thuẫn nội
+                                        bộ, giúp nhau cùng tiến bộ.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M4-L2')"
+ class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
+ class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M4-L3')" id="btn-complete-M4-L3"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span
+ class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4.4: ĐOÀN KẾT QUỐC TẾ -->
+            <div id="lesson-M4-L4" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🌏</span><span
+ class="text-teal-100 text-sm font-semibold uppercase tracking-wider">Bài 4.4 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Sự cần thiết và lực lượng đoàn kết
+                            quốc tế</h2>
+                        <p class="text-teal-100 text-sm">🎯 <strong>Mục tiêu:</strong> Lý giải nguyên nhân vì sao cách
+                            mạng Việt Nam phải gắn liền với phong trào cách mạng thế giới.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold text-teal-700">1. Sự cần thiết của đoàn kết quốc
+                                tế</h3>
+                            <p class="text-philo-ivory/70">
+                                Hồ Chí Minh khẳng định: Cách mạng Việt Nam là một bộ phận của cách mạng thế giới. Đoàn
+                                kết quốc tế nhằm <strong>kết hợp sức mạnh dân tộc với sức mạnh thời đại</strong>, tạo
+                                sức mạnh tổng hợp để đánh thắng chủ nghĩa đế quốc. Chỉ có đoàn kết quốc tế mới tranh thủ
+                                được sự đồng tình, ủng hộ của thế giới, đồng thời đóng góp vào sự nghiệp hòa bình, dân
+                                chủ và tiến bộ của nhân loại.
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold text-teal-700 mt-6">2. Lực lượng đoàn kết quốc tế
+                            </h3>
+                            <ul
+ class="list-disc pl-5 text-sm text-philo-ivory/70 space-y-2">
+                                <li><strong>Phong trào cộng sản và công nhân quốc tế:</strong> Đây là lực lượng nòng
+                                    cốt, những người cùng chung lý tưởng giải phóng giai cấp, giải phóng con người.</li>
+                                <li><strong>Phong trào đấu tranh giải phóng dân tộc:</strong> Các dân tộc thuộc địa bị
+                                    áp bức cùng chung kẻ thù là chủ nghĩa thực dân, đế quốc.</li>
+                                <li><strong>Các lực lượng tiến bộ, yêu chuộng hòa bình, dân chủ:</strong> Bao gồm nhân
+                                    dân tiến bộ trên toàn thế giới, kể cả nhân dân ở các nước tư bản, đế quốc.</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M4-L3')"
+ class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
+ class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M4-FQ2')"
+ class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
+                                    (4.3–4.4)</button>
+                                <button onclick="completeLesson('M4-L4')" id="btn-complete-M4-L4"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">check_circle</span> Hoàn
+                                    thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4.5: NGUYÊN TẮC ĐKQT -->
+            <div id="lesson-M4-L5" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">⚖️</span><span
+ class="text-indigo-100 text-sm font-semibold uppercase tracking-wider">Bài 4.5 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Nguyên tắc đoàn kết quốc tế</h2>
+                        <p class="text-indigo-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững các nguyên tắc cơ bản
+                            trong đường lối đối ngoại và đoàn kết quốc tế của Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <div
+ class="bg-indigo-50 dark:bg-indigo-900/10 rounded-2xl p-5 border-l-4 border-indigo-500">
+                                <h4 class="font-bold text-indigo-700 mb-2">1. Đoàn kết trên cơ sở thống nhất mục tiêu và
+                                    lợi ích, có lý có tình</h4>
+                                <p class="text-sm text-philo-ivory/70">
+                                    Đoàn kết không phải là sự phụ thuộc một chiều. Nó dựa trên lợi ích chung là độc lập,
+                                    tự do, hòa bình và tiến bộ. Giải quyết các bất đồng trong phong trào quốc tế bằng
+                                    thương lượng trên nền tảng chủ nghĩa Mác-Lênin, tôn trọng lẫn nhau, "có lý có tình".
+                                </p>
+                            </div>
+                            <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-l-4 border-red-500">
+                                <h4 class="font-bold text-philo-warmGold mb-2">2. Độc lập tự chủ, tự lực cánh sinh</h4>
+                                <p class="text-sm text-philo-ivory/70">
+                                    Hồ Chí Minh luôn nhấn mạnh: "Một dân tộc không tự lực cánh sinh mà cứ ngồi chờ dân
+                                    tộc khác giúp đỡ thì không xứng đáng được độc lập". Tranh thủ sự ủng hộ quốc tế là
+                                    cần thiết, nhưng cốt lõi vẫn là sức mạnh nội lực của dân tộc. Độc lập tự chủ không
+                                    đồng nghĩa với cô lập, khép kín.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="border-t border-philo-warmGold/20  pt-6">
+                            <h3 class="font-heading text-lg font-bold mb-4">Câu hỏi phản tư</h3>
+                            <div class="space-y-3">
+                                <div class="reflection-item">
+                                    <button onclick="toggleReflection(this)"
+ class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                        <span>1. Tại sao HCM coi "Độc lập tự chủ, tự lực cánh sinh" là điều kiện tiên
+                                            quyết trước khi kêu gọi sự giúp đỡ quốc tế?</span>
+                                        <span
+ class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                                    </button>
+                                    <div
+ class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                        <strong class="text-indigo-600 block mb-1">Gợi ý:</strong> Vì nếu ỷ lại, trông
+                                        chờ viện trợ từ bên ngoài, cách mạng sẽ bị thụ động, dễ bị nước ngoài chi phối,
+                                        can thiệp vào công việc nội bộ. Sức mạnh bên trong (nội lực) quyết định việc
+                                        tiếp thu, sử dụng hiệu quả sự giúp đỡ từ bên ngoài (ngoại lực).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M4-L4')"
+ class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
+ class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M4-L5')" id="btn-complete-M4-L5"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span
+ class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 4.6: VẬN DỤNG HIỆN NAY -->
+            <div id="lesson-M4-L6" class="lesson-content hidden">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🎯</span><span
+ class="text-purple-100 text-sm font-semibold uppercase tracking-wider">Bài 4.6 — Module
+                                4</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Vận dụng trong giai đoạn hiện nay
+                        </h2>
+                        <p class="text-purple-100 text-sm">🎯 <strong>Mục tiêu:</strong> Liên hệ tư tưởng HCM về đại
+                            đoàn kết và đối ngoại vào công cuộc đổi mới và hội nhập quốc tế của Việt Nam hiện nay.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Xây dựng khối đại đoàn kết toàn dân tộc vững
+                                chắc</h3>
+                            <p class="text-sm text-philo-ivory/70">
+                                Tiếp tục củng cố liên minh công - nông - trí thức. Phát huy dân chủ XHCN, đảm bảo quyền
+                                làm chủ của nhân dân. Giải quyết hài hòa các quan hệ lợi ích trong xã hội, thu hẹp
+                                khoảng cách giàu nghèo, chăm lo đời sống vật chất và tinh thần cho nhân dân. Tôn trọng
+                                và phát huy vai trò của đồng bào các tôn giáo, đồng bào dân tộc thiểu số và kiều bào ở
+                                nước ngoài.
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Kết hợp đại đoàn kết toàn dân tộc với
+                                đoàn kết quốc tế</h3>
+                            <p class="text-sm text-philo-ivory/70">
+                                Thực hiện đường lối đối ngoại độc lập, tự chủ, hòa bình, hợp tác và phát triển. Đa
+                                phương hóa, đa dạng hóa quan hệ quốc tế. "Việt Nam là bạn, là đối tác tin cậy và là
+                                thành viên có trách nhiệm của cộng đồng quốc tế". Triển khai đồng bộ 3 trụ cột: đối
+                                ngoại Đảng, ngoại giao Nhà nước và ngoại giao nhân dân.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M4-L5')"
+ class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
+ class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M4-FQ3')"
+ class="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
+                                    (4.5–4.6)</button>
+                                <button onclick="completeLesson('M4-L6')" id="btn-complete-M4-L6"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
+ class="material-symbols-outlined text-sm">check_circle</span> Hoàn
+                                    thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- MODULE QUIZ BANNER -->
+        <section id="module-quiz-banner" class="mb-16 hidden">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-3xl p-8 text-white text-center">
+                <span class="text-5xl mb-4 block">🏆</span>
+                <h2 class="font-heading text-3xl font-bold mb-3">Bạn đã hoàn thành 6 bài học!</h2>
+                <p class="text-white/80 mb-6">Làm bài kiểm tra tổng kết Module 4 để nhận thành tích và +10 XP.</p>
+                <button onclick="openModuleQuiz()" id="btn-module-quiz"
+ class="bg-[rgba(70,8,8,0.65)] backdrop-blur-md text-emerald-700 hover:bg-emerald-50 font-bold px-10 py-4 rounded-2xl transition-colors inline-flex items-center gap-2 text-lg shadow-lg">
+                    <span class="material-symbols-outlined">school</span> Làm bài kiểm tra Module 4
+                </button>
+            </div>
+        </section>
+
+        <div class="fixed bottom-6 right-6 z-40">
+            <button onclick="toggleAIPanel()"
+ class="w-14 h-14 rounded-full bg-philo-warmGold text-white shadow-xl hover:bg-philo-blackBurgundyGold flex items-center justify-center transition-all hover:scale-105">
+                <span class="material-symbols-outlined">smart_toy</span>
+            </button>
+        </div>
+
+        <div id="ai-panel"
+ class="hidden-panel fixed right-0 top-0 h-full w-80 md:w-96 bg-philo-blackBurgundy  border-l border-philo-warmGold/30  shadow-2xl z-50 flex flex-col">
+            <div class="p-4 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm">🤖 AI Trợ giảng — Module 4 HCM</h3>
+                    <p class="text-xs text-philo-ivory/70">Giáo trình Tư tưởng HCM 2021,
+                        Chương 4</p>
+                </div>
+                <button onclick="toggleAIPanel()"
+ class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span
+ class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="ai-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3">
+                    <p class="text-xs font-bold text-emerald-700 mb-1">🤖 AI HCM Module 4</p>
+                    <p class="text-sm text-philo-ivory/70">Xin chào! Tôi sẵn sàng giải thích
+                        <strong>Module 4 — Đoàn kết Dân tộc và Quốc tế</strong>. Hỏi ngay!</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-xs text-gray-400 font-medium">💡 Câu hỏi gợi ý:</p>
+                    <button onclick="sendAIPrompt('Đại đoàn kết toàn dân tộc theo Hồ Chí Minh là gì?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Đại
+                        đoàn kết dân tộc là gì?</button>
+                    <button onclick="sendAIPrompt('Nguyên tắc đoàn kết quốc tế của Hồ Chí Minh?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Nguyên
+                        tắc đoàn kết quốc tế?</button>
+                    <button onclick="sendAIPrompt('Dĩ bất biến ứng vạn biến nghĩa là gì?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">"Dĩ
+                        bất biến ứng vạn biến" là gì?</button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-philo-warmGold/30 ">
+                <div class="flex gap-2">
+                    <input id="ai-input" type="text" placeholder="Hỏi về Module 4..."
+ class="flex-1 text-sm border border-philo-warmGold/30  rounded-xl px-3 py-2 bg-gray-50  focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        onkeypress="if(event.key==='Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()"
+ class="bg-philo-warmGold text-white rounded-xl px-4 hover:bg-philo-blackBurgundyGold transition-colors"><span
+ class="material-symbols-outlined text-sm">send</span></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="quiz-modal"
+ class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div
+ class="bg-philo-blackBurgundy  rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div>
+                    <h2 id="quiz-modal-title" class="text-xl font-bold">Kiểm tra</h2>
+                    <p id="quiz-modal-sub" class="text-sm text-philo-ivory/70"></p>
+                </div>
+                <button onclick="closeQuizModal()"
+ class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span
+ class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="quiz-modal-body" class="p-6"></div>
+        </div>
+    </div>
+
+    <div id="achievement-toast" class="hidden fixed top-6 right-6 z-50 max-w-sm">
+        <div
+ class="bg-gradient-to-r from-emerald-400 to-teal-300 rounded-2xl p-4 shadow-2xl flex items-center gap-4 achievement-earned">
+            <span id="achievement-icon" class="text-4xl">🌍</span>
+            <div>
+                <p class="font-bold text-emerald-900 text-sm">Thành tích mới!</p>
+                <p id="achievement-name" class="font-heading font-bold text-emerald-900"></p>
+                <p id="achievement-desc" class="text-xs text-emerald-800"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/search-data-global.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/search-init.js"></script>
+
+    <script>
+        const M4_STATE = { completedLessons: new Set(), currentLesson: null, quizResults: {} };
+        const M4_LESSONS = ['M4-L1', 'M4-L2', 'M4-L3', 'M4-L4', 'M4-L5', 'M4-L6'];
+        function loadM4State() { try { const s = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}'); if (s.M4_completed) s.M4_completed.forEach(id => M4_STATE.completedLessons.add(id)); M4_STATE.quizResults = s.M4_quiz || {}; } catch (e) { } }
+        function saveM4State() { try { const s = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}'); s.M4_completed = [...M4_STATE.completedLessons]; s.M4_quiz = M4_STATE.quizResults; localStorage.setItem('hcm_quiz_results', JSON.stringify(s)); } catch (e) { } }
+                        function showLesson(lessonId) {
+            document.querySelectorAll('.lesson-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lesson-tab').forEach(el => {
+                el.classList.remove('active-tab');
+                el.style.borderColor = 'rgba(217,166,46,0.2)';
+                const label = el.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-gold');
+                    label.classList.add('text-philo-ivory/80');
+                }
+            });
+
+            const target = document.getElementById('lesson-' + lessonId);
+            if (target) {
+                target.classList.remove('hidden');
+                M4_STATE.currentLesson = lessonId;
+            }
+
+            const tab = document.getElementById('tab-' + lessonId);
+            if (tab) {
+                tab.classList.add('active-tab');
+                tab.style.borderColor = '#FFD34E';
+                const label = tab.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-ivory/80');
+                    label.classList.add('text-philo-gold');
+                }
+            }
+
+            const area = document.getElementById('lesson-area');
+            if (area) {
+                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+function completeLesson(id) { M4_STATE.completedLessons.add(id); saveM4State(); updateProgress(); const d = document.getElementById('dot-' + id); if (d) { d.classList.remove('bg-philo-warmGold/40', ''); d.classList.add('bg-philo-warmGold'); } const b = document.getElementById('btn-complete-' + id); if (b) { b.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold'); b.classList.add('bg-green-500', 'hover:bg-green-600'); b.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓'; } const idx = M4_LESSONS.indexOf(id); if (idx >= 0 && idx < M4_LESSONS.length - 1) setTimeout(() => showLesson(M4_LESSONS[idx + 1]), 500); if (M4_STATE.completedLessons.size === 6) { const banner = document.getElementById('module-quiz-banner'); if (banner) banner.classList.remove('hidden'); } }
+        function updateProgress() { const c = M4_STATE.completedLessons.size, p = Math.round(c / 6 * 100); document.getElementById('m4-progress-label').textContent = c + ' / 6 bài hoàn thành'; document.getElementById('m4-progress-pct').textContent = p + '%'; document.getElementById('m4-progress-bar').style.width = p + '%'; M4_STATE.completedLessons.forEach(id => { const d = document.getElementById('dot-' + id); if (d) { d.classList.remove('bg-philo-warmGold/40', ''); d.classList.add('bg-philo-warmGold'); } }); }
+        function toggleReflection(btn) { const a = btn.nextElementSibling, i = btn.querySelector('.material-symbols-outlined'); if (a.classList.contains('open')) { a.classList.remove('open'); i.textContent = 'expand_more'; } else { a.classList.add('open'); i.textContent = 'expand_less'; } }
+
+        let currentQuizData = null, currentQuizAnswers = {}, currentQuizSubmitted = false;
+        window.FORMATIVE_QUIZZES_M4 = {
+            'M4-FQ1': {
+                title: 'Kiểm tra — Bài 4.1 & 4.2', passingScore: 70, questions: [
+                    { id: 'q1', text: 'Theo HCM, đại đoàn kết toàn dân tộc mang ý nghĩa gì?', options: [{ id: 'a', text: 'Chỉ là sách lược tạm thời' }, { id: 'b', text: 'Vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng' }, { id: 'c', text: 'Một thủ đoạn chính trị' }, { id: 'd', text: 'Mục tiêu của giai đoạn kháng chiến' }], correctOptionId: 'b', rationale: 'HCM khẳng định đại đoàn kết không phải là một thủ đoạn chính trị nhất thời, mà là một chiến lược lâu dài, xuyên suốt quá trình cách mạng.' },
+                    { id: 'q2', text: 'Nền tảng của khối đại đoàn kết toàn dân tộc là gì?', options: [{ id: 'a', text: 'Giai cấp tư sản' }, { id: 'b', text: 'Liên minh công - nông - trí thức' }, { id: 'c', text: 'Tầng lớp tiểu tư sản' }, { id: 'd', text: 'Đảng Cộng sản Việt Nam' }], correctOptionId: 'b', rationale: 'Đại đoàn kết rất rộng rãi, nhưng phải có cốt lõi vững chắc. Đó là liên minh giữa giai cấp công nhân, giai cấp nông dân và tầng lớp trí thức, dưới sự lãnh đạo của Đảng.' },
+                    { id: 'q3', text: 'Theo tư tưởng HCM, ai là chủ thể của khối đại đoàn kết?', options: [{ id: 'a', text: 'Chỉ công nhân và nông dân' }, { id: 'b', text: 'Toàn dân, bất cứ ai có lòng yêu nước' }, { id: 'c', text: 'Những người theo Đảng' }, { id: 'd', text: 'Chỉ những người không theo tôn giáo nào' }], correctOptionId: 'b', rationale: '"Dân" bao gồm mọi người Việt Nam yêu nước, không phân biệt dân tộc, tôn giáo, giai cấp, giới tính, lứa tuổi. Bất cứ ai có lòng yêu nước đều được tập hợp.' },
+                    { id: 'q4', text: 'Điều kiện tiên quyết để xây dựng khối đại đoàn kết vững chắc là gì?', options: [{ id: 'a', text: 'Kinh tế phát triển' }, { id: 'b', text: 'Sự giúp đỡ quốc tế' }, { id: 'c', text: 'Phải có Đảng Cộng sản vững mạnh lãnh đạo' }, { id: 'd', text: 'Có quân đội mạnh' }], correctOptionId: 'c', rationale: 'Đảng Cộng sản vững mạnh lãnh đạo là điều kiện tiên quyết để khối đại đoàn kết có định hướng đúng đắn, không bị phân tán, chệch hướng.' }
+                ]
+            },
+            'M4-FQ2': {
+                title: 'Kiểm tra — Bài 4.3 & 4.4', passingScore: 70, questions: [
+                    { id: 'q5', text: 'Tổ chức nào là hình thức thực tế của khối đại đoàn kết toàn dân tộc?', options: [{ id: 'a', text: 'Hội Phụ nữ' }, { id: 'b', text: 'Mặt trận dân tộc thống nhất' }, { id: 'c', text: 'Đoàn Thanh niên' }, { id: 'd', text: 'Công đoàn' }], correctOptionId: 'b', rationale: 'Mặt trận dân tộc thống nhất (nay là Mặt trận Tổ quốc VN) là tổ chức thực tế quy tụ mọi tổ chức, cá nhân yêu nước.' },
+                    { id: 'q6', text: 'Đâu là nguyên tắc hoạt động của Mặt trận dân tộc thống nhất?', options: [{ id: 'a', text: 'Mệnh lệnh từ trên xuống' }, { id: 'b', text: 'Hiệp thương dân chủ, đoàn kết lâu dài, tự phê bình và phê bình' }, { id: 'c', text: 'Tập trung dân chủ như trong Đảng' }, { id: 'd', text: 'Phân hóa giai cấp' }], correctOptionId: 'b', rationale: 'Mặt trận hoạt động dựa trên nguyên tắc hiệp thương dân chủ (bàn bạc, không áp đặt), đoàn kết lâu dài, chặt chẽ, chân thành, tự phê bình và phê bình.' },
+                    { id: 'q7', text: 'Mục đích chính của đoàn kết quốc tế theo HCM là gì?', options: [{ id: 'a', text: 'Để dựa dẫm vào các nước lớn' }, { id: 'b', text: 'Kết hợp sức mạnh dân tộc và sức mạnh thời đại tạo sức mạnh tổng hợp' }, { id: 'c', text: 'Xin viện trợ kinh tế' }, { id: 'd', text: 'Tham gia các liên minh quân sự' }], correctOptionId: 'b', rationale: 'Đoàn kết quốc tế nhằm kết hợp sức mạnh dân tộc với sức mạnh thời đại, tạo sức mạnh tổng hợp để đánh thắng chủ nghĩa đế quốc và xây dựng đất nước.' },
+                    { id: 'q8', text: 'Lực lượng nào là nòng cốt trong đoàn kết quốc tế theo tư tưởng HCM?', options: [{ id: 'a', text: 'Các nước tư bản' }, { id: 'b', text: 'Phong trào cộng sản và công nhân quốc tế' }, { id: 'c', text: 'Các tổ chức phi chính phủ' }, { id: 'd', text: 'Các nước trong khu vực Đông Nam Á' }], correctOptionId: 'b', rationale: 'HCM xác định phong trào cộng sản và công nhân quốc tế là lực lượng nòng cốt, vì những người cộng sản cùng chung lý tưởng giải phóng giai cấp, giải phóng con người.' }
+                ]
+            },
+            'M4-FQ3': {
+                title: 'Kiểm tra — Bài 4.5 & 4.6', passingScore: 70, questions: [
+                    { id: 'q9', text: 'Đoàn kết quốc tế phải dựa trên cơ sở nào?', options: [{ id: 'a', text: 'Lợi ích của nước lớn' }, { id: 'b', text: 'Thống nhất mục tiêu và lợi ích, có lý có tình' }, { id: 'c', text: 'Sự chỉ đạo của một trung tâm quốc tế duy nhất' }, { id: 'd', text: 'Mục đích kinh tế đơn thuần' }], correctOptionId: 'b', rationale: 'Đoàn kết phải dựa trên lợi ích chung là độc lập, tự do, hòa bình và tiến bộ, giải quyết bất đồng trên tinh thần "có lý có tình".' },
+                    { id: 'q10', text: 'Nguyên tắc nào sau đây thể hiện tính nội lực trong đoàn kết quốc tế của HCM?', options: [{ id: 'a', text: 'Phụ thuộc viện trợ' }, { id: 'b', text: 'Chờ đợi sự giúp đỡ' }, { id: 'c', text: 'Độc lập tự chủ, tự lực cánh sinh' }, { id: 'd', text: 'Dựa hẳn vào phe XHCN' }], correctOptionId: 'c', rationale: 'HCM luôn nhấn mạnh "Độc lập tự chủ, tự lực cánh sinh". Tranh thủ ủng hộ quốc tế là cần thiết nhưng cốt lõi vẫn là nội lực của dân tộc.' },
+                    { id: 'q11', text: 'Trong giai đoạn hiện nay, Việt Nam thực hiện đường lối đối ngoại như thế nào để vận dụng tư tưởng HCM?', options: [{ id: 'a', text: 'Chỉ chơi với nước lớn' }, { id: 'b', text: 'Độc lập, tự chủ, đa phương hóa, đa dạng hóa quan hệ quốc tế' }, { id: 'c', text: 'Chỉ hợp tác về kinh tế, đóng cửa văn hóa' }, { id: 'd', text: 'Liên minh quân sự với một siêu cường' }], correctOptionId: 'b', rationale: 'Việt Nam thực hiện đường lối đối ngoại độc lập, tự chủ, đa phương hóa, đa dạng hóa, là bạn, là đối tác tin cậy của cộng đồng quốc tế.' },
+                    { id: 'q12', text: '3 trụ cột của ngoại giao Việt Nam hiện nay là gì?', options: [{ id: 'a', text: 'Ngoại giao Đảng, ngoại giao Nhà nước, ngoại giao nhân dân' }, { id: 'b', text: 'Kinh tế, Quốc phòng, Văn hóa' }, { id: 'c', text: 'Ngoại giao song phương, đa phương, khu vực' }, { id: 'd', text: 'Chính trị, Kinh tế, An ninh' }], correctOptionId: 'a', rationale: 'Hiện nay Việt Nam triển khai đồng bộ 3 trụ cột đối ngoại: đối ngoại Đảng, ngoại giao Nhà nước và ngoại giao nhân dân để phát huy tối đa sức mạnh.' }
+                ]
+            }
+        };
+
+        window.MODULE_QUIZ_M4 = {
+            title: 'Kiểm tra tổng kết Module 4 — Tư tưởng HCM về đại đoàn kết toàn dân tộc và đoàn kết quốc tế', passingScore: 75, achievement: 'unity-champion',
+            questions: [
+                { id: 'm1', text: 'Theo HCM, đại đoàn kết dân tộc có vai trò gì?', options: [{ id: 'a', text: 'Là sách lược tạm thời' }, { id: 'b', text: 'Là vấn đề có ý nghĩa chiến lược, quyết định thành bại của cách mạng' }, { id: 'c', text: 'Chỉ cần thiết khi có chiến tranh' }, { id: 'd', text: 'Chỉ là mục tiêu kinh tế' }], correctOptionId: 'b', rationale: 'Đoàn kết là vấn đề chiến lược lâu dài, nhất quán, quyết định sự sống còn của cách mạng Việt Nam.' },
+                { id: 'm2', text: 'Nền tảng của khối đại đoàn kết toàn dân tộc là?', options: [{ id: 'a', text: 'Công - Nông - Trí thức' }, { id: 'b', text: 'Công - Nông - Tư sản' }, { id: 'c', text: 'Toàn thể nhân dân' }, { id: 'd', text: 'Trí thức và học sinh' }], correctOptionId: 'a', rationale: 'Nòng cốt và nền tảng của đại đoàn kết là liên minh công - nông - trí, dưới sự lãnh đạo của Đảng Cộng sản.' },
+                { id: 'm3', text: 'Mặt trận dân tộc thống nhất hoạt động dựa trên nguyên tắc cơ bản nào?', options: [{ id: 'a', text: 'Tập trung dân chủ tuyệt đối' }, { id: 'b', text: 'Hiệp thương dân chủ, đoàn kết chân thành, lâu dài' }, { id: 'c', text: 'Cấp dưới phục tùng cấp trên' }, { id: 'd', text: 'Mọi thành viên đều bình đẳng tuyệt đối không có tổ chức lãnh đạo' }], correctOptionId: 'b', rationale: 'Mặt trận hoạt động trên cơ sở hiệp thương dân chủ, không áp đặt, đoàn kết chân thành, gắn với phê bình và tự phê bình.' },
+                { id: 'm4', text: 'Để xây dựng khối đại đoàn kết, điều kiện nào thuộc về truyền thống dân tộc được HCM nhấn mạnh?', options: [{ id: 'a', text: 'Tinh thần thượng võ' }, { id: 'b', text: 'Kế thừa truyền thống yêu nước, nhân nghĩa' }, { id: 'c', text: 'Truyền thống hiếu học' }, { id: 'd', text: 'Truyền thống thương mại' }], correctOptionId: 'b', rationale: 'Truyền thống yêu nước, nhân nghĩa là chất keo dính quy tụ toàn dân, là điều kiện tiên quyết để xây dựng khối đại đoàn kết.' },
+                { id: 'm5', text: 'Mục đích tối thượng của đoàn kết quốc tế trong tư tưởng HCM là gì?', options: [{ id: 'a', text: 'Làm suy yếu kẻ thù' }, { id: 'b', text: 'Kết hợp sức mạnh dân tộc và thời đại để giành độc lập, xây dựng đất nước và góp phần hòa bình thế giới' }, { id: 'c', text: 'Hội nhập kinh tế toàn cầu' }, { id: 'd', text: 'Tìm kiếm viện trợ không hoàn lại' }], correctOptionId: 'b', rationale: 'Mục đích là tạo sức mạnh tổng hợp (dân tộc + thời đại), phục vụ sự nghiệp giải phóng dân tộc và đóng góp cho thế giới.' },
+                { id: 'm6', text: 'Theo HCM, nguyên tắc "Độc lập tự chủ, tự lực cánh sinh" có ý nghĩa gì trong quan hệ quốc tế?', options: [{ id: 'a', text: 'Không cần ai giúp đỡ' }, { id: 'b', text: 'Sức mạnh nội lực là quyết định, là cơ sở để tiếp nhận hiệu quả sự giúp đỡ quốc tế' }, { id: 'c', text: 'Chống lại hội nhập quốc tế' }, { id: 'd', text: 'Bế quan tỏa cảng' }], correctOptionId: 'b', rationale: '"Một dân tộc không tự lực cánh sinh mà cứ ngồi chờ... thì không xứng đáng được độc lập." Nội lực là cốt lõi để kết hợp với ngoại lực.' },
+                { id: 'm7', text: 'Phong trào đấu tranh giải phóng dân tộc thuộc về?', options: [{ id: 'a', text: 'Lực lượng đại đoàn kết trong nước' }, { id: 'b', text: 'Một trong các lực lượng đoàn kết quốc tế' }, { id: 'c', text: 'Kẻ thù của cách mạng' }, { id: 'd', text: 'Lực lượng trung lập' }], correctOptionId: 'b', rationale: '3 lực lượng đoàn kết quốc tế: Phong trào cộng sản/công nhân quốc tế, phong trào giải phóng dân tộc, phong trào hòa bình dân chủ thế giới.' },
+                { id: 'm8', text: 'Việc Việt Nam hiện nay đa phương hóa, đa dạng hóa quan hệ đối ngoại thể hiện điều gì trong tư tưởng HCM?', options: [{ id: 'a', text: 'Sự thay đổi mục tiêu' }, { id: 'b', text: 'Vận dụng nguyên tắc "thêm bạn bớt thù", đoàn kết trên cơ sở lợi ích chung, độc lập tự chủ' }, { id: 'c', text: 'Từ bỏ nguyên tắc giai cấp' }, { id: 'd', text: 'Phụ thuộc vào các nước tư bản' }], correctOptionId: 'b', rationale: 'Chính sách đa phương hóa là sự vận dụng sáng tạo tư tưởng thêm bạn bớt thù, "Việt Nam muốn làm bạn với tất cả" trên cơ sở độc lập tự chủ.' },
+                { id: 'm9', text: 'Hồ Chí Minh dùng khái niệm "có lý, có tình" khi nói về vấn đề gì?', options: [{ id: 'a', text: 'Xử lý các vi phạm pháp luật' }, { id: 'b', text: 'Đoàn kết quốc tế, đặc biệt là trong giải quyết bất đồng với các nước anh em' }, { id: 'c', text: 'Phân chia ruộng đất' }, { id: 'd', text: 'Chỉ đạo chiến thuật quân sự' }], correctOptionId: 'b', rationale: 'Trong đoàn kết quốc tế (nhất là phong trào cộng sản), Người khuyên giải quyết bất đồng trên cơ sở Mác-Lênin, vừa có nguyên tắc (có lý) vừa tôn trọng, tương trợ lẫn nhau (có tình).' },
+                { id: 'm10', text: 'Vì sao Đảng Cộng sản là điều kiện bắt buộc để xây dựng khối đại đoàn kết toàn dân tộc?', options: [{ id: 'a', text: 'Vì Đảng có quân đội' }, { id: 'b', text: 'Vì Đảng mang lại định hướng đúng đắn, thức tỉnh và tổ chức quần chúng tạo thành sức mạnh vô địch' }, { id: 'c', text: 'Vì Đảng nắm tài chính' }, { id: 'd', text: 'Vì Đảng có quan hệ quốc tế tốt' }], correctOptionId: 'b', rationale: 'Đảng là hạt nhân lãnh đạo, có đường lối đúng đắn để tập hợp, giác ngộ và tổ chức quần chúng đấu tranh.' }
+            ]
+        };
+
+        const AI_M4 = {
+            'chiến lược': { answer: 'Đại đoàn kết toàn dân tộc là vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng. Không phải là sách lược tạm thời mà là chính sách lâu dài, xuyên suốt. "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công".', sourceRef: 'Chương V, Mục I.1 — Giáo trình Tư tưởng HCM 2021' },
+            'lực lượng': { answer: 'Lực lượng đại đoàn kết toàn dân tộc bao gồm toàn dân (bất cứ ai có lòng yêu nước). Nhưng nền tảng cốt lõi là liên minh công nhân - nông dân - trí thức, dưới sự lãnh đạo của Đảng Cộng sản.', sourceRef: 'Chương V, Mục I.2 — Giáo trình Tư tưởng HCM 2021' },
+            'mặt trận': { answer: 'Mặt trận dân tộc thống nhất là hình thức tổ chức của đại đoàn kết. Nguyên tắc hoạt động: Dưới sự lãnh đạo của Đảng; hiệp thương dân chủ; đoàn kết lâu dài, chặt chẽ, chân thành; tự phê bình và phê bình.', sourceRef: 'Chương V, Mục I.4 — Giáo trình Tư tưởng HCM 2021' },
+            'quốc tế': { answer: 'Đoàn kết quốc tế để kết hợp sức mạnh dân tộc và sức mạnh thời đại. Lực lượng: phong trào cộng sản, phong trào giải phóng dân tộc, phong trào hòa bình dân chủ. Nguyên tắc: thống nhất mục tiêu, độc lập tự chủ, có lý có tình.', sourceRef: 'Chương V, Mục II — Giáo trình Tư tưởng HCM 2021' },
+            'hiện nay': { answer: 'Vận dụng hiện nay: Củng cố khối đại đoàn kết vững chắc trên nền tảng liên minh công-nông-trí. Đa phương hóa, đa dạng hóa đối ngoại. Triển khai 3 trụ cột: đối ngoại Đảng, ngoại giao Nhà nước, ngoại giao nhân dân.', sourceRef: 'Chương V, Mục III — Giáo trình Tư tưởng HCM 2021' }
+        };
+        function getAIResponse(q) { const l = q.toLowerCase(); for (const [k, r] of Object.entries(AI_M4)) { if (l.includes(k)) return r; } return { answer: 'Module 4 tập trung: vai trò đoàn kết, nội dung đại đoàn kết dân tộc, Mặt trận thống nhất, đoàn kết quốc tế, ngoại giao nhân dân và vận dụng ngày nay. Hỏi về những chủ đề này nhé!', sourceRef: 'Chương 4 — Giáo trình Tư tưởng HCM 2021' }; }
+        function sendAIPrompt(p) { document.getElementById('ai-input').value = p; sendAIMessage(); }
+        function sendAIMessage() { const i = document.getElementById('ai-input'), q = i.value.trim(); if (!q) return; i.value = ''; const h = document.getElementById('ai-chat-history'); h.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bg-philo-warmGold text-white rounded-xl p-3 max-w-[85%]"><p class="text-sm">${q}</p></div></div>`); const lid = 'l' + Date.now(); h.insertAdjacentHTML('beforeend', `<div id="${lid}" class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs">⏳ Đang tra cứu...</p></div>`); h.scrollTop = h.scrollHeight; setTimeout(() => { const r = getAIResponse(q); const le = document.getElementById(lid); if (le) le.outerHTML = `<div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs font-bold text-emerald-700 mb-1">🤖 AI HCM Module 4</p><p class="text-sm mb-2">${r.answer}</p><p class="text-xs text-gray-400 border-t pt-1">📖 <em>${r.sourceRef}</em></p></div>`; h.scrollTop = h.scrollHeight; }, 800); }
+        document.addEventListener('DOMContentLoaded', () => { loadM4State(); updateProgress(); if (M4_STATE.completedLessons.size > 0) { showLesson(M4_LESSONS[Math.min(M4_STATE.completedLessons.size, 5)]); } else showLesson('M4-L1'); if (M4_STATE.completedLessons.size === 6) { const b = document.getElementById('module-quiz-banner'); if (b) b.classList.remove('hidden'); } M4_STATE.completedLessons.forEach(id => { const b = document.getElementById('btn-complete-' + id); if (b) { b.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold'); b.classList.add('bg-green-500', 'hover:bg-green-600'); b.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓'; } }); });
+    </script>
+</body>
+
+</html>

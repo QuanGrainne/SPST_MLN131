@@ -1,0 +1,1270 @@
+﻿<!DOCTYPE html>
+<html lang="vi" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Module 1: Cơ sở hình thành Tư tưởng Hồ Chí Minh — PhiloVerse HCM</title>
+    <meta name="description"
+        content="Khám phá cơ sở hình thành và phát triển Tư tưởng Hồ Chí Minh qua 6 bài học tương tác — từ bối cảnh lịch sử đến nhân tố chủ quan Hồ Chí Minh." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="js/tailwind-config-global.js"></script>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(37, 38, 43, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        #m1-progress-bar {
+            transition: width 0.6s ease;
+        }
+
+        .lesson-card.active {
+            border-color: #308ce8;
+            box-shadow: 0 0 0 2px rgba(48, 140, 232, 0.2);
+        }
+
+        #quiz-modal {
+            transition: opacity 0.3s;
+        }
+
+        .reflection-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s;
+            opacity: 0;
+        }
+
+        .reflection-answer.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .achievement-earned {
+            animation: badge-pulse 0.6s ease 2;
+        }
+
+        .hidden-panel {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .lesson-header-academic {
+            padding: 2rem;
+        }
+            /* Lesson tab active state */
+        .lesson-tab.active-tab { border-color: #FFD34E !important; background: rgba(217,166,46,0.12) !important; box-shadow: 0 0 20px rgba(217,166,46,0.2); }
+        .lesson-tab.active-tab .tab-label { color: #FFD34E !important; }
+        .lesson-dot.completed { background-color: #D9A62E !important; }
+        /* Lesson header */
+        .lesson-header-academic { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(20,3,3,0.95) 0%, rgba(101,7,7,0.85) 100%); border-bottom: 1px solid rgba(217,166,46,0.2); }
+        /* Module page hero */
+        .module-page-hero { position: relative; padding: 3rem 2rem 2.5rem; overflow: hidden; background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%); }
+        .module-page-hero > * { position: relative; z-index: 1; }
+        .module-page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent); }</style>
+</head>
+
+<body
+ class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+        <!-- ===== MODULE HEADER ===== -->
+            <!-- ===== MODULE HERO HEADER ===== -->
+        <div class="module-page-hero -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="assets/images/modules/module1-life.jpg" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0D0101] via-[#3A0505]/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#140303] via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="philo-breadcrumb mb-5">
+                    <a href="home.html">TRANG CHỦ</a>
+                    <span class="sep">/</span>
+                    <a href="home.html#overview">MODULES</a>
+                    <span class="sep">/</span>
+                    <span>MODULE 1 • CƠ SỞ HÌNH THÀNH TƯ TƯỞNG HỒ CHÍ MINH</span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">school</span> MODULE 01</span>
+                        <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight text-philo-ivory mt-2">
+                            Cơ sở hình thành<br class="hidden md:block" />
+                            <span class="text-philo-gold italic">Tư tưởng Hồ Chí Minh</span>
+                        </h1>
+                        <p class="mt-3 text-philo-ivory/70 text-sm md:text-base max-w-xl leading-relaxed">6 bài học khám phá nền tảng ra đời Tư tưởng Hồ Chí Minh — từ bối cảnh lịch sử, nguồn gốc lý luận đến nhân tố chủ quan vĩ đại của Người.</p>
+                    </div>
+                    <div class="md:min-w-[220px]">
+                        <div class="flex items-center justify-between text-xs text-philo-ivory/60 mb-2">
+                            <span id="m1-progress-label">0 / 6 bài hoàn thành</span>
+                            <span id="m1-progress-pct" class="text-philo-gold font-bold">0%</span>
+                        </div>
+                        <div class="philo-progress-track">
+                            <div id="m1-progress-bar" class="philo-progress-fill" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== LESSON NAV TABS ===== -->
+        <section class="mb-10">
+            <div class="philo-section-divider"><span class="philo-section-title">✦ 6
+                    Bài học ✦</span></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="showLesson('M1-L1')" id="tab-M1-L1" class="lesson-tab active-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:#FFD34E;">
+                    <span class="text-2xl">🌏</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.1</span>
+                    <span class="text-xs font-medium text-philo-gold">Cơ sở thực tiễn</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L1"></span>
+                </button>
+                <button onclick="showLesson('M1-L2')" id="tab-M1-L2" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);">
+                    <span class="text-2xl">📚</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.2</span>
+                    <span class="text-xs font-medium text-philo-ivory/80">Cơ sở lý luận</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L2"></span>
+                </button>
+                <button onclick="showLesson('M1-L3')" id="tab-M1-L3" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);">
+                    <span class="text-2xl">🧠</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.3</span>
+                    <span class="text-xs font-medium text-philo-ivory/80">Nhân tố chủ quan</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L3"></span>
+                </button>
+                <button onclick="showLesson('M1-L4')" id="tab-M1-L4" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);">
+                    <span class="text-2xl">⏳</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.4</span>
+                    <span class="text-xs font-medium text-philo-ivory/80">Hình thành (P1)</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L4"></span>
+                </button>
+                <button onclick="showLesson('M1-L5')" id="tab-M1-L5" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);">
+                    <span class="text-2xl">📅</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.5</span>
+                    <span class="text-xs font-medium text-philo-ivory/80">Hình thành (P2)</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L5"></span>
+                </button>
+                <button onclick="showLesson('M1-L6')" id="tab-M1-L6" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);">
+                    <span class="text-2xl">💎</span>
+                    <span class="text-xs font-semibold text-philo-ivory/70">Bài 1.6</span>
+                    <span class="text-xs font-medium text-philo-ivory/80">Giá trị tư tưởng</span>
+                    <span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M1-L6"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== LESSON CONTENT AREA ===== -->
+        <section id="lesson-area" class="mb-16 min-h-[500px]">
+
+            <!-- BÀI 1.1: CƠ SỞ THỰC TIỄN -->
+            <div id="lesson-M1-L1" class="lesson-content">
+                <div
+ class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-3xl">🌏</span>
+                            <span class="text-blue-100 text-sm font-semibold uppercase tracking-wider">Bài 1.1 — Module 1</span>
+                        </div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Cơ sở thực tiễn</h2>
+                        <p class="text-blue-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ cơ sở thực tiễn Việt Nam và thế giới cuối thế kỷ XIX, đầu thế kỷ XX đã làm nảy sinh tư tưởng Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <!-- Content -->
+                        <div class="prose prose-lg dark:prose-invert max-w-none space-y-5">
+                            <h3 class="font-heading text-xl font-bold text-philo-ivory">Thực tiễn Việt Nam cuối thế kỷ XIX đầu thế kỷ XX</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Từ năm 1858, thực dân Pháp xâm lược Việt Nam, biến nước ta từ một nước phong kiến thành nước <strong>thuộc địa và phong kiến</strong>. Trong xã hội xuất hiện những mâu thuẫn mới: mâu thuẫn giữa giai cấp công nhân với tư sản, và bao trùm là mâu thuẫn giữa toàn thể nhân dân Việt Nam với đế quốc Pháp.
+                            </p>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Các phong trào yêu nước chống Pháp nổ ra liên tục nhưng đều thất bại. Các phong trào theo khuynh hướng phong kiến (Cần Vương) hay khuynh hướng dân chủ tư sản (Đông Du, Đông Kinh Nghĩa Thục) đều đi vào bế tắc do thiếu đường lối đúng đắn. Câu hỏi đặt ra từ thực tiễn là: <em>Cứu nước bằng con đường nào để đi đến thắng lợi?</em>
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold text-philo-ivory">Thực tiễn thế giới cuối thế kỷ XIX đầu thế kỷ XX</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Cuối thế kỷ XIX, chủ nghĩa tư bản chuyển sang giai đoạn đế quốc chủ nghĩa, bóc lột không chỉ giai cấp vô sản trong nước mà cả nhân dân các nước thuộc địa. Mâu thuẫn giữa các dân tộc thuộc địa với đế quốc ngày càng gay gắt.
+                            </p>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Đặc biệt, <strong>Cách mạng Tháng Mười Nga (1917)</strong> thành công mở ra thời đại mới trong lịch sử loài người — thời đại quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội. Thắng lợi này và sự ra đời của Quốc tế Cộng sản (1919) đã ảnh hưởng sâu sắc tới hành trình tìm đường cứu nước của Hồ Chí Minh.
+                            </p>
+                        </div>
+
+                        <!-- Reflection Questions -->
+                        <div class="border-t border-philo-warmGold/20  pt-6">
+                            <h3 class="font-heading text-lg font-bold mb-4 flex items-center gap-2"><span
+ class="material-symbols-outlined text-philo-warmGold">psychology</span> Câu hỏi phản tư
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="reflection-item">
+                                    <button onclick="toggleReflection(this)"
+ class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-philo-warmGold/10 dark:hover:bg-red-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                        <span>1. Mâu thuẫn cơ bản nào chi phối xã hội Việt Nam thời kỳ này?</span>
+                                        <span class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                                    </button>
+                                    <div class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                        <strong class="text-philo-warmGold block mb-1">Gợi ý trả lời:</strong> Mâu thuẫn cơ bản và bao trùm nhất là mâu thuẫn giữa toàn thể nhân dân Việt Nam với chủ nghĩa đế quốc Pháp và tay sai. Chính mâu thuẫn này đòi hỏi phải có một đường lối giải phóng dân tộc đúng đắn.
+                                    </div>
+                                </div>
+                                <div class="reflection-item">
+                                    <button onclick="toggleReflection(this)"
+ class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-philo-warmGold/10 dark:hover:bg-red-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                        <span>2. Vai trò của Cách mạng Tháng Mười Nga đối với tư tưởng cứu nước của Hồ Chí Minh?</span>
+                                        <span class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                                    </button>
+                                    <div class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                        <strong class="text-philo-warmGold block mb-1">Gợi ý trả lời:</strong> Đánh đổ giai cấp tư sản, mở ra con đường giải phóng cho các dân tộc bị áp bức trên thế giới, là tấm gương sáng ngời thúc đẩy Hồ Chí Minh tìm đến chủ nghĩa Mác-Lênin.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Complete button -->
+                        <div class="flex justify-end">
+                            <button onclick="completeLesson('M1-L1')" id="btn-complete-M1-L1"
+ class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                Đánh dấu hoàn thành
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 1.2: CƠ SỞ LÝ LUẬN -->
+            <div id="lesson-M1-L2" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-3xl">📚</span>
+                            <span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 1.2 — Module 1</span>
+                        </div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Cơ sở lý luận</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nhận diện các giá trị truyền thống, tinh hoa nhân loại và đặc biệt là vai trò quyết định của Chủ nghĩa Mác - Lênin đối với tư tưởng Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-secondary rounded-r-2xl p-6">
+                            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                            <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                                "Bây giờ học thuyết nhiều, chủ nghĩa nhiều, nhưng chủ nghĩa chân chính nhất, chắc chắn nhất, cách mệnh nhất là chủ nghĩa Lênin."
+                            </blockquote>
+                            <p class="text-right text-sm text-philo-ivory/70 mt-3">— Hồ Chí Minh | <em>Đường Cách mệnh, 1927</em> | <strong class="text-secondary">Toàn tập, t.2, tr.289</strong></p>
+                        </div>
+
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Giá trị truyền thống tốt đẹp của dân tộc Việt Nam</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                <strong>Chủ nghĩa yêu nước</strong> là giá trị xuyên suốt, là động lực và điểm xuất phát thúc đẩy Hồ Chí Minh ra đi tìm đường cứu nước. Cùng với đó là tinh thần đoàn kết, nhân ái, khoan dung, cần cù, dũng cảm.
+                            </p>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Tinh hoa văn hóa nhân loại</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-yellow-50 dark:bg-yellow-900/10 rounded-2xl p-5">
+                                    <h4 class="font-bold text-yellow-700 mb-2">Tinh hoa phương Đông</h4>
+                                    <p class="text-sm text-philo-ivory/70">Tiếp thu tư tưởng vị tha, từ bi của Phật giáo; tư tưởng tu dưỡng đạo đức cá nhân, "hành đạo" của Nho giáo; tư tưởng gắn bó với thiên nhiên của Lão giáo; và tư tưởng "Tam dân" của Tôn Trung Sơn.</p>
+                                </div>
+                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5">
+                                    <h4 class="font-bold text-philo-warmGold mb-2">Tinh hoa phương Tây</h4>
+                                    <p class="text-sm text-philo-ivory/70">Tiếp thu tư tưởng dân quyền, nhân quyền, lý tưởng Tự do - Bình đẳng - Bác ái của Cách mạng Pháp (1789) và Tuyên ngôn Độc lập của Cách mạng Mỹ (1776).</p>
+                                </div>
+                            </div>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">3. Chủ nghĩa Mác - Lênin (Tiền đề quyết định)</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">
+                                Chủ nghĩa Mác - Lênin là <strong>cơ sở lý luận quyết định bước phát triển về chất</strong> trong tư tưởng Hồ Chí Minh. Nó cung cấp thế giới quan và phương pháp luận khoa học để Người phân tích thực tiễn, vượt qua khủng hoảng đường lối, tìm ra con đường cứu nước đúng đắn: con đường cách mạng vô sản.
+                            </p>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M1-L1')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước
+                            </button>
+                            <div class="flex gap-3">
+                                <button onclick="completeLesson('M1-L2')" id="btn-complete-M1-L2" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm">
+                                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                                    Hoàn thành
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 1.3: NHÂN TỐ CHỦ QUAN -->
+            <div id="lesson-M1-L3" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🧠</span><span class="text-purple-100 text-sm font-semibold uppercase tracking-wider">Bài 1.3 — Module 1</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Nhân tố chủ quan Hồ Chí Minh</h2>
+                        <p class="text-purple-100 text-sm">🎯 <strong>Mục tiêu:</strong> Phân tích phẩm chất cá nhân và tài năng hoạt động thực tiễn làm nên Tư tưởng Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Phẩm chất Hồ Chí Minh</h3>
+                            <ul class="text-philo-ivory/70 space-y-2 leading-relaxed">
+                                <li>• Có lý tưởng cao cả, hoài bão lớn cứu nước, cứu dân.</li>
+                                <li>• Có ý chí, nghị lực phi thường, một mình ra đi với hai bàn tay trắng, làm nhiều nghề để sống và hoạt động.</li>
+                                <li>• Bản lĩnh tư duy <strong>độc lập, tự chủ, sáng tạo</strong>, giàu tính phê phán, đổi mới. Vận dụng đúng quy luật chung vào hoàn cảnh riêng của Việt Nam.</li>
+                                <li>• Suốt đời tận trung với nước, tận hiếu với dân.</li>
+                            </ul>
+
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Tài năng hoạt động, tổng kết thực tiễn</h3>
+                            <ul class="text-philo-ivory/70 space-y-2 leading-relaxed">
+                                <li>• Vốn sống và thực tiễn cách mạng phong phú qua 30 năm bôn ba ở hơn 30 quốc gia.</li>
+                                <li>• Hiểu sâu sắc bản chất chủ nghĩa đế quốc và tình cảnh các dân tộc thuộc địa.</li>
+                                <li>• Là <strong>nhà tổ chức vĩ đại</strong>, sáng lập Đảng Cộng sản Việt Nam, sáng lập Mặt trận Dân tộc thống nhất, sáng lập Quân đội nhân dân và khai sinh ra Nhà nước kiểu mới.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/30 rounded-2xl p-6 mt-6">
+                            <h3 class="font-heading text-lg font-bold mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-purple-600">edit_note</span> Tóm lại</h3>
+                            <p class="text-sm text-philo-ivory/70">Chính nhờ những phẩm chất và năng lực xuất chúng này, Hồ Chí Minh đã tiếp thu một cách chủ động, sáng tạo tinh hoa văn hóa nhân loại và chủ nghĩa Mác - Lênin để hình thành nên hệ thống tư tưởng của riêng Người cho cách mạng Việt Nam.</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button onclick="showLesson('M1-L2')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M1-L3')" id="btn-complete-M1-L3" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 1.4: QUÁ TRÌNH HÌNH THÀNH (P1) -->
+            <div id="lesson-M1-L4" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">⏳</span><span class="text-rose-100 text-sm font-semibold uppercase tracking-wider">Bài 1.4 — Module 1</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Quá trình hình thành & phát triển (Phần 1)</h2>
+                        <p class="text-rose-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững 2 giai đoạn đầu trong quá trình 5 giai đoạn hình thành tư tưởng Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-6">
+                            
+                            <!-- GĐ 1 -->
+                            <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 border-l-4 border-blue-500 rounded-r-2xl p-6">
+                                <h3 class="font-heading text-xl font-bold text-philo-warmGold dark:text-blue-400 mb-3">1. Trước 5/6/1911: Hình thành tư tưởng yêu nước và chí hướng tìm đường cứu nước</h3>
+                                <p class="text-philo-ivory/70 leading-relaxed">
+                                    Tiếp thu truyền thống quê hương Nghệ An, gia đình khoa bảng (cụ Nguyễn Sinh Sắc, bà Hoàng Thị Loan), Hồ Chí Minh sớm có lòng yêu nước. Không tán thành con đường của Phan Bội Châu, Phan Châu Trinh, Hoàng Hoa Thám, Người quyết định đi ra phương Tây (5/6/1911) để "xem họ làm như thế nào rồi về giúp đồng bào ta".
+                                </p>
+                            </div>
+
+                            <!-- GĐ 2 -->
+                            <div class="bg-rose-50 dark:bg-rose-900/10 border-l-4 border-rose-500 rounded-r-2xl p-6">
+                                <h3 class="font-heading text-xl font-bold text-rose-700 dark:text-rose-400 mb-3">2. Giữa 1911 – cuối 1920: Dần hình thành tư tưởng cứu nước theo con đường CM vô sản</h3>
+                                <ul class="text-philo-ivory/70 space-y-2 leading-relaxed">
+                                    <li>• Bôn ba thế giới, nhận thức rõ bản chất kẻ thù: ở đâu đế quốc cũng tàn bạo, ở đâu người lao động cũng bị bóc lột.</li>
+                                    <li>• Năm 1919: Gửi Yêu sách 8 điểm tới Hội nghị Véc-xây, bước nhận thức mới về quyền tự do, dân chủ.</li>
+                                    <li>• Tháng 7/1920: Đọc "Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa" của Lênin, tìm thấy con đường giải phóng dân tộc.</li>
+                                    <li>• Tháng 12/1920: Bỏ phiếu tán thành Quốc tế III, tham gia sáng lập Đảng CS Pháp — bước ngoặt từ người yêu nước thành người cộng sản.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M1-L3')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="completeLesson('M1-L4')" id="btn-complete-M1-L4" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 1.5: QUÁ TRÌNH HÌNH THÀNH (P2) -->
+            <div id="lesson-M1-L5" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">📅</span><span class="text-amber-100 text-sm font-semibold uppercase tracking-wider">Bài 1.5 — Module 1</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Quá trình hình thành & phát triển (Phần 2)</h2>
+                        <p class="text-amber-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững 3 giai đoạn cuối trong quá trình hình thành, phát triển tư tưởng Hồ Chí Minh.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-6">
+                            
+                            <!-- GĐ 3 -->
+                            <div class="bg-green-50 dark:bg-green-900/10 border-l-4 border-green-500 rounded-r-2xl p-6">
+                                <h3 class="font-heading text-xl font-bold text-green-700 dark:text-green-400 mb-3">3. Cuối 1920 – đầu 1930: Hình thành những nội dung cơ bản tư tưởng cách mạng Việt Nam</h3>
+                                <p class="text-philo-ivory/70 leading-relaxed">
+                                    Mục tiêu, phương hướng cách mạng giải phóng dân tộc được cụ thể hóa. Người viết bài trên Le Paria, xuất bản "Bản án chế độ thực dân Pháp" (1925), "Đường cách mệnh" (1927). Đầu 1930, Người chủ trì hợp nhất các tổ chức cộng sản, soạn thảo Cương lĩnh chính trị đầu tiên của Đảng — đánh dấu sự hình thành cơ bản hệ thống tư tưởng HCM.
+                                </p>
+                            </div>
+
+                            <!-- GĐ 4 -->
+                            <div class="bg-orange-50 dark:bg-orange-900/10 border-l-4 border-orange-500 rounded-r-2xl p-6">
+                                <h3 class="font-heading text-xl font-bold text-orange-700 dark:text-orange-400 mb-3">4. Đầu 1930 – đầu 1941: Vượt qua thử thách, giữ vững đường lối đúng đắn, sáng tạo</h3>
+                                <p class="text-philo-ivory/70 leading-relaxed">
+                                    Người bị Quốc tế Cộng sản và một số đồng chí hiểu lầm là "hữu khuynh", "dân tộc chủ nghĩa". Tuy nhiên, Người vẫn kiên trì lập trường, giữ vững quan điểm cách mạng. Đến Hội nghị TW8 (5/1941), tư tưởng của Người về giải phóng dân tộc được Đảng khẳng định hoàn toàn và trực tiếp chỉ đạo cách mạng.
+                                </p>
+                            </div>
+
+                            <!-- GĐ 5 -->
+                            <div class="bg-purple-50 dark:bg-purple-900/10 border-l-4 border-purple-500 rounded-r-2xl p-6">
+                                <h3 class="font-heading text-xl font-bold text-purple-700 dark:text-purple-400 mb-3">5. Đầu 1941 – 9/1969: Tư tưởng HCM tiếp tục phát triển, hoàn thiện</h3>
+                                <p class="text-philo-ivory/70 leading-relaxed">
+                                    Lãnh đạo Cách mạng Tháng Tám thành công, sáng lập Nước Việt Nam Dân chủ Cộng hòa (1945). Tiếp tục hoàn thiện tư tưởng về chiến tranh nhân dân, xây dựng CNXH, xây dựng Đảng cầm quyền. <strong>Di chúc</strong> là văn kiện lịch sử kết tinh tư tưởng, trí tuệ, đạo đức của Người.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M1-L4')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M1-L5')" id="btn-complete-M1-L5" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 1.6: Ý NGHĨA VÀ VẬN DỤNG -->
+            <div id="lesson-M1-L6" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">💎</span><span class="text-sky-100 text-sm font-semibold uppercase tracking-wider">Bài 1.6 — Module 1</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Giá trị Tư tưởng Hồ Chí Minh</h2>
+                        <p class="text-sky-100 text-sm">🎯 <strong>Mục tiêu:</strong> Khẳng định giá trị vĩ đại của tư tưởng Hồ Chí Minh đối với Việt Nam và nhân loại.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Đối với cách mạng Việt Nam</h3>
+                            <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 mb-4">
+                                <ul class="text-philo-ivory/70 space-y-2">
+                                    <li>• <strong>Đưa cách mạng giải phóng dân tộc Việt Nam đến thắng lợi</strong> và bắt đầu xây dựng một xã hội mới trên đất nước ta.</li>
+                                    <li>• Là <strong>nền tảng tư tưởng và kim chỉ nam</strong> cho cách mạng Việt Nam. Cùng với chủ nghĩa Mác-Lênin, tư tưởng HCM soi đường cho Đảng và nhân dân ta giành thắng lợi trong công cuộc Đổi mới và hội nhập.</li>
+                                </ul>
+                            </div>
+
+                            <h3 class="font-heading text-xl font-bold">2. Đối với sự phát triển tiến bộ của nhân loại</h3>
+                            <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 mb-4">
+                                <ul class="text-philo-ivory/70 space-y-2">
+                                    <li>• Góp phần mở ra cho các dân tộc thuộc địa <strong>con đường giải phóng dân tộc gắn với sự tiến bộ xã hội</strong> (đi lên CNXH).</li>
+                                    <li>• Góp phần tích cực vào cuộc đấu tranh vì độc lập dân tộc, dân chủ, hòa bình, hợp tác và phát triển trên thế giới.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-sky-50 dark:bg-sky-900/20 border-l-4 border-sky-500 rounded-r-2xl p-6 mt-6">
+                                <h4 class="font-bold text-sky-700 dark:text-sky-400 mb-2">Lời kết</h4>
+                                <p class="text-sm text-philo-ivory/70">Hồ Chí Minh là Anh hùng giải phóng dân tộc, Danh nhân văn hóa kiệt xuất. Tư tưởng của Người là di sản tinh thần vô giá, mãi mãi soi đường cho sự nghiệp cách mạng của Đảng và nhân dân ta.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M1-L5')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="completeLesson('M1-L6')" id="btn-complete-M1-L6" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ===== MODULE QUIZ BANNER ===== -->
+        <section id="module-quiz-banner" class="mb-16 hidden">
+            <div class="bg-gradient-to-r from-philo-warmGold to-philo-antiqueGold rounded-3xl p-8 text-white text-center">
+                <span class="text-5xl mb-4 block">🏆</span>
+                <h2 class="font-heading text-3xl font-bold mb-3">Bạn đã hoàn thành 6 bài học!</h2>
+                <p class="text-white/80 mb-6">Hãy làm bài kiểm tra tổng kết Module 1 (12 câu) để nhận thành tích <strong>HCM Explorer 🥈</strong> và +10 XP.</p>
+                <button onclick="openModuleQuiz()" id="btn-module-quiz"
+ class="bg-[rgba(70,8,8,0.65)] backdrop-blur-md text-philo-warmGold hover:bg-philo-warmGold/10 font-bold px-10 py-4 rounded-2xl transition-colors inline-flex items-center gap-2 text-lg shadow-lg">
+                    <span class="material-symbols-outlined">school</span>
+                    Làm bài kiểm tra Module 1
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== AI PANEL BUTTON ===== -->
+        <div class="fixed bottom-6 right-6 z-40">
+            <button onclick="toggleAIPanel()" id="btn-ai-panel"
+ class="w-14 h-14 rounded-full bg-philo-warmGold text-white shadow-xl hover:bg-philo-blackBurgundyGold flex items-center justify-center transition-all hover:scale-105">
+                <span class="material-symbols-outlined">smart_toy</span>
+            </button>
+        </div>
+
+        <!-- ===== AI PANEL ===== -->
+        <div id="ai-panel"
+ class="hidden-panel fixed right-0 top-0 h-full w-80 md:w-96 bg-philo-blackBurgundy  border-l border-philo-warmGold/30  shadow-2xl z-50 flex flex-col">
+            <div class="p-4 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm">🤖 AI Trợ giảng — Module 1 HCM</h3>
+                    <p class="text-xs text-philo-ivory/70">Mọi trả lời có trích dẫn từ Giáo trình Tư tưởng HCM 2021, Chương 1</p>
+                </div>
+                <button onclick="toggleAIPanel()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="ai-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <div class="bg-philo-warmGold/10  rounded-xl p-3">
+                    <p class="text-xs font-bold text-philo-warmGold mb-1">🤖 AI Trợ giảng HCM</p>
+                    <p class="text-sm text-philo-ivory/70">Xin chào! Tôi sẵn sàng giải thích các khái niệm Module 1 — <strong>Cơ sở hình thành Tư tưởng Hồ Chí Minh</strong>. Mọi câu trả lời sẽ có trích dẫn từ <em>Giáo trình Tư tưởng Hồ Chí Minh 2021, Chương 1</em>.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-xs text-gray-400 font-medium">💡 Câu hỏi gợi ý:</p>
+                    <button onclick="sendAIPrompt('Bối cảnh lịch sử nào dẫn đến sự ra đời của Tư tưởng Hồ Chí Minh?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/20 transition-colors">Bối cảnh lịch sử dẫn đến Tư tưởng HCM?</button>
+                    <button onclick="sendAIPrompt('Chủ nghĩa Mác-Lênin ảnh hưởng đến Hồ Chí Minh như thế nào?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/20 transition-colors">CN Mác-Lênin ảnh hưởng đến HCM thế nào?</button>
+                    <button onclick="sendAIPrompt('Những phẩm chất nào của Hồ Chí Minh làm nên sức mạnh tư tưởng của Người?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/20 transition-colors">Phẩm chất cá nhân của Hồ Chí Minh?</button>
+                    <button onclick="sendAIPrompt('Quá trình hình thành Tư tưởng Hồ Chí Minh qua các giai đoạn?')"
+ class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/20 transition-colors">4 giai đoạn hình thành Tư tưởng HCM?</button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-philo-warmGold/30 ">
+                <div class="flex gap-2">
+                    <input id="ai-input" type="text" placeholder="Hỏi về Module 1 HCM..."
+ class="flex-1 text-sm border border-philo-warmGold/30  rounded-xl px-3 py-2 bg-gray-50  focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        onkeypress="if(event.key==='Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()" class="bg-philo-warmGold text-white rounded-xl px-4 hover:bg-philo-blackBurgundyGold transition-colors"><span class="material-symbols-outlined text-sm">send</span></button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== FORMATIVE QUIZ MODAL ===== -->
+    <div id="quiz-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-philo-blackBurgundy  rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div>
+                    <h2 id="quiz-modal-title" class="text-xl font-bold">Kiểm tra hình thành</h2>
+                    <p id="quiz-modal-sub" class="text-sm text-philo-ivory/70"></p>
+                </div>
+                <button onclick="closeQuizModal()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="quiz-modal-body" class="p-6"></div>
+        </div>
+    </div>
+
+    <!-- ===== ACHIEVEMENT TOAST ===== -->
+    <div id="achievement-toast" class="hidden fixed top-6 right-6 z-50 max-w-sm">
+        <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-2xl p-4 shadow-2xl flex items-center gap-4 achievement-earned">
+            <span id="achievement-icon" class="text-4xl">🥈</span>
+            <div>
+                <p class="font-bold text-amber-900 text-sm">Thành tích mới!</p>
+                <p id="achievement-name" class="font-heading font-bold text-amber-900"></p>
+                <p id="achievement-desc" class="text-xs text-amber-800"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/search-data-global.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/search-init.js"></script>
+
+    <script>
+        // =============================================
+        // MODULE 1 STATE MANAGEMENT
+        // =============================================
+        const M1_STATE = {
+            completedLessons: new Set(),
+            currentLesson: null,
+            quizResults: {},
+            achievements: []
+        };
+
+        const M1_LESSONS = ['M1-L1', 'M1-L2', 'M1-L3', 'M1-L4', 'M1-L5', 'M1-L6'];
+
+        function loadM1State() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}');
+                if (saved.M1_completed) {
+                    saved.M1_completed.forEach(id => M1_STATE.completedLessons.add(id));
+                }
+                M1_STATE.quizResults = saved.M1_quiz || {};
+            } catch (e) { console.warn('M1: Could not load state', e); }
+        }
+
+        function saveM1State() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}');
+                saved.M1_completed = [...M1_STATE.completedLessons];
+                saved.M1_quiz = M1_STATE.quizResults;
+                localStorage.setItem('hcm_quiz_results', JSON.stringify(saved));
+            } catch (e) { console.warn('M1: Could not save state', e); }
+        }
+
+        // =============================================
+        // LESSON NAVIGATION
+        // =============================================
+                        function showLesson(lessonId) {
+            document.querySelectorAll('.lesson-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lesson-tab').forEach(el => {
+                el.classList.remove('active-tab');
+                el.style.borderColor = 'rgba(217,166,46,0.2)';
+                const label = el.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-gold');
+                    label.classList.add('text-philo-ivory/80');
+                }
+            });
+
+            const target = document.getElementById('lesson-' + lessonId);
+            if (target) {
+                target.classList.remove('hidden');
+                M1_STATE.currentLesson = lessonId;
+            }
+
+            const tab = document.getElementById('tab-' + lessonId);
+            if (tab) {
+                tab.classList.add('active-tab');
+                tab.style.borderColor = '#FFD34E';
+                const label = tab.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-ivory/80');
+                    label.classList.add('text-philo-gold');
+                }
+            }
+
+            const area = document.getElementById('lesson-area');
+            if (area) {
+                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+function completeLesson(lessonId) {
+            M1_STATE.completedLessons.add(lessonId);
+            saveM1State();
+            updateProgress();
+
+            const dot = document.getElementById('dot-' + lessonId);
+            if (dot) { dot.classList.remove('bg-philo-warmGold/40', ''); dot.classList.add('bg-philo-warmGold'); }
+
+            const btn = document.getElementById('btn-complete-' + lessonId);
+            if (btn) {
+                btn.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold');
+                btn.classList.add('bg-green-500', 'hover:bg-green-600');
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';
+            }
+
+            const idx = M1_LESSONS.indexOf(lessonId);
+            if (idx >= 0 && idx < M1_LESSONS.length - 1) {
+                setTimeout(() => showLesson(M1_LESSONS[idx + 1]), 500);
+            }
+
+            if (M1_STATE.completedLessons.size === 6) {
+                const banner = document.getElementById('module-quiz-banner');
+                if (banner) banner.classList.remove('hidden');
+            }
+        }
+
+        function updateProgress() {
+            const count = M1_STATE.completedLessons.size;
+            const pct = Math.round((count / 6) * 100);
+            document.getElementById('m1-progress-label').textContent = count + ' / 6 bài hoàn thành';
+            document.getElementById('m1-progress-pct').textContent = pct + '%';
+            document.getElementById('m1-progress-bar').style.width = pct + '%';
+
+            M1_STATE.completedLessons.forEach(id => {
+                const dot = document.getElementById('dot-' + id);
+                if (dot) { dot.classList.remove('bg-philo-warmGold/40', ''); dot.classList.add('bg-philo-warmGold'); }
+            });
+        }
+
+        // =============================================
+        // REFLECTION TOGGLES
+        // =============================================
+        function toggleReflection(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.textContent = 'expand_more';
+            } else {
+                answer.classList.add('open');
+                icon.textContent = 'expand_less';
+            }
+        }
+
+        // =============================================
+        // QUIZ SYSTEM
+        // =============================================
+        let currentQuizData = null;
+        let currentQuizAnswers = {};
+        let currentQuizSubmitted = false;
+
+        // Quiz data cho Module 1 HCM
+        window.FORMATIVE_QUIZZES_M1 = {
+            'M1-FQ1': {
+                title: 'Kiểm tra hình thành — Bài 1.1 & 1.2',
+                passingScore: 70,
+                questions: [
+                    {
+                        id: 'fq1_1', text: 'Điều gì là nguyên nhân trực tiếp khiến Nguyễn Ái Quốc quyết tâm ra đi tìm đường cứu nước năm 1911?',
+                        options: [
+                            { id: 'a', text: 'Muốn học hỏi văn hóa phương Tây' },
+                            { id: 'b', text: 'Các phong trào yêu nước đều thất bại, đất nước bị đô hộ, cần tìm con đường mới' },
+                            { id: 'c', text: 'Được Đảng Cộng sản Pháp cử đi' },
+                            { id: 'd', text: 'Muốn thoát khỏi cuộc sống nghèo khó' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Hồ Chí Minh ra đi vì thực tế các phong trào yêu nước đều thất bại, đất nước bị nô dịch. Người muốn tìm một con đường giải phóng dân tộc triệt để hơn.'
+                    },
+                    {
+                        id: 'fq1_2', text: 'Từ các nguồn tư tưởng Đông-Tây, Hồ Chí Minh tiếp thu theo phương thức nào?',
+                        options: [
+                            { id: 'a', text: 'Tiếp thu toàn bộ Nho giáo và Phật giáo' },
+                            { id: 'b', text: 'Chỉ tiếp thu tư tưởng phương Tây' },
+                            { id: 'c', text: 'Chọn lọc, phê phán và kết hợp sáng tạo — lấy lợi ích dân tộc làm thước đo' },
+                            { id: 'd', text: 'Sao chép nguyên vẹn chủ nghĩa Mác-Lênin' }
+                        ],
+                        correctOptionId: 'c',
+                        rationale: 'Hồ Chí Minh không tiếp thu một chiều mà chọn lọc tinh hoa từ nhiều nguồn khác nhau, phê phán những hạn chế và kết hợp sáng tạo, xuất phát từ thực tiễn và lợi ích của dân tộc Việt Nam.'
+                    },
+                    {
+                        id: 'fq1_3', text: 'Cách mạng Tháng Mười Nga 1917 có ý nghĩa gì đặc biệt với hành trình tư tưởng Hồ Chí Minh?',
+                        options: [
+                            { id: 'a', text: 'Chứng minh người châu Á có thể lãnh đạo cách mạng' },
+                            { id: 'b', text: 'Mở ra con đường cách mạng vô sản — con đường giải phóng các dân tộc bị áp bức' },
+                            { id: 'c', text: 'Giúp Việt Nam nhận được viện trợ từ Liên Xô' },
+                            { id: 'd', text: 'Chứng minh cần lật đổ phong kiến trước' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Cách mạng Tháng Mười Nga mở ra thời đại mới — thời đại cách mạng vô sản — chứng minh nhân dân bị áp bức có thể giành thắng lợi. Đây là ánh sáng soi đường cho Hồ Chí Minh lựa chọn con đường cách mạng.'
+                    },
+                    {
+                        id: 'fq1_4', text: 'Điểm cốt lõi trong phương pháp tiếp thu tư tưởng phương Tây của Hồ Chí Minh là gì?',
+                        options: [
+                            { id: 'a', text: 'Áp dụng nguyên xi tư tưởng Tự do — Bình đẳng — Bác ái vào Việt Nam' },
+                            { id: 'b', text: 'Nhận ra hạn chế của tư tưởng tư sản với các dân tộc thuộc địa và bổ sung bằng chủ nghĩa Mác-Lênin' },
+                            { id: 'c', text: 'Từ chối hoàn toàn tư tưởng phương Tây' },
+                            { id: 'd', text: 'Chỉ học ngôn ngữ và kỹ thuật phương Tây' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Hồ Chí Minh nhận thấy các nhà dân chủ tư sản phương Tây (như Wilson) không thực sự bảo vệ quyền lợi các dân tộc thuộc địa. Chỉ có chủ nghĩa Mác-Lênin mới đề ra con đường giải phóng triệt để cho các dân tộc bị áp bức.'
+                    }
+                ]
+            },
+            'M1-FQ2': {
+                title: 'Kiểm tra hình thành — Bài 1.3 & 1.4',
+                passingScore: 70,
+                questions: [
+                    {
+                        id: 'fq2_1', text: 'Khi đọc Luận cương của Lênin năm 1920, điều gì khiến Hồ Chí Minh xúc động và khẳng định "Đây là con đường giải phóng chúng ta!"?',
+                        options: [
+                            { id: 'a', text: 'Chứng minh chủ nghĩa tư bản sẽ tự diệt vong' },
+                            { id: 'b', text: 'Luận giải về quyền tự quyết và giải phóng các dân tộc thuộc địa gắn với cách mạng vô sản' },
+                            { id: 'c', text: 'Hứa hẹn viện trợ kinh tế từ Quốc tế Cộng sản' },
+                            { id: 'd', text: 'Vạch ra lịch trình cụ thể cho cách mạng Việt Nam' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Luận cương của Lênin giải quyết câu hỏi mà Hồ Chí Minh trăn trở: các dân tộc thuộc địa được giải phóng như thế nào? Luận điểm về quyền tự quyết dân tộc và gắn cách mạng thuộc địa với cách mạng vô sản chính là câu trả lời Người cần.'
+                    },
+                    {
+                        id: 'fq2_2', text: '"Vận dụng sáng tạo" chủ nghĩa Mác-Lênin của Hồ Chí Minh khác với "rập khuôn giáo điều" ở điểm cơ bản nào?',
+                        options: [
+                            { id: 'a', text: 'Hồ Chí Minh không tin vào chủ nghĩa Mác-Lênin' },
+                            { id: 'b', text: 'Xuất phát từ thực tiễn Việt Nam để tìm giải pháp phù hợp, không áp đặt công thức cứng nhắc' },
+                            { id: 'c', text: 'Thay thế hoàn toàn chủ nghĩa Mác-Lênin bằng tư tưởng riêng' },
+                            { id: 'd', text: 'Chỉ áp dụng phần kinh tế của Mác, bỏ phần triết học' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Hồ Chí Minh trung thành với tinh thần, bản chất của chủ nghĩa Mác-Lênin (thế giới quan duy vật, phương pháp biện chứng) nhưng không rập khuôn cứng nhắc — luôn xuất phát từ thực tiễn Việt Nam để tìm giải pháp đúng đắn nhất.'
+                    },
+                    {
+                        id: 'fq2_3', text: 'Phẩm chất nào của Hồ Chí Minh được thể hiện qua câu nói: "Tôi chỉ có một ham muốn tột bậc, là làm sao cho nước ta được hoàn toàn độc lập..."?',
+                        options: [
+                            { id: 'a', text: 'Tài năng quân sự' },
+                            { id: 'b', text: 'Tình yêu thương nhân dân và lý tưởng cao cả, đặt lợi ích dân tộc lên trên hết' },
+                            { id: 'c', text: 'Tham vọng quyền lực cá nhân' },
+                            { id: 'd', text: 'Hiểu biết về kinh tế học' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Câu nói thể hiện lý tưởng trong sáng — Hồ Chí Minh không có ham muốn về quyền lực hay lợi ích cá nhân. Toàn bộ cuộc đời Người hướng đến một mục tiêu duy nhất: độc lập cho dân tộc, tự do cho nhân dân.'
+                    },
+                    {
+                        id: 'fq2_4', text: 'Điều gì tạo nên uy tín và sức thuyết phục của Hồ Chí Minh với nhân dân?',
+                        options: [
+                            { id: 'a', text: 'Học vấn cao và nhiều bằng cấp' },
+                            { id: 'b', text: 'Sự thống nhất hoàn toàn giữa lời nói và hành động — sống đúng như điều mình dạy' },
+                            { id: 'c', text: 'Được sự hỗ trợ mạnh mẽ từ Liên Xô và Trung Quốc' },
+                            { id: 'd', text: 'Xuất thân từ gia đình hoàng tộc' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Sức mạnh của Hồ Chí Minh không đến từ quyền lực hay học vị mà từ sự chân thực — Người nói cần kiệm liêm chính thì chính mình thực hành; kêu gọi hy sinh thì chính mình hy sinh. Sự thống nhất lời nói-việc làm tạo niềm tin tuyệt đối của nhân dân.'
+                    }
+                ]
+            },
+            'M1-FQ3': {
+                title: 'Kiểm tra hình thành — Bài 1.5 & 1.6',
+                passingScore: 70,
+                questions: [
+                    {
+                        id: 'fq3_1', text: 'Giai đoạn nào được coi là bước ngoặt quan trọng nhất trong hành trình tư tưởng Hồ Chí Minh?',
+                        options: [
+                            { id: 'a', text: '1890-1911 — thời thơ ấu và thanh niên' },
+                            { id: 'b', text: '1911-1920 — bôn ba tìm đường và tìm thấy chủ nghĩa Mác-Lênin' },
+                            { id: 'c', text: '1930-1945 — thành lập Đảng' },
+                            { id: 'd', text: '1945-1969 — lãnh đạo kháng chiến' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giai đoạn 1911-1920 là bước ngoặt vì Nguyễn Ái Quốc tìm thấy chủ nghĩa Mác-Lênin (1920), xác định con đường cách mạng đúng đắn. Đây là sự chuyển biến từ chủ nghĩa yêu nước đơn thuần sang chủ nghĩa yêu nước gắn với chủ nghĩa quốc tế vô sản.'
+                    },
+                    {
+                        id: 'fq3_2', text: 'Đảng Cộng sản Việt Nam được thành lập vào ngày tháng năm nào?',
+                        options: [
+                            { id: 'a', text: '19/8/1945' },
+                            { id: 'b', text: '2/9/1945' },
+                            { id: 'c', text: '3/2/1930' },
+                            { id: 'd', text: '7/5/1954' }
+                        ],
+                        correctOptionId: 'c',
+                        rationale: 'Đảng Cộng sản Việt Nam được thành lập ngày 3/2/1930 tại Hội nghị hợp nhất do Nguyễn Ái Quốc chủ trì tại Cửu Long (Hương Cảng, Trung Quốc). Đây là mốc lịch sử trong giai đoạn hình thành cơ bản tư tưởng HCM.'
+                    },
+                    {
+                        id: 'fq3_3', text: 'Tư tưởng Hồ Chí Minh "được hình thành" hay "tiếp tục phát triển" sau 1930?',
+                        options: [
+                            { id: 'a', text: 'Chỉ hình thành trước 1930, sau đó giữ nguyên không thay đổi' },
+                            { id: 'b', text: 'Cốt lõi hình thành sớm, nhưng liên tục được bổ sung qua thực tiễn lãnh đạo cách mạng' },
+                            { id: 'c', text: 'Hoàn toàn mới sau 1945' },
+                            { id: 'd', text: 'Chỉ hình thành trong giai đoạn 1945-1969' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Tư tưởng HCM là hệ thống sống — cốt lõi (độc lập, tự do, giải phóng dân tộc) hình thành từ sớm và nhất quán, nhưng các nội dung cụ thể về Đảng, Nhà nước, CNXH, văn hóa... liên tục được bổ sung và hoàn thiện qua từng giai đoạn cách mạng.'
+                    },
+                    {
+                        id: 'fq3_4', text: 'Ý nghĩa thực tiễn của Tư tưởng Hồ Chí Minh với công cuộc Đổi mới từ 1986 là gì?',
+                        options: [
+                            { id: 'a', text: 'Không còn phù hợp với thời đại kinh tế thị trường' },
+                            { id: 'b', text: 'Cung cấp nền tảng lý luận và kim chỉ nam — đặc biệt các nguyên tắc về độc lập tự chủ và kết hợp sức mạnh dân tộc với thời đại' },
+                            { id: 'c', text: 'Chỉ áp dụng trong lĩnh vực quân sự' },
+                            { id: 'd', text: 'Thay thế hoàn toàn chủ nghĩa Mác-Lênin trong giai đoạn mới' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Tư tưởng HCM cung cấp nền tảng lý luận cho Đổi mới: độc lập tự chủ trong hội nhập, kết hợp sức mạnh dân tộc với xu hướng thời đại, xây dựng Đảng và Nhà nước trong sạch vững mạnh. Thực tiễn phát triển của Việt Nam sau Đổi mới là bằng chứng.'
+                    }
+                ]
+            }
+        };
+
+        window.MODULE_QUIZ_M1 = {
+            title: 'Kiểm tra tổng kết Module 1 — Cơ sở hình thành Tư tưởng HCM',
+            passingScore: 75,
+            achievement: 'hcm-explorer',
+            questions: [
+                {
+                    id: 'mq_1', text: 'Phong trào yêu nước nào sau đây thuộc khuynh hướng phong kiến?',
+                    options: [
+                        { id: 'a', text: 'Việt Nam Quốc Dân Đảng' },
+                        { id: 'b', text: 'Phong trào Cần Vương' },
+                        { id: 'c', text: 'Phong trào Đông Du' },
+                        { id: 'd', text: 'Đông Kinh Nghĩa Thục' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Phong trào Cần Vương (1885-1896) mang hệ tư tưởng phong kiến, nhằm khôi phục chế độ phong kiến dưới danh nghĩa "phò vua". Đông Du và Đông Kinh Nghĩa Thục thuộc khuynh hướng dân chủ tư sản; VN Quốc Dân Đảng là tổ chức tư sản.'
+                },
+                {
+                    id: 'mq_2', text: 'Năm 1920, Nguyễn Ái Quốc đọc tài liệu nào của Lênin và xác định con đường cách mạng?',
+                    options: [
+                        { id: 'a', text: 'Tuyên ngôn Đảng Cộng sản của Marx-Engels' },
+                        { id: 'b', text: 'Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa' },
+                        { id: 'c', text: 'Nhà nước và Cách mạng của Lênin' },
+                        { id: 'd', text: 'Bút ký Triết học của Lênin' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Nguyễn Ái Quốc đọc "Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa" (1920) của Lênin — tài liệu này trả lời câu hỏi về giải phóng dân tộc thuộc địa gắn với cách mạng vô sản, khiến Người xúc động và tin tưởng vào con đường này.'
+                },
+                {
+                    id: 'mq_3', text: 'Điều nào KHÔNG phải là giá trị truyền thống dân tộc ảnh hưởng đến Tư tưởng Hồ Chí Minh?',
+                    options: [
+                        { id: 'a', text: 'Tinh thần yêu nước nồng nàn' },
+                        { id: 'b', text: 'Ý chí bất khuất trước ngoại xâm' },
+                        { id: 'c', text: 'Tư tưởng phân biệt đẳng cấp xã hội' },
+                        { id: 'd', text: 'Truyền thống đoàn kết, nhân nghĩa' }
+                    ],
+                    correctOptionId: 'c',
+                    rationale: 'Hồ Chí Minh tiếp thu các giá trị tích cực của truyền thống dân tộc (yêu nước, bất khuất, đoàn kết, nhân nghĩa...) nhưng phê phán và loại bỏ những yếu tố tiêu cực như tư tưởng phân biệt đẳng cấp, trọng nam khinh nữ.'
+                },
+                {
+                    id: 'mq_4', text: 'Tư tưởng nào của Nho giáo được Hồ Chí Minh tiếp thu và phát triển trong lý luận về đạo đức cách mạng?',
+                    options: [
+                        { id: 'a', text: 'Tư tưởng "dân vi quý, xã tắc thứ chi, quân vi khinh"' },
+                        { id: 'b', text: 'Tư tưởng về sự tu dưỡng đạo đức cá nhân — nhân lễ nghĩa trí tín' },
+                        { id: 'c', text: 'Tư tưởng phân chia đẳng cấp xã hội nghiêm ngặt' },
+                        { id: 'd', text: 'Tư tưởng "quân quyền thần tử"' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Từ Nho giáo, Hồ Chí Minh tiếp thu đặc biệt tinh thần tu dưỡng đạo đức cá nhân — cơ sở để xây dựng lý luận về đạo đức cách mạng (cần kiệm liêm chính, chí công vô tư). Người phê phán các yếu tố phân biệt đẳng cấp, bảo thủ.'
+                },
+                {
+                    id: 'mq_5', text: 'Hồ Chí Minh thành lập Đảng Cộng sản Việt Nam vào năm nào?',
+                    options: [
+                        { id: 'a', text: '1920' }, { id: 'b', text: '1925' }, { id: 'c', text: '1930' }, { id: 'd', text: '1945' }
+                    ],
+                    correctOptionId: 'c',
+                    rationale: 'Đảng Cộng sản Việt Nam được thành lập ngày 3/2/1930 tại Hội nghị hợp nhất ở Hương Cảng (Trung Quốc) do Nguyễn Ái Quốc chủ trì. Đây là bước ngoặt trong giai đoạn hình thành cơ bản tư tưởng HCM.'
+                },
+                {
+                    id: 'mq_6', text: 'Đặc điểm nào thể hiện rõ nhất phong cách tư duy của Hồ Chí Minh?',
+                    options: [
+                        { id: 'a', text: 'Thích lý luận trừu tượng, xa rời thực tiễn' },
+                        { id: 'b', text: 'Độc lập suy nghĩ, xuất phát từ thực tiễn, không rập khuôn' },
+                        { id: 'c', text: 'Tuân thủ tuyệt đối chỉ thị của Quốc tế Cộng sản' },
+                        { id: 'd', text: 'Ưu tiên lý thuyết kinh điển hơn thực tế Việt Nam' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Hồ Chí Minh luôn tư duy độc lập và xuất phát từ thực tiễn. Ví dụ: Người chủ trương cách mạng dân tộc dân chủ gắn với cách mạng xã hội chủ nghĩa, kết hợp sức mạnh dân tộc với thời đại — không rập khuôn công thức của Quốc tế Cộng sản.'
+                },
+                {
+                    id: 'mq_7', text: 'Câu "Lúc đầu, chính là chủ nghĩa yêu nước, chứ chưa phải chủ nghĩa cộng sản đã đưa tôi tin theo Lênin" cho thấy điều gì?',
+                    options: [
+                        { id: 'a', text: 'Hồ Chí Minh không thực sự tin tưởng chủ nghĩa cộng sản' },
+                        { id: 'b', text: 'Chủ nghĩa yêu nước là xuất phát điểm, sau đó gặp CN Mác-Lênin và thấy đây là con đường đúng' },
+                        { id: 'c', text: 'Chủ nghĩa yêu nước quan trọng hơn chủ nghĩa cộng sản' },
+                        { id: 'd', text: 'Người theo Lênin vì áp lực của tình hình quốc tế' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Câu này thể hiện hành trình tự nhiên: từ chủ nghĩa yêu nước dân tộc → gặp chủ nghĩa Mác-Lênin → nhận ra đây là con đường giải phóng triệt để nhất. Hai yếu tố (yêu nước + chủ nghĩa Mác-Lênin) hòa quyện tạo nên tư tưởng HCM.'
+                },
+                {
+                    id: 'mq_8', text: 'Phẩm chất nào của Hồ Chí Minh được coi là "nhân tố chủ quan" quan trọng nhất tạo nên sức mạnh tư tưởng của Người?',
+                    options: [
+                        { id: 'a', text: 'Xuất thân gia đình quan lại' },
+                        { id: 'b', text: 'Sự kết hợp giữa trí tuệ thiên tài, đạo đức trong sáng, ý chí kiên cường và tình yêu thương nhân dân' },
+                        { id: 'c', text: 'Được đào tạo bài bản tại Liên Xô' },
+                        { id: 'd', text: 'Có nhiều bằng tiến sĩ' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Nhân tố chủ quan của Hồ Chí Minh là sự kết hợp độc đáo: trí tuệ thiên tài (tư duy độc lập, sáng tạo), đạo đức cách mạng trong sáng (nói đi đôi với làm), ý chí kiên cường (30 năm bôn ba không từ bỏ), và tình yêu thương vô hạn với nhân dân.'
+                },
+                {
+                    id: 'mq_9', text: 'Tư tưởng Hồ Chí Minh có giá trị lý luận gì đóng góp cho phong trào cách mạng thế giới?',
+                    options: [
+                        { id: 'a', text: 'Bác bỏ chủ nghĩa Mác-Lênin và đề ra con đường riêng' },
+                        { id: 'b', text: 'Chứng minh các nước thuộc địa nông nghiệp lạc hậu có thể thắng lợi qua cách mạng vô sản gắn giải phóng dân tộc' },
+                        { id: 'c', text: 'Chỉ áp dụng được với Việt Nam, không phổ quát' },
+                        { id: 'd', text: 'Đề ra mô hình nhà nước tư sản mới cho châu Á' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Đóng góp lý luận to lớn của Tư tưởng HCM: chứng minh dân tộc thuộc địa nông nghiệp (không phải nước tư bản phát triển) có thể thắng lợi bằng cách mạng vô sản gắn với giải phóng dân tộc, dưới sự lãnh đạo của Đảng theo nguyên tắc tập trung dân chủ.'
+                },
+                {
+                    id: 'mq_10', text: '"Di chúc" của Hồ Chí Minh (1969) có ý nghĩa gì trong hành trình tư tưởng của Người?',
+                    options: [
+                        { id: 'a', text: 'Bước đầu hình thành tư tưởng' },
+                        { id: 'b', text: 'Tổng kết toàn bộ sự nghiệp cách mạng và để lại di huấn cho thế hệ sau' },
+                        { id: 'c', text: 'Phủ nhận các tư tưởng trước đó' },
+                        { id: 'd', text: 'Giai đoạn chuyển sang tư tưởng mới' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Di chúc (1969) là tổng kết cuối đời — Hồ Chí Minh viết về Đảng, về nhân dân, về kháng chiến, về xây dựng đất nước sau hòa bình, và dặn dò thế hệ sau. Đây là kết tinh cuối cùng của tư tưởng Người, không phủ nhận mà hoàn thiện những tư tưởng đã có.'
+                },
+                {
+                    id: 'mq_11', text: 'Học tập Tư tưởng Hồ Chí Minh trong bối cảnh hiện nay, điều quan trọng nhất sinh viên cần làm là gì?',
+                    options: [
+                        { id: 'a', text: 'Thuộc lòng các câu trích dẫn của Bác' },
+                        { id: 'b', text: 'Vận dụng tinh thần, phương pháp vào thực tiễn học tập và cuộc sống — nói đi đôi với làm' },
+                        { id: 'c', text: 'Sao chép cách làm của Bác vào thời hiện đại' },
+                        { id: 'd', text: 'Chỉ học lý thuyết để thi đạt điểm cao' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Học tập Tư tưởng HCM phải gắn với thực hành — đây là tinh thần "nói đi đôi với làm" của chính Bác. Sinh viên cần rèn luyện đạo đức, bản lĩnh, tư duy độc lập và lối sống có ích cho xã hội — không chỉ học thuộc lòng để đối phó thi cử.'
+                },
+                {
+                    id: 'mq_12', text: 'Cơ sở hình thành Tư tưởng Hồ Chí Minh gồm mấy yếu tố chính?',
+                    options: [
+                        { id: 'a', text: '2 yếu tố: khách quan và chủ quan' },
+                        { id: 'b', text: '3 yếu tố: bối cảnh thời đại, truyền thống dân tộc, chủ nghĩa Mác-Lênin' },
+                        { id: 'c', text: '4 yếu tố: bối cảnh lịch sử-xã hội, truyền thống dân tộc, tinh hoa văn hóa nhân loại (CN Mác-Lênin là cốt lõi), và nhân tố chủ quan Hồ Chí Minh' },
+                        { id: 'd', text: '5 yếu tố: gia đình, quê hương, thời đại, lý luận, cá nhân' }
+                    ],
+                    correctOptionId: 'c',
+                    rationale: 'Theo Giáo trình Tư tưởng HCM 2021, cơ sở hình thành gồm 4 nhóm: (1) Cơ sở khách quan — bối cảnh lịch sử xã hội trong nước và quốc tế; (2) Giá trị truyền thống dân tộc; (3) Tinh hoa văn hóa nhân loại — trong đó chủ nghĩa Mác-Lênin là cốt lõi, nền tảng; (4) Nhân tố chủ quan Hồ Chí Minh.'
+                }
+            ]
+        };
+
+        function openFormativeQuiz(quizId) {
+            if (!window.FORMATIVE_QUIZZES_M1) { alert('Quiz data chưa tải. Hãy thử lại.'); return; }
+            const quiz = window.FORMATIVE_QUIZZES_M1[quizId];
+            if (!quiz) { alert('Không tìm thấy quiz: ' + quizId); return; }
+            currentQuizData = { ...quiz, id: quizId };
+            currentQuizAnswers = {};
+            currentQuizSubmitted = false;
+            renderQuizModal(quiz);
+            document.getElementById('quiz-modal').classList.remove('hidden');
+        }
+
+        function openModuleQuiz() {
+            if (!window.MODULE_QUIZ_M1) { alert('Quiz data chưa tải.'); return; }
+            currentQuizData = window.MODULE_QUIZ_M1;
+            currentQuizAnswers = {};
+            currentQuizSubmitted = false;
+            renderQuizModal(window.MODULE_QUIZ_M1);
+            document.getElementById('quiz-modal').classList.remove('hidden');
+        }
+
+        function renderQuizModal(quiz) {
+            document.getElementById('quiz-modal-title').textContent = quiz.title;
+            document.getElementById('quiz-modal-sub').textContent = 'Cần đạt ' + quiz.passingScore + '% để hoàn thành • ' + quiz.questions.length + ' câu hỏi';
+
+            let html = '<div class="space-y-6">';
+            quiz.questions.forEach((q, qi) => {
+                html += `<div class="quiz-question" data-qid="${q.id}">
+                <p class="font-medium text-sm mb-3">${qi + 1}. ${q.text}</p>
+                <div class="space-y-2">`;
+                q.options.forEach(opt => {
+                    html += `<label class="quiz-option flex items-start gap-3 p-3 rounded-xl border border-philo-warmGold/30  cursor-pointer hover:border-philo-warmGold hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/10 transition-all">
+                    <input type="radio" name="q_${q.id}" value="${opt.id}" onclick="selectAnswer('${q.id}','${opt.id}')" class="mt-0.5 flex-shrink-0">
+                    <span class="text-sm">${opt.text}</span>
+                </label>`;
+                });
+                html += `</div></div>`;
+            });
+            html += `</div>
+        <div class="mt-6 flex justify-end">
+            <button onclick="submitQuiz()" id="btn-submit-quiz" class="bg-philo-warmGold/40  text-gray-500 dark:text-gray-400 font-bold px-8 py-3 rounded-xl transition-all cursor-not-allowed" data-ready="false">
+                Nộp bài
+            </button>
+        </div>`;
+            document.getElementById('quiz-modal-body').innerHTML = html;
+        }
+
+        function selectAnswer(qId, optId) {
+            currentQuizAnswers[qId] = optId;
+            const allAnswered = currentQuizData.questions.every(q => currentQuizAnswers[q.id]);
+            const btn = document.getElementById('btn-submit-quiz');
+            if (btn) {
+                if (allAnswered) {
+                    btn.setAttribute('data-ready', 'true');
+                    btn.className = 'bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-bold px-8 py-3 rounded-xl transition-all cursor-pointer';
+                } else {
+                    btn.setAttribute('data-ready', 'false');
+                    btn.className = 'bg-philo-warmGold/40  text-gray-500 dark:text-gray-400 font-bold px-8 py-3 rounded-xl transition-all cursor-not-allowed';
+                }
+            }
+        }
+
+        function submitQuiz() {
+            const btn = document.getElementById('btn-submit-quiz');
+            if (btn && btn.getAttribute('data-ready') !== 'true') return;
+            if (currentQuizSubmitted) return;
+            currentQuizSubmitted = true;
+            const quiz = currentQuizData;
+            let correct = 0;
+
+            quiz.questions.forEach(q => {
+                const userAns = currentQuizAnswers[q.id];
+                const isCorrect = userAns === q.correctOptionId;
+                if (isCorrect) correct++;
+
+                const qEl = document.querySelector(`[data-qid="${q.id}"]`);
+                if (!qEl) return;
+                qEl.querySelectorAll('.quiz-option').forEach(label => {
+                    const radio = label.querySelector('input');
+                    if (!radio) return;
+                    if (radio.value === q.correctOptionId) {
+                        label.classList.add('border-green-400', 'bg-green-50', 'dark:bg-green-900/20');
+                    }
+                    if (radio.value === userAns && !isCorrect) {
+                        label.classList.add('border-red-400', 'bg-philo-warmGold/10', '');
+                    }
+                });
+
+                const rationaleEl = document.createElement('div');
+                rationaleEl.className = 'mt-2 p-3 bg-philo-warmGold/10  rounded-lg text-xs text-philo-ivory/70';
+                rationaleEl.innerHTML = '<strong class="text-philo-warmGold">📖 Giải thích:</strong> ' + q.rationale;
+                qEl.appendChild(rationaleEl);
+            });
+
+            const score = Math.round((correct / quiz.questions.length) * 100);
+            const passed = score >= quiz.passingScore;
+
+            M1_STATE.quizResults[quiz.id || currentQuizData.id] = { score, correct, total: quiz.questions.length, passed, timestamp: Date.now() };
+            saveM1State();
+
+            const resultHtml = `<div class="mb-6 p-4 rounded-2xl text-center ${passed ? 'bg-green-50 dark:bg-green-900/20 border border-green-200' : 'bg-philo-warmGold/10  border border-red-200'}">
+            <p class="text-4xl mb-2">${passed ? '🎉' : '📚'}</p>
+            <p class="text-2xl font-bold ${passed ? 'text-green-600' : 'text-philo-warmGold'}">${score}%</p>
+            <p class="text-sm font-medium">${correct}/${quiz.questions.length} câu đúng</p>
+            <p class="text-sm mt-1 ${passed ? 'text-green-600' : 'text-philo-warmGold'}">${passed ? '✅ Đạt! ' + (quiz.achievement ? 'Thành tích đã mở khóa!' : '') : '❌ Chưa đạt. Hãy ôn lại và thử lại.'}</p>
+        </div>`;
+
+            const body = document.getElementById('quiz-modal-body');
+            body.insertAdjacentHTML('afterbegin', resultHtml);
+            document.getElementById('btn-submit-quiz').textContent = passed ? 'Tiếp tục ✓' : 'Thử lại';
+            document.getElementById('btn-submit-quiz').onclick = passed ? closeQuizModal : () => { closeQuizModal(); setTimeout(() => openModuleQuiz(), 300); };
+
+            if (passed && quiz.achievement) {
+                showAchievement(quiz.achievement);
+            }
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quiz-modal').classList.add('hidden');
+        }
+
+        // =============================================
+        // ACHIEVEMENTS
+        // =============================================
+        const M1_ACHIEVEMENTS = {
+            'hcm-explorer': { name: 'HCM Explorer', icon: '🥈', desc: 'Đạt ≥75% bài kiểm tra Module 1 — +10 XP' }
+        };
+
+        function showAchievement(slug) {
+            const ach = M1_ACHIEVEMENTS[slug];
+            if (!ach) return;
+
+            try {
+                const saved = JSON.parse(localStorage.getItem('philo_achievements') || '[]');
+                if (!saved.find(a => a.id === slug)) {
+                    saved.push({ id: slug, slug, earnedAt: Date.now(), module: 'M1', xp: 10 });
+                    localStorage.setItem('philo_achievements', JSON.stringify(saved));
+                }
+            } catch (e) { }
+
+            document.getElementById('achievement-icon').textContent = ach.icon;
+            document.getElementById('achievement-name').textContent = ach.name;
+            document.getElementById('achievement-desc').textContent = ach.desc;
+            const toast = document.getElementById('achievement-toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
+
+        // =============================================
+        // AI PANEL
+        // =============================================
+        let aiPanelOpen = false;
+
+        function toggleAIPanel() {
+            aiPanelOpen = !aiPanelOpen;
+            const panel = document.getElementById('ai-panel');
+            if (aiPanelOpen) {
+                panel.classList.remove('hidden-panel');
+            } else {
+                panel.classList.add('hidden-panel');
+            }
+        }
+
+        const AI_OFFLINE_RESPONSES = {
+            'cơ sở': {
+                answer: 'Cơ sở hình thành Tư tưởng HCM gồm 4 nhóm: (1) Cơ sở khách quan — bối cảnh lịch sử xã hội Việt Nam và thế giới cuối TK XIX đầu TK XX; (2) Giá trị truyền thống dân tộc Việt Nam (yêu nước, đoàn kết, nhân nghĩa...); (3) Tinh hoa văn hóa nhân loại — trong đó CN Mác-Lênin là cốt lõi, nền tảng; (4) Nhân tố chủ quan Hồ Chí Minh (trí tuệ, đạo đức, ý chí, tình yêu nhân dân).',
+                sourceRef: 'Chương 1 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            },
+            'lịch sử': {
+                answer: 'Bối cảnh lịch sử: Cuối TK XIX, Pháp xâm lược và đô hộ Việt Nam. Các phong trào yêu nước (Cần Vương, Đông Du, VN Quốc Dân Đảng...) đều thất bại. Dân tộc ta lâm vào khủng hoảng đường lối cứu nước, cần một con đường mới. Thế giới: Chủ nghĩa tư bản chuyển sang đế quốc; Cách mạng Tháng Mười Nga 1917 mở ra thời đại mới.',
+                sourceRef: 'Chương 1, mục 1.1 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            },
+            'mác': {
+                answer: 'Chủ nghĩa Mác-Lênin là nền tảng tư tưởng và kim chỉ nam hành động của Hồ Chí Minh. Năm 1920, Người đọc Luận cương của Lênin và tìm thấy con đường giải phóng. Mác-Lênin cung cấp: thế giới quan duy vật biện chứng, phương pháp luận biện chứng, học thuyết giai cấp, lý luận về Đảng và học thuyết về dân tộc thuộc địa.',
+                sourceRef: 'Chương 1, mục 1.2 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            },
+            'phẩm chất': {
+                answer: 'Nhân tố chủ quan Hồ Chí Minh gồm: (1) Tư duy độc lập, sáng tạo — không rập khuôn ai; (2) Vốn sống thực tiễn phong phú — bôn ba hơn 30 nước; (3) Bản lĩnh kiên cường — không từ bỏ lý tưởng dù tù đày; (4) Đạo đức trong sáng — nói đi đôi với làm, sống giản dị; (5) Tình yêu thương nhân dân vô hạn.',
+                sourceRef: 'Chương 1, mục 1.3 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            },
+            'giai đoạn': {
+                answer: 'Tư tưởng HCM hình thành qua 4 giai đoạn: (1) 1890-1911: hình thành chí hướng cứu nước; (2) 1911-1920: tìm đường và tìm thấy chủ nghĩa Mác-Lênin; (3) 1921-1945: hình thành cơ bản tư tưởng, thành lập Đảng; (4) 1945-1969: tiếp tục phát triển và hoàn thiện qua thực tiễn lãnh đạo hai cuộc kháng chiến.',
+                sourceRef: 'Chương 1, mục 1.4 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            }
+        };
+
+        function getAIOfflineResponse(query) {
+            const q = query.toLowerCase();
+            for (const [key, resp] of Object.entries(AI_OFFLINE_RESPONSES)) {
+                if (q.includes(key)) return resp;
+            }
+            return {
+                answer: 'Câu hỏi của bạn liên quan đến nội dung nào đó ngoài phạm vi ngay lập tức của tôi. Module 1 tập trung vào: cơ sở lịch sử, cơ sở tư tưởng, vai trò CN Mác-Lênin, nhân tố chủ quan HCM, 4 giai đoạn hình thành tư tưởng và ý nghĩa thực tiễn. Hãy hỏi về những chủ đề này!',
+                sourceRef: 'Chương 1 — Giáo trình Tư tưởng Hồ Chí Minh 2021'
+            };
+        }
+
+        function sendAIPrompt(prompt) {
+            document.getElementById('ai-input').value = prompt;
+            sendAIMessage();
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('ai-input');
+            const query = input.value.trim();
+            if (!query) return;
+            input.value = '';
+
+            const history = document.getElementById('ai-chat-history');
+            history.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bg-philo-warmGold text-white rounded-xl rounded-tr-sm p-3 max-w-[85%]"><p class="text-sm">${query}</p></div></div>`);
+
+            const loadingId = 'ai-loading-' + Date.now();
+            history.insertAdjacentHTML('beforeend', `<div id="${loadingId}" class="bg-philo-warmGold/10  rounded-xl p-3"><p class="text-xs text-philo-ivory/70">⏳ Đang tra cứu giáo trình...</p></div>`);
+            history.scrollTop = history.scrollHeight;
+
+            setTimeout(() => {
+                const resp = getAIOfflineResponse(query);
+                const loadEl = document.getElementById(loadingId);
+                if (loadEl) {
+                    loadEl.outerHTML = `<div class="bg-philo-warmGold/10  rounded-xl p-3">
+                    <p class="text-xs font-bold text-philo-warmGold mb-1">🤖 AI Trợ giảng HCM — Module 1</p>
+                    <p class="text-sm text-philo-ivory mb-2">${resp.answer}</p>
+                    <p class="text-xs text-gray-400 border-t border-philo-warmGold/30 dark:border-blue-800 pt-1 mt-1">📖 <em>${resp.sourceRef}</em></p>
+                </div>`;
+                }
+                history.scrollTop = history.scrollHeight;
+            }, 800);
+        }
+
+        // =============================================
+        // INIT
+        // =============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadM1State();
+            updateProgress();
+
+            if (M1_STATE.completedLessons.size > 0) {
+                const lastIdx = Math.min(M1_STATE.completedLessons.size, 5);
+                showLesson(M1_LESSONS[lastIdx]);
+            } else {
+                showLesson('M1-L1');
+            }
+
+            if (M1_STATE.completedLessons.size === 6) {
+                const banner = document.getElementById('module-quiz-banner');
+                if (banner) banner.classList.remove('hidden');
+            }
+
+            M1_STATE.completedLessons.forEach(id => {
+                const btn = document.getElementById('btn-complete-' + id);
+                if (btn) {
+                    btn.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold');
+                    btn.classList.add('bg-green-500', 'hover:bg-green-600');
+                    btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

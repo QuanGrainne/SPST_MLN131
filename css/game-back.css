@@ -1,0 +1,56 @@
+.game-back-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 160, 23, 0.72);
+  background: #15120c;
+  color: #f2cf69;
+  text-decoration: none;
+  font-family: "Be Vietnam Pro", "Lexend", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .02em;
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.game-back-btn:hover {
+  transform: translateY(-2px);
+  background: #d4a017;
+  color: #15120c;
+  box-shadow: 0 13px 34px rgba(0,0,0,.34);
+}
+.game-back-btn:focus-visible {
+  outline: 3px solid rgba(212,160,23,.32);
+  outline-offset: 3px;
+}
+@media (max-width: 640px) {
+  .game-back-btn {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 13px;
+    font-size: 11px;
+  }
+}
+.game-back-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,160,23,.72);
+  background: transparent;
+  color: #d4a017;
+  text-decoration: none;
+  font-family: "Be Vietnam Pro", "Lexend", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+.game-back-inline:hover { background:#d4a017; color:#15120c; }

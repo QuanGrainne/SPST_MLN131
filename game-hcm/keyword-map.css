@@ -1,0 +1,119 @@
+:root {
+  --ink: #1c1712;
+  --paper: #eee3ca;
+  --paper-2: #f8f1df;
+  --red: #8e1f1d;
+  --gold: #ad7a1e;
+  --green: #3f6b57;
+  --muted: #716654;
+  --line: rgba(64, 48, 31, .24);
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #19130d;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(205,157,83,.14), transparent 32%),
+    linear-gradient(145deg, #21180f, #0f0d0a 74%);
+}
+button, a { font: inherit; }
+button { cursor: pointer; }
+.grain {
+  position: fixed; inset: 0; pointer-events: none; opacity: .12; z-index: 20;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.52'/%3E%3C/svg%3E");
+}
+.topbar {
+  height: 70px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  gap: 20px; padding: 0 28px; color: #efe2c6; border-bottom: 1px solid rgba(232,210,167,.23);
+  background: rgba(20,15,10,.93); position: sticky; top: 0; z-index: 30; backdrop-filter: blur(10px);
+}
+.brand { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; font: 700 13px "Libre Franklin", sans-serif; letter-spacing: .08em; }
+.brand-mark { width: 34px; height: 34px; border: 1px solid #d3ac61; border-radius: 50%; display: grid; place-items: center; color: #d3ac61; font: 900 12px "Libre Franklin"; }
+.topbar-center { text-align: center; display: grid; gap: 2px; }
+.topbar-center span { font-size: 9px; letter-spacing: .28em; color: #b7a98f; }
+.topbar-center strong { font: 900 12px "Libre Franklin"; letter-spacing: .12em; }
+.header-btn { justify-self: end; border: 1px solid rgba(235,211,164,.35); color: #ead9b7; background: transparent; padding: 9px 13px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.header-btn:hover { background: rgba(255,255,255,.06); }
+.map-shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: calc(100vh - 70px); max-width: 1600px; margin: 0 auto; }
+.mission-panel { color: #eadfc7; border-right: 1px solid rgba(232,210,167,.18); padding: 34px 24px; background: rgba(24,18,12,.62); }
+.eyebrow { margin: 0 0 13px; font: 900 9px "Libre Franklin"; letter-spacing: .25em; color: #b58a42; }
+.mission-panel h1 { margin: 0; font: 900 54px/.83 "Noto Serif", serif; letter-spacing: -.04em; }
+.mission-panel h1 i { color: var(--red); font-style: normal; }
+.mission-copy { font: 500 12px/1.7 "Noto Serif", serif; color: #cbbda2; margin: 22px 0; }
+.rule { height: 1px; background: rgba(229,210,172,.2); margin: 20px 0; }
+.stat { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(229,210,172,.13); padding: 11px 0; }
+.stat span { font-size: 9px; letter-spacing: .13em; color: #9c8f79; font-weight: 800; }
+.stat strong { font: 900 14px "Libre Franklin"; }
+.combo { margin-top: 17px; border: 1px solid rgba(208,169,95,.4); color: #d4b16c; padding: 9px; text-align: center; font-size: 10px; letter-spacing: .13em; font-weight: 900; }
+.source-note { margin-top: 24px; font-size: 8px; line-height: 1.6; letter-spacing: .08em; color: #786f61; }
+.board-wrap { min-width: 0; margin: 26px; padding: 26px; background: var(--paper); box-shadow: 0 24px 80px rgba(0,0,0,.38), inset 0 0 80px rgba(92,67,35,.08); border: 1px solid #b9a37c; position: relative; }
+.board-wrap::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(80,58,35,.18); pointer-events: none; }
+.board-head { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 20px; align-items: end; border-bottom: 4px double #463621; padding-bottom: 16px; }
+.board-head h2 { margin: 0; font: 900 clamp(22px,3vw,38px)/1 "Noto Serif", serif; }
+.board-head p:not(.eyebrow) { margin: 8px 0 0; font: 600 11px "Noto Serif"; color: var(--muted); }
+.board-actions, .bottom-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.primary, .secondary, .link-btn { border-radius: 3px; padding: 11px 14px; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-decoration: none; }
+.primary { border: 1px solid #651713; background: var(--red); color: #fff1da; }
+.primary:hover { background: #701914; }
+.secondary { border: 1px solid #897657; background: transparent; color: #54432d; }
+.secondary:hover { background: rgba(92,66,34,.06); }
+.link-btn { border: 1px solid #978467; color: #55452f; }
+.keyword-bank { position: relative; z-index: 2; margin: 22px 0 18px; border: 1px solid var(--line); background: rgba(255,250,237,.52); padding: 14px; }
+.bank-title { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 11px; }
+.bank-title span { font: 900 10px "Libre Franklin"; letter-spacing: .18em; }
+.bank-title b { color: var(--red); font-size: 10px; }
+.keyword-pool { min-height: 54px; display: flex; flex-wrap: wrap; gap: 8px; }
+.keyword-card { border: 1px solid #937c58; background: var(--paper-2); color: #281f16; padding: 9px 11px; box-shadow: 2px 2px 0 rgba(73,52,28,.13); font: 800 11px "Be Vietnam Pro"; transition: transform .12s, box-shadow .12s, background .12s; user-select: none; }
+.keyword-card:hover { transform: translateY(-2px); box-shadow: 3px 4px 0 rgba(73,52,28,.14); }
+.keyword-card.selected { outline: 3px solid rgba(142,31,29,.26); background: #fff6dc; border-color: var(--red); }
+.keyword-card.dragging { opacity: .45; transform: rotate(-2deg); }
+.keyword-card.wrong { border-color: #a91e1e; background: #f4c5b6; animation: shake .34s linear; }
+.core-node { position: relative; z-index: 2; width: min(420px, 90%); margin: 0 auto 18px; padding: 13px 18px; text-align: center; border: 2px solid #8b6a32; background: #251c13; color: #f4e0b7; box-shadow: 0 8px 0 rgba(67,47,24,.15); }
+.core-node span { display: block; font-size: 8px; color: #be9b59; letter-spacing: .22em; margin-bottom: 4px; }
+.core-node strong { font: 900 16px "Noto Serif"; }
+.branches { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.branch { min-height: 210px; border: 1px dashed #907a57; background: rgba(255,250,235,.48); padding: 14px; transition: background .15s, border-color .15s, transform .15s; }
+.branch.drag-over, .branch.click-target { border-color: var(--red); background: rgba(142,31,29,.06); transform: translateY(-2px); }
+.branch.correct { border-style: solid; border-color: #527863; background: rgba(63,107,87,.08); }
+.branch-head { display: grid; grid-template-columns: 40px 1fr; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.branch-no { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #a18351; color: #9a6920; font: 900 18px "Noto Serif"; }
+.branch-kicker { font-size: 8px; letter-spacing: .16em; color: #956a27; font-weight: 900; }
+.branch h3 { margin: 2px 0 0; font: 900 16px/1.1 "Noto Serif"; }
+.branch-items { min-height: 112px; margin-top: 11px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 7px; }
+.branch-items .keyword-card { flex: 0 1 auto; }
+.empty-label { margin: auto; color: #9d8b70; font: 700 10px "Noto Serif"; }
+.feedback { position: relative; z-index: 2; display: none; margin-top: 14px; border-left: 5px solid #967335; background: rgba(255,249,232,.72); padding: 12px 14px; font: 600 11px/1.6 "Noto Serif"; }
+.feedback.show { display: block; }
+.feedback.good { border-color: var(--green); color: #284a3b; }
+.feedback.bad { border-color: var(--red); color: #74231c; }
+.bottom-actions { position: relative; z-index: 2; margin-top: 18px; align-items: center; }
+.result { width: min(620px, calc(100% - 30px)); border: 1px solid #9f845b; background: var(--paper-2); color: var(--ink); padding: 30px; text-align: center; box-shadow: 0 30px 90px rgba(0,0,0,.5); }
+.result::backdrop { background: rgba(10,8,6,.76); }
+.result h2 { font: 900 34px/1.03 "Noto Serif"; margin: 4px 0 20px; }
+.result-grid { display: grid; grid-template-columns: repeat(3,1fr); border-block: 1px solid var(--line); margin-bottom: 20px; }
+.result-grid span { padding: 14px 8px; font-size: 9px; letter-spacing: .12em; }
+.result-grid b { display: block; font: 900 25px "Libre Franklin"; margin-top: 4px; }
+.result > button { width: 100%; margin-top: 8px; padding: 12px; border: 1px solid #6a1b17; background: var(--red); color: white; font-weight: 900; letter-spacing: .08em; }
+.result > button.result-close { background: transparent; color: var(--ink); border-color: #8d7859; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+@media (max-width: 980px) {
+  .map-shell { grid-template-columns: 1fr; }
+  .mission-panel { border-right: 0; border-bottom: 1px solid rgba(232,210,167,.18); display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+  .mission-panel h1 { grid-row: span 2; }
+  .mission-copy, .rule, .source-note { grid-column: 1 / -1; }
+  .topbar { grid-template-columns: 1fr auto; }
+  .topbar-center { display: none; }
+}
+@media (max-width: 700px) {
+  .topbar { padding: 0 14px; }
+  .board-wrap { margin: 12px; padding: 16px; }
+  .board-head { align-items: stretch; flex-direction: column; }
+  .branches { grid-template-columns: 1fr; }
+  .mission-panel { grid-template-columns: 1fr 1fr; padding: 24px 16px; }
+  .mission-panel h1 { font-size: 42px; }
+  .bank-title { align-items: flex-start; flex-direction: column; }
+  .keyword-card { padding: 10px 12px; }
+}

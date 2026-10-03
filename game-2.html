@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bản đồ tư tưởng - HCM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config-global.js"></script>
+  <link rel="stylesheet" href="css/game-back.css" />
+  <style>
+    .map-shell { background: radial-gradient(circle at 50% -10%, rgba(212,160,23,.13), transparent 40%); }
+    .concept-card { cursor:grab; touch-action:none; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; user-select:none; }
+    .concept-card:hover { transform:translateY(-2px); box-shadow:0 10px 22px rgba(15,23,42,.10); }
+    .concept-card.selected { outline:3px solid rgba(212,160,23,.38); border-color:#D4A017; transform:translateY(-2px); }
+    .concept-card.dragging { opacity:.45; transform:scale(.98); }
+    .map-zone { transition:border-color .18s ease, background .18s ease, transform .18s ease; }
+    .map-zone.drag-over, .map-zone.click-target { border-color:#D4A017 !important; background:rgba(251,191,36,.08); transform:scale(1.01); }
+    .map-zone.zone-correct { border-color:#10b981 !important; }
+    .placed-card.wrong { animation:wrongFlash .6s ease; border-color:#f43f5e !important; }
+    @keyframes wrongFlash { 0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)} }
+    .connector { height:2px; background:linear-gradient(90deg, transparent, rgba(212,160,23,.55), transparent); }
+    @keyframes confettiFall { to { transform:translateY(720px) rotate(720deg); opacity:0; } }
+  </style>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+</head>
+<body data-page-type="game" class="bg-philo-blackBurgundy relative font-heading min-h-screen flex flex-col">
+  <div id="header-placeholder"></div>
+
+  <main class="flex-grow px-4 md:px-10 py-8">
+    <div class="max-w-7xl mx-auto">
+      <section id="game-root" class="map-shell min-h-[680px] rounded-3xl border border-philo-warmGold/30 dark:border-slate-800 bg-philo-blackBurgundy  dark:bg-[#121826] shadow-xl overflow-hidden relative"></section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <a class="game-back-btn" href="games.html" aria-label="Về trang game">← VỀ TRANG GAME</a>
+  <script src="js/game-2.js"></script>
+  <script src="js/load-components.js"></script>
+</body>
+</html>

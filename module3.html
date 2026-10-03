@@ -1,0 +1,549 @@
+﻿<!DOCTYPE html>
+<html lang="vi" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Module 3: Tư tưởng HCM về Đảng và Nhà nước — PhiloVerse HCM</title>
+    <meta name="description" content="Tìm hiểu Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam và Nhà nước của dân, do dân, vì dân qua 6 bài học tương tác." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="js/tailwind-config-global.js"></script>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+    <style>
+        .material-symbols-outlined{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:24px;display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+        #m3-progress-bar{transition:width 0.6s ease;}
+        .reflection-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s;opacity:0;}
+        .reflection-answer.open{max-height:500px;opacity:1;}
+        @keyframes badge-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+        .achievement-earned{animation:badge-pulse 0.6s ease 2;}
+        .hidden-panel{transform:translateX(100%);transition:transform 0.3s ease;}
+        .lesson-header-academic{padding: 2rem;}
+            /* Lesson tab active state */
+        .lesson-tab.active-tab { border-color: #FFD34E !important; background: rgba(217,166,46,0.12) !important; box-shadow: 0 0 20px rgba(217,166,46,0.2); }
+        .lesson-tab.active-tab .tab-label { color: #FFD34E !important; }
+        .lesson-dot.completed { background-color: #D9A62E !important; }
+        /* Lesson header */
+        .lesson-header-academic { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(20,3,3,0.95) 0%, rgba(101,7,7,0.85) 100%); border-bottom: 1px solid rgba(217,166,46,0.2); }
+        /* Module page hero */
+        .module-page-hero { position: relative; padding: 3rem 2rem 2.5rem; overflow: hidden; background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%); }
+        .module-page-hero > * { position: relative; z-index: 1; }
+        .module-page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent); }</style>
+</head>
+
+<body class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+            <!-- ===== MODULE HERO HEADER ===== -->
+        <div class="module-page-hero -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="assets/images/modules/module3-nation.jpg" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0D0101] via-[#3A0505]/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#140303] via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="philo-breadcrumb mb-5">
+                    <a href="home.html">TRANG CHỦ</a>
+                    <span class="sep">/</span>
+                    <a href="home.html#overview">MODULES</a>
+                    <span class="sep">/</span>
+                    <span>MODULE 3 • ĐẢNG CỘNG SẢN VÀ NHÀ NƯỚC</span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">school</span> MODULE 03</span>
+                        <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight text-philo-ivory mt-2">
+                            Đảng Cộng sản và<br class="hidden md:block" />
+                            <span class="text-philo-gold italic">Nhà nước nhân dân</span>
+                        </h1>
+                        <p class="mt-3 text-philo-ivory/70 text-sm md:text-base max-w-xl leading-relaxed">6 bài học về tư tưởng Hồ Chí Minh trong xây dựng Đảng và nhà nước của dân, do dân, vì dân.</p>
+                    </div>
+                    <div class="md:min-w-[220px]">
+                        <div class="flex items-center justify-between text-xs text-philo-ivory/60 mb-2">
+                            <span id="m3-progress-label">0 / 6 bài hoàn thành</span>
+                            <span id="m3-progress-pct" class="text-philo-gold font-bold">0%</span>
+                        </div>
+                        <div class="philo-progress-track">
+                            <div id="m3-progress-bar" class="philo-progress-fill" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <section class="mb-10">
+            <div class="philo-section-divider"><span class="philo-section-title">✦ 6 Bài học ✦</span></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="showLesson('M3-L1')" id="tab-M3-L1" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">⭐</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.1</span><span class="text-xs font-medium tab-label text-philo-gold">Vai trò lãnh đạo</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L1"></span></button>
+                <button onclick="showLesson('M3-L2')" id="tab-M3-L2" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">📋</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.2</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Xây dựng Đảng</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L2"></span></button>
+                <button onclick="showLesson('M3-L3')" id="tab-M3-L3" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">🧑‍🤝‍🧑</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.3</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Nhà nước dân chủ</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L3"></span></button>
+                <button onclick="showLesson('M3-L4')" id="tab-M3-L4" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">⚖️</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.4</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Nhà nước pháp quyền</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L4"></span></button>
+                <button onclick="showLesson('M3-L5')" id="tab-M3-L5" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">🛡️</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.5</span><span class="text-xs font-medium tab-label text-philo-ivory/80">NN trong sạch</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L5"></span></button>
+                <button onclick="showLesson('M3-L6')" id="tab-M3-L6" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span class="text-2xl">🎯</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 3.6</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Vận dụng hiện nay</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M3-L6"></span></button>
+            </div>
+        </section>
+
+        
+<section id="lesson-area" class="mb-16 min-h-[500px]">
+
+    <!-- BÀI 3.1: VAI TRÒ LÃNH ĐẠO CỦA ĐẢNG -->
+    <div id="lesson-M3-L1" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">⭐</span><span class="text-blue-100 text-sm font-semibold uppercase tracking-wider">Bài 3.1 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Tính tất yếu và vai trò lãnh đạo của Đảng Cộng sản Việt Nam</h2>
+                <p class="text-blue-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ quy luật ra đời và vai trò quyết định của Đảng Cộng sản đối với cách mạng Việt Nam.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="bg-philo-warmGold/10  border-l-4 border-philo-warmGold rounded-r-2xl p-6">
+                    <p class="text-xs font-bold text-philo-warmGold uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                    <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                        "Lực lượng của giai cấp công nhân và nhân dân lao động là rất to lớn, là vô tận. Nhưng lực lượng ấy cần có Đảng lãnh đạo mới chắc chắn thắng lợi."
+                    </blockquote>
+                    <p class="text-right text-sm text-philo-ivory/70 mt-3">— Hồ Chí Minh | <em>Toàn tập, tập 12, tr.402</em></p>
+                </div>
+                <div class="space-y-5">
+                    <h3 class="font-heading text-xl font-bold text-philo-warmGold">1. Tính tất yếu sự ra đời của Đảng Cộng sản Việt Nam</h3>
+                    <p class="text-philo-ivory/70 leading-relaxed">Theo V.I. Lênin, Đảng Cộng sản ra đời là sự kết hợp giữa chủ nghĩa Mác và phong trào công nhân. Tuy nhiên, khi vận dụng vào Việt Nam, Hồ Chí Minh đã bổ sung thêm yếu tố thứ ba:</p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 text-center">
+                            <span class="text-3xl mb-2 block">📕</span>
+                            <h4 class="font-bold text-philo-warmGold mb-2">Chủ nghĩa Mác - Lênin</h4>
+                            <p class="text-sm text-philo-ivory/70">Nền tảng tư tưởng, kim chỉ nam.</p>
+                        </div>
+                        <div class="bg-gray-50  rounded-2xl p-5 text-center flex items-center justify-center">
+                            <span class="text-2xl font-bold text-gray-400">+</span>
+                        </div>
+                        <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 text-center">
+                            <span class="text-3xl mb-2 block">⚙️</span>
+                            <h4 class="font-bold text-philo-warmGold mb-2">Phong trào công nhân</h4>
+                            <p class="text-sm text-philo-ivory/70">Lực lượng nòng cốt.</p>
+                        </div>
+                        <div class="bg-gray-50  rounded-2xl p-5 text-center flex items-center justify-center">
+                            <span class="text-2xl font-bold text-gray-400">+</span>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 text-center md:col-span-2">
+                            <span class="text-3xl mb-2 block">🇻🇳</span>
+                            <h4 class="font-bold text-green-700 mb-2">Phong trào yêu nước</h4>
+                            <p class="text-sm text-philo-ivory/70">Yếu tố đặc thù, thể hiện sự kết nối tự nhiên giữa Đảng và dân tộc Việt Nam.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="font-heading text-xl font-bold text-secondary mt-6">2. Vai trò lãnh đạo của Đảng</h3>
+                    <p class="text-philo-ivory/70 leading-relaxed">
+                        Hồ Chí Minh khẳng định: <strong>"Cách mệnh trước hết phải có cái gì? Trước hết phải có đảng cách mệnh"</strong>. Đảng lãnh đạo là nhân tố quyết định hàng đầu mọi thắng lợi của cách mạng. Đảng lãnh đạo bằng Cương lĩnh, đường lối; bằng công tác tuyên truyền, giáo dục, thuyết phục; bằng sự gương mẫu của đảng viên và bằng công tác kiểm tra, giám sát.
+                    </p>
+                </div>
+                <div class="border-t border-philo-warmGold/20  pt-6">
+                    <h3 class="font-heading text-lg font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-philo-warmGold">psychology</span> Câu hỏi phản tư</h3>
+                    <div class="space-y-3">
+                        <div class="reflection-item">
+                            <button onclick="toggleReflection(this)" class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                <span>1. Việc HCM đưa "phong trào yêu nước" vào quy luật hình thành Đảng có ý nghĩa gì đối với tính chất của Đảng?</span>
+                                <span class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                            </button>
+                            <div class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                <strong class="text-philo-warmGold block mb-1">Gợi ý:</strong> Nó cho thấy Đảng không chỉ đại diện cho giai cấp công nhân mà còn đại diện cho lợi ích của cả dân tộc. Phong trào yêu nước có sức lan tỏa rộng rãi, bao trùm mọi giai tầng. Do đó, Đảng từ khi ra đời đã gắn bó máu thịt với dân tộc.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button onclick="completeLesson('M3-L1')" id="btn-complete-M3-L1" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
+                        <span class="material-symbols-outlined">check_circle</span> Đánh dấu hoàn thành
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 3.2: XÂY DỰNG ĐẢNG -->
+    <div id="lesson-M3-L2" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">📋</span><span class="text-indigo-100 text-sm font-semibold uppercase tracking-wider">Bài 3.2 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Đảng phải trong sạch, vững mạnh</h2>
+                <p class="text-indigo-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững tính chất của Đảng và các nguyên tắc cốt lõi trong tổ chức, hoạt động của Đảng.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 rounded-r-2xl p-6">
+                    <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                    <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                        "Đảng ta là đạo đức, là văn minh."
+                    </blockquote>
+                    <p class="text-right text-sm text-philo-ivory/70 mt-3">— Hồ Chí Minh</p>
+                </div>
+                <div class="space-y-5">
+                    <h3 class="font-heading text-xl font-bold">1. Đảng là đạo đức, là văn minh</h3>
+                    <p class="text-philo-ivory/70">Đạo đức của Đảng là phấn đấu vì độc lập dân tộc và CNXH. Văn minh của Đảng là nắm bắt được quy luật phát triển, ứng xử văn hóa, tôn trọng con người.</p>
+
+                    <h3 class="font-heading text-xl font-bold mt-6">2. Những vấn đề nguyên tắc trong hoạt động của Đảng</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-l-2 border-red-500">
+                            <h4 class="font-bold text-philo-warmGold mb-2">Nền tảng tư tưởng</h4>
+                            <p class="text-sm text-philo-ivory/70">Lấy chủ nghĩa Mác-Lênin làm nền tảng và kim chỉ nam, nhưng phải "vận dụng sáng tạo" chứ không giáo điều.</p>
+                        </div>
+                        <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-l-2 border-blue-500">
+                            <h4 class="font-bold text-philo-warmGold mb-2">Tập trung dân chủ</h4>
+                            <p class="text-sm text-philo-ivory/70">Đây là nguyên tắc tổ chức cơ bản nhất. Tập trung trên nền tảng dân chủ, dân chủ dưới sự chỉ đạo của tập trung.</p>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-l-2 border-green-500">
+                            <h4 class="font-bold text-green-600 mb-2">Tự phê bình và phê bình</h4>
+                            <p class="text-sm text-philo-ivory/70">Là "vũ khí sắc bén" nhất, là quy luật phát triển của Đảng. Phải làm thường xuyên như "rửa mặt hằng ngày".</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border-l-2 border-amber-500">
+                            <h4 class="font-bold text-amber-600 mb-2">Kỷ luật nghiêm minh, tự giác</h4>
+                            <p class="text-sm text-philo-ivory/70">Sức mạnh vô địch của Đảng là kỷ luật. Kỷ luật này là tự giác, không có ngoại lệ, "công trạng không chuộc được tội lỗi".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="showLesson('M3-L1')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                    <div class="flex gap-3">
+                        <button onclick="openFormativeQuiz('M3-FQ1')" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (3.1–3.2)</button>
+                        <button onclick="completeLesson('M3-L2')" id="btn-complete-M3-L2" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 3.3: NHÀ NƯỚC DÂN CHỦ -->
+    <div id="lesson-M3-L3" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🧑‍🤝‍🧑</span><span class="text-purple-100 text-sm font-semibold uppercase tracking-wider">Bài 3.3 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Nhà nước dân chủ</h2>
+                <p class="text-purple-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ bản chất giai cấp công nhân và tính chất "Của dân, do dân, vì dân" của Nhà nước.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="space-y-5">
+                    <h3 class="font-heading text-xl font-bold">1. Bản chất giai cấp của Nhà nước</h3>
+                    <p class="text-philo-ivory/70">Nhà nước Việt Nam mang <strong>bản chất giai cấp công nhân</strong>. Tuy nhiên, nó thống nhất hữu cơ với tính nhân dân và tính dân tộc (Bởi giai cấp công nhân không có lợi ích nào khác ngoài lợi ích của nhân dân và dân tộc).</p>
+                    
+                    <h3 class="font-heading text-xl font-bold mt-6">2. Nhà nước của nhân dân, do nhân dân, vì nhân dân</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-t-4 border-red-500">
+                            <h4 class="font-bold text-philo-warmGold mb-2 text-center text-lg">Nhà nước của nhân dân</h4>
+                            <p class="text-sm text-philo-ivory/70">Tất cả quyền lực trong nhà nước và trong xã hội đều thuộc về nhân dân. Dân là chủ, cán bộ là "công bộc".</p>
+                        </div>
+                        <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-t-4 border-blue-500">
+                            <h4 class="font-bold text-philo-warmGold mb-2 text-center text-lg">Nhà nước do nhân dân</h4>
+                            <p class="text-sm text-philo-ivory/70">Nhân dân tự tổ chức, xây dựng nhà nước qua bầu cử. Nhân dân có quyền giám sát, bãi miễn đại biểu nếu họ không xứng đáng.</p>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-t-4 border-green-500">
+                            <h4 class="font-bold text-green-600 mb-2 text-center text-lg">Nhà nước vì nhân dân</h4>
+                            <p class="text-sm text-philo-ivory/70">Mọi đường lối, chính sách đều nhằm đem lại lợi ích cho nhân dân. Nhà nước không có đặc quyền đặc lợi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="showLesson('M3-L2')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                    <button onclick="completeLesson('M3-L3')" id="btn-complete-M3-L3" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 3.4: NHÀ NƯỚC PHÁP QUYỀN -->
+    <div id="lesson-M3-L4" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">⚖️</span><span class="text-teal-100 text-sm font-semibold uppercase tracking-wider">Bài 3.4 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Nhà nước pháp quyền</h2>
+                <p class="text-teal-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm được 3 nội dung cốt lõi của Nhà nước pháp quyền theo Hồ Chí Minh.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="space-y-5">
+                    <h3 class="font-heading text-xl font-bold text-philo-warmGold">1. Nhà nước hợp hiến, hợp pháp</h3>
+                    <p class="text-philo-ivory/70">Ngay sau khi giành độc lập, HCM đã yêu cầu tổ chức TỔNG TUYỂN CỬ để tạo ra cơ sở pháp lý vững chắc cho Chính phủ. Hiến pháp năm 1946 là bản hiến pháp dân chủ đầu tiên của nước ta do Người chỉ đạo soạn thảo.</p>
+
+                    <h3 class="font-heading text-xl font-bold text-secondary mt-6">2. Nhà nước thượng tôn pháp luật</h3>
+                    <p class="text-philo-ivory/70">Quản lý nhà nước bằng pháp luật. Pháp luật phải nghiêm minh, mọi người (kể cả người lãnh đạo cao nhất) đều phải tuân theo pháp luật, không có vùng cấm.</p>
+
+                    <h3 class="font-heading text-xl font-bold text-secondary mt-6">3. Pháp quyền nhân nghĩa</h3>
+                    <p class="text-philo-ivory/70">Pháp luật của ta là pháp luật dân chủ, bảo vệ quyền lợi của nhân dân. Pháp quyền HCM kết hợp chặt chẽ giữa tính nghiêm minh của pháp luật với sự khoan hồng, giáo dục, nhân đạo ("Nhân nghĩa").</p>
+                </div>
+                <div class="border-t border-philo-warmGold/20  pt-6">
+                    <h3 class="font-heading text-lg font-bold mb-4">Câu hỏi phản tư</h3>
+                    <div class="space-y-3">
+                        <div class="reflection-item">
+                            <button onclick="toggleReflection(this)" class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-colors text-sm font-medium flex justify-between items-center">
+                                <span>1. Tại sao HCM vừa coi trọng "pháp trị" (pháp luật) vừa đề cao "đức trị" (đạo đức)?</span>
+                                <span class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
+                            </button>
+                            <div class="reflection-answer p-4 text-sm text-philo-ivory/70">
+                                <strong class="text-teal-600 block mb-1">Gợi ý:</strong> Pháp luật nghiêm minh để răn đe, trừng phạt kẻ xấu. Nhưng pháp luật không thể bao phủ mọi khía cạnh tinh thần. Đạo đức giúp con người tự giác làm việc thiện, không vi phạm pháp luật từ trong tâm tưởng. Kết hợp cả hai tạo ra một xã hội vừa trật tự vừa nhân văn.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button onclick="showLesson('M3-L3')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                    <div class="flex gap-3">
+                        <button onclick="openFormativeQuiz('M3-FQ2')" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (3.3–3.4)</button>
+                        <button onclick="completeLesson('M3-L4')" id="btn-complete-M3-L4" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 3.5: NHÀ NƯỚC TRONG SẠCH, VỮNG MẠNH -->
+    <div id="lesson-M3-L5" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🛡️</span><span class="text-rose-100 text-sm font-semibold uppercase tracking-wider">Bài 3.5 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Nhà nước trong sạch, vững mạnh</h2>
+                <p class="text-rose-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu tư tưởng HCM về kiểm soát quyền lực và phòng chống tiêu cực trong bộ máy Nhà nước.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="space-y-5">
+                    <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-l-4 border-blue-500">
+                        <h4 class="font-bold text-philo-warmGold mb-2">1. Kiểm soát quyền lực nhà nước</h4>
+                        <p class="text-sm text-philo-ivory/70">
+                            Quyền lực nhà nước là do nhân dân ủy thác. Nếu không được kiểm soát, quyền lực dễ bị tha hóa. Kiểm soát bằng: pháp luật, tổ chức Đảng, và đặc biệt là sự giám sát trực tiếp của nhân dân.
+                        </p>
+                    </div>
+                    <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-l-4 border-red-500">
+                        <h4 class="font-bold text-philo-warmGold mb-2">2. Phòng, chống tiêu cực trong Nhà nước</h4>
+                        <ul class="list-disc pl-5 text-sm text-philo-ivory/70 space-y-2 mt-2">
+                            <li><strong>Chống đặc quyền, đặc lợi:</strong> Làm quan cách mạng không phải để thăng quan phát tài.</li>
+                            <li><strong>Chống tham ô, lãng phí, quan liêu:</strong> HCM gọi đây là "giặc nội xâm". Quan liêu là nguyên nhân sinh ra tham ô, lãng phí.</li>
+                            <li><strong>Chống "tư túng", "chia rẽ", "kiêu ngạo":</strong> Kéo bè kéo cánh, cục bộ địa phương, coi thường nhân dân.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="showLesson('M3-L4')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                    <button onclick="completeLesson('M3-L5')" id="btn-complete-M3-L5" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 3.6: VẬN DỤNG HIỆN NAY -->
+    <div id="lesson-M3-L6" class="lesson-content hidden">
+        <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+            <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🎯</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 3.6 — Module 3</span></div>
+                <h2 class="font-heading text-3xl font-bold text-white mb-2">Vận dụng Tư tưởng HCM trong giai đoạn hiện nay</h2>
+                <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Liên hệ thực tiễn việc xây dựng Đảng và Nhà nước Việt Nam hiện nay.</p>
+            </div>
+            <div class="p-8 space-y-8">
+                <div class="space-y-5">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-philo-warmGold/10  rounded-2xl p-5 border-l-4 border-blue-500">
+                            <h4 class="font-bold text-philo-warmGold mb-2">1. Về xây dựng Đảng</h4>
+                            <ul class="list-disc pl-5 text-sm text-philo-ivory/70 space-y-2">
+                                <li>Phải xây dựng Đảng thực sự trong sạch, vững mạnh về tư tưởng, chính trị, tổ chức và đạo đức.</li>
+                                <li>Kiên quyết đấu tranh chống suy thoái tư tưởng chính trị, đạo đức, lối sống ("tự diễn biến", "tự chuyển hóa").</li>
+                                <li>Đổi mới phương thức lãnh đạo của Đảng đối với Nhà nước và xã hội.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-l-4 border-green-500">
+                            <h4 class="font-bold text-green-600 mb-2">2. Về xây dựng Nhà nước</h4>
+                            <ul class="list-disc pl-5 text-sm text-philo-ivory/70 space-y-2">
+                                <li>Xây dựng Nhà nước pháp quyền XHCN của dân, do dân, vì dân dưới sự lãnh đạo của Đảng.</li>
+                                <li>Đẩy mạnh cải cách hành chính, xây dựng chính phủ kiến tạo, liêm chính, hành động phục vụ.</li>
+                                <li>Tăng cường kiểm soát quyền lực, phòng chống tham nhũng, lãng phí quyết liệt.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="showLesson('M3-L5')" class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                    <div class="flex gap-3">
+                        <button onclick="openFormativeQuiz('M3-FQ3')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (3.5–3.6)</button>
+                        <button onclick="completeLesson('M3-L6')" id="btn-complete-M3-L6" class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- MODULE QUIZ BANNER -->
+        <section id="module-quiz-banner" class="mb-16 hidden">
+            <div class="bg-gradient-to-r from-philo-warmGold to-philo-antiqueGold rounded-3xl p-8 text-white text-center">
+                <span class="text-5xl mb-4 block">🏆</span>
+                <h2 class="font-heading text-3xl font-bold mb-3">Bạn đã hoàn thành 6 bài học!</h2>
+                <p class="text-white/80 mb-6">Làm bài kiểm tra tổng kết Module 3 để nhận thành tích và +10 XP.</p>
+                <button onclick="openModuleQuiz()" id="btn-module-quiz" class="bg-[rgba(70,8,8,0.65)] backdrop-blur-md text-philo-warmGold hover:bg-philo-warmGold/10 font-bold px-10 py-4 rounded-2xl transition-colors inline-flex items-center gap-2 text-lg shadow-lg">
+                    <span class="material-symbols-outlined">school</span> Làm bài kiểm tra Module 3
+                </button>
+            </div>
+        </section>
+
+        <div class="fixed bottom-6 right-6 z-40">
+            <button onclick="toggleAIPanel()" class="w-14 h-14 rounded-full bg-philo-warmGold text-white shadow-xl hover:bg-philo-blackBurgundyGold flex items-center justify-center transition-all hover:scale-105">
+                <span class="material-symbols-outlined">smart_toy</span>
+            </button>
+        </div>
+
+        <div id="ai-panel" class="hidden-panel fixed right-0 top-0 h-full w-80 md:w-96 bg-philo-blackBurgundy  border-l border-philo-warmGold/30  shadow-2xl z-50 flex flex-col">
+            <div class="p-4 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div><h3 class="font-bold text-sm">🤖 AI Trợ giảng — Module 3 HCM</h3><p class="text-xs text-philo-ivory/70">Giáo trình Tư tưởng HCM 2021, Chương 3</p></div>
+                <button onclick="toggleAIPanel()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="ai-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <div class="bg-philo-warmGold/10  rounded-xl p-3">
+                    <p class="text-xs font-bold text-philo-warmGold mb-1">🤖 AI HCM Module 3</p>
+                    <p class="text-sm text-philo-ivory/70">Xin chào! Tôi sẵn sàng giải thích <strong>Module 3 — Đảng và Nhà nước</strong>. Hỏi ngay!</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-xs text-gray-400 font-medium">💡 Câu hỏi gợi ý:</p>
+                    <button onclick="sendAIPrompt('Bản chất Đảng Cộng sản Việt Nam theo Hồ Chí Minh?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 transition-colors">Bản chất Đảng CSVN theo HCM?</button>
+                    <button onclick="sendAIPrompt('Nhà nước của dân do dân vì dân nghĩa là gì?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 transition-colors">Nhà nước của dân, do dân, vì dân?</button>
+                    <button onclick="sendAIPrompt('Cán bộ nhà nước là đày tớ hay quan cai trị?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-philo-warmGold/10 transition-colors">Cán bộ là "đày tớ" hay "quan"?</button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-philo-warmGold/30 ">
+                <div class="flex gap-2">
+                    <input id="ai-input" type="text" placeholder="Hỏi về Module 3..." class="flex-1 text-sm border border-philo-warmGold/30  rounded-xl px-3 py-2 bg-gray-50  focus:outline-none focus:ring-2 focus:ring-primary/30" onkeypress="if(event.key==='Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()" class="bg-philo-warmGold text-white rounded-xl px-4 hover:bg-philo-blackBurgundyGold transition-colors"><span class="material-symbols-outlined text-sm">send</span></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="quiz-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-philo-blackBurgundy  rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div><h2 id="quiz-modal-title" class="text-xl font-bold">Kiểm tra</h2><p id="quiz-modal-sub" class="text-sm text-philo-ivory/70"></p></div>
+                <button onclick="closeQuizModal()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="quiz-modal-body" class="p-6"></div>
+        </div>
+    </div>
+
+    <div id="achievement-toast" class="hidden fixed top-6 right-6 z-50 max-w-sm">
+        <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-2xl p-4 shadow-2xl flex items-center gap-4 achievement-earned">
+            <span id="achievement-icon" class="text-4xl">🥇</span>
+            <div><p class="font-bold text-amber-900 text-sm">Thành tích mới!</p><p id="achievement-name" class="font-heading font-bold text-amber-900"></p><p id="achievement-desc" class="text-xs text-amber-800"></p></div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/search-data-global.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/search-init.js"></script>
+
+    <script>
+        const M3_STATE={completedLessons:new Set(),currentLesson:null,quizResults:{},achievements:[]};
+        const M3_LESSONS=['M3-L1','M3-L2','M3-L3','M3-L4','M3-L5','M3-L6'];
+        function loadM3State(){try{const s=JSON.parse(localStorage.getItem('hcm_quiz_results')||'{}');if(s.M3_completed)s.M3_completed.forEach(id=>M3_STATE.completedLessons.add(id));M3_STATE.quizResults=s.M3_quiz||{};}catch(e){}}
+        function saveM3State(){try{const s=JSON.parse(localStorage.getItem('hcm_quiz_results')||'{}');s.M3_completed=[...M3_STATE.completedLessons];s.M3_quiz=M3_STATE.quizResults;localStorage.setItem('hcm_quiz_results',JSON.stringify(s));}catch(e){}}
+                        function showLesson(lessonId) {
+            document.querySelectorAll('.lesson-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lesson-tab').forEach(el => {
+                el.classList.remove('active-tab');
+                el.style.borderColor = 'rgba(217,166,46,0.2)';
+                const label = el.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-gold');
+                    label.classList.add('text-philo-ivory/80');
+                }
+            });
+
+            const target = document.getElementById('lesson-' + lessonId);
+            if (target) {
+                target.classList.remove('hidden');
+                M3_STATE.currentLesson = lessonId;
+            }
+
+            const tab = document.getElementById('tab-' + lessonId);
+            if (tab) {
+                tab.classList.add('active-tab');
+                tab.style.borderColor = '#FFD34E';
+                const label = tab.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-ivory/80');
+                    label.classList.add('text-philo-gold');
+                }
+            }
+
+            const area = document.getElementById('lesson-area');
+            if (area) {
+                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+function completeLesson(id){M3_STATE.completedLessons.add(id);saveM3State();updateProgress();const d=document.getElementById('dot-'+id);if(d){d.classList.remove('bg-philo-warmGold/40','');d.classList.add('bg-philo-warmGold');}const b=document.getElementById('btn-complete-'+id);if(b){b.classList.remove('bg-philo-warmGold','hover:bg-philo-blackBurgundyGold');b.classList.add('bg-green-500','hover:bg-green-600');b.innerHTML='<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';}const idx=M3_LESSONS.indexOf(id);if(idx>=0&&idx<M3_LESSONS.length-1)setTimeout(()=>showLesson(M3_LESSONS[idx+1]),500);if(M3_STATE.completedLessons.size===6){const banner=document.getElementById('module-quiz-banner');if(banner)banner.classList.remove('hidden');}}
+        function updateProgress(){const c=M3_STATE.completedLessons.size,p=Math.round(c/6*100);document.getElementById('m3-progress-label').textContent=c+' / 6 bài hoàn thành';document.getElementById('m3-progress-pct').textContent=p+'%';document.getElementById('m3-progress-bar').style.width=p+'%';M3_STATE.completedLessons.forEach(id=>{const d=document.getElementById('dot-'+id);if(d){d.classList.remove('bg-philo-warmGold/40','');d.classList.add('bg-philo-warmGold');}});}
+        function toggleReflection(btn){const a=btn.nextElementSibling,i=btn.querySelector('.material-symbols-outlined');if(a.classList.contains('open')){a.classList.remove('open');i.textContent='expand_more';}else{a.classList.add('open');i.textContent='expand_less';}}
+
+        let currentQuizData=null,currentQuizAnswers={},currentQuizSubmitted=false;
+        window.FORMATIVE_QUIZZES_M3 = {
+            'M3-FQ1': {
+                title: 'Kiểm tra hình thành — Bài 3.1 & 3.2', passingScore: 70,
+                questions: [
+                    { id: 'fq1_1', text: 'Theo Hồ Chí Minh, ngoài Chủ nghĩa Mác-Lênin và phong trào công nhân, yếu tố thứ ba hình thành Đảng Cộng sản Việt Nam là gì?', options: [{ id: 'a', text: 'Phong trào nông dân' }, { id: 'b', text: 'Phong trào yêu nước' }, { id: 'c', text: 'Phong trào sinh viên' }, { id: 'd', text: 'Sự giúp đỡ của quốc tế' }], correctOptionId: 'b', rationale: 'Đây là điểm sáng tạo của HCM khi vận dụng chủ nghĩa Mác-Lênin vào thực tiễn một nước thuộc địa, nơi phong trào yêu nước có vai trò cực kỳ to lớn.' },
+                    { id: 'fq1_2', text: 'Đảng Cộng sản Việt Nam mang bản chất của giai cấp nào?', options: [{ id: 'a', text: 'Giai cấp công nhân' }, { id: 'b', text: 'Giai cấp nông dân' }, { id: 'c', text: 'Tầng lớp trí thức' }, { id: 'd', text: 'Không mang bản chất giai cấp nào' }], correctOptionId: 'a', rationale: 'HCM khẳng định Đảng là đội tiên phong của giai cấp công nhân, mang bản chất của giai cấp công nhân.' },
+                    { id: 'fq1_3', text: 'Hồ Chí Minh gọi nguyên tắc nào là "quy luật phát triển của Đảng"?', options: [{ id: 'a', text: 'Tập trung dân chủ' }, { id: 'b', text: 'Tự phê bình và phê bình' }, { id: 'c', text: 'Đoàn kết quốc tế' }, { id: 'd', text: 'Kỷ luật nghiêm minh' }], correctOptionId: 'b', rationale: 'Người coi tự phê bình và phê bình là thứ vũ khí sắc bén nhất, là quy luật phát triển, phải làm thường xuyên như "rửa mặt hằng ngày".' },
+                    { id: 'fq1_4', text: 'Trong quan niệm của HCM, kỷ luật của Đảng có đặc điểm gì nổi bật?', options: [{ id: 'a', text: 'Chỉ áp dụng với đảng viên thường' }, { id: 'b', text: 'Kỷ luật tự giác, nghiêm minh và không có ngoại lệ' }, { id: 'c', text: 'Kỷ luật mang tính hình thức' }, { id: 'd', text: 'Lãnh đạo cao cấp được miễn trừ kỷ luật' }], correctOptionId: 'b', rationale: 'Kỷ luật của Đảng là kỷ luật tự giác ("tự trói buộc mình"), rất nghiêm minh, "công trạng không thể chuộc được tội lỗi".' }
+                ]
+            },
+            'M3-FQ2': {
+                title: 'Kiểm tra hình thành — Bài 3.3 & 3.4', passingScore: 70,
+                questions: [
+                    { id: 'fq2_1', text: 'Theo Hồ Chí Minh, điểm khác biệt căn bản giữa Nhà nước ta và các nhà nước bóc lột trước đó là gì?', options: [{ id: 'a', text: 'Có bộ máy quân đội mạnh' }, { id: 'b', text: 'Là nhà nước của nhân dân, do nhân dân, vì nhân dân' }, { id: 'c', text: 'Đứng trên mọi giai cấp' }, { id: 'd', text: 'Có hệ thống thuế khóa nghiêm ngặt' }], correctOptionId: 'b', rationale: 'Nhà nước ta không thuộc về một nhóm thiểu số bóc lột, mà là tài sản chung của toàn dân.' },
+                    { id: 'fq2_2', text: 'Trong "Nhà nước vì nhân dân", Hồ Chí Minh yêu cầu cán bộ nhà nước phải giữ vai trò gì?', options: [{ id: 'a', text: 'Người cai trị' }, { id: 'b', text: 'Người đày tớ thật trung thành của nhân dân' }, { id: 'c', text: 'Người đứng trên pháp luật' }, { id: 'd', text: 'Cha mẹ của nhân dân' }], correctOptionId: 'b', rationale: 'Cán bộ từ Trung ương đến địa phương đều là "đày tớ" phục vụ lợi ích của dân, được dân ủy thác quyền lực.' },
+                    { id: 'fq2_3', text: 'Bản chất giai cấp của Nhà nước ta theo tư tưởng Hồ Chí Minh là gì?', options: [{ id: 'a', text: 'Bản chất giai cấp công nhân' }, { id: 'b', text: 'Bản chất của toàn dân' }, { id: 'c', text: 'Bản chất của liên minh công - nông' }, { id: 'd', text: 'Bản chất dân tộc thuần túy' }], correctOptionId: 'a', rationale: 'Nhà nước ta mang bản chất giai cấp công nhân, nhưng thống nhất hữu cơ với tính nhân dân và tính dân tộc.' },
+                    { id: 'fq2_4', text: 'Yêu cầu của Nhà nước pháp quyền theo Hồ Chí Minh là gì?', options: [{ id: 'a', text: 'Sử dụng pháp luật để đàn áp' }, { id: 'b', text: 'Quản lý xã hội bằng pháp luật nghiêm minh, thượng tôn pháp luật' }, { id: 'c', text: 'Pháp luật chỉ dành cho dân thường' }, { id: 'd', text: 'Không cần pháp luật, chỉ cần đạo đức' }], correctOptionId: 'b', rationale: 'Mọi người (kể cả lãnh đạo) đều bình đẳng trước pháp luật, pháp luật phải nghiêm minh nhưng cũng phải có tính nhân nghĩa.' }
+                ]
+            },
+            'M3-FQ3': {
+                title: 'Kiểm tra hình thành — Bài 3.5 & 3.6', passingScore: 70,
+                questions: [
+                    { id: 'fq3_1', text: 'Hồ Chí Minh gọi những căn bệnh như tham ô, lãng phí, quan liêu trong bộ máy nhà nước là gì?', options: [{ id: 'a', text: 'Kẻ thù tự nhiên' }, { id: 'b', text: 'Giặc ngoại xâm' }, { id: 'c', text: 'Giặc nội xâm' }, { id: 'd', text: 'Lỗi hệ thống' }], correctOptionId: 'c', rationale: 'Người coi những thói hư tật xấu này là "giặc ở trong lòng", "giặc nội xâm", chúng phá hoại sự nghiệp cách mạng từ bên trong rất nguy hiểm.' },
+                    { id: 'fq3_2', text: 'Để phòng, chống tiêu cực, kiểm soát quyền lực nhà nước, Hồ Chí Minh đặc biệt coi trọng điều gì?', options: [{ id: 'a', text: 'Sự giám sát trực tiếp của nhân dân' }, { id: 'b', text: 'Tăng cường lực lượng cảnh sát' }, { id: 'c', text: 'Tuyển dụng cán bộ người nước ngoài' }, { id: 'd', text: 'Tăng lương cho cán bộ' }], correctOptionId: 'a', rationale: 'Nhân dân là chủ sở hữu quyền lực, do đó sự giám sát, phê bình của nhân dân là biện pháp quan trọng nhất để chống tha hóa quyền lực.' },
+                    { id: 'fq3_3', text: 'Theo Hồ Chí Minh, căn bệnh nào là nguyên nhân trực tiếp đẻ ra tham ô và lãng phí?', options: [{ id: 'a', text: 'Bệnh kiêu ngạo' }, { id: 'b', text: 'Bệnh quan liêu' }, { id: 'c', text: 'Bệnh hẹp hòi' }, { id: 'd', text: 'Bệnh lười biếng' }], correctOptionId: 'b', rationale: 'Quan liêu (xa rời thực tế, xa rời quần chúng) là mảnh đất dung dưỡng cho tham ô và lãng phí nảy nở.' },
+                    { id: 'fq3_4', text: 'Vận dụng tư tưởng Hồ Chí Minh trong giai đoạn hiện nay, nhiệm vụ trọng tâm về xây dựng Nhà nước là gì?', options: [{ id: 'a', text: 'Thu hẹp bộ máy hành chính' }, { id: 'b', text: 'Xây dựng Nhà nước pháp quyền XHCN vững mạnh, đổi mới lập pháp, hành pháp, tư pháp' }, { id: 'c', text: 'Mở rộng quyền lực của tòa án' }, { id: 'd', text: 'Tập trung toàn bộ quyền lực vào Trung ương' }], correctOptionId: 'b', rationale: 'Nghị quyết của Đảng luôn nhấn mạnh việc tiếp tục xây dựng và hoàn thiện Nhà nước pháp quyền xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân.' }
+                ]
+            }
+        };
+
+        window.MODULE_QUIZ_M3 = {
+            title: 'Kiểm tra tổng kết Module 3 — Đảng và Nhà nước', passingScore: 75, achievement: 'state-builder',
+            questions: [
+                { id: 'mq_1', text: 'Sự ra đời của Đảng Cộng sản Việt Nam là sự kết hợp của mấy yếu tố theo quan điểm Hồ Chí Minh?', options: [{ id: 'a', text: '1 yếu tố' }, { id: 'b', text: '2 yếu tố' }, { id: 'c', text: '3 yếu tố' }, { id: 'd', text: '4 yếu tố' }], correctOptionId: 'c', rationale: 'Đó là 3 yếu tố: Chủ nghĩa Mác-Lênin, Phong trào công nhân, và Phong trào yêu nước.' },
+                { id: 'mq_2', text: 'Hồ Chí Minh lý giải tính tất yếu sự lãnh đạo của Đảng đối với cách mạng Việt Nam như thế nào?', options: [{ id: 'a', text: 'Đảng là nhân tố phụ trợ' }, { id: 'b', text: 'Đảng là nhân tố quyết định hàng đầu mọi thắng lợi' }, { id: 'c', text: 'Đảng chỉ đóng vai trò tư vấn' }, { id: 'd', text: 'Đảng chỉ lãnh đạo trong thời kỳ chiến tranh' }], correctOptionId: 'b', rationale: 'Đảng là người vạch đường lối, tổ chức, đoàn kết nhân dân, là nhân tố tiên quyết bảo đảm mọi thắng lợi của cách mạng.' },
+                { id: 'mq_3', text: 'Trong các nguyên tắc tổ chức của Đảng, nguyên tắc nào là cơ bản nhất?', options: [{ id: 'a', text: 'Tự phê bình và phê bình' }, { id: 'b', text: 'Đoàn kết thống nhất' }, { id: 'c', text: 'Tập trung dân chủ' }, { id: 'd', text: 'Liên hệ mật thiết với nhân dân' }], correctOptionId: 'c', rationale: 'Tập trung dân chủ là nguyên tắc tổ chức cốt lõi, bảo đảm Đảng vừa có tính kỷ luật chặt chẽ (tập trung) vừa phát huy trí tuệ tập thể (dân chủ).' },
+                { id: 'mq_4', text: 'Đặc trưng cốt lõi của Nhà nước pháp quyền nhân nghĩa theo tư tưởng Hồ Chí Minh là gì?', options: [{ id: 'a', text: 'Chỉ dựa vào sự trừng phạt nặng nề' }, { id: 'b', text: 'Pháp luật kết hợp chặt chẽ với đạo đức, bảo vệ quyền con người' }, { id: 'c', text: 'Chỉ dùng đạo đức để giáo dục' }, { id: 'd', text: 'Đứng trên và đứng ngoài xã hội' }], correctOptionId: 'b', rationale: 'Pháp quyền nhân nghĩa của HCM là sự kết hợp giữa tính nghiêm minh của pháp luật (pháp trị) với lòng nhân ái, khoan hồng (đức trị).' },
+                { id: 'mq_5', text: 'Theo Hồ Chí Minh, nguy cơ lớn nhất đối với một đảng cầm quyền là gì?', options: [{ id: 'a', text: 'Thiếu kinh phí hoạt động' }, { id: 'b', text: 'Sự suy thoái về đạo đức, quan liêu, tham nhũng, xa rời quần chúng' }, { id: 'c', text: 'Thiếu kinh nghiệm quản lý kinh tế' }, { id: 'd', text: 'Bị kẻ thù tấn công quân sự' }], correctOptionId: 'b', rationale: 'Khi nắm quyền, cán bộ đảng viên dễ sa vào chủ nghĩa cá nhân, đặc quyền đặc lợi, làm mất lòng tin của nhân dân, dẫn đến sự sụp đổ của chế độ.' },
+                { id: 'mq_6', text: 'Sự thống nhất giữa bản chất giai cấp công nhân, tính nhân dân và tính dân tộc của Nhà nước Việt Nam thể hiện rõ nhất ở điểm nào?', options: [{ id: 'a', text: 'Đảng viên chiếm đa số trong dân số' }, { id: 'b', text: 'Giai cấp công nhân không có lợi ích nào khác ngoài lợi ích của nhân dân và dân tộc' }, { id: 'c', text: 'Nhà nước chỉ phục vụ công nhân' }, { id: 'd', text: 'Chỉ có công nhân mới làm lãnh đạo' }], correctOptionId: 'b', rationale: 'Bản chất giai cấp công nhân không đối lập với tính nhân dân, vì mục tiêu giải phóng của giai cấp công nhân hoàn toàn trùng khớp với mục tiêu giải phóng dân tộc.' }
+            ]
+        };
+        
+        function openFormativeQuiz(id){const q=window.FORMATIVE_QUIZZES_M3[id];if(!q)return;currentQuizData={...q,id};currentQuizAnswers={};currentQuizSubmitted=false;renderQuizModal(q);document.getElementById('quiz-modal').classList.remove('hidden');}
+        function openModuleQuiz(){currentQuizData=window.MODULE_QUIZ_M3;currentQuizAnswers={};currentQuizSubmitted=false;renderQuizModal(window.MODULE_QUIZ_M3);document.getElementById('quiz-modal').classList.remove('hidden');}
+        function renderQuizModal(quiz){document.getElementById('quiz-modal-title').textContent=quiz.title;document.getElementById('quiz-modal-sub').textContent='Cần đạt '+quiz.passingScore+'% • '+quiz.questions.length+' câu';let h='<div class="space-y-6">';quiz.questions.forEach((q,i)=>{h+=`<div class="quiz-question" data-qid="${q.id}"><p class="font-medium text-sm mb-3">${i+1}. ${q.text}</p><div class="space-y-2">`;q.options.forEach(o=>{h+=`<label class="quiz-option flex items-start gap-3 p-3 rounded-xl border border-philo-warmGold/30  cursor-pointer hover:border-philo-warmGold hover:bg-philo-warmGold/10 dark:hover:bg-blue-900/10 transition-all"><input type="radio" name="q_${q.id}" value="${o.id}" onclick="selectAnswer('${q.id}','${o.id}')" class="mt-0.5 flex-shrink-0"><span class="text-sm">${o.text}</span></label>`;});h+=`</div></div>`;});h+=`</div><div class="mt-6 flex justify-end"><button onclick="submitQuiz()" id="btn-submit-quiz" class="bg-philo-warmGold/40  text-gray-500 font-bold px-8 py-3 rounded-xl cursor-not-allowed" data-ready="false">Nộp bài</button></div>`;document.getElementById('quiz-modal-body').innerHTML=h;}
+        function selectAnswer(q,o){currentQuizAnswers[q]=o;const all=currentQuizData.questions.every(x=>currentQuizAnswers[x.id]);const b=document.getElementById('btn-submit-quiz');if(b){if(all){b.setAttribute('data-ready','true');b.className='bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-bold px-8 py-3 rounded-xl cursor-pointer';}else{b.setAttribute('data-ready','false');b.className='bg-philo-warmGold/40  text-gray-500 font-bold px-8 py-3 rounded-xl cursor-not-allowed';}}}
+        function submitQuiz(){const b=document.getElementById('btn-submit-quiz');if(b&&b.getAttribute('data-ready')!=='true')return;if(currentQuizSubmitted)return;currentQuizSubmitted=true;const quiz=currentQuizData;let correct=0;quiz.questions.forEach(q=>{const u=currentQuizAnswers[q.id],ok=u===q.correctOptionId;if(ok)correct++;const qEl=document.querySelector(`[data-qid="${q.id}"]`);if(!qEl)return;qEl.querySelectorAll('.quiz-option').forEach(l=>{const r=l.querySelector('input');if(!r)return;if(r.value===q.correctOptionId)l.classList.add('border-green-400','bg-green-50','dark:bg-green-900/20');if(r.value===u&&!ok)l.classList.add('border-red-400','bg-philo-warmGold/10','');});const re=document.createElement('div');re.className='mt-2 p-3 bg-philo-warmGold/10  rounded-lg text-xs';re.innerHTML='<strong class="text-philo-warmGold">📖 Giải thích:</strong> '+q.rationale;qEl.appendChild(re);});const score=Math.round(correct/quiz.questions.length*100),passed=score>=quiz.passingScore;M3_STATE.quizResults[quiz.id||currentQuizData.id]={score,correct,total:quiz.questions.length,passed,timestamp:Date.now()};saveM3State();const rh=`<div class="mb-6 p-4 rounded-2xl text-center ${passed?'bg-green-50 border border-green-200':'bg-philo-warmGold/10 border border-red-200'}"><p class="text-4xl mb-2">${passed?'🎉':'📚'}</p><p class="text-2xl font-bold ${passed?'text-green-600':'text-philo-warmGold'}">${score}%</p><p class="text-sm font-medium">${correct}/${quiz.questions.length} câu đúng</p><p class="text-sm mt-1 ${passed?'text-green-600':'text-philo-warmGold'}">${passed?'✅ Đạt!':'❌ Chưa đạt. Hãy ôn lại!'}</p></div>`;document.getElementById('quiz-modal-body').insertAdjacentHTML('afterbegin',rh);document.getElementById('btn-submit-quiz').textContent=passed?'Tiếp tục ✓':'Thử lại';document.getElementById('btn-submit-quiz').onclick=passed?closeQuizModal:()=>{closeQuizModal();setTimeout(()=>openModuleQuiz(),300);};if(passed&&quiz.achievement)showAchievement(quiz.achievement);}
+        function closeQuizModal(){document.getElementById('quiz-modal').classList.add('hidden');}
+        const M3_ACHIEVEMENTS={'party-builder':{name:'Party Builder',icon:'🥇',desc:'Đạt ≥75% Module 3 — +10 XP'}};
+        function showAchievement(slug){const a=M3_ACHIEVEMENTS[slug];if(!a)return;try{const s=JSON.parse(localStorage.getItem('philo_achievements')||'[]');if(!s.find(x=>x.id===slug)){s.push({id:slug,slug,earnedAt:Date.now(),module:'M3',xp:10});localStorage.setItem('philo_achievements',JSON.stringify(s));}}catch(e){}document.getElementById('achievement-icon').textContent=a.icon;document.getElementById('achievement-name').textContent=a.name;document.getElementById('achievement-desc').textContent=a.desc;const t=document.getElementById('achievement-toast');t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),4000);}
+        let aiPanelOpen=false;
+        function toggleAIPanel(){aiPanelOpen=!aiPanelOpen;const p=document.getElementById('ai-panel');if(aiPanelOpen)p.classList.remove('hidden-panel');else p.classList.add('hidden-panel');}
+        const AI_M3 = {
+            'đảng cộng sản': { answer: 'Đảng Cộng sản VN ra đời là sự kết hợp của chủ nghĩa Mác-Lênin, phong trào công nhân và phong trào yêu nước. Đảng là đội tiên phong, lấy Mác-Lênin làm nền tảng, tập trung dân chủ làm nguyên tắc tổ chức cơ bản, và là "đạo đức, văn minh".', sourceRef: 'Chương IV, Mục I — Giáo trình Tư tưởng HCM 2021' },
+            'nhà nước': { answer: 'Nhà nước VN mang bản chất giai cấp công nhân, là nhà nước của dân, do dân và vì dân. HCM đặc biệt coi trọng xây dựng Nhà nước pháp quyền thượng tôn pháp luật nhưng thấm đượm tính nhân nghĩa (pháp quyền nhân nghĩa).', sourceRef: 'Chương IV, Mục II — Giáo trình Tư tưởng HCM 2021' },
+            'trong sạch vững mạnh': { answer: 'Để Đảng và Nhà nước trong sạch vững mạnh, cần kết hợp "Xây" và "Chống". Phải chống chủ nghĩa cá nhân, đặc quyền đặc lợi, tham ô, lãng phí, quan liêu (được coi là "giặc nội xâm"). Công cụ quan trọng nhất là phê bình, tự phê bình và sự giám sát của nhân dân.', sourceRef: 'Chương IV, Mục I.2 và II.3 — Giáo trình Tư tưởng HCM 2021' },
+            'bản chất giai cấp': { answer: 'Đảng và Nhà nước ta mang bản chất giai cấp công nhân. Nhưng do lợi ích của giai cấp công nhân thống nhất với lợi ích của nhân dân lao động và toàn dân tộc, nên bản chất giai cấp hòa quyện chặt chẽ với tính nhân dân và tính dân tộc.', sourceRef: 'Chương IV, Mục I.1 và II.1 — Giáo trình Tư tưởng HCM 2021' },
+            'kiểm soát quyền lực': { answer: 'HCM yêu cầu phải kiểm soát chặt chẽ quyền lực nhà nước vì quyền lực dễ làm tha hóa con người. Biện pháp là phát huy dân chủ, dựa vào tổ chức, pháp luật nghiêm minh và sự giám sát trực tiếp từ quần chúng nhân dân.', sourceRef: 'Chương IV, Mục II.3 — Giáo trình Tư tưởng HCM 2021' }
+        };
+        function getAIResponse(q){const l=q.toLowerCase();for(const[k,r] of Object.entries(AI_M3)){if(l.includes(k))return r;}return{answer:'Module 3 tập trung: bản chất Đảng, vai trò lãnh đạo, xây dựng Đảng, bản chất Nhà nước, nguyên tắc pháp quyền, vận dụng hiện nay. Hỏi về chủ đề này nhé!',sourceRef:'Chương 3 — Giáo trình Tư tưởng HCM 2021'};}
+        function sendAIPrompt(p){document.getElementById('ai-input').value=p;sendAIMessage();}
+        function sendAIMessage(){const i=document.getElementById('ai-input'),q=i.value.trim();if(!q)return;i.value='';const h=document.getElementById('ai-chat-history');h.insertAdjacentHTML('beforeend',`<div class="flex justify-end"><div class="bg-philo-warmGold text-white rounded-xl p-3 max-w-[85%]"><p class="text-sm">${q}</p></div></div>`);const lid='l'+Date.now();h.insertAdjacentHTML('beforeend',`<div id="${lid}" class="bg-philo-warmGold/10  rounded-xl p-3"><p class="text-xs">⏳ Đang tra cứu...</p></div>`);h.scrollTop=h.scrollHeight;setTimeout(()=>{const r=getAIResponse(q);const le=document.getElementById(lid);if(le)le.outerHTML=`<div class="bg-philo-warmGold/10  rounded-xl p-3"><p class="text-xs font-bold text-philo-warmGold mb-1">🤖 AI HCM Module 3</p><p class="text-sm mb-2">${r.answer}</p><p class="text-xs text-gray-400 border-t pt-1">📖 <em>${r.sourceRef}</em></p></div>`;h.scrollTop=h.scrollHeight;},800);}
+
+        document.addEventListener('DOMContentLoaded',()=>{loadM3State();updateProgress();if(M3_STATE.completedLessons.size>0){showLesson(M3_LESSONS[Math.min(M3_STATE.completedLessons.size,5)]);}else showLesson('M3-L1');if(M3_STATE.completedLessons.size===6){const b=document.getElementById('module-quiz-banner');if(b)b.classList.remove('hidden');}M3_STATE.completedLessons.forEach(id=>{const b=document.getElementById('btn-complete-'+id);if(b){b.classList.remove('bg-philo-warmGold','hover:bg-philo-blackBurgundyGold');b.classList.add('bg-green-500','hover:bg-green-600');b.innerHTML='<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';}});});
+    </script>
+</body>
+</html>

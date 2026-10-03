@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="vi" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Module 6: Tư tưởng HCM về Con người — PhiloVerse HCM</title>
+    <meta name="description" content="Khám phá Tư tưởng Hồ Chí Minh về con người: mục tiêu, động lực của cách mạng và chiến lược trồng người trăm năm." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="js/tailwind-config-global.js"></script>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+    <style>
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        #m6-progress-bar { transition: width 0.6s ease; }
+        .reflection-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; }
+        .reflection-answer.open { max-height: 500px; opacity: 1; }
+        @keyframes badge-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        .achievement-earned { animation: badge-pulse 0.6s ease 2; }
+        .hidden-panel { transform: translateX(100%); transition: transform 0.3s ease; }
+        .lesson-header-academic { padding: 2rem; }
+            /* Lesson tab active state */
+        .lesson-tab.active-tab { border-color: #FFD34E !important; background: rgba(217,166,46,0.12) !important; box-shadow: 0 0 20px rgba(217,166,46,0.2); }
+        .lesson-tab.active-tab .tab-label { color: #FFD34E !important; }
+        .lesson-dot.completed { background-color: #D9A62E !important; }
+        /* Lesson header */
+        .lesson-header-academic { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(20,3,3,0.95) 0%, rgba(101,7,7,0.85) 100%); border-bottom: 1px solid rgba(217,166,46,0.2); }
+        /* Module page hero */
+        .module-page-hero { position: relative; padding: 3rem 2rem 2.5rem; overflow: hidden; background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%); }
+        .module-page-hero > * { position: relative; z-index: 1; }
+        .module-page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent); }</style>
+</head>
+
+<body class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+            <!-- ===== MODULE HERO HEADER ===== -->
+        <div class="module-page-hero -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="assets/images/modules/module6-development.jpg" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0D0101] via-[#3A0505]/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#140303] via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="philo-breadcrumb mb-5">
+                    <a href="home.html">TRANG CHỦ</a>
+                    <span class="sep">/</span>
+                    <a href="home.html#overview">MODULES</a>
+                    <span class="sep">/</span>
+                    <span>MODULE 6 • CON NGƯỜI MỚI XHCN</span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">school</span> MODULE 06</span>
+                        <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight text-philo-ivory mt-2">
+                            Con người mới và<br class="hidden md:block" />
+                            <span class="text-philo-gold italic">Xây dựng CNXH</span>
+                        </h1>
+                        <p class="mt-3 text-philo-ivory/70 text-sm md:text-base max-w-xl leading-relaxed">6 bài học về tư tưởng Hồ Chí Minh trong xây dựng con người mới XHCN — nền tảng phát triển đất nước.</p>
+                    </div>
+                    <div class="md:min-w-[220px]">
+                        <div class="flex items-center justify-between text-xs text-philo-ivory/60 mb-2">
+                            <span id="m6-progress-label">0 / 6 bài hoàn thành</span>
+                            <span id="m6-progress-pct" class="text-philo-gold font-bold">0%</span>
+                        </div>
+                        <div class="philo-progress-track">
+                            <div id="m6-progress-bar" class="philo-progress-fill" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-10">
+            <div class="philo-section-divider"><span class="philo-section-title">✦ 6 Bài học ✦</span></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="showLesson('M6-L1')" id="tab-M6-L1" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">👤</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.1</span><span class="text-xs font-medium tab-label text-philo-gold">Quan niệm con người</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L1"></span></button>
+                <button onclick="showLesson('M6-L2')" id="tab-M6-L2" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">🎯</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.2</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Mục tiêu cách mạng</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L2"></span></button>
+                <button onclick="showLesson('M6-L3')" id="tab-M6-L3" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">🚀</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.3</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Động lực cách mạng</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L3"></span></button>
+                <button onclick="showLesson('M6-L4')" id="tab-M6-L4" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">🌱</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.4</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Chiến lược trồng người</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L4"></span></button>
+                <button onclick="showLesson('M6-L5')" id="tab-M6-L5" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">✨</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.5</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Giáo dục toàn diện</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L5"></span></button>
+                <button onclick="showLesson('M6-L6')" id="tab-M6-L6" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl bg-philo-blackBurgundy  border-2 border-philo-warmGold/20  hover:border-emerald-500 transition-all duration-200 text-center"><span class="text-2xl">🇻🇳</span><span class="text-xs font-semibold text-philo-ivory/70">Bài 6.6</span><span class="text-xs font-medium tab-label text-philo-ivory/80">Vận dụng hiện nay</span><span class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot" id="dot-M6-L6"></span></button>
+            </div>
+        </section>
+
+        <section id="lesson-area" class="mb-16 min-h-[500px]">
+
+            <!-- BÀI 6.1 -->
+            <div id="lesson-M6-L1" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">👤</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.1 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Quan niệm của Hồ Chí Minh về con người</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu được cách Hồ Chí Minh định nghĩa con người — tính chỉnh thể, tính lịch sử, tính xã hội và sự đấu tranh giữa cái thiện và cái ác.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 rounded-r-2xl p-6">
+                            <p class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                            <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                                "Chữ người, nghĩa hẹp là gia đình, anh em, họ hàng, bầu bạn. Nghĩa rộng là đồng bào cả nước. Rộng nữa là cả loài người."
+                            </blockquote>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-teal-50 dark:bg-teal-900/10 rounded-2xl p-5 border-t-4 border-teal-500">
+                                    <h4 class="font-bold text-teal-700 mb-2">1. Là một chỉnh thể thống nhất</h4>
+                                    <p class="text-sm text-philo-ivory/70">HCM nhìn nhận con người như một chỉnh thể thống nhất về tâm lực, thể lực và các hoạt động của nó. Đặt con người trong các mối quan hệ xã hội, từ gia đình, họ hàng đến đồng bào, loài người.</p>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl p-5 border-t-4 border-emerald-500">
+                                    <h4 class="font-bold text-emerald-700 mb-2">2. Mang tính lịch sử & xã hội cụ thể</h4>
+                                    <p class="text-sm text-philo-ivory/70">Không có con người trừu tượng, chung chung, mà gắn với hoàn cảnh lịch sử cụ thể. Con người chịu sự quy định của lịch sử, vừa là chủ thể của lịch sử, vừa là sản phẩm của lịch sử.</p>
+                                </div>
+                                <div class="bg-cyan-50 dark:bg-cyan-900/10 rounded-2xl p-5 border-t-4 border-cyan-500">
+                                    <h4 class="font-bold text-cyan-700 mb-2">3. Bản chất là tổng hòa các quan hệ</h4>
+                                    <p class="text-sm text-philo-ivory/70">Kế thừa quan điểm của C.Mác, HCM cho rằng bản chất con người là tổng hòa các quan hệ xã hội. Con người mang đặc tính xã hội, được định hình bởi môi trường sống.</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-t-4 border-green-500">
+                                    <h4 class="font-bold text-green-700 mb-2">4. Con người có tốt và xấu</h4>
+                                    <p class="text-sm text-philo-ivory/70">HCM nhìn nhận con người một cách thực tế: trong mỗi con người đều có cái thiện và ác. Nhiệm vụ của cách mạng là làm cho phần tốt nảy nở như hoa mùa xuân, phần xấu mất dần đi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end mt-6">
+                            <button onclick="completeLesson('M6-L1')" id="btn-complete-M6-L1" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined">check_circle</span> Đánh dấu hoàn thành
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 6.2 -->
+            <div id="lesson-M6-L2" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🎯</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.2 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Con người là mục tiêu của cách mạng</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ mọi hoạt động cách mạng cuối cùng đều hướng đến giải phóng con người và mang lại hạnh phúc cho con người.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <div class="bg-teal-50 dark:bg-teal-900/10 rounded-2xl p-5 border-l-4 border-teal-500">
+                                <p class="text-sm text-philo-ivory/70">
+                                    Mục tiêu tối thượng của Chủ nghĩa Mác-Lênin và tư tưởng Hồ Chí Minh là giải phóng con người. Giải phóng dân tộc, giải phóng giai cấp, tiến tới giải phóng hoàn toàn con người.
+                                </p>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50  rounded-2xl p-5">
+                                    <h4 class="font-bold mb-2">Hạnh phúc tự do là tối thượng</h4>
+                                    <p class="text-sm text-philo-ivory/70">"Nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì". Độc lập chỉ là tiền đề, quyền con người và hạnh phúc thực sự mới là đích đến.</p>
+                                </div>
+                                <div class="bg-gray-50  rounded-2xl p-5">
+                                    <h4 class="font-bold mb-2">Định nghĩa mộc mạc về CNXH</h4>
+                                    <p class="text-sm text-philo-ivory/70">Chủ nghĩa xã hội theo HCM không phải là lý luận trừu tượng, mà là: "Làm sao cho nhân dân đủ ăn, đủ mặc, ngày càng sung sướng, ai nấy được đi học, ốm đau có thuốc, già không lao động được thì nghỉ...".</p>
+                                </div>
+                                <div class="bg-gray-50  rounded-2xl p-5 md:col-span-2">
+                                    <h4 class="font-bold mb-2">Xóa bỏ áp bức, bóc lột</h4>
+                                    <p class="text-sm text-philo-ivory/70">Chăm lo phát triển mọi mặt đời sống nhân dân, loại trừ những bất công. Đảm bảo dân chủ, quyền làm chủ của nhân dân trên mọi phương diện.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M6-L1')" class="text-sm text-philo-ivory/70 hover:text-emerald-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M6-L2')" id="btn-complete-M6-L2" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 6.3 -->
+            <div id="lesson-M6-L3" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🚀</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.3 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Con người là động lực của cách mạng</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nhận thức sức mạnh vĩ đại của đại đoàn kết và cách phát huy động lực con người.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 rounded-r-2xl p-6">
+                            <p class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                            <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                                "Dễ mười lần không dân cũng chịu. Khó vạn lần dân liệu cũng xong."<br><br>
+                                "Trong bầu trời không gì quý bằng nhân dân. Trong thế giới không gì mạnh bằng lực lượng đoàn kết của nhân dân."
+                            </blockquote>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-teal-50 dark:bg-teal-900/10 rounded-2xl p-5 border-t-4 border-teal-500">
+                                    <h4 class="font-bold text-teal-700 mb-2">Người sáng tạo lịch sử</h4>
+                                    <p class="text-sm text-philo-ivory/70">Con người, đặc biệt là nhân dân lao động, là lực lượng chủ yếu làm ra của cải vật chất và tinh thần. Không có sức mạnh nào to lớn bằng sức mạnh của sự đoàn kết.</p>
+                                </div>
+                                <div class="bg-cyan-50 dark:bg-cyan-900/10 rounded-2xl p-5 border-t-4 border-cyan-500">
+                                    <h4 class="font-bold text-cyan-700 mb-2">Phải được thức tỉnh & giác ngộ</h4>
+                                    <p class="text-sm text-philo-ivory/70">Không phải mọi con người đều đương nhiên trở thành động lực. Để trở thành động lực lớn, quần chúng phải được Đảng thức tỉnh, giác ngộ lý tưởng, giáo dục và tổ chức lại.</p>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl p-5 border-t-4 border-emerald-500 md:col-span-2">
+                                    <h4 class="font-bold text-emerald-700 mb-2">Lợi ích là động lực trực tiếp</h4>
+                                    <p class="text-sm text-philo-ivory/70">Động lực con người được phát huy khi có sự kết hợp hài hòa giữa lợi ích cá nhân, tập thể và xã hội. Quan tâm đến nhu cầu thiết thực, chính đáng của con người chính là chìa khóa khơi dậy sức mạnh.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M6-L2')" class="text-sm text-philo-ivory/70 hover:text-emerald-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M6-FQ1')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (6.1–6.3)</button>
+                                <button onclick="completeLesson('M6-L3')" id="btn-complete-M6-L3" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 6.4 -->
+            <div id="lesson-M6-L4" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🌱</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.4 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Chiến lược "Trồng người"</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Khám phá tầm nhìn xa trông rộng của HCM về sự cần thiết phải đào tạo thế hệ con người mới để xây dựng CNXH.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-600 rounded-r-2xl p-6">
+                            <p class="text-xs font-bold text-green-700 uppercase tracking-wider mb-2">📖 Trích dẫn kinh điển</p>
+                            <blockquote class="font-heading text-lg italic text-philo-ivory leading-relaxed">
+                                "Vì lợi ích mười năm thì phải trồng cây, vì lợi ích trăm năm thì phải trồng người."
+                            </blockquote>
+                        </div>
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">Nội dung chiến lược "Trồng người"</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50  rounded-2xl p-5 border-l-4 border-emerald-500">
+                                    <h4 class="font-bold mb-2">Yêu cầu khách quan, cấp bách</h4>
+                                    <p class="text-sm text-philo-ivory/70">Để xây dựng đất nước, cần vốn, kỹ thuật, tài nguyên. Nhưng theo HCM, "Muốn xây dựng chủ nghĩa xã hội, trước hết cần có những con người mới xã hội chủ nghĩa". Trồng người phải đi trước một bước.</p>
+                                </div>
+                                <div class="bg-gray-50  rounded-2xl p-5 border-l-4 border-teal-500">
+                                    <h4 class="font-bold mb-2">Là chiến lược trăm năm</h4>
+                                    <p class="text-sm text-philo-ivory/70">Xây dựng xã hội mới là quá trình lâu dài, xây dựng con người mới cũng không thể nóng vội. Đây là một bộ phận trọng tâm, xuyên suốt của chiến lược phát triển kinh tế-xã hội.</p>
+                                </div>
+                                <div class="bg-gray-50  rounded-2xl p-5 md:col-span-2 border-l-4 border-cyan-500">
+                                    <h4 class="font-bold mb-2">Giáo dục là quốc sách</h4>
+                                    <p class="text-sm text-philo-ivory/70">Để "trồng người", giáo dục và đào tạo đóng vai trò cực kỳ quan trọng. "Một dân tộc dốt là một dân tộc yếu". Đầu tư cho con người là sự đầu tư cốt lõi mang lại hiệu quả cao nhất cho quốc gia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button onclick="showLesson('M6-L3')" class="text-sm text-philo-ivory/70 hover:text-emerald-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <button onclick="completeLesson('M6-L4')" id="btn-complete-M6-L4" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 6.5 -->
+            <div id="lesson-M6-L5" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">✨</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.5 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Giáo dục và phát triển toàn diện</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững yêu cầu đào tạo con người có cả Đức và Tài, phát triển hài hòa 4 mặt.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">1. Đào tạo "Hồng và Chuyên"</h3>
+                            <p class="text-philo-ivory/70 leading-relaxed">Trồng người là đào tạo con người có đủ cả "Hồng" (đạo đức, phẩm chất chính trị) và "Chuyên" (năng lực, trình độ chuyên môn). "Có tài mà không có đức là người vô dụng, có đức mà không có tài thì làm việc gì cũng khó". Đức là gốc.</p>
+                            
+                            <h3 class="font-heading text-xl font-bold mt-6">2. Giáo dục toàn diện (Đức, Trí, Thể, Mỹ)</h3>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 text-center">
+                                    <span class="text-3xl block mb-2">❤️</span>
+                                    <h4 class="font-bold text-philo-warmGold mb-2">ĐỨC DỤC</h4>
+                                    <p class="text-xs text-philo-ivory/70">Rèn luyện đạo đức cách mạng, lòng yêu nước, tinh thần đoàn kết.</p>
+                                </div>
+                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 text-center">
+                                    <span class="text-3xl block mb-2">🧠</span>
+                                    <h4 class="font-bold text-philo-warmGold mb-2">TRÍ DỤC</h4>
+                                    <p class="text-xs text-philo-ivory/70">Học tập văn hóa, khoa học, có tư duy sáng tạo, độc lập.</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 text-center">
+                                    <span class="text-3xl block mb-2">💪</span>
+                                    <h4 class="font-bold text-green-600 mb-2">THỂ DỤC</h4>
+                                    <p class="text-xs text-philo-ivory/70">Rèn luyện thân thể. Khí huyết lưu thông mới có sức học tập.</p>
+                                </div>
+                                <div class="bg-purple-50 dark:bg-purple-900/10 rounded-2xl p-5 text-center">
+                                    <span class="text-3xl block mb-2">🎨</span>
+                                    <h4 class="font-bold text-purple-600 mb-2">MỸ DỤC</h4>
+                                    <p class="text-xs text-philo-ivory/70">Cảm thụ cái đẹp, có đời sống tinh thần văn minh, phong phú.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-emerald-50 dark:bg-emerald-900/10 border-l-4 border-emerald-500 rounded-2xl p-5 mt-6">
+                                <h4 class="font-bold text-emerald-700 mb-2">3. Phương pháp giáo dục</h4>
+                                <p class="text-sm text-philo-ivory/70">Học phải đi đôi với hành, giáo dục kết hợp với lao động sản xuất. Phải kết hợp chặt chẽ giữa <strong>gia đình, nhà trường và xã hội</strong> để tạo môi trường nuôi dưỡng tốt nhất.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M6-L4')" class="text-sm text-philo-ivory/70 hover:text-emerald-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M6-FQ2')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (6.4–6.5)</button>
+                                <button onclick="completeLesson('M6-L5')" id="btn-complete-M6-L5" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BÀI 6.6 -->
+            <div id="lesson-M6-L6" class="lesson-content hidden">
+                <div class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
+                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
+                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🇻🇳</span><span class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 6.6 — Module 6</span></div>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Vận dụng xây dựng con người hiện nay</h2>
+                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Liên hệ tư tưởng HCM vào thực tiễn xây dựng và phát triển nguồn nhân lực ở Việt Nam hiện nay.</p>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="space-y-5">
+                            <h3 class="font-heading text-xl font-bold">Giải pháp theo tinh thần HCM trong thời kỳ đổi mới</h3>
+                            <div class="bg-gray-50  rounded-2xl p-5 space-y-4">
+                                <div class="flex gap-3 items-start">
+                                    <span class="text-emerald-600 font-bold">1</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-philo-ivory">Xây dựng con người VN phát triển toàn diện</p>
+                                        <p class="text-sm text-philo-ivory/70 mt-1">Đảm bảo yêu cầu phát triển của thời đại mới: có tri thức khoa học, kỹ năng nghề nghiệp, thể lực tốt, bản lĩnh chính trị vững vàng, ý thức tôn trọng pháp luật và có trách nhiệm với xã hội.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 items-start">
+                                    <span class="text-emerald-600 font-bold">2</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-philo-ivory">Đổi mới căn bản, toàn diện giáo dục đào tạo</p>
+                                        <p class="text-sm text-philo-ivory/70 mt-1">Chuyển mạnh từ giáo dục truyền thụ kiến thức sang phát triển toàn diện năng lực và phẩm chất người học. Phát huy tiềm năng sáng tạo của thế hệ trẻ.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 items-start">
+                                    <span class="text-emerald-600 font-bold">3</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-philo-ivory">Xây dựng môi trường xã hội nhân văn</p>
+                                        <p class="text-sm text-philo-ivory/70 mt-1">Đẩy lùi tiêu cực, tham nhũng; chống suy thoái đạo đức. Mọi chính sách phát triển phải thực sự hướng vào nâng cao chất lượng cuộc sống (vật chất và tinh thần) cho nhân dân.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-200 rounded-2xl p-6 mt-6">
+                            <h3 class="font-heading text-lg font-bold mb-3">Hoạt động tổng kết Module 6</h3>
+                            <p class="text-sm text-philo-ivory/70">Từ bài học về "sự phát triển toàn diện", bạn thấy bản thân đang mạnh ở điểm nào và thiếu sót điểm nào trong 4 mặt: Đức - Trí - Thể - Mỹ? Hãy lập một kế hoạch nhỏ để cân bằng và hoàn thiện hơn trong học kỳ này.</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mt-8">
+                            <button onclick="showLesson('M6-L5')" class="text-sm text-philo-ivory/70 hover:text-emerald-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
+                            <div class="flex gap-3">
+                                <button onclick="openFormativeQuiz('M6-FQ3')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">quiz</span> Kiểm tra (6.6)</button>
+                                <button onclick="completeLesson('M6-L6')" id="btn-complete-M6-L6" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành Module 6</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="module-quiz-banner" class="mb-16 hidden">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-3xl p-8 text-white text-center">
+                <span class="text-5xl mb-4 block">🏆</span>
+                <h2 class="font-heading text-3xl font-bold mb-3">Bạn đã hoàn thành khóa học!</h2>
+                <p class="text-white/80 mb-6">Làm bài kiểm tra tổng kết Module 6 để nhận chứng chỉ hoàn thành môn Tư tưởng HCM.</p>
+                <button onclick="openModuleQuiz()" class="bg-[rgba(70,8,8,0.65)] backdrop-blur-md text-emerald-700 hover:bg-emerald-50 font-bold px-10 py-4 rounded-2xl transition-colors inline-flex items-center gap-2 text-lg shadow-lg">
+                    <span class="material-symbols-outlined">school</span> Bài kiểm tra cuối cùng
+                </button>
+            </div>
+        </section>
+
+        <div class="fixed bottom-6 right-6 z-40">
+            <button onclick="toggleAIPanel()" class="w-14 h-14 rounded-full bg-emerald-600 text-white shadow-xl hover:bg-emerald-700 flex items-center justify-center transition-all hover:scale-105">
+                <span class="material-symbols-outlined">smart_toy</span>
+            </button>
+        </div>
+
+        <div id="ai-panel" class="hidden-panel fixed right-0 top-0 h-full w-80 md:w-96 bg-philo-blackBurgundy  border-l border-philo-warmGold/30  shadow-2xl z-50 flex flex-col">
+            <div class="p-4 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div><h3 class="font-bold text-sm">🤖 AI Trợ giảng — Module 6 HCM</h3><p class="text-xs text-philo-ivory/70">Giáo trình Tư tưởng HCM 2021, Chương 6</p></div>
+                <button onclick="toggleAIPanel()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="ai-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3">
+                    <p class="text-xs font-bold text-emerald-600 mb-1">🤖 AI HCM Module 6</p>
+                    <p class="text-sm text-philo-ivory/70">Xin chào! Đây là phần học cuối cùng về triết lý Con người. Bạn cần hỏi gì?</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-xs text-gray-400 font-medium">💡 Câu hỏi gợi ý:</p>
+                    <button onclick="sendAIPrompt('Bản chất con người theo HCM là gì?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Bản chất con người?</button>
+                    <button onclick="sendAIPrompt('Mục tiêu và động lực của cách mạng là gì?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Con người là mục tiêu & động lực?</button>
+                    <button onclick="sendAIPrompt('Chiến lược trồng người của HCM là gì?')" class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Chiến lược "Trồng người"?</button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-philo-warmGold/30 ">
+                <div class="flex gap-2">
+                    <input id="ai-input" type="text" placeholder="Hỏi về Module 6..." class="flex-1 text-sm border border-philo-warmGold/30  rounded-xl px-3 py-2 bg-gray-50  focus:outline-none focus:ring-2 focus:ring-emerald-500/30" onkeypress="if(event.key==='Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()" class="bg-emerald-600 text-white rounded-xl px-4 hover:bg-emerald-700 transition-colors"><span class="material-symbols-outlined text-sm">send</span></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="quiz-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-philo-blackBurgundy  rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-philo-warmGold/30  flex items-center justify-between">
+                <div><h2 id="quiz-modal-title" class="text-xl font-bold">Kiểm tra</h2><p id="quiz-modal-sub" class="text-sm text-philo-ivory/70"></p></div>
+                <button onclick="closeQuizModal()" class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span class="material-symbols-outlined text-gray-500">close</span></button>
+            </div>
+            <div id="quiz-modal-body" class="p-6"></div>
+        </div>
+    </div>
+
+    <div id="achievement-toast" class="hidden fixed top-6 right-6 z-50 max-w-sm">
+        <div class="bg-gradient-to-r from-emerald-400 to-teal-400 rounded-2xl p-4 shadow-2xl flex items-center gap-4 achievement-earned">
+            <span id="achievement-icon" class="text-4xl">🌟</span>
+            <div><p class="font-bold text-emerald-900 text-sm">Thành tích mới!</p><p id="achievement-name" class="font-heading font-bold text-emerald-900"></p><p id="achievement-desc" class="text-xs text-emerald-800"></p></div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/search-data-global.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/search-init.js"></script>
+
+    <script>
+        const M6_STATE={completedLessons:new Set(),currentLesson:null,quizResults:{}};
+        const M6_LESSONS=['M6-L1','M6-L2','M6-L3','M6-L4','M6-L5','M6-L6'];
+        function loadM6State(){try{const s=JSON.parse(localStorage.getItem('hcm_quiz_results')||'{}');if(s.M6_completed)s.M6_completed.forEach(id=>M6_STATE.completedLessons.add(id));M6_STATE.quizResults=s.M6_quiz||{};}catch(e){}}
+        function saveM6State(){try{const s=JSON.parse(localStorage.getItem('hcm_quiz_results')||'{}');s.M6_completed=[...M6_STATE.completedLessons];s.M6_quiz=M6_STATE.quizResults;localStorage.setItem('hcm_quiz_results',JSON.stringify(s));}catch(e){}}
+                        function showLesson(lessonId) {
+            document.querySelectorAll('.lesson-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lesson-tab').forEach(el => {
+                el.classList.remove('active-tab');
+                el.style.borderColor = 'rgba(217,166,46,0.2)';
+                const label = el.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-gold');
+                    label.classList.add('text-philo-ivory/80');
+                }
+            });
+
+            const target = document.getElementById('lesson-' + lessonId);
+            if (target) {
+                target.classList.remove('hidden');
+                M6_STATE.currentLesson = lessonId;
+            }
+
+            const tab = document.getElementById('tab-' + lessonId);
+            if (tab) {
+                tab.classList.add('active-tab');
+                tab.style.borderColor = '#FFD34E';
+                const label = tab.querySelectorAll('span')[2];
+                if (label) {
+                    label.classList.remove('text-philo-ivory/80');
+                    label.classList.add('text-philo-gold');
+                }
+            }
+
+            const area = document.getElementById('lesson-area');
+            if (area) {
+                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+function completeLesson(id){M6_STATE.completedLessons.add(id);saveM6State();updateProgress();const d=document.getElementById('dot-'+id);if(d){d.classList.remove('bg-philo-warmGold/40','');d.classList.add('bg-emerald-500');}const b=document.getElementById('btn-complete-'+id);if(b){b.classList.remove('bg-emerald-600','hover:bg-emerald-700');b.classList.add('bg-green-500','hover:bg-green-600');b.innerHTML='<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';}const idx=M6_LESSONS.indexOf(id);if(idx>=0&&idx<M6_LESSONS.length-1)setTimeout(()=>showLesson(M6_LESSONS[idx+1]),500);if(M6_STATE.completedLessons.size===6){const banner=document.getElementById('module-quiz-banner');if(banner)banner.classList.remove('hidden');}}
+        function updateProgress(){const c=M6_STATE.completedLessons.size,p=Math.round(c/6*100);document.getElementById('m6-progress-label').textContent=c+' / 6 bài hoàn thành';document.getElementById('m6-progress-pct').textContent=p+'%';document.getElementById('m6-progress-bar').style.width=p+'%';M6_STATE.completedLessons.forEach(id=>{const d=document.getElementById('dot-'+id);if(d){d.classList.remove('bg-philo-warmGold/40','');d.classList.add('bg-emerald-500');}});}
+        function toggleReflection(btn){const a=btn.nextElementSibling,i=btn.querySelector('.material-symbols-outlined');if(a.classList.contains('open')){a.classList.remove('open');i.textContent='expand_more';}else{a.classList.add('open');i.textContent='expand_less';}}
+
+        let currentQuizData=null,currentQuizAnswers={},currentQuizSubmitted=false;
+        window.FORMATIVE_QUIZZES_M6={
+            'M6-FQ1':{title:'Kiểm tra — Bài 6.1 đến 6.3',passingScore:70,questions:[
+                {id:'q1',text:'HCM nhận định bản chất con người là gì?',options:[{id:'a',text:'Mang tính sinh học thuần túy'},{id:'b',text:'Tổng hòa các quan hệ xã hội, mang tính lịch sử cụ thể'},{id:'c',text:'Cố định và bất biến'},{id:'d',text:'Hoàn toàn do bẩm sinh'}],correctOptionId:'b',rationale:'HCM kế thừa quan điểm của C.Mác: Bản chất con người không phải trừu tượng cố hữu mà là tổng hòa các quan hệ xã hội, chịu sự quy định của lịch sử.'},
+                {id:'q2',text:'Theo HCM, nhiệm vụ đối với phần thiện và phần ác trong con người là gì?',options:[{id:'a',text:'Chấp nhận cả hai'},{id:'b',text:'Làm cho phần tốt nảy nở như hoa mùa xuân, phần xấu mất dần đi'},{id:'c',text:'Dùng hình phạt nặng với phần xấu'},{id:'d',text:'Người cách mạng không có phần ác'}],correctOptionId:'b',rationale:'HCM nhìn nhận thực tế con người có thiện và ác, do đó cần phải giáo dục, tạo môi trường để hướng thiện, làm cái xấu tự triệt tiêu.'},
+                {id:'q3',text:'Tại sao nói con người là mục tiêu của cách mạng?',options:[{id:'a',text:'Vì giải phóng và mang lại hạnh phúc cho con người là lý tưởng cao nhất của cách mạng'},{id:'b',text:'Vì cách mạng cần người thực hiện'},{id:'c',text:'Vì để phát triển kinh tế nhanh'},{id:'d',text:'Để giành lại lãnh thổ'}],correctOptionId:'a',rationale:'Mục đích cuối cùng của cách mạng là đem lại ấm no, tự do, hạnh phúc cho con người. "Nếu nước độc lập mà dân không hưởng hạnh phúc... thì độc lập chẳng có nghĩa lý gì".'},
+                {id:'q4',text:'Để phát huy động lực con người, cần kết hợp những yếu tố nào?',options:[{id:'a',text:'Chỉ dùng mệnh lệnh'},{id:'b',text:'Giải quyết hài hòa lợi ích cá nhân, tập thể và xã hội; giáo dục giác ngộ'},{id:'c',text:'Kêu gọi tinh thần suông'},{id:'d',text:'Dùng vật chất đơn thuần'}],correctOptionId:'b',rationale:'Động lực đến từ sức mạnh đại đoàn kết và việc chăm lo thiết thực đến lợi ích chính đáng của con người.'}
+            ]},
+            'M6-FQ2':{title:'Kiểm tra — Bài 6.4 & 6.5',passingScore:70,questions:[
+                {id:'q5',text:'"Trồng người" được HCM định nghĩa là công việc có tính chất gì?',options:[{id:'a',text:'Làm trong thời gian ngắn'},{id:'b',text:'Là yêu cầu khách quan, vừa cấp bách vừa lâu dài (chiến lược trăm năm)'},{id:'c',text:'Chỉ dành cho cán bộ'},{id:'d',text:'Có thể nhờ nước ngoài làm hộ'}],correctOptionId:'b',rationale:'Trồng người (giáo dục đào tạo) là chiến lược lâu dài, là lợi ích trăm năm, vì "Muốn xây dựng CNXH trước hết phải có con người mới XHCN".'},
+                {id:'q6',text:'Theo HCM, giáo dục toàn diện bao gồm các yếu tố nào?',options:[{id:'a',text:'Trí tuệ và sức khỏe'},{id:'b',text:'Đức, Trí, Thể, Mỹ'},{id:'c',text:'Chuyên môn kỹ thuật cao'},{id:'d',text:'Đạo đức và lao động'}],correctOptionId:'b',rationale:'Phát triển toàn diện đòi hỏi phải giáo dục cả đạo đức (Đức), kiến thức (Trí), sức khỏe (Thể) và văn hóa nghệ thuật (Mỹ).'},
+                {id:'q7',text:'Mối quan hệ giữa "Hồng" và "Chuyên" (Đức và Tài) là gì?',options:[{id:'a',text:'Chuyên là gốc'},{id:'b',text:'Đức là gốc, tài và đức phải thống nhất chặt chẽ'},{id:'c',text:'Chỉ cần đạo đức tốt là đủ'},{id:'d',text:'Tài năng tự sinh ra đạo đức'}],correctOptionId:'b',rationale:'Người cách mạng phải có cả tài và đức, thiếu một mặt đều không được, trong đó Đạo đức đóng vai trò là gốc, là nền tảng.'}
+            ]},
+            'M6-FQ3':{title:'Kiểm tra — Bài 6.6',passingScore:70,questions:[
+                {id:'q8',text:'Giải pháp trọng tâm hiện nay để phát triển nguồn nhân lực theo tư tưởng HCM là gì?',options:[{id:'a',text:'Nhập khẩu lao động'},{id:'b',text:'Đổi mới căn bản, toàn diện giáo dục đào tạo, phát triển năng lực người học'},{id:'c',text:'Cắt giảm chi phí y tế'},{id:'d',text:'Chỉ tập trung đại học'}],correctOptionId:'b',rationale:'Theo tinh thần Nghị quyết TW, việc đổi mới căn bản và toàn diện giáo dục, chuyển từ truyền thụ kiến thức sang phát triển năng lực và phẩm chất là cốt lõi để xây dựng con người hiện đại.'}
+            ]}
+        };
+
+        window.MODULE_QUIZ_M6={title:'Kiểm tra tổng kết Module 6 — Triết lý Con người',passingScore:75,achievement:'human-visionary',
+            questions:[
+                {id:'m1',text:'Bản chất con người theo quan điểm Hồ Chí Minh là gì?',options:[{id:'a',text:'Mang bản tính sinh học thuần túy'},{id:'b',text:'Là tổng hòa các quan hệ xã hội, mang tính lịch sử cụ thể'},{id:'c',text:'Tính phi lịch sử'},{id:'d',text:'Cố định, không thể thay đổi'}],correctOptionId:'b'},
+                {id:'m2',text:'Trong sự nghiệp cách mạng, con người đóng vai trò là gì?',options:[{id:'a',text:'Là công cụ của Đảng'},{id:'b',text:'Vừa là mục tiêu, vừa là động lực của cách mạng'},{id:'c',text:'Người đứng ngoài cuộc'},{id:'d',text:'Lực lượng bị động'}],correctOptionId:'b'},
+                {id:'m3',text:'Tại sao nói con người là mục tiêu của cách mạng?',options:[{id:'a',text:'Vì cách mạng cần sức người'},{id:'b',text:'Vì mục đích cuối cùng của cách mạng là giải phóng con người, đem lại tự do, hạnh phúc'},{id:'c',text:'Để phát triển công nghiệp'},{id:'d',text:'Để giành lại lãnh thổ'}],correctOptionId:'b'},
+                {id:'m4',text:'Ý nghĩa của câu "Dễ mười lần không dân cũng chịu. Khó vạn lần dân liệu cũng xong"?',options:[{id:'a',text:'Dân hay đòi hỏi'},{id:'b',text:'Khẳng định vai trò nhân dân là người sáng tạo lịch sử, là động lực to lớn của cách mạng'},{id:'c',text:'Cách mạng rất khó khăn'},{id:'d',text:'Lãnh đạo không cần làm gì'}],correctOptionId:'b'},
+                {id:'m5',text:'Yêu cầu của chiến lược "Trồng người" theo HCM?',options:[{id:'a',text:'Đào tạo nhanh chóng để phục vụ kinh tế'},{id:'b',text:'Là lợi ích trăm năm, chiến lược quốc gia cấp bách và lâu dài'},{id:'c',text:'Chỉ đào tạo giới tinh hoa'},{id:'d',text:'Dựa hoàn toàn vào nước ngoài'}],correctOptionId:'b'},
+                {id:'m6',text:'Theo HCM, muốn xây dựng chủ nghĩa xã hội trước hết phải có gì?',options:[{id:'a',text:'Kinh tế phát triển'},{id:'b',text:'Có những con người mới xã hội chủ nghĩa'},{id:'c',text:'Máy móc hiện đại'},{id:'d',text:'Viện trợ quốc tế'}],correctOptionId:'b'},
+                {id:'m7',text:'Để phát triển con người toàn diện, giáo dục phải bao gồm:',options:[{id:'a',text:'Kinh tế, pháp luật'},{id:'b',text:'Đức, Trí, Thể, Mỹ'},{id:'c',text:'Lý luận và thực tiễn'},{id:'d',text:'Khoa học và công nghệ'}],correctOptionId:'b'},
+                {id:'m8',text:'Mối quan hệ giữa "Hồng" (Đức) và "Chuyên" (Tài)?',options:[{id:'a',text:'Có tài là có đức'},{id:'b',text:'Phải thống nhất, trong đó Đức là gốc, Tài là biểu hiện'},{id:'c',text:'Chỉ cần đức'},{id:'d',text:'Không liên quan nhau'}],correctOptionId:'b'},
+                {id:'m9',text:'Động lực trực tiếp để con người hành động và cống hiến là gì?',options:[{id:'a',text:'Sự sợ hãi'},{id:'b',text:'Giải quyết hài hòa lợi ích cá nhân, tập thể và xã hội, chăm lo đời sống nhân dân'},{id:'c',text:'Lệnh hành chính'},{id:'d',text:'Lời hứa tương lai xa xôi'}],correctOptionId:'b'},
+                {id:'m10',text:'Giải pháp trọng tâm hiện nay để xây dựng con người VN theo tư tưởng HCM?',options:[{id:'a',text:'Xây nhà ở xã hội'},{id:'b',text:'Đổi mới căn bản, toàn diện giáo dục đào tạo và xây dựng môi trường xã hội nhân văn'},{id:'c',text:'Mở rộng hợp tác quốc tế'},{id:'d',text:'Tăng lương cơ bản'}],correctOptionId:'b'}
+            ]
+        };
+
+        function openFormativeQuiz(id){const q=window.FORMATIVE_QUIZZES_M6[id];if(!q)return;currentQuizData={...q,id};currentQuizAnswers={};currentQuizSubmitted=false;renderQuizModal(q);document.getElementById('quiz-modal').classList.remove('hidden');}
+        function openModuleQuiz(){currentQuizData=window.MODULE_QUIZ_M6;currentQuizAnswers={};currentQuizSubmitted=false;renderQuizModal(window.MODULE_QUIZ_M6);document.getElementById('quiz-modal').classList.remove('hidden');}
+        function renderQuizModal(quiz){document.getElementById('quiz-modal-title').textContent=quiz.title;document.getElementById('quiz-modal-sub').textContent='Cần đạt '+quiz.passingScore+'% • '+quiz.questions.length+' câu';let h='<div class="space-y-6">';quiz.questions.forEach((q,i)=>{h+=`<div class="quiz-question" data-qid="${q.id}"><p class="font-medium text-sm mb-3">${i+1}. ${q.text}</p><div class="space-y-2">`;q.options.forEach(o=>{h+=`<label class="quiz-option flex items-start gap-3 p-3 rounded-xl border border-philo-warmGold/30  cursor-pointer hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 transition-all"><input type="radio" name="q_${q.id}" value="${o.id}" onclick="selectAnswer('${q.id}','${o.id}')" class="mt-0.5 flex-shrink-0"><span class="text-sm">${o.text}</span></label>`;});h+=`</div></div>`;});h+=`</div><div class="mt-6 flex justify-end"><button onclick="submitQuiz()" id="btn-submit-quiz" class="bg-philo-warmGold/40  text-gray-500 font-bold px-8 py-3 rounded-xl cursor-not-allowed" data-ready="false">Nộp bài</button></div>`;document.getElementById('quiz-modal-body').innerHTML=h;}
+        function selectAnswer(q,o){currentQuizAnswers[q]=o;const all=currentQuizData.questions.every(x=>currentQuizAnswers[x.id]);const b=document.getElementById('btn-submit-quiz');if(b){if(all){b.setAttribute('data-ready','true');b.className='bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3 rounded-xl cursor-pointer';}else{b.setAttribute('data-ready','false');b.className='bg-philo-warmGold/40  text-gray-500 font-bold px-8 py-3 rounded-xl cursor-not-allowed';}}}
+        function submitQuiz(){const b=document.getElementById('btn-submit-quiz');if(b&&b.getAttribute('data-ready')!=='true')return;if(currentQuizSubmitted)return;currentQuizSubmitted=true;const quiz=currentQuizData;let correct=0;quiz.questions.forEach(q=>{const u=currentQuizAnswers[q.id],ok=u===q.correctOptionId;if(ok)correct++;const qEl=document.querySelector(`[data-qid="${q.id}"]`);if(!qEl)return;qEl.querySelectorAll('.quiz-option').forEach(l=>{const r=l.querySelector('input');if(!r)return;if(r.value===q.correctOptionId)l.classList.add('border-green-400','bg-green-50','dark:bg-green-900/20');if(r.value===u&&!ok)l.classList.add('border-red-400','bg-philo-warmGold/10','');});if(q.rationale){const re=document.createElement('div');re.className='mt-2 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg text-xs';re.innerHTML='<strong class="text-emerald-700">📖 Giải thích:</strong> '+q.rationale;qEl.appendChild(re);}});const score=Math.round(correct/quiz.questions.length*100),passed=score>=quiz.passingScore;M6_STATE.quizResults[quiz.id||'module']={score,correct,total:quiz.questions.length,passed,timestamp:Date.now()};saveM6State();const rh=`<div class="mb-6 p-4 rounded-2xl text-center ${passed?'bg-green-50 border border-green-200':'bg-philo-warmGold/10 border border-red-200'}"><p class="text-4xl mb-2">${passed?'🎉🎓':'📚'}</p><p class="text-2xl font-bold ${passed?'text-green-600':'text-philo-warmGold'}">${score}%</p><p class="text-sm font-medium">${correct}/${quiz.questions.length} câu đúng</p><p class="text-sm mt-1 ${passed?'text-green-600':'text-philo-warmGold'}">${passed?'✅ Đạt chứng chỉ!':'❌ Chưa đạt. Hãy thử lại!'}</p></div>`;document.getElementById('quiz-modal-body').insertAdjacentHTML('afterbegin',rh);document.getElementById('btn-submit-quiz').textContent=passed?'Hoàn thành Khóa học ✓':'Thử lại';document.getElementById('btn-submit-quiz').onclick=passed?closeQuizModal:()=>{closeQuizModal();setTimeout(()=>openModuleQuiz(),300);};if(passed&&quiz.achievement)showAchievement(quiz.achievement);}
+        function closeQuizModal(){document.getElementById('quiz-modal').classList.add('hidden');}
+        const M6_ACHIEVEMENTS={'human-visionary':{name:'Human Visionary',icon:'🎓',desc:'Hoàn thành Module 6 — Đạt chứng chỉ Tổng kết Khóa học HCM'}};
+        function showAchievement(slug){const a=M6_ACHIEVEMENTS[slug];if(!a)return;try{const s=JSON.parse(localStorage.getItem('philo_achievements')||'[]');if(!s.find(x=>x.id===slug)){s.push({id:slug,slug,earnedAt:Date.now(),module:'M6',xp:20});localStorage.setItem('philo_achievements',JSON.stringify(s));}}catch(e){}document.getElementById('achievement-icon').textContent=a.icon;document.getElementById('achievement-name').textContent=a.name;document.getElementById('achievement-desc').textContent=a.desc;const t=document.getElementById('achievement-toast');t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),4000);}
+        let aiPanelOpen=false;
+        function toggleAIPanel(){aiPanelOpen=!aiPanelOpen;const p=document.getElementById('ai-panel');if(aiPanelOpen)p.classList.remove('hidden-panel');else p.classList.add('hidden-panel');}
+        const AI_M6={'mục tiêu':{answer:'Con người là mục tiêu của cách mạng vì đích đến cuối cùng là giải phóng con người, mang lại ấm no, tự do, hạnh phúc. "Nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì."',sourceRef:'Chương 6, mục III — Giáo trình Tư tưởng HCM 2021'},'động lực':{answer:'Con người là động lực vì cách mạng là sự nghiệp của quần chúng. Lịch sử do nhân dân sáng tạo ra. Phải khơi dậy sức mạnh đại đoàn kết toàn dân và quan tâm lợi ích thiết thực của nhân dân thì mới tạo được động lực.',sourceRef:'Chương 6, mục III — Giáo trình Tư tưởng HCM 2021'},'trồng người':{answer:'"Vì lợi ích mười năm thì phải trồng cây, vì lợi ích trăm năm thì phải trồng người". Đây là chiến lược giáo dục lâu dài, quốc sách hàng đầu. Muốn có CNXH thì phải có con người mới XHCN.',sourceRef:'Chương 6, mục III — Giáo trình Tư tưởng HCM 2021'},'toàn diện':{answer:'Phát triển toàn diện là giáo dục đủ 4 mặt: Đức (đạo đức), Trí (kiến thức, tư duy), Thể (sức khỏe), Mỹ (thẩm mỹ, văn hóa). Thiếu mặt nào con người cũng không hoàn thiện. Trong đó Đức là gốc.',sourceRef:'Chương 6, mục III — Giáo trình Tư tưởng HCM 2021'},'bản chất':{answer:'Hồ Chí Minh mượn quan điểm của C.Mác: "Bản chất con người là tổng hòa các quan hệ xã hội". Con người mang tính lịch sử, cụ thể, không có con người trừu tượng phi lịch sử.',sourceRef:'Chương 6, mục III — Giáo trình Tư tưởng HCM 2021'}};
+        function getAIResponse(q){const l=q.toLowerCase();for(const[k,r] of Object.entries(AI_M6)){if(l.includes(k))return r;}return{answer:'Module 6 nói về triết lý con người: Con người là mục tiêu và động lực, chiến lược trồng người trăm năm, sự phát triển toàn diện (Đức-Trí-Thể-Mỹ) và quan niệm về bản chất con người. Bạn có câu hỏi cụ thể nào không?',sourceRef:'Chương 6 — Giáo trình Tư tưởng HCM 2021'};}
+        function sendAIPrompt(p){document.getElementById('ai-input').value=p;sendAIMessage();}
+        function sendAIMessage(){const i=document.getElementById('ai-input'),q=i.value.trim();if(!q)return;i.value='';const h=document.getElementById('ai-chat-history');h.insertAdjacentHTML('beforeend',`<div class="flex justify-end"><div class="bg-emerald-600 text-white rounded-xl p-3 max-w-[85%]"><p class="text-sm">${q}</p></div></div>`);const lid='l'+Date.now();h.insertAdjacentHTML('beforeend',`<div id="${lid}" class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs">⏳ Đang phân tích...</p></div>`);h.scrollTop=h.scrollHeight;setTimeout(()=>{const r=getAIResponse(q);const le=document.getElementById(lid);if(le)le.outerHTML=`<div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs font-bold text-emerald-600 mb-1">🤖 AI HCM Module 6</p><p class="text-sm mb-2">${r.answer}</p><p class="text-xs text-gray-400 border-t pt-1">📖 <em>${r.sourceRef}</em></p></div>`;h.scrollTop=h.scrollHeight;},800);}
+        document.addEventListener('DOMContentLoaded',()=>{loadM6State();updateProgress();if(M6_STATE.completedLessons.size>0){showLesson(M6_LESSONS[Math.min(M6_STATE.completedLessons.size,5)]);}else showLesson('M6-L1');if(M6_STATE.completedLessons.size===6){const b=document.getElementById('module-quiz-banner');if(b)b.classList.remove('hidden');}M6_STATE.completedLessons.forEach(id=>{const b=document.getElementById('btn-complete-'+id);if(b){b.classList.remove('bg-emerald-600','hover:bg-emerald-700');b.classList.add('bg-green-500','hover:bg-green-600');b.innerHTML='<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓';}});});
+    </script>
+</body>
+</html>

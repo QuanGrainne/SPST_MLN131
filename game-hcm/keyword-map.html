@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#19130d" />
+  <title>Dòng Mực Lịch Sử — Bản đồ tư tưởng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=Libre+Franklin:wght@500;700;900&family=Noto+Serif:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="keyword-map.css?v=1" />
+<link rel="stylesheet" href="../css/game-back.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Dòng Mực Lịch Sử">
+      <span class="brand-mark">DM</span>
+      <span>DÒNG MỰC <b>LỊCH SỬ</b></span>
+    </a>
+    <div class="topbar-center">
+      <span>MÀN BONUS</span>
+      <strong>BẢN ĐỒ TƯ TƯỞNG HỒ CHÍ MINH</strong>
+    </div>
+    <button class="header-btn" id="newRoundTop">BỘ MỚI ↻</button>
+  </header>
+
+  <main class="map-shell">
+    <aside class="mission-panel">
+      <p class="eyebrow">HỒ SƠ TỪ KHÓA</p>
+      <h1>BẢN<br><i>—</i> ĐỒ</h1>
+      <p class="mission-copy">
+        Mỗi lượt tạo một bộ từ khóa khác nhau. Hãy đưa từng keyword vào đúng nhánh tư tưởng.
+      </p>
+      <div class="rule"></div>
+      <div class="stat"><span>BỘ</span><strong id="roundCode">#----</strong></div>
+      <div class="stat"><span>ĐÃ XẾP</span><strong><b id="placedCount">0</b> / <b id="totalCount">12</b></strong></div>
+      <div class="stat"><span>ĐIỂM</span><strong id="score">0000</strong></div>
+      <div class="stat"><span>SAI</span><strong id="mistakes">0</strong></div>
+      <div class="combo" id="hintCount">GỢI Ý ×0</div>
+      <p class="source-note">DỮ KIỆN HỌC TẬP: GIÁO TRÌNH TƯ TƯỞNG HỒ CHÍ MINH — CHƯƠNG III–VI</p>
+    </aside>
+
+    <section class="board-wrap">
+      <div class="board-head">
+        <div>
+          <p class="eyebrow">NHIỆM VỤ PHÂN LOẠI</p>
+          <h2>GHÉP KEYWORD VÀO ĐÚNG NHÁNH</h2>
+          <p>PC: kéo thả. Điện thoại: chạm keyword rồi chạm vào nhánh.</p>
+        </div>
+        <div class="board-actions">
+          <button id="hintBtn" class="secondary">GỢI Ý −20</button>
+          <button id="checkBtn" class="primary">KIỂM TRA</button>
+        </div>
+      </div>
+
+      <section class="keyword-bank" aria-label="Kho từ khóa">
+        <div class="bank-title">
+          <span>KHO KEYWORD</span>
+          <b id="selectedLabel">Chọn hoặc kéo một keyword</b>
+        </div>
+        <div class="keyword-pool" id="keywordPool"></div>
+      </section>
+
+      <div class="core-node">
+        <span>TRUNG TÂM</span>
+        <strong>TƯ TƯỞNG HỒ CHÍ MINH</strong>
+      </div>
+
+      <section class="branches" id="branches" aria-label="Các nhánh tư tưởng"></section>
+
+      <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+
+      <div class="bottom-actions">
+        <button id="sameRoundBtn" class="secondary">LÀM LẠI BỘ NÀY</button>
+        <button id="newRoundBtn" class="primary">TẠO BỘ KEYWORD MỚI</button>
+        <a href="index.html" class="link-btn">VỀ SỐ BÁO 01</a>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="result" id="resultDialog">
+    <p class="eyebrow">BẢN ĐỒ HOÀN TẤT</p>
+    <h2>12 KEYWORD<br>ĐÃ VỀ ĐÚNG NHÁNH</h2>
+    <div class="result-grid">
+      <span>ĐIỂM<b id="finalScore">0</b></span>
+      <span>SAI<b id="finalMistakes">0</b></span>
+      <span>GỢI Ý<b id="finalHints">0</b></span>
+    </div>
+    <button id="resultNewRound">CHƠI BỘ KEYWORD MỚI →</button>
+    <button class="result-close" id="resultClose">XEM LẠI BẢN ĐỒ</button>
+  </dialog>
+
+  <script src="keyword-map.js?v=1"></script>
+<a class="game-back-btn" href="../games.html" aria-label="Về trang game">← VỀ TRANG GAME</a>
+</body>
+</html>

@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Trò chuyện với AI Assistants - PhiloVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:wght@700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config-global.js"></script>
+  <link rel="stylesheet" href="css/philoverse-ui.css" />
+  <style>
+    /* AI Page hero */
+    .ai-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%);
+      padding: 3rem 1.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+      border-radius: 1.5rem;
+    }
+    .ai-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('assets/images/shared/ai-library-bg.jpg');
+      background-size: cover; background-position: center;
+      opacity: 0.2;
+    }
+    .ai-hero > * { position: relative; z-index: 1; }
+    .ai-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,166,46,0.4), transparent);
+    }
+
+    /* Markdown Styles for Chat Bubbles */
+    .chat-bubble-markdown p { margin-bottom: 0.5rem; }
+    .chat-bubble-markdown p:last-child { margin-bottom: 0; }
+    .chat-bubble-markdown ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+    .chat-bubble-markdown ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+    .chat-bubble-markdown li { margin-bottom: 0.25rem; }
+    .chat-bubble-markdown strong { font-weight: 700; color: inherit; }
+    .chat-bubble-markdown em { font-style: italic; }
+    .chat-bubble-markdown h3 { font-weight: bold; margin-top: 0.5rem; margin-bottom: 0.25rem; font-size: 1.05em; }
+  </style>
+  <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+    window.GoogleGenerativeAI = GoogleGenerativeAI;
+  </script>
+</head>
+
+<body class="bg-philo-blackBurgundy relative text-philo-ivory font-body min-h-screen transition-colors duration-500 flex flex-col overflow-x-hidden">
+  <div id="header-placeholder"></div>
+  <main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-10 py-10">
+    <!-- AI Library Hero -->
+    <section class="ai-hero mb-10">
+      <div class="philo-breadcrumb mb-4">
+        <a href="home.html">TRANG CHỦ</a>
+        <span class="sep">/</span>
+        <span>TRÒ CHUYỆN VỚI AI ASSISTANTS</span>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="p-3 bg-philo-gold/10 border border-philo-gold/25 rounded-xl">
+          <span class="material-symbols-outlined text-philo-gold text-3xl">auto_awesome</span>
+        </div>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-heading font-bold text-philo-ivory leading-tight max-w-3xl">
+            Hỏi đáp với AI Assistants<br />
+            <span class="text-philo-gold italic font-normal text-2xl">dựa trên Giáo trình Tư tưởng Hồ Chí Minh</span>
+          </h1>
+          <p class="text-philo-ivory/60 max-w-3xl mt-2 text-sm">
+            Đặt câu hỏi và nhận phản hồi dựa trên tài liệu chính thức
+            <span class="font-semibold text-philo-ivory">"​Giáo trình Tư tưởng Hồ Chí Minh."​</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <section class="lg:col-span-4 space-y-6">
+        <div class="philo-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <div class="p-1.5 bg-philo-gold/10 text-philo-gold rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">history</span>
+              </div>
+              <h2 class="text-base font-bold text-philo-ivory font-heading">Lịch sử trò chuyện</h2>
+            </div>
+            <button id="clear-history-btn"
+              class="text-xs font-semibold text-philo-gold/60 hover:text-philo-gold transition-colors" type="button">Xóa</button>
+          </div>
+          <div id="history-list" class="space-y-3"></div>
+          <p id="history-empty" class="text-sm text-philo-ivory/50">Chưa có câu hỏi nào.</p>
+        </div>
+        <div class="philo-card p-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="p-2 bg-primary/10 text-primary  rounded-lg">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <h2 class="text-lg font-bold text-philo-ivory font-heading">Nguồn dữ liệu</h2>
+          </div>
+          <p class="text-sm text-philo-ivory/70 leading-relaxed">
+            Sử dụng dữ liệu OCR từ:
+            <span class="font-semibold">1. Giao trinh Tu tuong Ho Chi Minh.pdf</span> (152 trang).
+          </p>
+        </div>
+
+        <div class="bg-philo-blackBurgundy  rounded-2xl p-6 shadow-cinematic border border-philo-warmGold/30 relative">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="p-2 bg-philo-warmGold/10 text-philo-warmGold rounded-lg">
+              <span class="material-symbols-outlined">format_list_bulleted</span>
+            </div>
+            <h2 class="text-lg font-bold text-philo-ivory font-heading">Mục lục giáo trình</h2>
+          </div>
+          <div class="flex flex-col gap-2 text-sm text-philo-ivory/70 font-body" id="chapter-list">
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 1: Khái niệm, đối tượng, phương pháp nghiên cứu và ý nghĩa học tập môn Tư tưởng Hồ Chí Minh">
+              Chương 1: Khái niệm, đối tượng, phương pháp...
+            </button>
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 2: Cơ sở, quá trình hình thành và phát triển Tư tưởng Hồ Chí Minh">
+              Chương 2: Cơ sở, quá trình hình thành...
+            </button>
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 3: Tư tưởng Hồ Chí Minh về độc lập dân tộc và chủ nghĩa xã hội">
+              Chương 3: Tư tưởng Hồ Chí Minh về độc lập dân tộc...
+            </button>
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 4: Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam và Nhà nước">
+              Chương 4: Tư tưởng Hồ Chí Minh về Đảng Cộng sản...
+            </button>
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 5: Tư tưởng Hồ Chí Minh về đại đoàn kết dân tộc">
+              Chương 5: Tư tưởng Hồ Chí Minh về đại đoàn kết...
+            </button>
+            <button class="chapter-btn text-left hover:text-philo-warmGold transition-colors line-clamp-1" data-query="Tóm tắt nội dung Chương 6: Tư tưởng Hồ Chí Minh về văn hóa, đạo đức, con người">
+              Chương 6: Tư tưởng Hồ Chí Minh về văn hóa, đạo đức...
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-philo-blackBurgundy  rounded-2xl p-6 shadow-cinematic border border-philo-warmGold/30 relative">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="p-2 bg-philo-warmGold/10 text-philo-warmGold rounded-lg">
+              <span class="material-symbols-outlined">tips_and_updates</span>
+            </div>
+            <h2 class="text-lg font-bold text-philo-ivory font-heading">Gợi ý hỏi</h2>
+          </div>
+          <div class="flex flex-col gap-3">
+            <button
+ class="suggestion-btn text-left px-4 py-3 rounded-xl border border-philo-warmGold/30 hover:border-philo-warmGold hover:bg-philo-warmGold/10 transition-colors text-sm text-philo-ivory/70 font-body"
+              data-question="Tư tưởng Hồ Chí Minh về độc lập dân tộc là gì?">
+              Tư tưởng Hồ Chí Minh về độc lập dân tộc
+            </button>
+            <button
+ class="suggestion-btn text-left px-4 py-3 rounded-xl border border-philo-warmGold/30 hover:border-philo-warmGold hover:bg-philo-warmGold/10 transition-colors text-sm text-philo-ivory/70 font-body"
+              data-question="Hồ Chí Minh quan niệm như thế nào về chủ nghĩa xã hội?">
+              Quan niệm về chủ nghĩa xã hội
+            </button>
+            <button
+ class="suggestion-btn text-left px-4 py-3 rounded-xl border border-philo-warmGold/30 hover:border-philo-warmGold hover:bg-philo-warmGold/10 transition-colors text-sm text-philo-ivory/70 font-body"
+              data-question="Phân tích tư tưởng Hồ Chí Minh về đại đoàn kết dân tộc.">
+              Đại đoàn kết dân tộc
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-philo-blackBurgundy  rounded-2xl p-6 shadow-cinematic border border-philo-warmGold/30 relative">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="p-2 bg-philo-warmGold/10 text-philo-warmGold rounded-lg">
+              <span class="material-symbols-outlined">info</span>
+            </div>
+            <h2 class="text-lg font-bold text-philo-ivory font-heading">Lưu ý</h2>
+          </div>
+          <ul class="text-sm text-philo-ivory/70 space-y-2">
+            <li>
+              • Câu trả lời dựa trên nội dung sách giáo trình, bạn có thể kiểm tra lại nội dung nếu cần.
+            </li>
+            <li>
+              • Mỗi lần hỏi sẽ tải lại giáo trình, thời gian phản hồi có thể
+              lâu hơn.
+            </li>
+            <li>• Dùng câu hỏi rõ ràng để có trích dẫn chính xác hơn.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="lg:col-span-8 flex flex-col gap-4">
+        <div class="bg-philo-blackBurgundy  rounded-2xl shadow-cinematic border border-philo-warmGold/30 flex flex-col h-full">
+          <div class="px-6 py-4 border-b border-philo-warmGold/30">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="p-2 bg-primary/10 text-primary  rounded-lg">
+                  <span class="material-symbols-outlined">smart_toy</span>
+                </div>
+                <div>
+                  <h2 class="text-lg font-bold text-philo-ivory font-heading">
+                    Hỏi đáp với AI
+                  </h2>
+                  <p class="text-xs text-philo-ivory/70">
+                    Dựa trên giáo trình chính thức
+                  </p>
+                </div>
+              </div>
+              <div id="pdf-status" class="text-xs text-philo-warmGold bg-philo-warmGold/10 px-3 py-1 rounded-full border border-philo-warmGold/30">
+                Sẵn sàng
+              </div>
+            </div>
+          </div>
+
+          <div id="chat-box" class="flex-1 p-6 space-y-4 overflow-y-auto min-h-[380px]"></div>
+
+          <div class="p-6 border-t border-philo-warmGold/30">
+            <div class="flex items-end gap-3">
+              <div class="flex-1">
+                <label class="sr-only" for="chat-input">Nhập câu hỏi</label>
+                <textarea id="chat-input" rows="3"
+ class="w-full rounded-xl border border-philo-warmGold/30 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-philo-warmGold focus:border-philo-warmGold bg-philo-blackBurgundy relative text-philo-ivory resize-none placeholder-philo-dark/40 dark:placeholder-philo-cream/40 font-body"
+                  placeholder="Hỏi Minh về Tư tưởng HCM đi nè..."></textarea>
+                <p class="text-xs text-philo-ivory/50 /50 mt-2">
+                  Enter để gửi • Shift + Enter để xuống dòng
+                </p>
+              </div>
+              <button id="stop-btn" type="button"
+ class="h-12 px-4 rounded-xl border border-gray-200/50 dark:border-gray-800/40 text-slate-650 dark:text-slate-300 font-semibold hover:border-[#D4A017]/40 hover:text-philo-warmGold dark:hover:border-[#D4A017]/50 transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">stop</span>
+                Dừng
+              </button>
+              <button id="send-btn" type="button"
+ class="h-12 px-5 rounded-xl bg-primary dark:bg-[#D4A017] text-white  font-semibold hover:bg-primary/95 dark:hover:bg-[#D4A017]/90 transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">send</span>
+                Gửi
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Load search data FIRST - must be before header loads -->
+  <script src="js/search-data-global.js"></script>
+
+  <!-- Component Loader -->
+  <script src="js/load-components.js"></script>
+
+  <!-- Marked js for markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Search initialization - must be AFTER header is loaded -->
+  <script src="js/search-init.js"></script>
+
+  <!-- Tet Effect -->
+  <script src="js/tet-effect.js"></script>
+
+  <!-- AI Assistants functionality -->
+  <script src="js/ai-assistants.js"></script>
+</body>
+
+</html>

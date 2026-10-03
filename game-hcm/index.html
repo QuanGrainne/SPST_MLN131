@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#19130d" />
+  <title>Dòng Mực Lịch Sử - Hồ Sơ Mật 1945</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=Libre+Franklin:wght@500;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <style>.verified-stamp{pointer-events:none!important}.suspect:hover{background:transparent!important;box-shadow:none!important}#newspaper,#newspaper *{cursor:default!important}</style>
+  <link rel="stylesheet" href="../css/game-back.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Dòng Mực Lịch Sử">
+      <span class="brand-mark">DM</span><span>DÒNG MỰC <b>LỊCH SỬ</b></span>
+    </a>
+    <div class="topbar-center"><span>SỐ 01 • CHUYÊN ĐỀ ĐẶC BIỆT</span><strong>SỰ CHUẨN BỊ CỦA ĐẢNG (1939–1945)</strong></div>
+    <button class="sound-btn" id="soundBtn" aria-label="Bật hoặc tắt âm thanh">ÂM THANH <span>●</span></button>
+  </header>
+
+  <main class="desk">
+    <aside class="mission-panel">
+      <p class="eyebrow">HỒ SƠ ĐIỀU TRA</p>
+      <h1>1939<br><i>—</i> 1945</h1>
+      <p class="mission-copy">Một số chi tiết trong tờ báo đã bị sửa đổi. Hãy dùng bút đỏ và khôi phục sự thật lịch sử.</p>
+      <div class="rule"></div>
+      <div class="stat"><span>CHẾ ĐỘ</span><strong id="timer">TỰ DO</strong></div>
+      <div class="stat"><span>SAI LỆCH</span><strong><b id="found">0</b> / <b id="total">7</b></strong></div>
+      <div class="stat"><span>ĐIỂM</span><strong id="score">0000</strong></div>
+      <div class="lives" aria-label="3 mạng" id="lives"><span>♥</span><span>♥</span><span>♥</span></div>
+      <div class="combo" id="combo">COMBO ×1</div>
+    </aside>
+
+    <section class="paper-wrap" id="paperWrap">
+      <article class="newspaper newspaper-1945" id="newspaper" aria-label="Tờ báo cần kiểm chứng">
+        <header class="masthead masthead-1945">
+          <div class="mast-meta"><span>ĐỘC LẬP • TỰ DO • HẠNH PHÚC</span><span>GIÁ 5 XU</span></div>
+          <div class="mast-title">
+            <span class="flag">★</span>
+            <div>
+              <p class="mast-ornament">VIỆT NAM</p>
+              <h2>THỜI BÁO</h2>
+            </div>
+            <span class="flag">★</span>
+          </div>
+          <div class="issue-line"><span>SỐ ĐẶC BIỆT MÙA THU</span><span>HÀ NỘI, THÁNG 9 NĂM 1945</span><span>4 TRANG • XUẤT BẢN MỖI TUẦN</span></div>
+        </header>
+
+        <div class="lead-kicker">TIN MỪNG ĐỘC LẬP TOÀN QUỐC</div>
+        <h2 class="headline">MỘT KỶ NGUYÊN MỚI<br>CHO DÂN TỘC VIỆT NAM</h2>
+        <p class="deck">Những ngày mà lịch sử sang trang — nhân dân làm chủ vận mệnh, nước Việt Nam Dân chủ Cộng hòa ra đời</p>
+
+        <div class="columns columns-1945">
+          <!-- CỘT 1: BÀI PHÓNG SỰ CHÍNH DÀI -->
+          <section class="article article-lead">
+            <h3>SÁU NĂM CHUẨN BỊ CHO MỘT NGÀY LỊCH SỬ (1939–1945)</h3>
+            
+            <p class="dropcap-1945">Mới vài ngày trước, ngày 2 tháng 9 năm 1945, tại Quảng trường Ba Đình rợp bóng cờ đỏ sao vàng, trước hàng vạn đồng bào Hà Nội và đại biểu cả nước, Chủ tịch Hồ Chí Minh đã trang trọng đọc bản Tuyên ngôn Độc lập, tuyên bố trước quốc dân đồng bào và thế giới về sự ra đời của nước Việt Nam Dân chủ Cộng hòa. Sự kiện vĩ đại ấy đã chính thức chấm dứt hơn 80 năm ách đô hộ của thực dân Pháp và hàng ngàn năm của chế độ phong kiến suy tàn.</p>
+            
+            <p>Tuy nhiên, bất kỳ ai theo dõi sát sao tiến trình cách mạng đều hiểu rằng thắng lợi vang dội ấy không thể tự nhiên đến trong một ngày, cũng không phải là sự may mắn ngẫu nhiên "cờ đến tay ai nấy phất". Đằng sau khoảnh khắc lịch sử tại Ba Đình là cả một hành trình sáu năm chuẩn bị vô cùng công phu, kiên cường và đầy bản lĩnh của Đảng và Mặt trận Việt Minh kể từ khi Chiến tranh thế giới thứ hai bùng nổ năm 1939.</p>
+            
+            <p data-error-zone="e1">Trước những chuyển biến dồn dập của tình hình Đông Dương và thế giới, Đảng đã kịp thời đặt nhiệm vụ giải phóng dân tộc lên hàng đầu. Tháng 5 năm <button class="suspect" data-error="e1">1940</button>, tại hội nghị Pắc Bó (Cao Bằng) dưới sự chủ trì của đồng chí Nguyễn Ái Quốc, Hội nghị Trung ương lần thứ tám đã hoàn chỉnh đường lối chuyển hướng chỉ đạo chiến lược, đặt lợi ích dân tộc lên trên hết, trước hết.</p>
+            
+            <p data-error-zone="e2">Cùng trong giai đoạn chuyển hướng quan trọng đó, Việt Nam Độc lập Đồng minh, gọi tắt là Mặt trận Việt Minh, được thành lập năm <button class="suspect" data-error="e2">1944</button> nhằm giương cao ngọn cờ cứu quốc, liên hiệp tất cả các tầng lớp nhân dân, không phân biệt giàu nghèo, tôn giáo hay chính kiến vào cuộc đấu tranh giành độc lập.</p>
+            
+            <p>Từ căn cứ địa Việt Bắc rộng lớn gồm sáu tỉnh Cao-Bắc-Lạng-Thái-Tuyên-Hà, phong trào xây dựng các Hội Cứu quốc lan rộng như sóng trào. Lực lượng chính trị của quần chúng nhân dân được tổ chức và rèn luyện qua thực tiễn đấu tranh, tạo thành một biển người yêu nước sẵn sàng chờ lệnh.</p>
+
+            <p data-error-zone="e3">Bên cạnh lực lượng chính trị, công tác xây dựng lực lượng vũ trang cách mạng cũng được tiến hành ráo riết. Ngày 22 tháng 12 năm <button class="suspect" data-error="e3">1943</button>, Đội Việt Nam Tuyên truyền Giải phóng quân gồm 34 chiến sĩ đầu tiên được thành lập tại Cao Bằng. Đây là đội quân chủ lực đầu tiên, đánh dấu bước phát triển mới của lực lượng vũ trang cách mạng Việt Nam.</p>
+            
+            <p data-error-zone="e4">Đêm 9 tháng 3 năm 1945, Nhật đảo chính Pháp trên toàn Đông Dương. Ngay trong đêm đó, Ban Thường vụ Trung ương Đảng ra chỉ thị lịch sử "Nhật - Pháp bắn nhau và hành động của chúng ta", xác định kẻ thù chính lúc này là <button class="suspect" data-error="e4">thực dân Pháp</button>. Cao trào Kháng Nhật cứu nước bùng nổ dữ dội với phong trào "Phá kho thóc giải quyết nạn đói", thu hút hàng triệu quần chúng đi theo cách mạng.</p>
+
+            <div class="quote-box-1945">
+              MÙA THU ĐỘC LẬP • 1945
+              <small>Trích Báo chí Cách mạng Tháng Tám</small>
+              <span style="font-size:11px;font-style:normal;margin-top:6px;display:block;line-height:1.5;">"Những ngày tháng Tám đã chứng kiến một cuộc chuyển mình chưa từng có trong lịch sử dân tộc. Tại khắp các tỉnh thành từ Bắc chí Nam, chính quyền nhanh chóng về tay nhân dân. Những lá cờ đỏ sao vàng tung bay rực rỡ trên đỉnh các công sở và quảng trường."</span>
+            </div>
+          </section>
+
+          <!-- CỘT 2: KHAI THÁC THỜI CƠ & PHÓNG SỰ ĐỊA PHƯƠNG -->
+          <section class="article center-feature">
+            <div class="poster" aria-label="Ảnh tư liệu Lễ Độc lập Ba Đình">
+              <div class="sun"></div><div class="red-flag"><span>★</span></div>
+              <div class="silhouettes"><i></i><i></i><i></i><i></i><i></i></div>
+              <span class="poster-caption">LỄ ĐỘC LẬP TẠI BA ĐÌNH • 02–09–1945</span>
+            </div>
+
+            <div class="section-box-1945">
+              <h3>THỜI CƠ TỔNG KHỞI NGHĨA NGÀN NĂM CÓ MỘT</h3>
+              <p>Giữa tháng 8 năm 1945, phát xít Nhật chính thức tuyên bố đầu hàng Đồng minh không điều kiện. Bộ máy chính quyền tay sai hoảng loạn tột độ, quân Đồng minh chưa kịp vào Đông Dương. Thời cơ ngàn năm có một cho dân tộc ta đã xuất hiện.</p>
+              
+              <p data-error-zone="e5">Trước tình hình cấp bách đó, ngày <button class="suspect" data-error="e5">18 tháng 8</button>, Ủy ban Khởi nghĩa Toàn quốc chính thức ban bố Quân lệnh số 1, phát đi lệnh Tổng khởi nghĩa trên toàn quốc. Từ chiến khu Tân Trào, Chủ tịch Hồ Chí Minh đã gửi thư kêu gọi đồng bào cả nước: <i>"Dù phải đốt cháy cả dãy Trường Sơn cũng phải giành cho được độc lập!"</i></p>
+              
+              <p>Chỉ trong vòng 15 ngày ngắn ngủi (từ 14 đến 28/8/1945), cuộc Tổng khởi nghĩa đã giành thắng lợi hoàn toàn trên phạm vi cả nước. Từ Hà Nội (19/8), Huế (23/8), Sài Gòn (25/8) đến các vùng nông thôn miền núi, bộ máy chính quyền cách mạng của nhân dân được thành lập.</p>
+              
+              <p style="font-weight:700;color:#82221a;margin-top:12px;border-top:1px dashed #756344;padding-top:8px;">Thời cơ chỉ xuất hiện trong một khoảnh khắc ngắn ngủi. Nhưng để chớp lấy và biến khoảnh khắc ấy thành chiến thắng lịch sử, Đảng ta và nhân dân ta đã phải bền bỉ chuẩn bị lực lượng trong suốt sáu năm ròng rã.</p>
+            </div>
+
+            <!-- TỜ TIN PHỤ: ĐIỆN TÍN TỪ CÁC CHIẾN KHU -->
+            <div style="border:1px solid #756344;background:rgba(235,223,195,0.4);padding:10px 12px;margin-top:14px;">
+              <h4 style="font:900 12px 'Libre Franklin';color:#82221a;margin:0 0 6px;letter-spacing:1px;border-bottom:1px solid #756344;padding-bottom:4px;">ĐIỆN TÍN TỪ CÁC ĐỊA PHƯƠNG</h4>
+              <p style="font-size:10px;margin:0 0 6px;line-height:1.4;"><b>• HÀ NỘI:</b> Quần chúng nhân dân cùng tự vệ chiến đấu đánh chiếm Phủ Khâm sai, Trại Bảo an binh chiều 19/8.</p>
+              <p style="font-size:10px;margin:0 0 6px;line-height:1.4;"><b>• HUẾ:</b> Vua Bảo Đại tuyên bố thoái vị: <i>"Thà làm dân một nước độc lập còn hơn làm vua một nước nô lệ"</i>.</p>
+              <p style="font-size:10px;margin:0;line-height:1.4;"><b>• SÀI GÒN:</b> Hàng triệu quần chúng xuống đường tuần hành hưởng ứng mặt trận Việt Minh ngày 25/8.</p>
+            </div>
+          </section>
+
+          <!-- CỘT 3: TIMELINE & LỜI TÒA SOẠN -->
+          <aside class="timeline">
+            <h3>DÒNG THỜI GIAN</h3>
+            <div class="timeline-item">
+              <span class="year">11/1939</span>
+              <p>HNTW 6 quyết định chuyển hướng chỉ đạo chiến lược cách mạng.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="year">1941</span>
+              <p>Hội nghị Trung ương 8 tại Pắc Bó; Việt Minh chính thức thành lập.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="year">1944</span>
+              <p>Đội Việt Nam Tuyên truyền Giải phóng quân ra đời tại Cao Bằng.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="year">09/03/1945</span>
+              <p>Nhật đảo chính Pháp; Ra chỉ thị Kháng Nhật cứu nước.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="year">13/08/1945</span>
+              <p>Ủy ban Khởi nghĩa phát lệnh Tổng khởi nghĩa toàn quốc.</p>
+            </div>
+            <div class="timeline-item" data-error-zone="e6">
+              <button class="year suspect" data-error="e6">20/8/1945</button>
+              <p>Hà Nội giành chính quyền thắng lợi rực rỡ.</p>
+            </div>
+            <div class="timeline-item" data-error-zone="e7">
+              <button class="year suspect" data-error="e7">3/9/1945</button>
+              <p>Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Ba Đình.</p>
+            </div>
+
+            <div class="notice">
+              <b>LỜI TÒA SOẠN</b>
+              <p>Sáu năm chuẩn bị kiên cường đã trôi qua. Một thời cơ lịch sử vĩ đại đã được chớp lấy. Nhưng liệu tất cả những mốc dữ kiện được ghi lại trên số báo đặc biệt này có hoàn toàn chính xác?</p>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="paper-footer"><span>VIỆT NAM THỜI BÁO</span><span>TRANG NHẤT • SỐ 01</span><span>THÁNG 9 • NĂM 1945</span></footer>
+        <div class="verified-stamp" id="stamp">ĐÃ<br>KIỂM CHỨNG</div>
+      </article>
+    </section>
+
+    <aside class="tools-panel">
+      <p class="eyebrow">DỤNG CỤ</p>
+      <button class="tool active" data-tool="pen"><span class="tool-icon pen-icon">╱</span><span><b>BÚT ĐỎ</b><small>Khoanh sai lệch</small></span><kbd>1</kbd></button>
+      <button class="tool" data-tool="magnifier"><span class="tool-icon">⌕</span><span><b>KÍNH LÚP</b><small>Soi rõ mặt báo</small></span><kbd>2</kbd></button>
+      <button class="tool" data-tool="dossier"><span class="tool-icon">▤</span><span><b>HỒ SƠ</b><small>Tra cứu • −250</small></span><kbd>3</kbd></button>
+      <div class="tip"><b>MẸO ĐIỀU TRA</b><p>Chọn Bút đỏ rồi nhấn trực tiếp vào cụm từ hoặc mốc thời gian đáng ngờ.</p></div>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="dossier" id="dossierDialog">
+    <button class="close" data-close aria-label="Đóng">×</button>
+    <p class="eyebrow">HỒ SƠ LƯU TRỮ • 1939–1945</p>
+    <h2>DẤU MỐC ĐỐI CHIẾU</h2>
+    <p class="dossier-intro">Hồ sơ chỉ cung cấp manh mối. Hãy trở lại tờ báo để xác định chính xác chi tiết bị thay đổi.</p>
+    <div id="dossierEntries"></div>
+    <p class="citation">Nguồn nền tảng: Giáo trình Tư tưởng Hồ Chí Minh & Lịch sử Đảng Cộng sản Việt Nam, Bộ Giáo dục và Đào tạo, 2019.</p>
+  </dialog>
+
+  <dialog class="result" id="resultDialog">
+    <p class="eyebrow">HỒ SƠ #01 HOÀN TẤT</p>
+    <h2>TỜ BÁO ĐÃ ĐƯỢC<br>KHÔI PHỤC</h2>
+    <div class="result-grid"><span>SAI LỆCH<b>7 / 7</b></span><span>ĐIỂM<b id="finalScore">0</b></span><span>COMBO CAO NHẤT<b id="bestCombo">×1</b></span></div>
+    <button id="replayBtn">MỞ SỐ BÁO TIẾP THEO →</button>
+  <a class="game-back-inline" href="../games.html">← VỀ TRANG GAME</a></dialog>
+
+  <!-- Bridge Dialog: Màn hình Cầu nối dẫn vào Bài thuyết trình -->
+  <dialog class="bridge-dialog" id="bridgeDialog">
+    <p class="bridge-header">KẾT NỐI BÀI THUYẾT TRÌNH</p>
+    <h2 class="bridge-title">TỪ MÀN GAME ĐẾN CHÂN LÝ LỊCH SỬ</h2>
+    <p style="font-size:12px;color:#d1c4aa;margin:0 0 16px;">Các từ khóa lịch sử chuẩn xác vừa được bạn khôi phục:</p>
+    
+    <div class="keywords-grid">
+      <span class="keyword-badge">1941</span>
+      <span class="keyword-badge">VIỆT MINH</span>
+      <span class="keyword-badge">XÂY DỰNG LỰC LƯỢNG</span>
+      <span class="keyword-badge">VIỆT BẮC</span>
+      <span class="keyword-badge">9/3/1945</span>
+      <span class="keyword-badge">THỜI CƠ</span>
+      <span class="keyword-badge">19/8/1945</span>
+      <span class="keyword-badge">2/9/1945</span>
+    </div>
+
+    <div class="bridge-quotes">
+      <div class="bridge-quote-1">“THỜI CƠ CHỈ ĐẾN TRONG MỘT KHOẢNH KHẮC.”</div>
+      <div class="bridge-quote-2">“NHƯNG SỰ CHUẨN BỊ ĐÃ DIỄN RA TRONG NHIỀU NĂM.”</div>
+    </div>
+
+    <p style="font-size:11px;color:#a89980;margin:12px 0 16px;">Chuyên đề thuyết trình tiếp theo:<br><strong style="color:#ffd778;font-size:13px;">SỰ CHUẨN BỊ CỦA ĐẢNG CHO SỰ THÀNH CÔNG CỦA CÁCH MẠNG THÁNG TÁM 1945 (1939–1945)</strong></p>
+
+    <button class="bridge-btn" id="continueBridgeBtn">TIẾP TỤC HÀNH TRÌNH →</button>
+  </dialog>
+
+  <script src="historical-data.js?v=8"></script>
+  <script src="game.js?v=13"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const replayBtn = document.getElementById("replayBtn");
+      const bridgeDialog = document.getElementById("bridgeDialog");
+      const continueBridgeBtn = document.getElementById("continueBridgeBtn");
+      const resultDialog = document.getElementById("resultDialog");
+
+      if (replayBtn && bridgeDialog && continueBridgeBtn) {
+        replayBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (resultDialog) resultDialog.close();
+          bridgeDialog.showModal();
+        }, true);
+
+        continueBridgeBtn.addEventListener("click", () => {
+          if (window.HISTORICAL_ISSUE && window.HISTORICAL_ISSUE.nextPage) {
+            location.href = window.HISTORICAL_ISSUE.nextPage;
+          } else {
+            location.reload();
+          }
+        });
+      }
+    });
+  </script>
+  <a class="game-back-btn" href="../games.html" aria-label="Về trang game">← VỀ TRANG GAME</a>
+</body>
+</html>

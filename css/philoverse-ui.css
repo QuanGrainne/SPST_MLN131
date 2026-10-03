@@ -1,0 +1,435 @@
+/* ================================================================
+   PHILOVERSE UI — GLOBAL DESIGN SYSTEM
+   Cinematic Vietnamese Historical Education Platform
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   CSS Variables
+   ---------------------------------------------------------------- */
+:root {
+  --philo-deep: #0D0101;
+  --philo-black-burgundy: #140303;
+  --philo-burgundy: #3A0505;
+  --philo-crimson: #650707;
+  --philo-vn-red: #8B0000;
+  --philo-primary-red: #871C1C;
+  --philo-gold: #FFD34E;
+  --philo-warm-gold: #D9A62E;
+  --philo-antique-gold: #C4920A;
+  --philo-light-gold: #FFE9A0;
+  --philo-ivory: #FFF4DC;
+  --philo-cream: #FFF8E1;
+  --philo-muted: #D9BFA5;
+  --shadow-cinematic: 0 10px 40px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 30px rgba(217,166,46,0.15);
+  --shadow-gold-glow: 0 0 20px rgba(255, 211, 78, 0.15);
+  --shadow-gold-glow-hover: 0 0 30px rgba(255, 211, 78, 0.4);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --font-heading: 'Lora', 'Playfair Display', serif;
+  --font-body: 'Lexend', sans-serif;
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 300ms ease-out;
+  --transition-slow: 500ms ease-out;
+}
+
+/* ----------------------------------------------------------------
+   Global Base & Shared Background Texture
+   ---------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  background-color: #140303 !important;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #140303 !important;
+  color: #FFF4DC !important;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Global Shared Cinematic Background Textures (matching home.html) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('../assets/images/cinematic/cinematic_section_bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('../assets/images/cinematic/historical_texture.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Page content hierarchy & strict stacking context */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+footer,
+#footer-placeholder {
+  position: relative;
+  z-index: 20;
+}
+
+#header-placeholder {
+  position: relative;
+  z-index: 99999 !important;
+}
+
+#main-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  background-color: rgba(107, 0, 0, 0.97) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Floating AI Chat Button — Maximum clickability & visibility */
+#ai-chat-btn {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  display: flex !important;
+}
+
+#ai-chat-btn * {
+  pointer-events: auto !important;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal; font-style: normal; font-size: 24px;
+  display: inline-block; line-height: 1; text-transform: none;
+  letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--philo-black-burgundy); }
+::-webkit-scrollbar-thumb { background: var(--philo-crimson); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--philo-vn-red); }
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ----------------------------------------------------------------
+   NAVBAR GOLD THEME ENFORCEMENT
+   ---------------------------------------------------------------- */
+#main-header nav a,
+.nav-link {
+  color: #FFD34E !important;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+#main-header nav a:hover,
+.nav-link:hover {
+  color: #FFE9A0 !important;
+  background-color: rgba(255, 211, 78, 0.1) !important;
+}
+
+#main-header nav a.nav-active,
+.nav-link.nav-active,
+.nav-link-active {
+  color: #FFD34E !important;
+  font-weight: 700 !important;
+  background-color: rgba(255, 211, 78, 0.12) !important;
+  border-bottom: 2px solid #FFD34E !important;
+  padding-bottom: 2px;
+}
+
+#main-header nav a .material-symbols-outlined,
+.nav-link .material-symbols-outlined {
+  color: #FFD34E !important;
+}
+
+/* ----------------------------------------------------------------
+   CINEMATIC PAGE HERO
+   ---------------------------------------------------------------- */
+.philo-page-hero {
+  position: relative;
+  padding: 4rem 2rem 3rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #140303 0%, #650707 60%, #3A0505 100%);
+}
+.philo-page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(217,166,46,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.philo-page-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217,166,46,0.4), transparent);
+}
+
+/* ----------------------------------------------------------------
+   BREADCRUMB PILL
+   ---------------------------------------------------------------- */
+.philo-breadcrumb {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.375rem 1rem; border-radius: 9999px;
+  background: rgba(217,166,46,0.1); border: 1px solid rgba(217,166,46,0.3);
+  color: #FFD34E; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.philo-breadcrumb a { color: #FFD34E; text-decoration: none; transition: opacity 150ms; }
+.philo-breadcrumb a:hover { opacity: 0.75; text-decoration: underline; }
+.philo-breadcrumb .sep { opacity: 0.4; }
+
+/* ----------------------------------------------------------------
+   CINEMATIC CARD
+   ---------------------------------------------------------------- */
+.philo-card {
+  background: rgba(58,5,5,0.75);
+  border: 1px solid rgba(217,166,46,0.2);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  transition: transform 300ms ease-out, border-color 300ms ease-out, box-shadow 300ms ease-out;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+.philo-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217,166,46,0.5);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 30px rgba(217,166,46,0.15);
+}
+
+/* ----------------------------------------------------------------
+   SECTION DIVIDER (gold centered line with text)
+   ---------------------------------------------------------------- */
+.philo-section-divider {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+}
+.philo-section-divider::before, .philo-section-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217,166,46,0.35), transparent);
+}
+.philo-section-title {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; color: rgba(255,211,78,0.7); white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------
+   HEADING WITH GOLD ACCENT
+   ---------------------------------------------------------------- */
+.philo-heading-gold {
+  font-family: var(--font-heading); font-weight: 700;
+  color: #FFF4DC; padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(217,166,46,0.25);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+
+/* ----------------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------------- */
+.philo-btn-gold {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: linear-gradient(90deg, #D9A62E 0%, #FFD34E 100%);
+  color: #140303; font-weight: 700; font-size: 0.875rem;
+  border-radius: 9999px; border: none; cursor: pointer;
+  transition: all 300ms ease-out; text-decoration: none;
+  box-shadow: 0 4px 15px rgba(217,166,46,0.25);
+}
+.philo-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,211,78,0.45); }
+
+.philo-btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: transparent; color: #FFD34E; font-weight: 600; font-size: 0.875rem;
+  border-radius: 9999px; border: 1px solid rgba(255,211,78,0.4);
+  cursor: pointer; transition: all 300ms ease-out; text-decoration: none;
+}
+.philo-btn-ghost:hover { background: rgba(255,211,78,0.08); border-color: rgba(255,211,78,0.7); }
+
+/* ----------------------------------------------------------------
+   PROGRESS BAR
+   ---------------------------------------------------------------- */
+.philo-progress-track {
+  height: 6px; background: rgba(217,166,46,0.2); border-radius: 9999px; overflow: hidden;
+}
+.philo-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D9A62E, #FFD34E);
+  border-radius: 9999px; transition: width 0.6s ease;
+}
+
+/* ----------------------------------------------------------------
+   LESSON TABS
+   ---------------------------------------------------------------- */
+.philo-lesson-tab {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  padding: 0.875rem 0.75rem; border-radius: 1rem;
+  background: rgba(58,5,5,0.6); border: 2px solid rgba(217,166,46,0.15);
+  cursor: pointer; transition: all 300ms ease-out; text-align: center;
+}
+.philo-lesson-tab:hover { border-color: rgba(217,166,46,0.5); background: rgba(101,7,7,0.6); }
+.philo-lesson-tab.active {
+  border-color: #FFD34E; background: rgba(217,166,46,0.1);
+  box-shadow: 0 0 20px rgba(217,166,46,0.15);
+}
+
+/* ----------------------------------------------------------------
+   ACCORDION / REFLECTION
+   ---------------------------------------------------------------- */
+.philo-accordion-btn {
+  width: 100%; text-align: left; padding: 0.875rem 1rem;
+  background: rgba(101,7,7,0.4); border: 1px solid rgba(217,166,46,0.15);
+  border-radius: 0.75rem; color: #FFF4DC; font-size: 0.875rem; font-weight: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; transition: all 300ms ease-out;
+}
+.philo-accordion-btn:hover { background: rgba(101,7,7,0.6); border-color: rgba(217,166,46,0.35); }
+
+.reflection-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; }
+.reflection-answer.open { max-height: 500px; opacity: 1; }
+
+/* ----------------------------------------------------------------
+   ARTICLE CARD
+   ---------------------------------------------------------------- */
+.philo-article-card {
+  background: rgba(58,5,5,0.8); border: 1px solid rgba(217,166,46,0.2);
+  border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  transition: all 300ms ease-out;
+  display: flex; flex-direction: column; height: 100%; position: relative;
+}
+.philo-article-card:hover { transform: translateY(-6px); border-color: rgba(217,166,46,0.55); box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 30px rgba(217,166,46,0.15); }
+
+.philo-article-img { height: 180px; overflow: hidden; position: relative; }
+.philo-article-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.philo-article-card:hover .philo-article-img img { transform: scale(1.06); }
+.philo-article-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,3,3,0.5), transparent 60%);
+}
+
+/* ----------------------------------------------------------------
+   QUIZ STYLES
+   ---------------------------------------------------------------- */
+.philo-quiz-option {
+  display: flex; align-items: center; gap: 0.875rem; padding: 0.875rem 1.25rem;
+  background: rgba(58,5,5,0.5); border: 1.5px solid rgba(217,166,46,0.15);
+  border-radius: 0.875rem; cursor: pointer; transition: all 300ms ease-out;
+}
+.philo-quiz-option:hover { background: rgba(101,7,7,0.5); border-color: rgba(217,166,46,0.4); }
+
+/* Override quiz correct/wrong for dark mode */
+.correct-answer {
+  border-color: #10b981 !important;
+  background-color: rgba(16,185,129,0.12) !important;
+}
+.wrong-answer {
+  border-color: #ef4444 !important;
+  background-color: rgba(239,68,68,0.12) !important;
+}
+
+/* ----------------------------------------------------------------
+   QUOTE BOX
+   ---------------------------------------------------------------- */
+.philo-quote {
+  background: linear-gradient(135deg, rgba(58,5,5,0.8) 0%, rgba(101,7,7,0.6) 100%);
+  border-left: 4px solid #D9A62E; border-radius: 0 1rem 1rem 0;
+  padding: 1.25rem 1.5rem; position: relative; overflow: hidden;
+}
+.philo-quote::before {
+  content: '"'; position: absolute; top: -0.5rem; left: 1rem;
+  font-size: 5rem; color: rgba(217,166,46,0.1);
+  font-family: var(--font-heading); line-height: 1; pointer-events: none;
+}
+
+/* ----------------------------------------------------------------
+   DROP CAP
+   ---------------------------------------------------------------- */
+.philo-drop-cap::first-letter {
+  float: left; font-size: 3.5em; line-height: 0.8;
+  margin-right: 8px; margin-top: 4px;
+  font-family: var(--font-heading); font-weight: 700; color: #D9A62E;
+}
+
+/* ----------------------------------------------------------------
+   BADGE
+   ---------------------------------------------------------------- */
+.philo-badge {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.2rem 0.625rem;
+  background: rgba(217,166,46,0.1); border: 1px solid rgba(217,166,46,0.3);
+  border-radius: 9999px; color: #FFD34E;
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ----------------------------------------------------------------
+   PROSE / CONTENT AREA
+   ---------------------------------------------------------------- */
+.philo-prose h2 {
+  font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700;
+  color: #FFF4DC; margin-top: 2rem; margin-bottom: 0.75rem;
+  padding-bottom: 0.375rem; border-bottom: 1px solid rgba(217,166,46,0.2);
+}
+.philo-prose h3 {
+  font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+  color: #FFF4DC; margin-top: 1.5rem; margin-bottom: 0.5rem;
+}
+.philo-prose p { color: rgba(255,244,220,0.8); line-height: 1.85; margin-bottom: 1rem; }
+.philo-prose strong { color: #FFF4DC; font-weight: 700; }
+.philo-prose em { color: #FFE9A0; font-style: italic; }
+
+/* ----------------------------------------------------------------
+   ANIMATIONS
+   ---------------------------------------------------------------- */
+@keyframes philo-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes philo-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes philo-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,211,78,0.15); }
+  50% { box-shadow: 0 0 25px rgba(255,211,78,0.4); }
+}
+
+.philo-anim-fade-up { animation: philo-fade-up 0.5s ease forwards; }
+.philo-anim-fade-up-delay-1 { animation: philo-fade-up 0.5s ease 0.1s both; }
+.philo-anim-fade-up-delay-2 { animation: philo-fade-up 0.5s ease 0.2s both; }
+.philo-anim-fade-up-delay-3 { animation: philo-fade-up 0.5s ease 0.3s both; }
+
+/* ----------------------------------------------------------------
+   GAME CARD
+   ---------------------------------------------------------------- */
+.philo-game-card {
+  background: rgba(58,5,5,0.8); border: 1px solid rgba(217,166,46,0.2);
+  border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  transition: all 300ms ease-out;
+}
+.philo-game-card:hover { transform: translateY(-6px); border-color: rgba(217,166,46,0.5); box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 30px rgba(217,166,46,0.15); }

@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#19130d" />
+  <title>Dòng Mực Lịch Sử</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=Libre+Franklin:wght@500;700;900&family=Noto+Serif:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <style>.verified-stamp{pointer-events:none!important}.suspect:hover{background:transparent!important;box-shadow:none!important}#newspaper,#newspaper *{cursor:default!important}</style>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Dòng Mực Lịch Sử">
+      <span class="brand-mark">DM</span><span>DÒNG MỰC <b>LỊCH SỬ</b></span>
+    </a>
+    <div class="topbar-center"><span>SỐ 01</span><strong>MÙA THU ĐỘC LẬP</strong></div>
+    <button class="sound-btn" id="soundBtn" aria-label="Bật hoặc tắt âm thanh">ÂM THANH <span>●</span></button>
+  </header>
+
+  <main class="desk">
+    <aside class="mission-panel">
+      <p class="eyebrow">HỒ SƠ ĐIỀU TRA</p>
+      <h1>1941<br><i>—</i> 1945</h1>
+      <p class="mission-copy">Một số chi tiết trong tờ báo đã bị sửa đổi. Hãy dùng bút đỏ và khôi phục sự thật lịch sử.</p>
+      <div class="rule"></div>
+      <div class="stat"><span>CHẾ ĐỘ</span><strong id="timer">TỰ DO</strong></div>
+      <div class="stat"><span>SAI LỆCH</span><strong><b id="found">0</b> / <b id="total">?</b></strong></div>
+      <div class="stat"><span>ĐIỂM</span><strong id="score">0000</strong></div>
+      <div class="lives" aria-label="3 mạng" id="lives"><span>♥</span><span>♥</span><span>♥</span></div>
+      <div class="combo" id="combo">COMBO ×1</div>
+    </aside>
+
+    <section class="paper-wrap" id="paperWrap">
+      <article class="newspaper" id="newspaper" aria-label="Tờ báo cần kiểm chứng">
+        <header class="masthead">
+          <div class="mast-meta"><span>ĐỘC LẬP • TỰ DO</span><span>GIÁ 5 XU</span></div>
+          <div class="mast-title"><span class="flag">★</span><div><p>VIỆT NAM</p><h2>THỜI BÁO</h2></div><span class="flag">★</span></div>
+          <div class="issue-line"><span>SỐ ĐẶC BIỆT</span><span>HÀ NỘI, THÁNG 9 NĂM 1945</span><span>4 TRANG</span></div>
+        </header>
+
+        <div class="lead-kicker">TIN MỪNG ĐỘC LẬP</div>
+        <h2 class="headline">MỘT KỶ NGUYÊN MỚI<br>CHO DÂN TỘC VIỆT NAM</h2>
+        <p class="deck">Những ngày mùa thu lịch sử — nhân dân làm chủ vận mệnh, một nhà nước mới ra đời</p>
+
+        <div class="columns">
+          <section class="article article-lead">
+            <p class="dropcap">Sau nhiều năm đấu tranh giành độc lập, nhân dân Việt Nam đã bước vào một thời kỳ lịch sử mới.</p>
+            <p data-error-zone="e1">Ngày 19 tháng 5 năm 1941, Hồ Chí Minh cùng Trung ương Đảng quyết định thành lập <button class="suspect" data-error="e1">Đội Việt Nam Tuyên truyền Giải phóng quân</button>, nhằm tập hợp lực lượng yêu nước và chuẩn bị cho cuộc đấu tranh giải phóng dân tộc.</p>
+            <p data-error-zone="e2">Ba năm sau, ngày 22 tháng 12 năm 1944, <button class="suspect" data-error="e2">Mặt trận Việt Minh chính thức được thành lập</button>, đánh dấu bước phát triển quan trọng của lực lượng cách mạng.</p>
+            <div class="quote">MÙA THU ĐỘC LẬP<br><small>Số báo đặc biệt • 1945</small></div>
+            <h3>THỜI CƠ TỔNG KHỞI NGHĨA</h3>
+            <p>Ngày <button class="safe">18 tháng 8 năm 1945</button>, Hồ Chí Minh ra Lời kêu gọi Tổng khởi nghĩa. Cuộc Tổng khởi nghĩa sau đó diễn ra và đưa Cách mạng Tháng Tám đến thắng lợi.</p>
+            <p data-error-zone="e3">Thắng lợi ấy đã trực tiếp giành lại nền độc lập dân tộc từ <button class="suspect" data-error="e3">thực dân Pháp</button>.</p>
+          </section>
+
+          <section class="article center-feature">
+            <div class="poster" aria-label="Minh họa trang trí cờ đỏ sao vàng">
+              <div class="sun"></div><div class="red-flag"><span>★</span></div>
+              <div class="silhouettes"><i></i><i></i><i></i><i></i><i></i></div>
+              <span class="poster-caption">KHÍ THẾ MÙA THU ĐỘC LẬP</span>
+            </div>
+            <h3>NƯỚC VIỆT NAM MỚI RA ĐỜI</h3>
+            <p>Ngày <button class="safe">2 tháng 9 năm 1945</button>, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, tuyên bố trước quốc dân và thế giới về sự ra đời của một nhà nước mới.</p>
+            <p class="state-name" data-error-zone="e4">NHÀ NƯỚC ẤY MANG TÊN<br><button class="suspect" data-error="e4">VIỆT NAM CỘNG HÒA</button></p>
+            <p>Sự kiện ngày 2 tháng 9 mở ra một kỷ nguyên mới trong lịch sử dân tộc.</p>
+          </section>
+
+          <aside class="timeline">
+            <h3>DÒNG THỜI GIAN</h3>
+            <div class="timeline-item" data-error-zone="e5"><button class="year suspect" data-error="e5">1941</button><p>Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân</p></div>
+            <div class="timeline-item" data-error-zone="e6"><button class="year suspect" data-error="e6">1944</button><p>Thành lập Mặt trận Việt Minh</p></div>
+            <div class="timeline-item"><span class="year">18/8/1945</span><p>Lời kêu gọi Tổng khởi nghĩa</p></div>
+            <div class="timeline-item" data-error-zone="e7"><button class="year suspect" data-error="e7">2/9/1946</button><p>Đọc Tuyên ngôn Độc lập</p></div>
+            <div class="notice"><b>LỜI TÒA SOẠN</b><p>Mỗi chi tiết đều cần được kiểm chứng trước khi lưu vào hồ sơ quốc gia.</p></div>
+          </aside>
+        </div>
+        <footer class="paper-footer"><span>VIỆT NAM THỜI BÁO</span><span>TRANG NHẤT</span><span>THÁNG 9 • 1945</span></footer>
+        <div class="verified-stamp" id="stamp">ĐÃ<br>KIỂM CHỨNG</div>
+      </article>
+    </section>
+
+    <aside class="tools-panel">
+      <p class="eyebrow">DỤNG CỤ</p>
+      <button class="tool active" data-tool="pen"><span class="tool-icon pen-icon">╱</span><span><b>BÚT ĐỎ</b><small>Khoanh sai lệch</small></span><kbd>1</kbd></button>
+      <button class="tool" data-tool="magnifier"><span class="tool-icon">⌕</span><span><b>KÍNH LÚP</b><small>Soi rõ mặt báo</small></span><kbd>2</kbd></button>
+      <button class="tool" data-tool="dossier"><span class="tool-icon">▤</span><span><b>HỒ SƠ</b><small>Tra cứu • −250</small></span><kbd>3</kbd></button>
+      <div class="tip"><b>MẸO ĐIỀU TRA</b><p>Chọn Bút đỏ rồi nhấn trực tiếp vào cụm từ hoặc mốc thời gian đáng ngờ.</p></div>
+      <p class="source-note">DỮ KIỆN: GIÁO TRÌNH TƯ TƯỞNG HỒ CHÍ MINH — BỘ GD&ĐT, 2019</p>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="dossier" id="dossierDialog">
+    <button class="close" data-close aria-label="Đóng">×</button>
+    <p class="eyebrow">HỒ SƠ LƯU TRỮ • 1941–1945</p>
+    <h2>DẤU MỐC ĐỐI CHIẾU</h2>
+    <p class="dossier-intro">Hồ sơ chỉ cung cấp manh mối. Hãy trở lại tờ báo để xác định chính xác chi tiết bị thay đổi.</p>
+    <div id="dossierEntries"></div>
+    <p class="citation">Nguồn nền tảng: Giáo trình Tư tưởng Hồ Chí Minh, Bộ Giáo dục và Đào tạo, 2019 — phần quá trình hình thành và phát triển tư tưởng Hồ Chí Minh, giai đoạn 1941–1969.</p>
+  </dialog>
+
+  <dialog class="result" id="resultDialog">
+    <p class="eyebrow">HỒ SƠ #01 HOÀN TẤT</p>
+    <h2>TỜ BÁO ĐÃ ĐƯỢC<br>KHÔI PHỤC</h2>
+    <div class="result-grid"><span>SAI LỆCH<b>7 / 7</b></span><span>ĐIỂM<b id="finalScore">0</b></span><span>COMBO CAO NHẤT<b id="bestCombo">×1</b></span></div>
+    <button id="replayBtn">MỞ SỐ BÁO TIẾP THEO →</button>
+  </dialog>
+
+  <script src="historical-data.js?v=6"></script>
+  <script src="game.js?v=11"></script>
+</body>
+</html>

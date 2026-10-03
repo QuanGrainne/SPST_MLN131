@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Trò chơi Học tập Tư tưởng HCM — PhiloVerse Academy</title>
+  <meta name="description" content="Bốn trò chơi tương tác giúp ôn kiến thức môn Tư tưởng Hồ Chí Minh: giải mã từ khóa, bản đồ tư tưởng, dấu mốc lịch sử và thử thách ghế nóng." />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config-global.js"></script>
+  <link rel="stylesheet" href="css/philoverse-ui.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Games hero */
+    .games-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%);
+      padding: 4rem 2rem 3rem;
+      border-radius: 0 0 2rem 2rem;
+      margin-bottom: 3rem;
+    }
+    .games-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('assets/images/shared/games-bg.jpg');
+      background-size: cover; background-position: center 30%;
+      opacity: 0.25;
+    }
+    .games-hero > * { position: relative; z-index: 1; }
+    .games-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent);
+    }
+    /* Game card (rendered by JS) enhancement */
+    .game-card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    .game-card:hover { transform: translateY(-6px); }
+  </style>
+</head>
+<body class="bg-philo-blackBurgundy relative font-heading min-h-screen flex flex-col">
+  <div id="header-placeholder"></div>
+
+  <main class="flex-grow">
+    <!-- Games Hero -->
+    <div class="games-hero">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="philo-breadcrumb justify-center mb-5">
+          <span class="material-symbols-outlined text-[14px]">sports_esports</span>
+          TRÒ CHƠI HCM
+        </div>
+        <span class="philo-badge mb-4 inline-flex">
+          <span class="material-symbols-outlined text-[14px]">games</span>
+          INTERACTIVE LEARNING
+        </span>
+        <h1 class="text-3xl md:text-5xl font-heading font-bold text-philo-ivory mb-4 mt-2">
+          Học qua <span class="text-philo-gold italic">Trò chơi</span>
+        </h1>
+        <p class="text-philo-ivory/70 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          Bốn trò chơi tương tác giúp ôn kiến thức môn Tư tưởng Hồ Chí Minh theo nhiều cách: giải mã từ khóa, xây dựng bản đồ tư tưởng, kiểm chứng dấu mốc lịch sử và thử thách ghế nóng 15 câu.
+        </p>
+      </div>
+    </div>
+
+    <!-- Games List -->
+    <div class="max-w-6xl mx-auto px-4 md:px-10 pb-16">
+      <div id="games-list" class="flex flex-col gap-7"></div>
+
+      <!-- Info Box -->
+      <div class="mt-10 philo-card p-6">
+        <div class="flex gap-3 items-start">
+          <span class="material-symbols-outlined text-philo-gold mt-0.5">school</span>
+          <div>
+            <h2 class="font-bold text-philo-ivory mb-1">Học bằng tương tác</h2>
+            <p class="text-sm text-philo-ivory/60 leading-relaxed">
+              Bốn game sử dụng thuật ngữ và cấu trúc chủ đề của môn Tư tưởng Hồ Chí Minh để hỗ trợ ghi nhớ, liên hệ, hệ thống hóa, kiểm chứng và tự đánh giá kiến thức.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/games-config.js"></script>
+  <script src="js/games-page.js"></script>
+  <script src="js/load-components.js"></script>
+</body>
+</html>
+

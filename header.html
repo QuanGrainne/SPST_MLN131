@@ -1,0 +1,616 @@
+<header id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md border-b border-philo-gold/20 transition-all duration-300"
+  style="background-color: rgba(107, 0, 0, 0.97);">
+  <div class="px-4 md:px-10 py-3 max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <a href="home.html" class="flex items-center gap-3 group cursor-pointer">
+        <div class="size-9 text-philo-gold flex items-center justify-center bg-philo-gold/10 rounded-xl border border-philo-gold/30 transition-all duration-500 group-hover:rotate-45 group-hover:bg-philo-gold/20">
+          <span class="material-symbols-outlined text-[22px]">orbit</span>
+        </div>
+        <h2 class="text-lg md:text-xl font-bold leading-tight tracking-wide font-heading text-philo-cream transition-colors group-hover:text-philo-gold">
+          PhiloVerse <span class="text-xs font-sans tracking-widest text-philo-gold uppercase font-semibold pl-1">Academy</span>
+        </h2>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1 pl-6 border-l border-philo-gold/20">
+        <a id="home-link"
+          class="nav-link relative px-3 py-2 rounded-xl text-philo-gold text-sm font-medium transition-all duration-300 hover:text-philo-gold hover:bg-philo-gold/5"
+          href="home.html">Trang chủ</a>
+        <a id="modules-link"
+          class="nav-link relative px-3 py-2 rounded-xl text-philo-gold text-sm font-medium transition-all duration-300 hover:text-philo-gold hover:bg-philo-gold/5"
+          href="home.html#overview">Modules</a>
+        <a id="practice-link"
+          class="nav-link relative px-3 py-2 rounded-xl text-philo-gold text-sm font-medium transition-all duration-300 hover:text-philo-gold hover:bg-philo-gold/5"
+          href="practice.html">Thực hành</a>
+        <a id="articles-link"
+          class="nav-link relative px-3 py-2 rounded-xl text-philo-gold text-sm font-medium transition-all duration-300 hover:text-philo-gold hover:bg-philo-gold/5"
+          href="articles.html">Góc nhìn</a>
+        <a id="games-link"
+          class="nav-link relative px-3 py-2 rounded-xl text-philo-gold text-sm font-medium transition-all duration-300 hover:text-philo-gold hover:bg-philo-gold/5 flex items-center gap-1.5"
+          href="games.html">
+          <span class="material-symbols-outlined text-[18px]">sports_esports</span>
+          Game
+        </a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <!-- Search Input Container -->
+      <div class="relative group" id="search-container">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+          <span
+            class="material-symbols-outlined text-philo-gold/60 group-focus-within:text-philo-gold transition-colors text-[20px]">search</span>
+        </div>
+        <input id="search-input"
+          class="block w-56 md:w-64 pl-10 pr-4 py-2 bg-philo-dark/40 border border-philo-gold/30 rounded-full text-xs md:text-sm text-philo-cream placeholder-philo-gold/40 focus:outline-none focus:border-philo-gold focus:ring-1 focus:ring-philo-gold transition-all shadow-sm hover:shadow-md focus:bg-philo-dark/60"
+          placeholder="Tìm kiếm học phần..." type="text" autocomplete="off" />
+
+        <!-- Search Results Dropdown -->
+        <div id="search-results"
+          class="hidden absolute top-full left-0 right-0 mt-2 bg-philo-burgundy border border-philo-gold/30 rounded-2xl shadow-cinematic max-h-96 overflow-y-auto z-50">
+          <!-- Results will be populated here by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="text-philo-gold/70 hover:text-philo-gold transition-colors" title="Chuyển chế độ sáng/tối">
+        <span class="material-symbols-outlined text-[20px]" id="theme-toggle-icon">dark_mode</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Floating AI Chat Button -->
+<a id="ai-chat-btn" href="ai-assistants.html" onclick="window.location.href='ai-assistants.html'"
+  class="fixed bottom-6 right-6 z-[99999] group animate-pulse-slow cursor-pointer"
+  style="z-index: 99999 !important; pointer-events: auto !important;"
+  title="Trò chuyện với AI Assistants">
+  <div
+    class="w-14 h-14 bg-gradient-to-br from-philo-gold to-philo-darkGold rounded-full shadow-[0_8px_30px_rgba(255,215,0,0.3)] border-2 border-philo-lightGold/50 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_8px_40px_rgba(255,215,0,0.6)]">
+    <span class="material-symbols-outlined text-philo-dark text-2xl font-bold">auto_awesome</span>
+  </div>
+  <!-- Tooltip -->
+  <div
+    class="absolute bottom-full right-0 mb-3 px-3.5 py-2 bg-philo-dark text-philo-cream text-xs font-bold rounded-xl shadow-cinematic opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 whitespace-nowrap pointer-events-none border border-philo-gold/20">
+    Hỏi Đáp Học Thuật AI
+  </div>
+</a>
+
+<!-- Floating Tet Effect Button (styled as a vintage paper lantern) -->
+<!-- <button id="tet-toggle-btn-header" class="fixed bottom-6 right-24 z-50 group" title="Chúc Mừng Năm Mới 2026"
+  onclick="window.showTetOverlay && window.showTetOverlay()">
+  <div
+    class="w-14 h-14 bg-gradient-to-br from-red-600 to-red-700 rounded-full shadow-[0_8px_24px_rgba(220,38,38,0.25)] flex items-center justify-center border-2 border-amber-400 transition-all duration-300 hover:scale-110 hover:shadow-[0_8px_30px_rgba(220,38,38,0.4)] animate-bounce"
+    style="animation-duration: 3s">
+    <span class="text-white text-2xl" style="text-shadow: 0 1px 4px rgba(0,0,0,0.3)">🧧</span>
+  </div>
+  <!-- Tooltip -->
+  <div
+    class="absolute bottom-full right-0 mb-3 px-3.5 py-2 bg-[#0F172A] text-white text-xs font-bold rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 whitespace-nowrap pointer-events-none border border-red-500/20">
+    Chúc Mừng Năm Mới 2026
+  </div>
+</button> -->
+
+<!-- Spacer to prevent content from going under fixed header -->
+<div style="height: 64px"></div>
+
+<!-- Add CSS for smooth scroll with offset for fixed header -->
+<style>
+  /* Scroll offset for anchor links to account for fixed header */
+  html {
+    scroll-padding-top: 88px;
+    scroll-behavior: smooth;
+  }
+
+  /* Nav active underline indicator & Gold styling */
+  .nav-link,
+  #main-header nav a {
+    position: relative;
+    color: #FFD34E !important;
+    font-weight: 500;
+  }
+  .nav-link:hover,
+  #main-header nav a:hover {
+    color: #FFE9A0 !important;
+    background-color: rgba(255, 211, 78, 0.1) !important;
+  }
+
+  .nav-link.nav-active,
+  #main-header nav a.nav-active {
+    color: #FFD34E !important;
+    font-weight: 700 !important;
+    background-color: rgba(255, 211, 78, 0.12) !important;
+  }
+
+  .nav-link .material-symbols-outlined {
+    color: #FFD34E !important;
+  }
+
+  /* Pulse scale animation */
+  @keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .animate-pulse-scale {
+    animation: pulse-scale 2s ease-in-out infinite;
+  }
+
+  /* Slow pulse animation for floating AI button */
+  @keyframes pulse-slow {
+    0%, 100% {
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2), 0 0 0 0 rgba(255, 215, 0, 0.2);
+    }
+    50% {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4), 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 2.5s ease-in-out infinite;
+  }
+
+  /* Header scroll shadow */
+  #main-header.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+</style>
+
+<!-- Active nav page detection -->
+<script>
+  (function() {
+    function setActiveNav() {
+      var page = window.location.pathname.split('/').pop() || 'home.html';
+      var linkMap = {
+        'home.html': 'home-link',
+        'practice.html': 'practice-link',
+        'articles.html': 'articles-link',
+        'games.html': 'games-link',
+        'module1.html': 'modules-link',
+        'module2.html': 'modules-link',
+        'module3.html': 'modules-link',
+        'module4.html': 'modules-link',
+        'module5.html': 'modules-link',
+        'module6.html': 'modules-link',
+      };
+      // Also handle articles sub-pages
+      if (window.location.pathname.includes('/articles/')) {
+        page = 'articles.html';
+      }
+      var activeId = linkMap[page];
+      if (activeId) {
+        var el = document.getElementById(activeId);
+        if (el) el.classList.add('nav-active');
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setActiveNav);
+    } else {
+      setActiveNav();
+    }
+  })();
+</script>
+
+<!-- Load search data inline to avoid path issues -->
+<script>
+  const searchData = [
+    {
+      title: "Module 1: Triết học là gì?",
+      subtitle: "Khái niệm và vai trò của triết học",
+      url: "module1.html",
+      keywords: [
+        "triết học",
+        "khái niệm",
+        "thế giới quan",
+        "phương pháp luận",
+        "module 1",
+        "m1",
+      ],
+      type: "module",
+      icon: "school",
+    },
+    {
+      title: "Module 2: Đối mặt với thay đổi",
+      subtitle: "Nghệ thuật đối mặt với thay đổi và áp lực",
+      url: "module2.html",
+      keywords: [
+        "lượng chất",
+        "mâu thuẫn",
+        "phủ định",
+        "biện chứng",
+        "quy luật",
+        "module 2",
+        "m2",
+        "thay đổi",
+      ],
+      type: "module",
+      icon: "change_circle",
+    },
+    {
+      title: "Module 3: Hành trình tri thức",
+      subtitle: "Con đường biện chứng của nhận thức",
+      url: "module3.html",
+      keywords: [
+        "nhận thức",
+        "thực tiễn",
+        "lý thuyết",
+        "chân lý",
+        "module 3",
+        "m3",
+        "tri thức",
+      ],
+      type: "module",
+      icon: "psychology",
+    },
+    {
+      title: "Module 4: Luật chơi xã hội",
+      subtitle: "Chủ nghĩa duy vật lịch sử",
+      url: "module4.html",
+      keywords: [
+        "xã hội",
+        "lịch sử",
+        "kinh tế",
+        "chính trị",
+        "module 4",
+        "m4",
+        "duy vật",
+      ],
+      type: "module",
+      icon: "groups",
+    },
+    {
+      title: "Module 5: Con người",
+      subtitle: "Mục tiêu và động lực",
+      url: "module5.html",
+      keywords: [
+        "con người",
+        "bản chất",
+        "tha hóa",
+        "giải phóng",
+        "module 5",
+        "m5",
+      ],
+      type: "module",
+      icon: "person",
+    },
+    {
+      title: "Module 6: Biện chứng CSHT & KTTT",
+      subtitle: "Cơ sở Hạ tầng, Kiến trúc Thượng tầng và Nhà nước",
+      url: "module6.html",
+      keywords: [
+        "cơ sở hạ tầng",
+        "kiến trúc thượng tầng",
+        "csht",
+        "kttt",
+        "nhà nước",
+        "quan hệ sản xuất",
+        "đổi mới 1986",
+        "module 6",
+        "m6",
+        "biện chứng",
+      ],
+      type: "module",
+      icon: "account_balance",
+    },
+    {
+      title: "Thực hành",
+      subtitle: "Bài tập và câu hỏi ôn tập",
+      url: "practice.html",
+      keywords: ["thực hành", "bài tập", "ôn tập", "practice"],
+      type: "practice",
+      icon: "edit_note",
+    },
+    {
+      title: "Game Xây Thế Giới Quan",
+      subtitle: "Trò chơi tương tác xây dựng hệ tư duy",
+      url: "worldview-game.html",
+      keywords: [
+        "game",
+        "trò chơi",
+        "thế giới quan",
+        "tương tác",
+        "xây dựng",
+        "worldview",
+      ],
+      type: "game",
+      icon: "extension",
+    },
+    {
+      title: "Trò chuyện với AI Assistants",
+      subtitle: "Hỏi đáp triết học dựa trên giáo trình",
+      url: "ai-assistants.html",
+      keywords: [
+        "ai",
+        "assistant",
+        "chat",
+        "trò chuyện",
+        "gemini",
+        "giáo trình",
+        "triết học mác - lênin",
+      ],
+      type: "page",
+      icon: "smart_toy",
+    },
+    {
+      title: "Quy luật Lượng - Chất",
+      subtitle: "Module 2",
+      url: "module2.html",
+      keywords: ["lượng", "chất", "độ", "điểm nút", "bước nhảy"],
+      type: "concept",
+      icon: "science",
+    },
+    {
+      title: "Quy luật Mâu thuẫn",
+      subtitle: "Module 2",
+      url: "module2.html",
+      keywords: ["mâu thuẫn", "đối lập", "đấu tranh"],
+      type: "concept",
+      icon: "balance",
+    },
+    {
+      title: "Trang chủ",
+      subtitle: "Tổng quan về PhiloVerse",
+      url: "home.html",
+      keywords: ["trang chủ", "home", "overview"],
+      type: "page",
+      icon: "home",
+    },
+  ];
+  console.log("✓ Search data loaded:", searchData.length, "items");
+</script>
+
+<script>
+  // Dark Mode Toggle Logic
+  (function() {
+    const toggleBtn = document.getElementById("theme-toggle-btn");
+    const toggleIcon = document.getElementById("theme-toggle-icon");
+    
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        if (toggleIcon) toggleIcon.innerText = "dark_mode";
+      } else {
+        // Default to dark mode
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+        if (toggleIcon) toggleIcon.innerText = "light_mode";
+      }
+    }
+    
+    // Always default to dark mode for the cinematic historical experience
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    applyTheme(savedTheme);
+    
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        const currentTheme = document.documentElement.classList.contains("light") ? "light" : "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", newTheme);
+        applyTheme(newTheme);
+        window.dispatchEvent(new Event("themechanged"));
+      });
+    }
+  })();
+
+  // Add shadow to header on scroll
+  window.addEventListener("scroll", function () {
+    const header = document.getElementById("main-header");
+    if (header && window.scrollY > 10) {
+      header.classList.add("shadow-cinematic");
+      header.style.backgroundColor = "rgba(107, 0, 0, 0.95)";
+    } else if (header) {
+      header.classList.remove("shadow-cinematic");
+      header.style.backgroundColor = "";
+    }
+  });
+
+  // Search functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search-input");
+    const searchResults = document.getElementById("search-results");
+    const searchContainer = document.getElementById("search-container");
+    let selectedIndex = -1;
+
+    if (!searchInput || !searchResults) {
+      console.error("Search elements not found");
+      return;
+    }
+
+    if (typeof searchData === "undefined") {
+      console.error("searchData is not loaded.");
+      return;
+    }
+
+    // Search function
+    function performSearch(query) {
+      if (!query || query.trim().length < 2) {
+        searchResults.classList.add("hidden");
+        return;
+      }
+
+      query = query.toLowerCase().trim();
+
+      // Filter search data
+      const results = searchData
+        .filter((item) => {
+          return (
+            item.title.toLowerCase().includes(query) ||
+            item.subtitle.toLowerCase().includes(query) ||
+            item.keywords.some((keyword) =>
+              keyword.toLowerCase().includes(query),
+            )
+          );
+        })
+        .slice(0, 8); // Limit to 8 results
+
+      displayResults(results, query);
+    }
+
+    // Display results
+    function displayResults(results, query) {
+      if (results.length === 0) {
+        searchResults.innerHTML = `
+                    <div class="p-4 text-center text-philo-cream/50">
+                        <span class="material-symbols-outlined text-3xl mb-2 opacity-50 text-philo-gold">search_off</span>
+                        <p class="text-sm">Không tìm thấy kết quả cho "${query}"</p>
+                    </div>
+                `;
+        searchResults.classList.remove("hidden");
+        return;
+      }
+
+      const prefix = window.componentPrefix || '';
+
+      const html = results
+        .map(
+          (item, index) => `
+                <a href="${prefix}${item.url}" 
+                   class="search-result-item flex items-start gap-3 p-3 hover:bg-philo-gold/15 transition-colors cursor-pointer border-b border-philo-gold/20 last:border-b-0"
+                   data-index="${index}">
+                    <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-philo-gold/10 flex items-center justify-center text-philo-gold">
+                        <span class="material-symbols-outlined text-[18px]">${item.icon}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="font-medium text-xs md:text-sm text-philo-cream truncate">${highlightText(item.title, query)}</div>
+                        <div class="text-[10px] md:text-xs text-philo-cream/70 truncate">${item.subtitle}</div>
+                        <div class="text-[10px] text-philo-gold font-semibold mt-0.5 capitalize">${getTypeLabel(item.type)}</div>
+                    </div>
+                </a>
+            `,
+        )
+        .join("");
+
+      searchResults.innerHTML = html;
+      searchResults.classList.remove("hidden");
+      selectedIndex = -1;
+    }
+
+    // Highlight matching text
+    function highlightText(text, query) {
+      const regex = new RegExp(`(${escapeRegex(query)})`, "gi");
+      return text.replace(
+        regex,
+        '<mark class="bg-philo-gold/25 text-philo-cream rounded px-0.5">$1</mark>',
+      );
+    }
+
+    // Escape special regex characters
+    function escapeRegex(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    // Get type label in Vietnamese
+    function getTypeLabel(type) {
+      const labels = {
+        module: "Module",
+        concept: "Khái niệm",
+        practice: "Thực hành",
+        game: "Trò chơi",
+        page: "Trang",
+      };
+      return labels[type] || type;
+    }
+
+    // Event listeners
+    searchInput.addEventListener("input", function (e) {
+      performSearch(e.target.value);
+    });
+
+    searchInput.addEventListener("focus", function (e) {
+      if (e.target.value.trim().length >= 2) {
+        performSearch(e.target.value);
+      }
+    });
+
+    // Keyboard navigation
+    searchInput.addEventListener("keydown", function (e) {
+      const items = searchResults.querySelectorAll(".search-result-item");
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+        updateSelection(items);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, -1);
+        updateSelection(items);
+      } else if (e.key === "Enter" && selectedIndex >= 0) {
+        e.preventDefault();
+        items[selectedIndex].click();
+      } else if (e.key === "Escape") {
+        searchResults.classList.add("hidden");
+        searchInput.blur();
+      }
+    });
+
+    // Update selection highlight
+    function updateSelection(items) {
+      items.forEach((item, index) => {
+        if (index === selectedIndex) {
+          item.classList.add("bg-philo-gold/15");
+          item.scrollIntoView({ block: "nearest" });
+        } else {
+          item.classList.remove("bg-philo-gold/15");
+        }
+      });
+    }
+
+    // Click outside to close
+    document.addEventListener("click", function (e) {
+      if (searchContainer && !searchContainer.contains(e.target)) {
+        searchResults.classList.add("hidden");
+      }
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    searchResults.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+  });
+
+  // Smart navigation for Modules link
+  document.addEventListener("DOMContentLoaded", function () {
+    const modulesLink = document.getElementById("modules-link");
+    if (modulesLink) {
+      modulesLink.addEventListener("click", function (e) {
+        const currentPage =
+          window.location.pathname.split("/").pop() || "home.html";
+
+        if (currentPage === "home.html" || currentPage === "") {
+          e.preventDefault();
+          const overviewSection = document.getElementById("overview");
+          if (overviewSection) {
+            overviewSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    }
+
+    // Update active nav link based on scroll position (only on home page)
+    const currentPage =
+      window.location.pathname.split("/").pop() || "home.html";
+    if (currentPage === "home.html" || currentPage === "") {
+      function updateNavOnScroll() {
+        const overviewSection = document.getElementById("overview");
+        if (!overviewSection) return;
+
+        const overviewTop = overviewSection.getBoundingClientRect().top;
+        const threshold = 220; 
+
+        const homeLink = document.querySelector('a[href="home.html"]');
+        const modulesLinkNav = document.getElementById("modules-link");
+
+        const activeClass = "nav-link px-3 py-2 rounded-xl text-philo-gold text-sm font-bold flex items-center";
+        const inactiveClass = "nav-link px-3 py-2 rounded-xl text-philo-cream text-sm font-medium transition-all duration-300 hover:text-philo-gold flex items-center";
+
+        if (overviewTop <= threshold) {
+          if (homeLink) homeLink.className = inactiveClass;
+          if (modulesLinkNav) modulesLinkNav.className = activeClass;
+        } else {
+          if (homeLink) homeLink.className = activeClass;
+          if (modulesLinkNav) modulesLinkNav.className = inactiveClass;
+        }
+      }
+
+      window.addEventListener("scroll", updateNavOnScroll);
+      setTimeout(updateNavOnScroll, 100);
+    }
+  });
+</script>

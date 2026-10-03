@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giải mã câu hỏi - HCM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="js/tailwind-config-global.js"></script>
+  <link rel="stylesheet" href="css/game-back.css" />
+  <style>
+    .decode-shell { background: radial-gradient(circle at 10% 0%, rgba(212,160,23,.13), transparent 34%), radial-gradient(circle at 100% 100%, rgba(153,27,27,.10), transparent 38%); }
+    .decode-token { transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease; user-select:none; }
+    .decode-token:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15,23,42,.12); }
+    .decode-token.used { opacity:.32; pointer-events:none; transform:none; box-shadow:none; }
+    .answer-token { animation: popIn .16s ease-out; }
+    @keyframes popIn { from { transform:scale(.82); opacity:.25; } to { transform:scale(1); opacity:1; } }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 75%{transform:translateX(7px)} }
+    .shake { animation: shake .28s ease-in-out; }
+    @keyframes pulseGood { 0%{box-shadow:0 0 0 0 rgba(16,185,129,.35)} 100%{box-shadow:0 0 0 18px rgba(16,185,129,0)} }
+    .pulse-good { animation:pulseGood .7s ease-out; }
+  </style>
+    <link rel="stylesheet" href="css/philoverse-ui.css" />
+</head>
+<body data-page-type="game" class="bg-philo-blackBurgundy relative font-heading min-h-screen flex flex-col">
+  <div id="header-placeholder"></div>
+
+  <main class="flex-grow px-4 md:px-10 py-8">
+    <div class="max-w-6xl mx-auto">
+      <section id="game-root" class="decode-shell min-h-[620px] rounded-3xl border border-philo-warmGold/30 dark:border-slate-800 bg-philo-blackBurgundy  dark:bg-[#121826] shadow-xl overflow-hidden"></section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <a class="game-back-btn" href="games.html" aria-label="Về trang game">← VỀ TRANG GAME</a>
+  <script src="js/game-1.js"></script>
+  <script src="js/load-components.js"></script>
+</body>
+</html>
