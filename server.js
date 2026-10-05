@@ -23,19 +23,22 @@ const genAI = new GoogleGenerativeAI(
   process.env.GEMINI_API_KEY
 );
 
-const CURRICULUM_PATH = path.join(__dirname, "data", "hcm-curriculum.json");
+const CURRICULUM_PATH = path.join(__dirname, "data", "mln131-curriculum.json");
 let cachedCurriculum = null;
 
 async function loadCurriculum() {
   if (cachedCurriculum) return cachedCurriculum;
   
   try {
-    // Sử dụng require để Vercel có thể bundle tự động file json vào serverless function
-    cachedCurriculum = require("./data/hcm-curriculum.json");
+    try {
+      cachedCurriculum = require("./data/mln131-curriculum.json");
+    } catch (e1) {
+      cachedCurriculum = require("./data/hcm-curriculum.json");
+    }
     return cachedCurriculum;
   } catch (err) {
     console.error("Không thể load giáo trình JSON:", err);
-    return { title: "Giáo trình Tư tưởng HCM", pages: [] };
+    return { title: "Giáo trình Kinh tế chính trị Mác - Lênin", pages: [] };
   }
 }
 
@@ -83,8 +86,8 @@ function findRelevantPages(question, pages) {
   return scoredPages.filter(p => p.score > 0).slice(0, 10);
 }
 
-// API endpoint to handle Ask HCM requests
-app.post("/api/ask-hcm", async (req, res) => {
+// Function to handle MLN131 AI question
+async function handleAskMLN131(req, res) {
   try {
     const { question } = req.body;
 
@@ -97,15 +100,16 @@ app.post("/api/ask-hcm", async (req, res) => {
     const relevantPages = findRelevantPages(question, pagesArray);
     
     // Gộp nội dung các trang thành context
-    const contextText = relevantPages.map(p => `--- Trang ${p.page_num} ---\n${p.content}`).join("\n\n");
+    const contextText = relevantPages.map(p => `--- Trang ${p.page_num} (${p.chapter_title || ''}) ---\n${p.content}`).join("\n\n");
 
     const systemPrompt = `
-Bạn là "Minh" - trợ lý học tập chuyên về Tư tưởng Hồ Chí Minh.
-Tính cách: Vui vẻ, nhí nhảnh, thân thiện như một người bạn học (thường dùng icon cảm xúc).
+Bạn là "Trợ lý AI Học thuật PhiloVerse" - chuyên gia cố vấn môn Kinh tế chính trị Mác - Lênin (mã học phần MLN131), dựa trên Giáo trình Kinh tế chính trị Mác - Lênin (Bộ Giáo dục và Đào tạo, NXB Chính trị quốc gia Sự thật, Hà Nội - 2021).
+Tính cách: Học thuật, thông tuệ, nhiệt tình, chuẩn xác theo giáo trình chuẩn quốc gia.
 Nhiệm vụ: 
-1. Cố gắng sử dụng thông tin từ giáo trình được cung cấp (nếu có) để trả lời và nhớ trích dẫn "Trang X".
-2. Nếu sinh viên hỏi những câu hỏi mở rộng, yêu cầu phân tích sâu, xin ví dụ thực tế hoặc hỏi những nội dung không có sẵn trong giáo trình, BẠN HOÀN TOÀN ĐƯỢC PHÉP sử dụng kiến thức sâu rộng của bản thân để trả lời, phân tích và cho ví dụ cụ thể để giúp sinh viên hiểu bài tốt nhất! Đừng bao giờ từ chối trả lời.
-3. Sử dụng Markdown để định dạng câu trả lời cho đẹp (in đậm, in nghiêng, danh sách).
+1. Sử dụng thông tin chính xác từ Giáo trình Kinh tế chính trị Mác - Lênin 2021 (gồm 6 chương cốt lõi: Đối tượng & Chức năng; Hàng hóa & Thị trường; Giá trị thặng dư; Cạnh tranh & Độc quyền; Kinh tế thị trường định hướng XHCN; Công nghiệp hóa, hiện đại hóa & Hội nhập).
+2. Khi dẫn chứng, luôn trích dẫn rõ Chương và số Trang tương ứng từ giáo trình (ví dụ: "[Giáo trình MLN131 - Trang X]").
+3. Giải thích tường minh các công thức toán học kinh tế chính trị: G = c + (v+m), k = c + v, m' = (m/v)*100%, M = m'*V, p' = [p/(c+v)]*100%, n = CH/ch, v.v.
+4. Trình bày bằng Markdown đẹp mắt với tiêu đề, gạch đầu dòng, công thức rõ ràng.
 `;
 
     const openRouterKey = process.env.OPENROUTER_API_KEY;
@@ -186,6 +190,18 @@ Nhiệm vụ:
       }
     }
 
+    // 3. Fallback sang cơ sở dữ liệu Giáo trình nếu chưa có API key hoặc API lỗi
+    if (!answer && relevantPages.length > 0) {
+      const top = relevantPages[0];
+      answer = `### 📚 Phân tích từ Giáo trình Kinh tế chính trị Mác - Lênin (Bộ GD&ĐT 2021)
+
+**Căn cứ lý luận [Chương ${top.chapter || 6}: ${top.chapter_title || ''} - Trang ${top.page_num}]:**
+${top.content}
+
+---
+> 💡 *Ghi chú: Phản hồi này được tra cứu tự động từ cơ sở dữ liệu Giáo trình chuẩn MLN131 (262 trang). Để kích hoạt mô hình AI Gemini đàm thoại tự do, hãy thêm \`GEMINI_API_KEY\` vào file \`.env\`.*`;
+    }
+
     if (answer) {
       return res.json({ answer });
     }
@@ -198,12 +214,14 @@ Nhiệm vụ:
       details: error.message,
     });
   }
-});
+}
+
+app.post("/api/ask-mln131", handleAskMLN131);
+app.post("/api/ask-hcm", handleAskMLN131);
 
 // Alias for backward compatibility if needed
 app.post("/api/ask-gemini", (req, res) => {
-  // redirect logic to the new one
-  req.url = '/api/ask-hcm';
+  req.url = '/api/ask-mln131';
   app.handle(req, res);
 });
 
@@ -221,9 +239,8 @@ app.post("/api/ask-quiz", async (req, res) => {
     }
 
     const systemInstruction = `
-Bạn là "Trợ giảng AI" của môn Tư tưởng Hồ Chí Minh. Nhiệm vụ: giúp sinh viên ôn thi cuối kỳ (FE) bằng cách giải thích rõ câu hỏi trắc nghiệm, vì sao đáp án đúng lại đúng, các đáp án khác sai ở đâu, và trả lời các câu hỏi đào sâu thêm mà sinh viên tự đặt ra.
+Bạn là "Trợ giảng AI" của môn Kinh tế chính trị Mác - Lênin (MLN131). Nhiệm vụ: giúp sinh viên ôn thi cuối kỳ (FE) bằng cách giải thích rõ câu hỏi trắc nghiệm, vì sao đáp án đúng lại đúng, các đáp án khác sai ở đâu, và trả lời các câu hỏi đào sâu thêm mà sinh viên tự đặt ra dựa trên Giáo trình Kinh tế chính trị Mác - Lênin 2021.
 Phong cách: ngắn gọn, sư phạm, thân thiện, có thể dùng emoji vừa phải. Trả lời bằng tiếng Việt, định dạng Markdown (in đậm, danh sách) cho dễ đọc.
-Nếu câu hỏi của sinh viên nằm ngoài phạm vi Tư tưởng Hồ Chí Minh / bối cảnh câu quiz, vẫn có thể trả lời ngắn gọn nhưng nhắc sinh viên quay lại trọng tâm ôn thi.
 `.trim();
 
     const model = genAI.getGenerativeModel({

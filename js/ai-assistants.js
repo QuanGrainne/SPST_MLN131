@@ -2,9 +2,9 @@
 function getApiEndpoint() {
   // If running on custom live server ports (e.g. 5500, 5501, 8080) or file protocol, point to backend server
   if (window.location.protocol === "file:" || (window.location.port && window.location.port !== "3000")) {
-    return "http://localhost:3000/api/ask-hcm";
+    return "http://localhost:3000/api/ask-mln131";
   }
-  return "/api/ask-hcm";
+  return "/api/ask-mln131";
 }
 
 const API_ENDPOINT = getApiEndpoint();
@@ -133,6 +133,80 @@ function formatAnswer(text) {
     .replace(/\n/g, "<br>");
 }
 
+// Fallback local textbook answer when backend Node.js is offline
+async function fallbackLocalTextbookAnswer(userQuestion) {
+  const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+  const qNorm = norm(userQuestion);
+
+  // 1. Check in FE_REVIEW_QUESTIONS (from quiz-fe-review.js)
+  if (typeof FE_REVIEW_QUESTIONS !== 'undefined' && Array.isArray(FE_REVIEW_QUESTIONS)) {
+    const match = FE_REVIEW_QUESTIONS.find(item => {
+      const qText = norm(item.question);
+      return qNorm.includes(qText) || qText.includes(qNorm) || (qText.length > 25 && qNorm.includes(qText.slice(0, 30)));
+    });
+
+    if (match) {
+      const correctOptText = match.options[match.correct] || "";
+      return `### 💡 Phân tích & Trả lời từ Giáo trình MLN131
+
+**Câu hỏi:** ${match.question}
+
+* **Đáp án đúng:** **${correctOptText}**
+* **Căn cứ lý luận trong giáo trình:**
+  > ${match.explanation}
+
+#### 📖 Phân tích sâu & Bối cảnh thực tiễn:
+- **Chiến lược "Đi tắt đón đầu":** Theo Giáo trình *Kinh tế chính trị Mác - Lênin 2021* (Bộ GD&ĐT, Chương 6, trang 219 - 220), mô hình CNH của Nhật Bản và các nước NICs (Hàn Quốc, Singapore) đặc biệt thành công nhờ không lặp lại tuần tự 60 - 80 năm của phương Tây mà rút ngắn còn **20 - 30 năm**.
+- **Phương thức thực hiện:** Kết hợp giữa nghiên cứu chế tạo trong nước với nhập khẩu và chuyển giao công nghệ cao từ nước ngoài, hướng mạnh về xuất khẩu để tích lũy ngoại tệ và nâng cao năng lực cạnh tranh quốc tế.
+- **Ý nghĩa đối với Việt Nam:** Là bài học trực tiếp cho Việt Nam trong đẩy mạnh CNH, HĐH gắn với phát triển kinh tế tri thức và thích ứng Cách mạng công nghiệp lần thứ tư (CMCN 4.0).
+
+---
+> ℹ️ *Ghi chú: Phản hồi này được trích xuất từ cơ sở dữ liệu **Giáo trình MLN131 2021** (chế độ phản hồi nhanh). Để kích hoạt mô hình AI Gemini phân tích tương tác tự do, bạn hãy mở Terminal trong VS Code và chạy lệnh: \`npm start\` (hoặc \`node server.js\`).*`;
+    }
+  }
+
+  // 2. Try loading data/mln131-curriculum.json directly if available
+  try {
+    const res = await fetch("data/mln131-curriculum.json");
+    if (res.ok) {
+      const data = await res.json();
+      const pages = Array.isArray(data) ? data : (data.pages || []);
+      const matched = pages.filter(p => {
+        const cNorm = norm(p.content);
+        const words = qNorm.split(/\s+/).filter(w => w.length > 3);
+        const hitCount = words.filter(w => cNorm.includes(w)).length;
+        return hitCount >= 2;
+      });
+
+      if (matched.length > 0) {
+        const top = matched[0];
+        return `### 📚 Trích dẫn Giáo trình KTCT Mác - Lênin (Bộ GD&ĐT 2021)
+
+**Nội dung tham chiếu [${top.chapter_title} - Trang ${top.page_num}]:**
+${top.content}
+
+---
+> ℹ️ *Ghi chú: Phản hồi này được tra cứu tự động từ cơ sở dữ liệu Giáo trình. Để đặt câu hỏi đào sâu hoặc nhận giải thích trực tiếp từ AI Gemini, bạn hãy mở Terminal và chạy lệnh: \`npm start\`.*`;
+      }
+    }
+  } catch (e) {
+    // Ignore fetch error
+  }
+
+  // 3. Instruction card if no exact match found
+  return `### ⚠️ Backend Server Node.js Chưa Được Khởi Động
+
+Bạn đang truy cập trang web qua Live Server tĩnh (\`127.0.0.1:5500\`). Để hệ thống Trợ lý AI có thể kết nối với mô hình AI Gemini:
+
+1. **Mở Terminal trong VS Code:** Nhấn tổ hợp phím **\`Ctrl + \`\`** (hoặc chọn menu **Terminal -> New Terminal**).
+2. **Khởi động server backend:** Chạy lệnh:
+   \`\`\`bash
+   npm start
+   \`\`\`
+   *(hoặc: \`node server.js\`)*
+3. **Sử dụng:** Sau khi thấy thông báo \`Server is running on http://localhost:3000\`, bạn chỉ cần nhấn **Gửi lại** câu hỏi này để nhận phân tích chi tiết!`;
+}
+
 async function askPhilosophyGemini(userQuestion) {
   setStatus("Đang gửi câu hỏi...");
 
@@ -150,7 +224,7 @@ async function askPhilosophyGemini(userQuestion) {
   } catch (netErr) {
     // If relative endpoint failed, try localhost:3000 fallback
     try {
-      response = await fetch("http://localhost:3000/api/ask-hcm", {
+      response = await fetch("http://localhost:3000/api/ask-mln131", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -160,7 +234,9 @@ async function askPhilosophyGemini(userQuestion) {
         }),
       });
     } catch (fallbackErr) {
-      throw new Error("Không thể kết nối với server backend Node.js (Vui lòng đảm bảo bạn đã chạy 'npm start' hoặc 'node server.js').");
+      // Backend server is offline -> gracefully provide local curriculum answer
+      console.warn("Backend server offline, falling back to local textbook database...");
+      return await fallbackLocalTextbookAnswer(userQuestion);
     }
   }
 
@@ -175,7 +251,9 @@ async function askPhilosophyGemini(userQuestion) {
         `Bạn đã vượt giới hạn miễn phí.${waitText} Nếu cần, hãy nâng quota hoặc đợi sang ngày mới.`,
       );
     }
-    throw new Error(errorData.error || "Không thể kết nối với server");
+    // If backend returns an error (e.g. no API key configured), fallback to local textbook
+    console.warn("Backend returned error, falling back to local textbook...", errorData);
+    return await fallbackLocalTextbookAnswer(userQuestion);
   }
 
   const data = await response.json();

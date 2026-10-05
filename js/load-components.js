@@ -157,16 +157,11 @@ function setActiveNavLink() {
             (currentPath === 'home.html' && linkHref === '#overview' && currentHash === '#overview') ||
             (linkHref === 'home.html#overview' && currentPath.includes('module')) ||
             (linkHref === 'practice.html' && currentPath.includes('quiz')) ||
-            (linkHref === 'games.html' && (document.body?.dataset?.pageType === 'game' || currentPath.includes('games'))) ||
             (linkHref.includes('articles.html') && (window.location.pathname.includes('/articles/') || currentPath.includes('articles')));
 
         if (isMatch) {
             link.classList.add('nav-active');
-            if (linkHref === 'games.html') {
-                link.className = "nav-link nav-active px-3 py-2 rounded-xl bg-philo-gold/10 hover:-translate-y-px transition-all duration-300 text-philo-gold text-sm font-bold relative pb-1 flex items-center gap-1.5";
-            } else {
-                link.className = "nav-link nav-active px-3 py-2 rounded-xl bg-philo-gold/10 hover:-translate-y-px transition-all duration-300 text-philo-gold text-sm font-bold relative pb-1";
-            }
+            link.className = "nav-link nav-active px-3 py-2 rounded-xl bg-philo-gold/10 hover:-translate-y-px transition-all duration-300 text-philo-gold text-sm font-bold relative pb-1";
         }
     });
 }

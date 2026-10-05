@@ -9,146 +9,110 @@
 
   const TOPIC_BANK = [
     {
-      id: "independence",
-      title: "Độc lập dân tộc & CNXH",
+      id: "chapter1",
+      title: "Đối tượng & Phương pháp KTCT",
+      chapter: "Chương I",
+      icon: "menu_book",
+      desc: "Nhập môn kinh tế chính trị, lịch sử các trường phái và phương pháp khoa học.",
+      keywords: [
+        "Quan hệ sản xuất",
+        "Trừu tượng hóa khoa học",
+        "Quy luật kinh tế",
+        "Chính sách kinh tế",
+        "Chủ nghĩa trọng thương",
+        "Chủ nghĩa trọng nông",
+        "Kinh tế chính trị cổ điển",
+        "Chức năng nhận thức"
+      ]
+    },
+
+    {
+      id: "chapter2",
+      title: "Hàng hóa & Giá trị thặng dư",
+      chapter: "Chương II",
+      icon: "payments",
+      desc: "Hai thuộc tính hàng hóa, hai mặt của lao động và bí mật sản xuất giá trị thặng dư.",
+      keywords: [
+        "Lao động trừu tượng",
+        "Lao động cụ thể",
+        "Giá trị sử dụng",
+        "Giá trị thặng dư",
+        "Tư bản bất biến",
+        "Tư bản khả biến",
+        "Tích lũy tư bản",
+        "Quy luật giá trị"
+      ]
+    },
+
+    {
+      id: "chapter3",
+      title: "Cạnh tranh & Độc quyền trong CNTB",
       chapter: "Chương III",
-      icon: "flag",
-      desc: "Tư tưởng Hồ Chí Minh về độc lập dân tộc và chủ nghĩa xã hội.",
+      icon: "corporate_fare",
+      desc: "Tích tụ tập trung tư bản, các hình thức độc quyền, tư bản tài chính và độc quyền nhà nước.",
       keywords: [
-        "Độc lập dân tộc",
-        "Chủ nghĩa xã hội",
-        "Tự do",
-        "Hạnh phúc",
-        "Quyền dân tộc",
-        "Cách mạng giải phóng dân tộc",
-        "Bạo lực cách mạng",
-        "Độc lập gắn liền CNXH"
+        "Tổ chức độc quyền",
+        "Tư bản tài chính",
+        "Xuất khẩu tư bản",
+        "Độc quyền nhà nước",
+        "Lợi nhuận độc quyền",
+        "Cartel và Trust",
+        "Tài phiệt đầu sỏ",
+        "Cạnh tranh nội bộ ngành"
       ]
     },
 
     {
-      id: "party",
-      title: "Đảng Cộng sản Việt Nam",
+      id: "chapter4",
+      title: "KTTT Định hướng XHCN",
       chapter: "Chương IV",
-      icon: "groups",
-      desc: "Quan điểm về Đảng Cộng sản Việt Nam.",
+      icon: "storefront",
+      desc: "Mô hình kinh tế thị trường định hướng xã hội chủ nghĩa, cơ cấu sở hữu và quan hệ phân phối.",
       keywords: [
-        "Đảng cầm quyền",
-        "Tập trung dân chủ",
-        "Tự phê bình",
-        "Phê bình",
-        "Kỷ luật nghiêm minh",
-        "Đoàn kết thống nhất",
-        "Đạo đức",
-        "Văn minh"
+        "Kinh tế nhà nước",
+        "Kinh tế tư nhân",
+        "Kinh tế tập thể",
+        "Định hướng XHCN",
+        "Phân phối theo lao động",
+        "Sở hữu toàn dân",
+        "Công bằng xã hội",
+        "Thành phần kinh tế"
       ]
     },
 
     {
-      id: "state",
-      title: "Nhà nước của nhân dân",
-      chapter: "Chương IV",
-      icon: "account_balance",
-      desc: "Nhà nước của nhân dân, do nhân dân và vì nhân dân.",
-      keywords: [
-        "Nhân dân làm chủ",
-        "Của nhân dân",
-        "Do nhân dân",
-        "Vì nhân dân",
-        "Thượng tôn pháp luật",
-        "Kiểm soát quyền lực",
-        "Phục vụ nhân dân",
-        "Pháp quyền"
-      ]
-    },
-
-    {
-      id: "solidarity",
-      title: "Đại đoàn kết dân tộc",
+      id: "chapter5",
+      title: "CNH - HĐH & Hội nhập quốc tế",
       chapter: "Chương V",
-      icon: "diversity_1",
-      desc: "Tư tưởng về đại đoàn kết toàn dân tộc.",
+      icon: "precision_manufacturing",
+      desc: "Cách mạng công nghiệp, chuyển đổi số, kinh tế tri thức và độc lập tự chủ trong hội nhập.",
       keywords: [
-        "Đại đoàn kết",
-        "Toàn dân tộc",
-        "Mặt trận dân tộc thống nhất",
-        "Công nhân",
-        "Nông dân",
-        "Trí thức",
-        "Lợi ích dân tộc",
-        "Đoàn kết lâu dài"
+        "Công nghiệp hóa",
+        "Hiện đại hóa",
+        "Kinh tế tri thức",
+        "Cách mạng 4.0",
+        "Chuyển đổi số",
+        "Độc lập tự chủ",
+        "Hội nhập quốc tế",
+        "Chuỗi giá trị toàn cầu"
       ]
     },
 
     {
-      id: "international",
-      title: "Đoàn kết quốc tế",
-      chapter: "Chương V",
-      icon: "public",
-      desc: "Tư tưởng Hồ Chí Minh về đoàn kết quốc tế.",
-      keywords: [
-        "Đoàn kết quốc tế",
-        "Đoàn kết với nhân dân thế giới",
-        "Hòa bình",
-        "Độc lập",
-        "Dân chủ",
-        "Tiến bộ xã hội",
-        "Có lý",
-        "Có tình"
-      ]
-    },
-
-    {
-      id: "culture",
-      title: "Văn hóa",
+      id: "chapter6",
+      title: "Quan hệ Lợi ích & Thể chế kinh tế",
       chapter: "Chương VI",
-      icon: "theater_comedy",
-      desc: "Tư tưởng Hồ Chí Minh về văn hóa.",
+      icon: "balance",
+      desc: "Hài hòa các lợi ích kinh tế, vai trò nhà nước, hoàn thiện thể chế và kiểm soát nhóm lợi ích.",
       keywords: [
-        "Văn hóa",
-        "Đời sống mới",
-        "Nâng cao dân trí",
-        "Bồi dưỡng tư tưởng",
-        "Đạo đức",
-        "Lối sống",
-        "Văn hóa giáo dục",
-        "Văn hóa đời sống"
-      ]
-    },
-
-    {
-      id: "ethics",
-      title: "Đạo đức cách mạng",
-      chapter: "Chương VI",
-      icon: "volunteer_activism",
-      desc: "Các chuẩn mực và nguyên tắc xây dựng đạo đức cách mạng.",
-      keywords: [
-        "Cần",
-        "Kiệm",
-        "Liêm",
-        "Chính",
-        "Chí công vô tư",
-        "Nói đi đôi với làm",
-        "Xây đi đôi với chống",
-        "Tu dưỡng suốt đời"
-      ]
-    },
-
-    {
-      id: "human",
-      title: "Con người",
-      chapter: "Chương VI",
-      icon: "person_heart",
-      desc: "Quan điểm Hồ Chí Minh về con người.",
-      keywords: [
-        "Con người",
-        "Nhân dân",
-        "Yêu thương con người",
-        "Trồng người",
-        "Giáo dục",
-        "Phẩm chất",
-        "Năng lực",
-        "Phát triển con người"
+        "Lợi ích kinh tế",
+        "Điều hòa lợi ích",
+        "Hoàn thiện thể chế",
+        "Minh bạch công khai",
+        "Cơ chế xin - cho",
+        "Nhóm lợi ích tiêu cực",
+        "An sinh xã hội",
+        "Trách nhiệm xã hội"
       ]
     }
   ];

@@ -83,7 +83,7 @@ function validateSeedData(chapters) {
 
     seenSlugs.add(chapter.slug);
 
-    if (![1, 2, 3].includes(chapter.chapterNumber)) {
+    if (![1, 2, 3, 4, 5, 6].includes(chapter.chapterNumber)) {
       throw new Error(`Invalid chapter number: ${chapter.chapterNumber}`);
     }
 

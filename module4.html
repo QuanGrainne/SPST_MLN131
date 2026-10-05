@@ -1,19 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" class="dark">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Module 4: Tư tưởng HCM về Đoàn kết — PhiloVerse HCM</title>
-    <meta name="description"
-        content="Tìm hiểu Tư tưởng Hồ Chí Minh về đoàn kết dân tộc và đoàn kết quốc tế qua 6 bài học tương tác." />
+    <title>Module 4: Cạnh tranh và độc quyền trong nền kinh tế thị trường — PhiloVerse MLN131</title>
+    <meta name="description" content="Chương 4 Giáo trình Kinh tế chính trị Mác - Lênin 2021: Lý luận V.I. Lênin về độc quyền, độc quyền nhà nước, các biểu hiện mới và vai trò lịch sử của CNTB." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script src="js/tailwind-config-global.js"></script>
     <link rel="stylesheet" href="css/philoverse-ui.css" />
     <style>
@@ -49,15 +45,8 @@
         }
 
         @keyframes badge-pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.08);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
         .achievement-earned {
@@ -69,31 +58,59 @@
             transition: transform 0.3s ease;
         }
 
-        .lesson-header-academic {
-            padding: 2rem;
+        .lesson-tab.active-tab {
+            border-color: #FFD34E !important;
+            background: rgba(217, 166, 46, 0.12) !important;
+            box-shadow: 0 0 20px rgba(217, 166, 46, 0.2);
         }
-            /* Lesson tab active state */
-        .lesson-tab.active-tab { border-color: #FFD34E !important; background: rgba(217,166,46,0.12) !important; box-shadow: 0 0 20px rgba(217,166,46,0.2); }
-        .lesson-tab.active-tab .tab-label { color: #FFD34E !important; }
-        .lesson-dot.completed { background-color: #D9A62E !important; }
-        /* Lesson header */
-        .lesson-header-academic { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(20,3,3,0.95) 0%, rgba(101,7,7,0.85) 100%); border-bottom: 1px solid rgba(217,166,46,0.2); }
-        /* Module page hero */
-        .module-page-hero { position: relative; padding: 3rem 2rem 2.5rem; overflow: hidden; background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%); }
-        .module-page-hero > * { position: relative; z-index: 1; }
-        .module-page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,166,46,0.5), transparent); }</style>
+
+        .lesson-tab.active-tab .tab-label {
+            color: #FFD34E !important;
+        }
+
+        .lesson-dot.completed {
+            background-color: #D9A62E !important;
+        }
+
+        .lesson-header-academic {
+            padding: 2rem 2rem 1.5rem;
+            background: linear-gradient(135deg, rgba(20, 3, 3, 0.95) 0%, rgba(101, 7, 7, 0.85) 100%);
+            border-bottom: 1px solid rgba(217, 166, 46, 0.2);
+        }
+
+        .module-page-hero {
+            position: relative;
+            padding: 3rem 2rem 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0D0101 0%, #3A0505 50%, #140303 100%);
+        }
+
+        .module-page-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .module-page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(217, 166, 46, 0.5), transparent);
+        }
+    </style>
 </head>
 
-<body
- class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
+<body class="bg-philo-blackBurgundy relative text-philo-ivory font-body transition-colors duration-300 min-h-screen flex flex-col overflow-x-hidden">
     <div id="header-placeholder"></div>
 
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
 
-            <!-- ===== MODULE HERO HEADER ===== -->
+        <!-- ===== MODULE HERO HEADER ===== -->
         <div class="module-page-hero -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
             <div class="absolute inset-0 z-0 overflow-hidden">
-                <img src="assets/images/modules/module4-economy.jpg" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
+                <img src="assets/images/modules/module4-monopoly.jpg" onerror="this.src='assets/images/hero-economy.jpg'" alt="" class="w-full h-full object-cover opacity-20" style="object-position: center 30%;" />
                 <div class="absolute inset-0 bg-gradient-to-r from-[#0D0101] via-[#3A0505]/80 to-transparent"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-[#140303] via-transparent to-transparent"></div>
             </div>
@@ -101,682 +118,1218 @@
                 <div class="philo-breadcrumb mb-5">
                     <a href="home.html">TRANG CHỦ</a>
                     <span class="sep">/</span>
-                    <a href="home.html#overview">MODULES</a>
+                    <a href="Overview.html">GIÁO TRÌNH MLN131</a>
                     <span class="sep">/</span>
-                    <span>MODULE 4 • ĐẠI ĐOÀN KẾT DÂN TỘC</span>
+                    <span>CHƯƠNG 4 • CẠNH TRANH VÀ ĐỘC QUYỀN</span>
                 </div>
                 <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                     <div>
-                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">school</span> MODULE 04</span>
+                        <span class="philo-badge mb-3 inline-flex"><span class="material-symbols-outlined text-[14px]">corporate_fare</span> MODULE 04 • GIÁO TRÌNH CHUẨN 2021 (TRANG 112 - 151)</span>
                         <h1 class="font-heading text-3xl md:text-5xl font-bold leading-tight text-philo-ivory mt-2">
-                            Đại đoàn kết<br class="hidden md:block" />
-                            <span class="text-philo-gold italic">Dân tộc và Quốc tế</span>
+                            Cạnh tranh và Độc quyền trong<br class="hidden md:block" />
+                            <span class="text-philo-gold font-serif italic">Nền kinh tế thị trường</span>
                         </h1>
-                        <p class="mt-3 text-philo-ivory/70 text-sm md:text-base max-w-xl leading-relaxed">6 bài học về tư tưởng đại đoàn kết dân tộc và đoàn kết quốc tế của Hồ Chí Minh — nền tảng chiến lược cách mạng.</p>
+                        <p class="font-heading italic text-base md:text-lg text-philo-gold/80 mt-3 max-w-3xl leading-relaxed">
+                            Lý luận kinh điển của V.I. Lênin về chủ nghĩa tư bản độc quyền, độc quyền nhà nước, những biểu hiện mới (Concern, Conglomerate, TNCs) và giới hạn lịch sử của chủ nghĩa tư bản.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4 mt-4 text-xs text-philo-ivory/60">
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-philo-gold">menu_book</span> 6 bài học chuẩn</span>
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-philo-gold">timer</span> ~40 phút học</span>
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-philo-gold">quiz</span> 3 Formative Quizzes & 1 Module Exam</span>
+                        </div>
                     </div>
-                    <div class="md:min-w-[220px]">
-                        <div class="flex items-center justify-between text-xs text-philo-ivory/60 mb-2">
-                            <span id="m4-progress-label">0 / 6 bài hoàn thành</span>
-                            <span id="m4-progress-pct" class="text-philo-gold font-bold">0%</span>
-                        </div>
-                        <div class="philo-progress-track">
-                            <div id="m4-progress-bar" class="philo-progress-fill" style="width:0%"></div>
-                        </div>
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button onclick="toggleAIPanel()" class="philo-btn-gold flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                            <span>Trợ lý AI Chương 4</span>
+                        </button>
+                        <button onclick="openModuleQuiz()" class="philo-btn-secondary flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">verified</span>
+                            <span>Thi trắc nghiệm</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-        <section class="mb-10">
-            <div class="philo-section-divider"><span class="philo-section-title">✦ 6
-                    Bài học ✦</span></div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                <button onclick="showLesson('M4-L1')" id="tab-M4-L1" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">🤝</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.1</span><span class="text-xs font-medium text-philo-ivory/80">Vai trò ĐĐK</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L1"></span></button>
-                <button onclick="showLesson('M4-L2')" id="tab-M4-L2" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">👥</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.2</span><span class="text-xs font-medium text-philo-ivory/80">Lực lượng ĐĐK</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L2"></span></button>
-                <button onclick="showLesson('M4-L3')" id="tab-M4-L3" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">🛡️</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.3</span><span class="text-xs font-medium text-philo-ivory/80">Mặt trận thống nhất</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L3"></span></button>
-                <button onclick="showLesson('M4-L4')" id="tab-M4-L4" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">🌏</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.4</span><span class="text-xs font-medium text-philo-ivory/80">Đoàn kết quốc tế</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L4"></span></button>
-                <button onclick="showLesson('M4-L5')" id="tab-M4-L5" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">⚖️</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.5</span><span class="text-xs font-medium text-philo-ivory/80">Nguyên tắc ĐKQT</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L5"></span></button>
-                <button onclick="showLesson('M4-L6')" id="tab-M4-L6" class="lesson-tab group flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 text-center" style="background:rgba(58,5,5,0.7); border-color:rgba(217,166,46,0.2);"><span
- class="text-2xl">🎯</span><span
- class="text-xs font-semibold text-philo-ivory/70">Bài
-                        4.6</span><span class="text-xs font-medium text-philo-ivory/80">Vận dụng hiện nay</span><span
- class="w-2 h-2 rounded-full bg-philo-warmGold/40  lesson-dot"
-                        id="dot-M4-L6"></span></button>
+        <!-- Progress Tracker Bar -->
+        <div class="glass-panel p-4 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-sm font-semibold text-philo-ivory/80">Tiến độ bài học:</span>
+                <span id="m4-progress-text" class="text-sm font-bold text-philo-gold">0 / 6 bài</span>
             </div>
-        </section>
-
-
-        <section id="lesson-area" class="mb-16 min-h-[500px]">
-
-            <!-- BÀI 4.1: VAI TRÒ ĐĐK -->
-            <div id="lesson-M4-L1" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🤝</span><span
- class="text-emerald-100 text-sm font-semibold uppercase tracking-wider">Bài 4.1 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Vai trò của đại đoàn kết toàn dân
-                            tộc</h2>
-                        <p class="text-emerald-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu tại sao Hồ Chí Minh coi
-                            đại đoàn kết dân tộc là vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng.
-                        </p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div
- class="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-600 rounded-r-2xl p-6">
-                            <p class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">📖 Trích dẫn
-                                kinh điển</p>
-                            <blockquote
- class="font-heading text-xl italic text-philo-ivory leading-relaxed">
-                                "Đoàn kết, đoàn kết, đại đoàn kết.<br />Thành công, thành công, đại thành công."
-                            </blockquote>
-                            <p class="text-right text-sm text-philo-ivory/70 mt-3">— Hồ Chí
-                                Minh | <em>Toàn tập, tập 13, tr.119</em></p>
-                        </div>
-                        <div class="space-y-5">
-                            <h3 class="font-heading text-xl font-bold">1. Đại đoàn kết toàn dân tộc là vấn đề có ý nghĩa
-                                chiến lược</h3>
-                            <p class="text-philo-ivory/70 leading-relaxed">
-                                Hồ Chí Minh khẳng định đại đoàn kết không phải là một thủ đoạn chính trị nhất thời, mà
-                                là một <strong>chiến lược lâu dài</strong>, nhất quán trong suốt quá trình cách mạng. Nó
-                                quyết định sự sống còn của dân tộc và sự thành bại của mọi công cuộc cách mạng. Kẻ thù
-                                lớn nhất của cách mạng không chỉ là đế quốc, phong kiến, mà còn là sự chia rẽ.
-                            </p>
-
-                            <h3 class="font-heading text-xl font-bold mt-6">2. Đại đoàn kết là mục tiêu, nhiệm vụ hàng
-                                đầu của cách mạng</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-l-4 border-blue-500">
-                                    <h4 class="font-bold text-philo-warmGold mb-2">Đoàn kết là mục tiêu</h4>
-                                    <p class="text-sm text-philo-ivory/70">Không chỉ là
-                                        phương tiện để giành độc lập, mà bản thân khối đại đoàn kết bền vững chính là
-                                        một mục tiêu phải đạt được để xây dựng xã hội mới vững mạnh.</p>
-                                </div>
-                                <div
- class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border-l-4 border-amber-500">
-                                    <h4 class="font-bold text-amber-600 mb-2">Đoàn kết là nhiệm vụ</h4>
-                                    <p class="text-sm text-philo-ivory/70">Phải được quán
-                                        triệt trong mọi đường lối, chủ trương của Đảng. Đảng phải có nhiệm vụ thức tỉnh,
-                                        tập hợp, đoàn kết quần chúng tạo thành sức mạnh vô địch.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-t border-philo-warmGold/20  pt-6">
-                            <h3 class="font-heading text-lg font-bold mb-4 flex items-center gap-2"><span
- class="material-symbols-outlined text-emerald-600">psychology</span> Câu hỏi phản tư
-                            </h3>
-                            <div class="space-y-3">
-                                <div class="reflection-item">
-                                    <button onclick="toggleReflection(this)"
- class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors text-sm font-medium flex justify-between items-center">
-                                        <span>1. Sự khác biệt giữa "đoàn kết mang tính sách lược" và "đoàn kết mang tính
-                                            chiến lược" là gì?</span>
-                                        <span
- class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
-                                    </button>
-                                    <div
- class="reflection-answer p-4 text-sm text-philo-ivory/70">
-                                        <strong class="text-emerald-600 block mb-1">Gợi ý:</strong> Sách lược là tập hợp
-                                        lực lượng tạm thời để giải quyết một mục tiêu ngắn hạn, có thể tan rã khi mục
-                                        tiêu hoàn thành. Chiến lược là sự gắn kết lâu dài, xuyên suốt toàn bộ quá trình
-                                        cách mạng, tạo thành nền tảng vững chắc không thể phá vỡ cho cả hiện tại và
-                                        tương lai xây dựng đất nước.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-end mt-6">
-                            <button onclick="completeLesson('M4-L1')" id="btn-complete-M4-L1"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2">
-                                <span class="material-symbols-outlined text-sm">check_circle</span> Đánh dấu hoàn thành
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex-grow max-w-md bg-white/5 rounded-full h-2.5 overflow-hidden border border-white/10">
+                <div id="m4-progress-bar" class="bg-gradient-to-r from-philo-gold to-yellow-500 h-full rounded-full" style="width: 0%"></div>
             </div>
-
-            <!-- BÀI 4.2: LỰC LƯỢNG VÀ ĐIỀU KIỆN ĐĐK -->
-            <div id="lesson-M4-L2" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">👥</span><span
- class="text-blue-100 text-sm font-semibold uppercase tracking-wider">Bài 4.2 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Lực lượng và điều kiện đại đoàn kết
-                        </h2>
-                        <p class="text-blue-100 text-sm">🎯 <strong>Mục tiêu:</strong> Xác định rõ chủ thể, nền tảng của
-                            khối đại đoàn kết và những điều kiện bắt buộc để xây dựng khối đại đoàn kết.</p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div class="space-y-5">
-                            <h3 class="font-heading text-xl font-bold">1. Lực lượng đại đoàn kết toàn dân tộc</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5">
-                                    <h4 class="font-bold text-philo-warmGold mb-2">Chủ thể: Toàn dân</h4>
-                                    <p class="text-sm text-philo-ivory/70">"Dân" bao gồm mọi
-                                        người Việt Nam yêu nước, không phân biệt dân tộc, tôn giáo, giai cấp, giới tính,
-                                        lứa tuổi. Bất cứ ai có lòng yêu nước đều được tập hợp vào khối đại đoàn kết.</p>
-                                </div>
-                                <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5">
-                                    <h4 class="font-bold text-philo-warmGold mb-2">Nền tảng: Liên minh Công - Nông - Trí thức
-                                    </h4>
-                                    <p class="text-sm text-philo-ivory/70">Đại đoàn kết rất
-                                        rộng rãi, nhưng phải có cốt lõi vững chắc. Đó là liên minh giữa giai cấp công
-                                        nhân, giai cấp nông dân và tầng lớp trí thức, dưới sự lãnh đạo của Đảng.</p>
-                                </div>
-                            </div>
-
-                            <h3 class="font-heading text-xl font-bold mt-6">2. Điều kiện để xây dựng khối đại đoàn kết
-                            </h3>
-                            <ul class="space-y-3 mt-4 text-sm text-philo-ivory/70">
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-green-600">done</span>
-                                    <span><strong>Phải kế thừa truyền thống yêu nước, nhân nghĩa:</strong> Đây là cội
-                                        nguồn sức mạnh ngàn đời của dân tộc Việt Nam.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-green-600">done</span>
-                                    <span><strong>Phải có lòng khoan dung, độ lượng:</strong> Hồ Chí Minh nhấn mạnh:
-                                        "Năm ngón tay có ngón ngắn ngón dài, nhưng ngắn dài đều họp nhau lại nơi bàn
-                                        tay...". Phải xóa bỏ thành kiến, khoan dung với những người từng lầm đường lạc
-                                        lối nhưng nay đã hối cải.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-green-600">done</span>
-                                    <span><strong>Phải có Đảng Cộng sản vững mạnh lãnh đạo:</strong> Đây là điều kiện
-                                        tiên quyết để khối đại đoàn kết có định hướng đúng đắn, không bị phân tán, chệch
-                                        hướng.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="flex items-center justify-between mt-6">
-                            <button onclick="showLesson('M4-L1')"
- class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
- class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
-                            <div class="flex gap-3">
-                                <button onclick="openFormativeQuiz('M4-FQ1')"
- class="bg-blue-500 hover:bg-philo-warmGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
-                                    (4.1–4.2)</button>
-                                <button onclick="completeLesson('M4-L2')" id="btn-complete-M4-L2"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">check_circle</span> Hoàn
-                                    thành</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L1"></div>
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L2"></div>
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L3"></div>
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L4"></div>
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L5"></div>
+                <div class="w-3 h-3 rounded-full lesson-dot bg-white/20" id="dot-M4-L6"></div>
             </div>
+        </div>
 
-            <!-- BÀI 4.3: MẶT TRẬN THỐNG NHẤT -->
-            <div id="lesson-M4-L3" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🛡️</span><span
- class="text-amber-100 text-sm font-semibold uppercase tracking-wider">Bài 4.3 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Hình thức tổ chức: Mặt trận dân tộc
-                            thống nhất</h2>
-                        <p class="text-amber-100 text-sm">🎯 <strong>Mục tiêu:</strong> Hiểu rõ cách thức tổ chức và các
-                            nguyên tắc hoạt động của Mặt trận dân tộc thống nhất.</p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div class="space-y-5">
-                            <h3 class="font-heading text-xl font-bold">1. Mặt trận Dân tộc Thống nhất</h3>
-                            <p class="text-philo-ivory/70">Đại đoàn kết toàn dân tộc không
-                                thể chỉ nằm trong tư tưởng mà phải được quy tụ vào một tổ chức thực tế. Đó là
-                                <strong>Mặt trận dân tộc thống nhất</strong> (nay là Mặt trận Tổ quốc Việt Nam). Mặt
-                                trận là nơi quy tụ mọi tổ chức và cá nhân yêu nước, tập hợp sức mạnh của toàn dân tộc.
-                            </p>
-
-                            <h3 class="font-heading text-xl font-bold mt-6">2. Nguyên tắc hoạt động của Mặt trận</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div
- class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-5 border-t-4 border-amber-500">
-                                    <h4 class="font-bold text-amber-700 mb-2">Nền tảng Liên minh</h4>
-                                    <p class="text-sm text-philo-ivory/70">Xây dựng trên nền
-                                        tảng liên minh công nhân - nông dân - trí thức, dưới sự lãnh đạo của Đảng (Đảng
-                                        vừa là thành viên, vừa là lực lượng lãnh đạo).</p>
-                                </div>
-                                <div class="bg-philo-warmGold/10 dark:bg-blue-900/10 rounded-2xl p-5 border-t-4 border-blue-500">
-                                    <h4 class="font-bold text-philo-warmGold mb-2">Hiệp thương dân chủ</h4>
-                                    <p class="text-sm text-philo-ivory/70">Mọi vấn đề đều
-                                        được bàn bạc, thỏa thuận dân chủ, tôn trọng ý kiến các thành viên, không áp đặt,
-                                        mệnh lệnh.</p>
-                                </div>
-                                <div
- class="bg-green-50 dark:bg-green-900/10 rounded-2xl p-5 border-t-4 border-green-500">
-                                    <h4 class="font-bold text-green-700 mb-2">Đoàn kết lâu dài, chặt chẽ</h4>
-                                    <p class="text-sm text-philo-ivory/70">Đoàn kết rộng
-                                        rãi, chân thành; tôn trọng những điểm khác biệt không trái với lợi ích chung của
-                                        dân tộc.</p>
-                                </div>
-                                <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-t-4 border-red-500">
-                                    <h4 class="font-bold text-philo-warmGold mb-2">Tự phê bình và phê bình</h4>
-                                    <p class="text-sm text-philo-ivory/70">Đoàn kết gắn liền
-                                        với đấu tranh. Phê bình và tự phê bình chân thành để giải quyết mâu thuẫn nội
-                                        bộ, giúp nhau cùng tiến bộ.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between mt-6">
-                            <button onclick="showLesson('M4-L2')"
- class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
- class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
-                            <button onclick="completeLesson('M4-L3')" id="btn-complete-M4-L3"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span
- class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BÀI 4.4: ĐOÀN KẾT QUỐC TẾ -->
-            <div id="lesson-M4-L4" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🌏</span><span
- class="text-teal-100 text-sm font-semibold uppercase tracking-wider">Bài 4.4 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Sự cần thiết và lực lượng đoàn kết
-                            quốc tế</h2>
-                        <p class="text-teal-100 text-sm">🎯 <strong>Mục tiêu:</strong> Lý giải nguyên nhân vì sao cách
-                            mạng Việt Nam phải gắn liền với phong trào cách mạng thế giới.</p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div class="space-y-5">
-                            <h3 class="font-heading text-xl font-bold text-teal-700">1. Sự cần thiết của đoàn kết quốc
-                                tế</h3>
-                            <p class="text-philo-ivory/70">
-                                Hồ Chí Minh khẳng định: Cách mạng Việt Nam là một bộ phận của cách mạng thế giới. Đoàn
-                                kết quốc tế nhằm <strong>kết hợp sức mạnh dân tộc với sức mạnh thời đại</strong>, tạo
-                                sức mạnh tổng hợp để đánh thắng chủ nghĩa đế quốc. Chỉ có đoàn kết quốc tế mới tranh thủ
-                                được sự đồng tình, ủng hộ của thế giới, đồng thời đóng góp vào sự nghiệp hòa bình, dân
-                                chủ và tiến bộ của nhân loại.
-                            </p>
-
-                            <h3 class="font-heading text-xl font-bold text-teal-700 mt-6">2. Lực lượng đoàn kết quốc tế
-                            </h3>
-                            <ul
- class="list-disc pl-5 text-sm text-philo-ivory/70 space-y-2">
-                                <li><strong>Phong trào cộng sản và công nhân quốc tế:</strong> Đây là lực lượng nòng
-                                    cốt, những người cùng chung lý tưởng giải phóng giai cấp, giải phóng con người.</li>
-                                <li><strong>Phong trào đấu tranh giải phóng dân tộc:</strong> Các dân tộc thuộc địa bị
-                                    áp bức cùng chung kẻ thù là chủ nghĩa thực dân, đế quốc.</li>
-                                <li><strong>Các lực lượng tiến bộ, yêu chuộng hòa bình, dân chủ:</strong> Bao gồm nhân
-                                    dân tiến bộ trên toàn thế giới, kể cả nhân dân ở các nước tư bản, đế quốc.</li>
-                            </ul>
-                        </div>
-                        <div class="flex items-center justify-between mt-6">
-                            <button onclick="showLesson('M4-L3')"
- class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
- class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
-                            <div class="flex gap-3">
-                                <button onclick="openFormativeQuiz('M4-FQ2')"
- class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
-                                    (4.3–4.4)</button>
-                                <button onclick="completeLesson('M4-L4')" id="btn-complete-M4-L4"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">check_circle</span> Hoàn
-                                    thành</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BÀI 4.5: NGUYÊN TẮC ĐKQT -->
-            <div id="lesson-M4-L5" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">⚖️</span><span
- class="text-indigo-100 text-sm font-semibold uppercase tracking-wider">Bài 4.5 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Nguyên tắc đoàn kết quốc tế</h2>
-                        <p class="text-indigo-100 text-sm">🎯 <strong>Mục tiêu:</strong> Nắm vững các nguyên tắc cơ bản
-                            trong đường lối đối ngoại và đoàn kết quốc tế của Hồ Chí Minh.</p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div class="space-y-5">
-                            <div
- class="bg-indigo-50 dark:bg-indigo-900/10 rounded-2xl p-5 border-l-4 border-indigo-500">
-                                <h4 class="font-bold text-indigo-700 mb-2">1. Đoàn kết trên cơ sở thống nhất mục tiêu và
-                                    lợi ích, có lý có tình</h4>
-                                <p class="text-sm text-philo-ivory/70">
-                                    Đoàn kết không phải là sự phụ thuộc một chiều. Nó dựa trên lợi ích chung là độc lập,
-                                    tự do, hòa bình và tiến bộ. Giải quyết các bất đồng trong phong trào quốc tế bằng
-                                    thương lượng trên nền tảng chủ nghĩa Mác-Lênin, tôn trọng lẫn nhau, "có lý có tình".
-                                </p>
-                            </div>
-                            <div class="bg-philo-warmGold/10 dark:bg-red-900/10 rounded-2xl p-5 border-l-4 border-red-500">
-                                <h4 class="font-bold text-philo-warmGold mb-2">2. Độc lập tự chủ, tự lực cánh sinh</h4>
-                                <p class="text-sm text-philo-ivory/70">
-                                    Hồ Chí Minh luôn nhấn mạnh: "Một dân tộc không tự lực cánh sinh mà cứ ngồi chờ dân
-                                    tộc khác giúp đỡ thì không xứng đáng được độc lập". Tranh thủ sự ủng hộ quốc tế là
-                                    cần thiết, nhưng cốt lõi vẫn là sức mạnh nội lực của dân tộc. Độc lập tự chủ không
-                                    đồng nghĩa với cô lập, khép kín.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="border-t border-philo-warmGold/20  pt-6">
-                            <h3 class="font-heading text-lg font-bold mb-4">Câu hỏi phản tư</h3>
-                            <div class="space-y-3">
-                                <div class="reflection-item">
-                                    <button onclick="toggleReflection(this)"
- class="w-full text-left p-4 bg-gray-50  rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors text-sm font-medium flex justify-between items-center">
-                                        <span>1. Tại sao HCM coi "Độc lập tự chủ, tự lực cánh sinh" là điều kiện tiên
-                                            quyết trước khi kêu gọi sự giúp đỡ quốc tế?</span>
-                                        <span
- class="material-symbols-outlined text-gray-400 flex-shrink-0 ml-2">expand_more</span>
-                                    </button>
-                                    <div
- class="reflection-answer p-4 text-sm text-philo-ivory/70">
-                                        <strong class="text-indigo-600 block mb-1">Gợi ý:</strong> Vì nếu ỷ lại, trông
-                                        chờ viện trợ từ bên ngoài, cách mạng sẽ bị thụ động, dễ bị nước ngoài chi phối,
-                                        can thiệp vào công việc nội bộ. Sức mạnh bên trong (nội lực) quyết định việc
-                                        tiếp thu, sử dụng hiệu quả sự giúp đỡ từ bên ngoài (ngoại lực).
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between mt-6">
-                            <button onclick="showLesson('M4-L4')"
- class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
- class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
-                            <button onclick="completeLesson('M4-L5')" id="btn-complete-M4-L5"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-8 py-3 rounded-xl transition-colors flex items-center gap-2"><span
- class="material-symbols-outlined text-sm">check_circle</span> Hoàn thành</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BÀI 4.6: VẬN DỤNG HIỆN NAY -->
-            <div id="lesson-M4-L6" class="lesson-content hidden">
-                <div
- class="bg-philo-blackBurgundy  rounded-3xl border border-philo-warmGold/20  shadow-sm overflow-hidden">
-                    <div class="lesson-header-academic bg-gradient-to-br from-philo-dark to-philo-antiqueGold/20">
-                        <div class="flex items-center gap-3 mb-3"><span class="text-3xl">🎯</span><span
- class="text-purple-100 text-sm font-semibold uppercase tracking-wider">Bài 4.6 — Module
-                                4</span></div>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-2">Vận dụng trong giai đoạn hiện nay
-                        </h2>
-                        <p class="text-purple-100 text-sm">🎯 <strong>Mục tiêu:</strong> Liên hệ tư tưởng HCM về đại
-                            đoàn kết và đối ngoại vào công cuộc đổi mới và hội nhập quốc tế của Việt Nam hiện nay.</p>
-                    </div>
-                    <div class="p-8 space-y-8">
-                        <div class="space-y-5">
-                            <h3 class="font-heading text-xl font-bold">1. Xây dựng khối đại đoàn kết toàn dân tộc vững
-                                chắc</h3>
-                            <p class="text-sm text-philo-ivory/70">
-                                Tiếp tục củng cố liên minh công - nông - trí thức. Phát huy dân chủ XHCN, đảm bảo quyền
-                                làm chủ của nhân dân. Giải quyết hài hòa các quan hệ lợi ích trong xã hội, thu hẹp
-                                khoảng cách giàu nghèo, chăm lo đời sống vật chất và tinh thần cho nhân dân. Tôn trọng
-                                và phát huy vai trò của đồng bào các tôn giáo, đồng bào dân tộc thiểu số và kiều bào ở
-                                nước ngoài.
-                            </p>
-
-                            <h3 class="font-heading text-xl font-bold mt-6">2. Kết hợp đại đoàn kết toàn dân tộc với
-                                đoàn kết quốc tế</h3>
-                            <p class="text-sm text-philo-ivory/70">
-                                Thực hiện đường lối đối ngoại độc lập, tự chủ, hòa bình, hợp tác và phát triển. Đa
-                                phương hóa, đa dạng hóa quan hệ quốc tế. "Việt Nam là bạn, là đối tác tin cậy và là
-                                thành viên có trách nhiệm của cộng đồng quốc tế". Triển khai đồng bộ 3 trụ cột: đối
-                                ngoại Đảng, ngoại giao Nhà nước và ngoại giao nhân dân.
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-between mt-6">
-                            <button onclick="showLesson('M4-L5')"
- class="text-sm text-philo-ivory/70 hover:text-philo-warmGold flex items-center gap-1"><span
- class="material-symbols-outlined text-sm">arrow_back</span> Bài trước</button>
-                            <div class="flex gap-3">
-                                <button onclick="openFormativeQuiz('M4-FQ3')"
- class="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">quiz</span> Kiểm tra
-                                    (4.5–4.6)</button>
-                                <button onclick="completeLesson('M4-L6')" id="btn-complete-M4-L6"
- class="bg-philo-warmGold hover:bg-philo-blackBurgundyGold text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm"><span
- class="material-symbols-outlined text-sm">check_circle</span> Hoàn
-                                    thành</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- MODULE QUIZ BANNER -->
-        <section id="module-quiz-banner" class="mb-16 hidden">
-            <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-3xl p-8 text-white text-center">
-                <span class="text-5xl mb-4 block">🏆</span>
-                <h2 class="font-heading text-3xl font-bold mb-3">Bạn đã hoàn thành 6 bài học!</h2>
-                <p class="text-white/80 mb-6">Làm bài kiểm tra tổng kết Module 4 để nhận thành tích và +10 XP.</p>
-                <button onclick="openModuleQuiz()" id="btn-module-quiz"
- class="bg-[rgba(70,8,8,0.65)] backdrop-blur-md text-emerald-700 hover:bg-emerald-50 font-bold px-10 py-4 rounded-2xl transition-colors inline-flex items-center gap-2 text-lg shadow-lg">
-                    <span class="material-symbols-outlined">school</span> Làm bài kiểm tra Module 4
-                </button>
-            </div>
-        </section>
-
-        <div class="fixed bottom-6 right-6 z-40">
-            <button onclick="toggleAIPanel()"
- class="w-14 h-14 rounded-full bg-philo-warmGold text-white shadow-xl hover:bg-philo-blackBurgundyGold flex items-center justify-center transition-all hover:scale-105">
-                <span class="material-symbols-outlined">smart_toy</span>
+        <!-- 6 Lesson Navigation Tabs -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-8">
+            <button onclick="showLesson('M4-L1')" id="tab-M4-L1" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.1</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">Bản chất Độc quyền & Cạnh tranh</span>
+            </button>
+            <button onclick="showLesson('M4-L2')" id="tab-M4-L2" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.2</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">5 đặc điểm kinh tế của V.I. Lênin</span>
+            </button>
+            <button onclick="showLesson('M4-L3')" id="tab-M4-L3" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.3</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">Độc quyền Nhà nước trong CNTB</span>
+            </button>
+            <button onclick="showLesson('M4-L4')" id="tab-M4-L4" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.4</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">Biểu hiện mới của Độc quyền</span>
+            </button>
+            <button onclick="showLesson('M4-L5')" id="tab-M4-L5" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.5</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">Biểu hiện mới Độc quyền Nhà nước</span>
+            </button>
+            <button onclick="showLesson('M4-L6')" id="tab-M4-L6" class="lesson-tab p-3 rounded-xl border border-white/10 glass-panel text-left transition-all">
+                <span class="text-[10px] uppercase tracking-wider block text-philo-gold/70 font-semibold">Bài 4.6</span>
+                <span class="text-xs font-semibold tab-label text-philo-ivory line-clamp-2 mt-1">Vai trò lịch sử & Giới hạn của CNTB</span>
             </button>
         </div>
 
-        <div id="ai-panel"
- class="hidden-panel fixed right-0 top-0 h-full w-80 md:w-96 bg-philo-blackBurgundy  border-l border-philo-warmGold/30  shadow-2xl z-50 flex flex-col">
-            <div class="p-4 border-b border-philo-warmGold/30  flex items-center justify-between">
-                <div>
-                    <h3 class="font-bold text-sm">🤖 AI Trợ giảng — Module 4 HCM</h3>
-                    <p class="text-xs text-philo-ivory/70">Giáo trình Tư tưởng HCM 2021,
-                        Chương 4</p>
+        <!-- ======================================================== -->
+        <!-- LESSON 4.1: BẢN CHẤT ĐỘC QUYỀN & CẠNH TRANH             -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L1" class="lesson-content space-y-6">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.1 • GIÁO TRÌNH TRANG 112 - 123</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Cạnh tranh ở cấp độ độc quyền trong nền kinh tế thị trường
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">Khái niệm độc quyền, nguyên nhân hình thành, giá cả - lợi nhuận độc quyền và quan hệ biện chứng giữa cạnh tranh và độc quyền</p>
                 </div>
-                <button onclick="toggleAIPanel()"
- class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span
- class="material-symbols-outlined text-gray-500">close</span></button>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <div class="p-4 rounded-xl border border-philo-gold/30 bg-philo-gold/5 text-sm">
+                        <p class="font-bold text-philo-gold mb-1">Khái niệm Độc quyền:</p>
+                        <p class="leading-relaxed">
+                            Độc quyền là sự liên minh giữa các doanh nghiệp lớn, có khả năng thâu tóm việc sản xuất và tiêu thụ một số loại hàng hoá, có khả năng định ra giá cả độc quyền, nhằm thu lợi nhuận độc quyền cao (Trang 113).
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-philo-gold mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">hub</span>
+                            1. Ba nguyên nhân chủ yếu hình thành độc quyền
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+                                <strong>Một là, sự phát triển của lực lượng sản xuất:</strong> Cuối thế kỷ XIX đầu thế kỷ XX, các phát minh kỹ thuật đột phá ra đời (lò luyện kim mới, động cơ điêzen, máy phát điện, ô tô, xe lửa...) đòi hỏi quy mô vốn khổng lồ mà từng doanh nghiệp cá biệt không gánh nổi, thúc đẩy tích tụ và tập trung sản xuất quy mô lớn.
+                            </div>
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+                                <strong>Hai là, tác động của cạnh tranh khốc liệt:</strong> Cạnh tranh gay gắt làm cho các doanh nghiệp vừa và nhỏ bị phá sản hàng loạt; các doanh nghiệp lớn còn tồn tại nhận thấy cạnh tranh tiếp sẽ hủy diệt nhau, nên đã thỏa hiệp liên kết để nắm vị thế độc quyền.
+                            </div>
+                            <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+                                <strong>Ba là, khủng hoảng kinh tế và sự phát triển của hệ thống tín dụng:</strong> Cuộc khủng hoảng kinh tế năm 1873 quét sạch các doanh nghiệp nhỏ; hệ thống ngân hàng và các công ty cổ phần phát triển làm đòn bẩy thúc đẩy tập trung sản xuất nhanh chóng.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-2">Giá cả độc quyền</h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Là giá cả do các tổ chức độc quyền áp đặt trong mua và bán hàng hóa: <strong>Giá cả độc quyền cao</strong> khi bán ra cho xã hội và <strong>Giá cả độc quyền thấp</strong> khi mua nguyên liệu của người sản xuất nhỏ.
+                            </p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-2">Bản chất Lợi nhuận độc quyền cao</h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Nguồn gốc thực chất vẫn là hao phí lao động của xã hội: gồm lao động không công của công nhân trong xí nghiệp độc quyền + lao động thặng dư bị bòn rút của công nhân ngoài độc quyền và người sản xuất nhỏ ở chính quốc và thuộc địa.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-philo-gold mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">swords</span>
+                            2. Quan hệ cạnh tranh trong trạng thái độc quyền (Trang 122 - 123)
+                        </h3>
+                        <p class="text-sm leading-relaxed mb-3">
+                            <em>Độc quyền không hề thủ tiêu cạnh tranh!</em> Trái lại, độc quyền làm cho cạnh tranh trở nên gay gắt, khốc liệt và đa dạng hơn trên 3 bình diện:
+                        </p>
+                        <ul class="text-sm space-y-2 list-disc list-inside text-philo-ivory/80 pl-2">
+                            <li><strong>Cạnh tranh giữa tổ chức độc quyền với doanh nghiệp ngoài độc quyền:</strong> Độc quyền dùng thế lực phong tỏa nguyên liệu, ép giá vận tải, cắt tín dụng để tiêu diệt đối thủ yếu thế.</li>
+                            <li><strong>Cạnh tranh giữa các tổ chức độc quyền với nhau:</strong> Diễn ra giữa các tập đoàn trong cùng ngành hoặc liên quan đầu vào, kết thúc bằng thỏa hiệp hoặc phá sản thôn tính.</li>
+                            <li><strong>Cạnh tranh trong nội bộ tổ chức độc quyền:</strong> Các thành viên tranh giành tỷ lệ cổ phần khống chế, tranh giành địa vị lãnh đạo và phân chia lợi ích.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="toggleReflection('ref-M4-L1')" class="text-philo-gold hover:underline text-sm font-semibold flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">lightbulb</span> Câu hỏi tự suy ngẫm
+                        </button>
+                        <button id="btn-complete-M4-L1" onclick="completeLesson('M4-L1')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.1 ✓
+                        </button>
+                    </div>
+                    <div id="ref-M4-L1" class="reflection-answer p-4 rounded-xl border border-philo-gold/20 bg-white/5">
+                        <p class="text-xs text-philo-gold font-bold mb-1">Gợi ý suy ngẫm:</p>
+                        <p class="text-xs text-philo-ivory/80 leading-relaxed">
+                            Cạnh tranh tự do đẻ ra tập trung sản xuất, tập trung sản xuất phát triển đến đỉnh cao tất yếu sinh ra độc quyền. Nhưng độc quyền lại tồn tại ngay trên mảnh đất của cạnh tranh tự do, tạo ra xung đột gay gắt giữa độc quyền và cạnh tranh tự do.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div id="ai-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3">
-                <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3">
-                    <p class="text-xs font-bold text-emerald-700 mb-1">🤖 AI HCM Module 4</p>
-                    <p class="text-sm text-philo-ivory/70">Xin chào! Tôi sẵn sàng giải thích
-                        <strong>Module 4 — Đoàn kết Dân tộc và Quốc tế</strong>. Hỏi ngay!</p>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- LESSON 4.2: 5 ĐẶC ĐIỂM KINH TẾ CỦA V.I. LÊNIN           -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L2" class="lesson-content space-y-6 hidden">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.2 • GIÁO TRÌNH TRANG 123 - 130</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Lý luận của V.I. Lênin về 5 đặc điểm kinh tế của độc quyền
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">5 đặc trưng cốt lõi của chủ nghĩa đế quốc tư bản do V.I. Lênin khái quát</p>
                 </div>
-                <div class="space-y-2">
-                    <p class="text-xs text-gray-400 font-medium">💡 Câu hỏi gợi ý:</p>
-                    <button onclick="sendAIPrompt('Đại đoàn kết toàn dân tộc theo Hồ Chí Minh là gì?')"
- class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Đại
-                        đoàn kết dân tộc là gì?</button>
-                    <button onclick="sendAIPrompt('Nguyên tắc đoàn kết quốc tế của Hồ Chí Minh?')"
- class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">Nguyên
-                        tắc đoàn kết quốc tế?</button>
-                    <button onclick="sendAIPrompt('Dĩ bất biến ứng vạn biến nghĩa là gì?')"
- class="w-full text-left text-xs p-2.5 bg-gray-50  rounded-lg hover:bg-emerald-50 transition-colors">"Dĩ
-                        bất biến ứng vạn biến" là gì?</button>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <p class="text-sm">
+                        Tổng kết thực tiễn giai đoạn cuối thế kỷ XIX đầu thế kỷ XX, V.I. Lênin đã chỉ ra 5 đặc điểm kinh tế cơ bản phản ánh bản chất sự thống trị của tư bản độc quyền:
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <!-- Đặc điểm 1 -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-1 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-philo-gold text-black flex items-center justify-center text-xs font-bold">1</span>
+                                Tập trung sản xuất và các tổ chức độc quyền
+                            </h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Số lượng xí nghiệp lớn chỉ chiếm tỷ trọng nhỏ trong nền kinh tế nhưng nắm giữ và chi phối phần lớn sản xuất và thị trường. Các hình thức tổ chức độc quyền phát triển từ thấp đến cao theo tiến trình lịch sử:
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2 text-xs text-center font-semibold">
+                                <div class="p-2 bg-black/40 rounded border border-white/10">1. Cartel (Các-ten)<br /><span class="font-normal text-[11px] text-philo-ivory/60">Thỏa thuận giá, sản lượng; vẫn độc lập SX & lưu thông</span></div>
+                                <div class="p-2 bg-black/40 rounded border border-white/10">2. Syndicate (Xanhđica)<br /><span class="font-normal text-[11px] text-philo-ivory/60">Độc lập sản xuất, mất độc lập lưu thông</span></div>
+                                <div class="p-2 bg-black/40 rounded border border-white/10">3. Trust (Tờrớt)<br /><span class="font-normal text-[11px] text-philo-ivory/60">Hợp nhất cả SX và lưu thông, chia cổ phần</span></div>
+                                <div class="p-2 bg-black/40 rounded border border-philo-gold/40">4. Consortium (Côngxoócxiom)<br /><span class="font-normal text-[11px] text-philo-gold/80">Liên kết dọc đa ngành, phụ thuộc tài chính vào tài phiệt</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Đặc điểm 2 -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-1 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-philo-gold text-black flex items-center justify-center text-xs font-bold">2</span>
+                                Tư bản tài chính và hệ thống tài phiệt chi phối
+                            </h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Ngân hàng từ vai trò trung gian thanh toán đã chuyển thành các tổ chức độc quyền có quyền lực "vạn năng". Sự hợp nhất giữa tư bản độc quyền ngân hàng với tư bản độc quyền công nghiệp sinh ra <strong>Tư bản tài chính</strong>. Nhóm nhỏ các nhà tư bản tài chính nắm quyền chi phối toàn bộ đời sống kinh tế - chính trị được gọi là <strong>Tài phiệt</strong> (đầu sỏ tài chính). Họ thống trị thông qua <em>"Chế độ tham dự"</em> (công ty mẹ - con - cháu).
+                            </p>
+                        </div>
+
+                        <!-- Đặc điểm 3 -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-1 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-philo-gold text-black flex items-center justify-center text-xs font-bold">3</span>
+                                Xuất khẩu tư bản trở thành phổ biến
+                            </h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Nếu trong giai đoạn tự do cạnh tranh, xuất khẩu hàng hóa là chủ yếu thì trong giai đoạn độc quyền, <strong>xuất khẩu tư bản</strong> (xuất khẩu giá trị ra nước ngoài nhằm thu giá trị thặng dư cao) trở thành điển hình. Gồm 2 hình thức: <em>Đầu tư trực tiếp (FDI)</em> và <em>Đầu tư gián tiếp</em> (cho vay thu lãi, mua chứng khoán).
+                            </p>
+                        </div>
+
+                        <!-- Đặc điểm 4 -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-1 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-philo-gold text-black flex items-center justify-center text-xs font-bold">4</span>
+                                Phân chia thị trường thế giới giữa các liên minh độc quyền
+                            </h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Tích tụ và xuất khẩu tư bản gia tăng tất yếu dẫn tới việc các tập đoàn độc quyền đụng độ trên quy mô toàn cầu. Chúng thỏa hiệp, ký hiệp định phân chia thị trường thế giới, hình thành các tổ chức độc quyền quốc tế (Cartel, Syndicate, Trust quốc tế).
+                            </p>
+                        </div>
+
+                        <!-- Đặc điểm 5 -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-1 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-philo-gold text-black flex items-center justify-center text-xs font-bold">5</span>
+                                Phân chia lãnh thổ thế giới giữa các cường quốc tư bản
+                            </h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Sự phát triển không đều giữa các nước tư bản thúc đẩy cuộc đua xâm chiếm thuộc địa để vơ vét tài nguyên và thị trường. Đến cuối thế kỷ XIX, việc phân chia lãnh thổ thế giới đã hoàn thành, dẫn đến cuộc đấu tranh đòi <strong>chia lại thị trường và lãnh thổ</strong> — nguyên nhân trực tiếp dẫn tới hai cuộc Chiến tranh thế giới thứ nhất và thứ hai.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="openFormativeQuiz('M4-FQ1')" class="philo-btn-secondary text-xs px-4 py-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">quiz</span> Làm Quiz Hình thành 4.1 & 4.2
+                        </button>
+                        <button id="btn-complete-M4-L2" onclick="completeLesson('M4-L2')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.2 ✓
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="p-4 border-t border-philo-warmGold/30 ">
-                <div class="flex gap-2">
-                    <input id="ai-input" type="text" placeholder="Hỏi về Module 4..."
- class="flex-1 text-sm border border-philo-warmGold/30  rounded-xl px-3 py-2 bg-gray-50  focus:outline-none focus:ring-2 focus:ring-primary/30"
-                        onkeypress="if(event.key==='Enter') sendAIMessage()">
-                    <button onclick="sendAIMessage()"
- class="bg-philo-warmGold text-white rounded-xl px-4 hover:bg-philo-blackBurgundyGold transition-colors"><span
- class="material-symbols-outlined text-sm">send</span></button>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- LESSON 4.3: ĐỘC QUYỀN NHÀ NƯỚC TRONG CNTB                -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L3" class="lesson-content space-y-6 hidden">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.3 • GIÁO TRÌNH TRANG 130 - 134</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Bản chất và Đặc trưng của Độc quyền Nhà nước trong CNTB
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">Sự kết hợp về nhân sự, sự phát triển sở hữu nhà nước và cơ chế điều tiết 3 bên</p>
+                </div>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <div class="p-4 rounded-xl border border-philo-gold/30 bg-philo-gold/5 text-sm leading-relaxed">
+                        <h4 class="font-bold text-philo-gold mb-1">Khái niệm Độc quyền nhà nước:</h4>
+                        <p>
+                            Là kiểu độc quyền trong đó nhà nước nắm giữ vị thế độc quyền trên cơ sở duy trì sức mạnh của các tổ chức độc quyền ở những lĩnh vực then chốt của nền kinh tế nhằm tạo ra sức mạnh vật chất cho sự ổn định của chế độ chính trị - xã hội (Trang 116).
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-philo-gold mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">account_balance</span>
+                            1. Bốn nguyên nhân hình thành độc quyền nhà nước
+                        </h3>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-philo-ivory/80 pl-2">
+                            <li><strong>Xã hội hóa lực lượng sản xuất ở trình độ cao:</strong> Đòi hỏi nền kinh tế phải có một trung tâm quản trị và điều tiết vĩ mô thống nhất.</li>
+                            <li><strong>Phát triển kết cấu hạ tầng kỹ thuật:</strong> Các ngành giao thông, điện hạt nhân, nghiên cứu khoa học cơ bản đòi hỏi vốn khổng lồ nhưng lợi nhuận thấp, độc quyền tư nhân không muốn đầu tư nên nhà nước phải đứng ra gánh vác.</li>
+                            <li><strong>Xoa dịu mâu thuẫn giai cấp và phân hóa giàu nghèo:</strong> Để duy trì trật tự xã hội, nhà nước tư sản phải ban hành các chính sách an sinh, trợ cấp xã hội.</li>
+                            <li><strong>Xu hướng quốc tế hóa kinh tế:</strong> Đòi hỏi sự bảo trợ pháp lý và chính trị của nhà nước để bảo vệ doanh nghiệp trong nước trước các đối thủ toàn cầu.</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading text-lg font-bold text-philo-gold mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">gavel</span>
+                            2. Ba đặc trưng kinh tế chủ yếu của Độc quyền Nhà nước
+                        </h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="glass-panel p-4 rounded-xl border border-white/10">
+                                <h4 class="font-bold text-philo-gold mb-1">a) Sự kết hợp về nhân sự giữa tổ chức độc quyền và nhà nước</h4>
+                                <blockquote class="text-xs italic text-philo-ivory/80 my-1 border-l-2 border-philo-gold pl-2">
+                                    "Hôm nay là bộ trưởng, ngày mai là chủ ngân hàng; hôm nay là chủ ngân hàng, ngày mai là bộ trưởng." — V.I. Lênin
+                                </blockquote>
+                                <p class="text-xs text-philo-ivory/70">Các hội chủ xí nghiệp (như Hội Công nghiệp toàn quốc Mỹ, Keidanren Nhật...) đóng vai trò là "những chính phủ đằng sau chính phủ", chi phối nhân sự và chính sách của nhà nước tư sản.</p>
+                            </div>
+
+                            <div class="glass-panel p-4 rounded-xl border border-white/10">
+                                <h4 class="font-bold text-philo-gold mb-1">b) Sự hình thành và phát triển của sở hữu nhà nước</h4>
+                                <p class="text-xs text-philo-ivory/80">Sở hữu nhà nước trong CNTB là sở hữu tập thể của giai cấp tư sản. Nhà nước mở rộng thị trường nội địa bằng các đơn đặt hàng quân sự và dân dụng bao mua sản phẩm của các tập đoàn độc quyền, đảm bảo tỷ suất lợi nhuận cao và ổn định cho chúng.</p>
+                            </div>
+
+                            <div class="glass-panel p-4 rounded-xl border border-white/10">
+                                <h4 class="font-bold text-philo-gold mb-1">c) Độc quyền nhà nước trở thành công cụ điều tiết nền kinh tế</h4>
+                                <p class="text-xs text-philo-ivory/80">Cơ chế điều tiết kinh tế độc quyền nhà nước là sự dung hợp của <strong>3 cơ chế</strong>: cơ chế thị trường, cơ chế độc quyền tư nhân và sự điều tiết của nhà nước, nhằm phục vụ lợi ích tối cao của giai cấp tư sản độc quyền.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="toggleReflection('ref-M4-L3')" class="text-philo-gold hover:underline text-sm font-semibold flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">lightbulb</span> Câu hỏi tự suy ngẫm
+                        </button>
+                        <button id="btn-complete-M4-L3" onclick="completeLesson('M4-L3')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.3 ✓
+                        </button>
+                    </div>
+                    <div id="ref-M4-L3" class="reflection-answer p-4 rounded-xl border border-philo-gold/20 bg-white/5">
+                        <p class="text-xs text-philo-gold font-bold mb-1">Gợi ý suy ngẫm:</p>
+                        <p class="text-xs text-philo-ivory/80 leading-relaxed">
+                            Nhà nước tư sản có đại diện cho toàn thể nhân dân không? Giáo trình trang 118 khẳng định: Trong cơ cấu độc quyền nhà nước, nhà nước đã trở thành một "nhà tư bản tập thể khổng lồ", phục vụ trước hết cho lợi ích của các tập đoàn tư bản độc quyền chứ không phải lợi ích của toàn dân.
+                        </p>
+                    </div>
                 </div>
             </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- LESSON 4.4: BIỂU HIỆN MỚI CỦA ĐỘC QUYỀN                 -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L4" class="lesson-content space-y-6 hidden">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.4 • GIÁO TRÌNH TRANG 134 - 140</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Những biểu hiện mới của Độc quyền trong điều kiện ngày nay
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">Concern, Conglomerate, TNCs, Chế độ ủy nhiệm, hình thức BOT - BT và chiến lược biên giới mềm</p>
+                </div>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <p class="text-sm">
+                        Dưới tác động của cuộc cách mạng khoa học và công nghệ hiện đại và toàn cầu hóa, 5 đặc điểm kinh tế của độc quyền đã có những bước biến đổi mới rất tinh vi:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-1">1. Về tổ chức độc quyền</h4>
+                            <p class="text-philo-ivory/80 mb-2">Xuất hiện các hình thức liên kết mới:</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs">
+                                <li><strong>Concern:</strong> Độc quyền đa ngành với hàng trăm xí nghiệp ở nhiều nước (nhằm né tránh luật chống độc quyền chuyên ngành).</li>
+                                <li><strong>Conglomerate:</strong> Kết hợp hàng chục hãng không cùng ngành nghề nhằm đầu cơ chứng khoán và kinh doanh tài chính.</li>
+                                <li>Xuất hiện hệ thống xí nghiệp vừa và nhỏ làm vệ tinh gia công cho các tập đoàn lớn.</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-1">2. Về tư bản tài chính</h4>
+                            <p class="text-philo-ivory/80 mb-2">Xâm nhập vào các ngành "phần mềm" (dịch vụ, tài chính, bảo hiểm):</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs">
+                                <li>Xuất hiện các tổ hợp đa dạng: công – nông – thương – tín – dịch vụ hoặc công nghiệp – quân sự.</li>
+                                <li>Cơ chế chi phối: "Chế độ tham dự" được bổ sung thêm <strong>"Chế độ ủy nhiệm"</strong> (cổ phiếu mệnh giá nhỏ phát hành rộng rãi, đại cổ đông đại diện cho số đông cổ đông nhỏ).</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-1">3. Về xuất khẩu tư bản</h4>
+                            <p class="text-philo-ivory/80 mb-2">Dòng vốn thay đổi căn bản:</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs">
+                                <li>Dòng vốn chủ yếu chảy qua lại <strong>giữa các nước phát triển với nhau</strong> (hàm lượng công nghệ cao, an toàn).</li>
+                                <li>Chủ thể chính là các công ty xuyên quốc gia (TNCs).</li>
+                                <li>Hình thức mới đa dạng: BOT (Xây dựng - Kinh doanh - Chuyển giao), BT (Xây dựng - Chuyển giao).</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-philo-gold mb-1">4. Về phân chia thị trường & lãnh thổ</h4>
+                            <p class="text-philo-ivory/80 mb-2">Toàn cầu hóa song hành khu vực hóa:</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs">
+                                <li>Hình thành các khối kinh tế khu vực lớn: EU, NAFTA/USMCA, ASEAN, CPTPP...</li>
+                                <li>Phân chia lãnh thổ chuyển sang <strong>"Chiến lược biên giới mềm"</strong>: bành trướng biên giới kinh tế vượt qua biên giới địa lý thông qua chi phối công nghệ, tài chính và ngoại giao.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="openFormativeQuiz('M4-FQ2')" class="philo-btn-secondary text-xs px-4 py-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">quiz</span> Làm Quiz Hình thành 4.3 & 4.4
+                        </button>
+                        <button id="btn-complete-M4-L4" onclick="completeLesson('M4-L4')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.4 ✓
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- LESSON 4.5: BIỂU HIỆN MỚI CỦA ĐỘC QUYỀN NHÀ NƯỚC         -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L5" class="lesson-content space-y-6 hidden">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.5 • GIÁO TRÌNH TRANG 140 - 144</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Biểu hiện mới của Độc quyền Nhà nước trong điều kiện ngày nay
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">Cơ chế thể chế đa nguyên, chính sách an sinh xã hội và sự giải cứu tài chính thời kỳ khủng hoảng</p>
+                </div>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <div class="space-y-4 text-sm">
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-2">1. Về cơ chế quan hệ nhân sự: Thể chế đa nguyên</h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Không cho phép một thế lực độc quyền nào độc tôn tuyệt đối, mà có sự thỏa hiệp giữa các thế lực tư bản lớn. Trọng tâm quyền lực thuộc về thế lực trung dung để duy trì ổn định chính trị, tạo vỏ bọc ôn hòa hơn trước làn sóng đấu tranh của người dân.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-2">2. Về sở hữu nhà nước: Gánh vác rủi ro cho tư bản tư nhân</h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Ngân sách nhà nước được dùng để gánh chịu chi phí rủi ro lớn trong hạ tầng, năng lượng, quốc phòng; trong khi các doanh nghiệp tư nhân hưởng lợi từ các hợp đồng béo bở. 
+                                <br /><span class="text-xs text-philo-gold mt-1 block font-mono">Ví dụ thực tế khủng hoảng 2008-2009: Chính phủ Mỹ bơm 45 tỷ USD và bảo lãnh 301 tỷ USD tài sản độc hại cứu Citigroup, bơm 150 tỷ USD giải cứu AIG (Trang 142).</span>
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5">
+                            <h4 class="font-bold text-philo-gold mb-2">3. Về chính sách an sinh xã hội: Sự chuẩn bị vật chất của CNXH</h4>
+                            <p class="text-philo-ivory/80 leading-relaxed">
+                                Tại một số nước Bắc Âu (như Nauy miễn phí y tế, giáo dục), người dân được hưởng phúc lợi cao. Giáo trình khẳng định: Đây không phải là sự "thức tỉnh" hay "nhân đạo hóa" của giai cấp tư sản, mà là thành quả đấu tranh bền bỉ của phong trào công nhân, là <strong>"sự chuẩn bị vật chất của chủ nghĩa xã hội"</strong> trong lòng xã hội tư bản!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="toggleReflection('ref-M4-L5')" class="text-philo-gold hover:underline text-sm font-semibold flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">lightbulb</span> Câu hỏi tự suy ngẫm
+                        </button>
+                        <button id="btn-complete-M4-L5" onclick="completeLesson('M4-L5')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.5 ✓
+                        </button>
+                    </div>
+                    <div id="ref-M4-L5" class="reflection-answer p-4 rounded-xl border border-philo-gold/20 bg-white/5">
+                        <p class="text-xs text-philo-gold font-bold mb-1">Gợi ý suy ngẫm:</p>
+                        <p class="text-xs text-philo-ivory/80 leading-relaxed">
+                            Bất cứ khi nào giai cấp tư sản bị đe dọa mất quyền kiểm soát (như tại Chilê năm 1973 hay Nga năm 1993), bộ mặt dân chủ tư sản lập tức bị gạt bỏ, thay thế bằng tình trạng khẩn cấp hoặc đảo chính quân sự để bảo toàn vị thế độc quyền của tư bản tài phiệt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======================================================== -->
+        <!-- LESSON 4.6: VAI TRÒ LỊCH SỬ & GIỚI HẠN CỦA CNTB          -->
+        <!-- ======================================================== -->
+        <article id="lesson-M4-L6" class="lesson-content space-y-6 hidden">
+            <div class="rounded-2xl border border-philo-gold/20 overflow-hidden glass-panel">
+                <div class="lesson-header-academic">
+                    <span class="philo-badge mb-2 inline-flex">BÀI HỌC 4.6 • GIÁO TRÌNH TRANG 144 - 151</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-philo-ivory">
+                        Vai trò lịch sử và Giới hạn phát triển của Chủ nghĩa tư bản
+                    </h2>
+                    <p class="text-sm text-philo-ivory/70 mt-1">Mặt tiến bộ lịch sử, mâu thuẫn cơ bản không thể tự giải quyết và tính tất yếu thay thế bởi CNXH</p>
+                </div>
+                <div class="p-6 md:p-8 space-y-6 text-philo-ivory/90 leading-relaxed font-light">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="glass-panel p-5 rounded-xl border border-emerald-500/30 bg-emerald-950/10">
+                            <h4 class="font-heading font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">thumb_up</span>
+                                Mặt tích cực của Chủ nghĩa tư bản (Trang 144 - 145)
+                            </h4>
+                            <ul class="text-xs md:text-sm space-y-2 list-disc list-inside text-philo-ivory/80">
+                                <li><strong>Thúc đẩy lực lượng sản xuất phát triển nhảy vọt:</strong> Dẫn dắt 4 cuộc cách mạng công nghiệp, chuyển nhân loại sang thời đại kinh tế tri thức.</li>
+                                <li><strong>Chuyển nền sản xuất nhỏ thành sản xuất lớn hiện đại:</strong> Năng suất cao, tạo ra của cải đồ sộ phong phú chưa từng có.</li>
+                                <li><strong>Xã hội hóa sản xuất:</strong> Phân công lao động quốc tế sâu rộng, kết nối toàn cầu thành một chỉnh thể.</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-5 rounded-xl border border-red-500/30 bg-red-950/10">
+                            <h4 class="font-heading font-bold text-red-400 mb-3 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">warning</span>
+                                Giới hạn lịch sử của CNTB (Trang 145 - 150)
+                            </h4>
+                            <ul class="text-xs md:text-sm space-y-2 list-disc list-inside text-philo-ivory/80">
+                                <li><strong>Mục đích sản xuất chỉ vì lợi ích thiểu số:</strong> Phục vụ tư bản tài chính thay vì đại đa số nhân dân lao động.</li>
+                                <li><strong>Gây ra chiến tranh, xung đột toàn cầu:</strong> Tranh giành thuộc địa, chiến tranh thương mại, vũ trang.</li>
+                                <li><strong>Bất bình đẳng và phân hóa giàu nghèo sâu sắc:</strong> Dẫn chứng Tổng thống Mỹ Donald Trump thừa nhận 46,5 triệu người Mỹ nghèo đói (Trang 148).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl border border-philo-gold/40 bg-philo-blackBurgundy">
+                        <h4 class="font-heading font-bold text-philo-gold mb-2">Mâu thuẫn cơ bản không thể tự điều hòa của CNTB:</h4>
+                        <p class="text-sm text-philo-ivory/90 leading-relaxed mb-2">
+                            Là mâu thuẫn giữa <strong>trình độ xã hội hóa ngày càng cao của lực lượng sản xuất</strong> với <strong>quan hệ sản xuất dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất</strong>.
+                        </p>
+                        <p class="text-xs text-philo-gold font-semibold italic">
+                            $\Rightarrow$ Kết luận khoa học: Chủ nghĩa tư bản không thể tồn tại vĩnh viễn. Theo quy luật QHSX phải phù hợp với trình độ phát triển của LLSX, CNTB tất yếu sẽ bị thay thế bởi một hình thái kinh tế - xã hội mới tiến bộ hơn — hình thái kinh tế - xã hội cộng sản chủ nghĩa (mà giai đoạn đầu là CNXH)!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+                        <button onclick="openFormativeQuiz('M4-FQ3')" class="philo-btn-secondary text-xs px-4 py-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">quiz</span> Làm Quiz Hình thành 4.5 & 4.6
+                        </button>
+                        <button id="btn-complete-M4-L6" onclick="completeLesson('M4-L6')" class="philo-btn-gold text-xs px-5 py-2.5">
+                            Hoàn thành Bài 4.6 ✓
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Banner thi trắc nghiệm cuối module -->
+        <div id="module-quiz-banner" class="hidden glass-panel p-8 rounded-2xl border-2 border-philo-gold/40 text-center my-10 bg-gradient-to-r from-philo-gold/10 via-philo-burgundy/40 to-philo-gold/10">
+            <span class="text-4xl mb-2 block">🎓</span>
+            <h3 class="font-heading text-2xl font-bold text-philo-gold mb-2">Hoàn thành toàn bộ 6 bài học Module 4!</h3>
+            <p class="text-sm text-philo-ivory/80 max-w-2xl mx-auto mb-5">
+                Bạn đã nắm vững lý luận của V.I. Lênin về độc quyền, độc quyền nhà nước, các biểu hiện mới và bản chất giới hạn lịch sử của chủ nghĩa tư bản. Hãy làm bài kiểm tra tổng kết để nhận huy hiệu!
+            </p>
+            <button onclick="openModuleQuiz()" class="philo-btn-gold text-sm px-8 py-3.5 inline-flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">military_tech</span>
+                Làm bài thi trắc nghiệm Module 4 (12 câu)
+            </button>
         </div>
+
     </main>
 
-    <div id="quiz-modal"
- class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div
- class="bg-philo-blackBurgundy  rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6 border-b border-philo-warmGold/30  flex items-center justify-between">
+    <!-- ===== QUIZ MODAL ===== -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="glass-panel w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl border border-philo-gold/30 shadow-2xl overflow-hidden bg-philo-blackBurgundy">
+            <div class="p-5 border-b border-white/10 flex items-center justify-between bg-philo-burgundy/50">
                 <div>
-                    <h2 id="quiz-modal-title" class="text-xl font-bold">Kiểm tra</h2>
-                    <p id="quiz-modal-sub" class="text-sm text-philo-ivory/70"></p>
+                    <h3 id="quiz-modal-title" class="font-heading font-bold text-lg text-philo-gold">Bài kiểm tra trắc nghiệm</h3>
+                    <p id="quiz-modal-sub" class="text-xs text-philo-ivory/60 mt-0.5">MLN131 — Giáo trình chuẩn 2021</p>
                 </div>
-                <button onclick="closeQuizModal()"
- class="p-2 hover:bg-philo-warmGold/20 dark:hover:bg-philo-warmGold/20 rounded-full"><span
- class="material-symbols-outlined text-gray-500">close</span></button>
+                <button onclick="closeQuizModal()" class="text-philo-ivory/60 hover:text-white p-1 rounded-lg hover:bg-white/10">
+                    <span class="material-symbols-outlined text-[20px]">close</span>
+                </button>
             </div>
-            <div id="quiz-modal-body" class="p-6"></div>
+            <div id="quiz-modal-body" class="p-6 overflow-y-auto flex-grow space-y-6 text-sm">
+                <!-- Injected by JS -->
+            </div>
         </div>
     </div>
 
-    <div id="achievement-toast" class="hidden fixed top-6 right-6 z-50 max-w-sm">
-        <div
- class="bg-gradient-to-r from-emerald-400 to-teal-300 rounded-2xl p-4 shadow-2xl flex items-center gap-4 achievement-earned">
-            <span id="achievement-icon" class="text-4xl">🌍</span>
-            <div>
-                <p class="font-bold text-emerald-900 text-sm">Thành tích mới!</p>
-                <p id="achievement-name" class="font-heading font-bold text-emerald-900"></p>
-                <p id="achievement-desc" class="text-xs text-emerald-800"></p>
+    <!-- ===== AI ASSISTANT SLIDE-OVER PANEL ===== -->
+    <div id="ai-panel" class="fixed top-0 right-0 h-full w-full sm:w-[420px] z-50 glass-panel border-l border-philo-gold/30 flex flex-col hidden-panel bg-[#140303]/95 backdrop-blur-xl shadow-2xl">
+        <div class="p-4 border-b border-white/10 flex items-center justify-between bg-philo-burgundy/70">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-philo-gold/20 flex items-center justify-center border border-philo-gold/40">
+                    <span class="material-symbols-outlined text-philo-gold text-[18px]">smart_toy</span>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-sm text-philo-gold">AI Gia sư MLN131</h4>
+                    <p class="text-[10px] text-philo-ivory/60">Chương 4: Cạnh tranh & Độc quyền</p>
+                </div>
             </div>
+            <button onclick="toggleAIPanel()" class="text-philo-ivory/60 hover:text-white p-1 rounded-lg hover:bg-white/10">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+        </div>
+        <div id="ai-chat-history" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs md:text-sm">
+            <div class="bg-philo-warmGold/10 rounded-xl p-3 border border-philo-warmGold/20">
+                <p class="font-bold text-philo-gold text-xs mb-1">💡 Trợ lý Giáo trình MLN131</p>
+                <p class="text-philo-ivory/80 leading-relaxed text-xs">
+                    Chào bạn! Tôi có thể giải đáp toàn bộ kiến thức Chương 4: 5 đặc điểm kinh tế của độc quyền theo Lênin, bản chất độc quyền nhà nước, Concern, Conglomerate, chiến lược biên giới mềm, hoặc mâu thuẫn cơ bản của CNTB. Bạn muốn hỏi gì?
+                </p>
+            </div>
+        </div>
+        <div class="p-3 border-t border-white/10 bg-black/40">
+            <div class="flex items-center gap-2">
+                <input type="text" id="ai-input" placeholder="Hỏi về Cartel, Syndicate, FDI, Lênin..." class="flex-grow bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-philo-gold" onkeydown="if(event.key==='Enter')sendAIMessage()" />
+                <button onclick="sendAIMessage()" class="p-2 rounded-xl bg-philo-gold text-black font-bold hover:bg-yellow-400 transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">send</span>
+                </button>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-2">
+                <button onclick="sendAIPrompt('Kể tên 5 đặc điểm kinh tế cơ bản của độc quyền theo Lênin?')" class="text-[10px] bg-white/5 hover:bg-white/10 px-2 py-1 rounded text-philo-ivory/70 border border-white/5">5 đặc điểm Lênin</button>
+                <button onclick="sendAIPrompt('Phân biệt Concern và Conglomerate?')" class="text-[10px] bg-white/5 hover:bg-white/10 px-2 py-1 rounded text-philo-ivory/70 border border-white/5">Concern vs Conglomerate</button>
+                <button onclick="sendAIPrompt('Giới hạn lịch sử của chủ nghĩa tư bản là gì?')" class="text-[10px] bg-white/5 hover:bg-white/10 px-2 py-1 rounded text-philo-ivory/70 border border-white/5">Giới hạn lịch sử</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Toast Notification -->
+    <div id="achievement-toast" class="fixed bottom-6 right-6 z-50 glass-panel p-4 rounded-xl border border-philo-gold flex items-center gap-3 hidden bg-black/90 shadow-2xl">
+        <span class="text-3xl" id="achievement-icon">🏆</span>
+        <div>
+            <h5 class="font-bold text-xs text-philo-gold uppercase tracking-wider" id="achievement-name">Thành tích mới!</h5>
+            <p class="text-xs text-philo-ivory/80" id="achievement-desc">Mô tả thành tích</p>
         </div>
     </div>
 
     <div id="footer-placeholder"></div>
-    <script src="js/search-data-global.js"></script>
-    <script src="js/quiz-data.js"></script>
-    <script src="js/load-components.js"></script>
-    <script src="js/search-init.js"></script>
 
+    <script src="js/nav-component.js"></script>
     <script>
-        const M4_STATE = { completedLessons: new Set(), currentLesson: null, quizResults: {} };
         const M4_LESSONS = ['M4-L1', 'M4-L2', 'M4-L3', 'M4-L4', 'M4-L5', 'M4-L6'];
-        function loadM4State() { try { const s = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}'); if (s.M4_completed) s.M4_completed.forEach(id => M4_STATE.completedLessons.add(id)); M4_STATE.quizResults = s.M4_quiz || {}; } catch (e) { } }
-        function saveM4State() { try { const s = JSON.parse(localStorage.getItem('hcm_quiz_results') || '{}'); s.M4_completed = [...M4_STATE.completedLessons]; s.M4_quiz = M4_STATE.quizResults; localStorage.setItem('hcm_quiz_results', JSON.stringify(s)); } catch (e) { } }
-                        function showLesson(lessonId) {
-            document.querySelectorAll('.lesson-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.lesson-tab').forEach(el => {
-                el.classList.remove('active-tab');
-                el.style.borderColor = 'rgba(217,166,46,0.2)';
-                const label = el.querySelectorAll('span')[2];
-                if (label) {
-                    label.classList.remove('text-philo-gold');
-                    label.classList.add('text-philo-ivory/80');
+        let M4_STATE = {
+            completedLessons: new Set(),
+            quizResults: {}
+        };
+
+        function loadM4State() {
+            try {
+                const raw = localStorage.getItem('philo_mln131_m4');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    M4_STATE.completedLessons = new Set(parsed.completedLessons || []);
+                    M4_STATE.quizResults = parsed.quizResults || {};
                 }
+            } catch (e) { console.warn(e); }
+        }
+
+        function saveM4State() {
+            try {
+                localStorage.setItem('philo_mln131_m4', JSON.stringify({
+                    completedLessons: Array.from(M4_STATE.completedLessons),
+                    quizResults: M4_STATE.quizResults
+                }));
+            } catch (e) { console.warn(e); }
+        }
+
+        function showLesson(id) {
+            M4_LESSONS.forEach(lId => {
+                const el = document.getElementById('lesson-' + lId);
+                const tab = document.getElementById('tab-' + lId);
+                if (el) el.classList.add('hidden');
+                if (tab) tab.classList.remove('active-tab');
             });
+            const activeEl = document.getElementById('lesson-' + id);
+            const activeTab = document.getElementById('tab-' + id);
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeTab) activeTab.classList.add('active-tab');
+            window.scrollTo({ top: 350, behavior: 'smooth' });
+        }
 
-            const target = document.getElementById('lesson-' + lessonId);
-            if (target) {
-                target.classList.remove('hidden');
-                M4_STATE.currentLesson = lessonId;
+        function completeLesson(id) {
+            M4_STATE.completedLessons.add(id);
+            saveM4State();
+            updateProgress();
+            const btn = document.getElementById('btn-complete-' + id);
+            if (btn) {
+                btn.classList.remove('philo-btn-gold');
+                btn.classList.add('bg-emerald-600', 'text-white');
+                btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check_circle</span> Đã hoàn thành ✓';
             }
-
-            const tab = document.getElementById('tab-' + lessonId);
-            if (tab) {
-                tab.classList.add('active-tab');
-                tab.style.borderColor = '#FFD34E';
-                const label = tab.querySelectorAll('span')[2];
-                if (label) {
-                    label.classList.remove('text-philo-ivory/80');
-                    label.classList.add('text-philo-gold');
-                }
-            }
-
-            const area = document.getElementById('lesson-area');
-            if (area) {
-                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const curIdx = M4_LESSONS.indexOf(id);
+            if (curIdx < M4_LESSONS.length - 1) {
+                showLesson(M4_LESSONS[curIdx + 1]);
+            } else {
+                const b = document.getElementById('module-quiz-banner');
+                if (b) b.classList.remove('hidden');
             }
         }
-function completeLesson(id) { M4_STATE.completedLessons.add(id); saveM4State(); updateProgress(); const d = document.getElementById('dot-' + id); if (d) { d.classList.remove('bg-philo-warmGold/40', ''); d.classList.add('bg-philo-warmGold'); } const b = document.getElementById('btn-complete-' + id); if (b) { b.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold'); b.classList.add('bg-green-500', 'hover:bg-green-600'); b.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓'; } const idx = M4_LESSONS.indexOf(id); if (idx >= 0 && idx < M4_LESSONS.length - 1) setTimeout(() => showLesson(M4_LESSONS[idx + 1]), 500); if (M4_STATE.completedLessons.size === 6) { const banner = document.getElementById('module-quiz-banner'); if (banner) banner.classList.remove('hidden'); } }
-        function updateProgress() { const c = M4_STATE.completedLessons.size, p = Math.round(c / 6 * 100); document.getElementById('m4-progress-label').textContent = c + ' / 6 bài hoàn thành'; document.getElementById('m4-progress-pct').textContent = p + '%'; document.getElementById('m4-progress-bar').style.width = p + '%'; M4_STATE.completedLessons.forEach(id => { const d = document.getElementById('dot-' + id); if (d) { d.classList.remove('bg-philo-warmGold/40', ''); d.classList.add('bg-philo-warmGold'); } }); }
-        function toggleReflection(btn) { const a = btn.nextElementSibling, i = btn.querySelector('.material-symbols-outlined'); if (a.classList.contains('open')) { a.classList.remove('open'); i.textContent = 'expand_more'; } else { a.classList.add('open'); i.textContent = 'expand_less'; } }
 
-        let currentQuizData = null, currentQuizAnswers = {}, currentQuizSubmitted = false;
+        function updateProgress() {
+            const count = M4_STATE.completedLessons.size;
+            const pct = Math.round((count / 6) * 100);
+            const bar = document.getElementById('m4-progress-bar');
+            const txt = document.getElementById('m4-progress-text');
+            if (bar) bar.style.width = pct + '%';
+            if (txt) txt.textContent = count + ' / 6 bài (' + pct + '%)';
+
+            M4_LESSONS.forEach(id => {
+                const dot = document.getElementById('dot-' + id);
+                if (dot) {
+                    if (M4_STATE.completedLessons.has(id)) {
+                        dot.classList.add('completed');
+                    } else {
+                        dot.classList.remove('completed');
+                    }
+                }
+            });
+        }
+
+        function toggleReflection(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        /* FORMATIVE QUIZZES DATA (PP. 112 - 151) */
         window.FORMATIVE_QUIZZES_M4 = {
             'M4-FQ1': {
-                title: 'Kiểm tra — Bài 4.1 & 4.2', passingScore: 70, questions: [
-                    { id: 'q1', text: 'Theo HCM, đại đoàn kết toàn dân tộc mang ý nghĩa gì?', options: [{ id: 'a', text: 'Chỉ là sách lược tạm thời' }, { id: 'b', text: 'Vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng' }, { id: 'c', text: 'Một thủ đoạn chính trị' }, { id: 'd', text: 'Mục tiêu của giai đoạn kháng chiến' }], correctOptionId: 'b', rationale: 'HCM khẳng định đại đoàn kết không phải là một thủ đoạn chính trị nhất thời, mà là một chiến lược lâu dài, xuyên suốt quá trình cách mạng.' },
-                    { id: 'q2', text: 'Nền tảng của khối đại đoàn kết toàn dân tộc là gì?', options: [{ id: 'a', text: 'Giai cấp tư sản' }, { id: 'b', text: 'Liên minh công - nông - trí thức' }, { id: 'c', text: 'Tầng lớp tiểu tư sản' }, { id: 'd', text: 'Đảng Cộng sản Việt Nam' }], correctOptionId: 'b', rationale: 'Đại đoàn kết rất rộng rãi, nhưng phải có cốt lõi vững chắc. Đó là liên minh giữa giai cấp công nhân, giai cấp nông dân và tầng lớp trí thức, dưới sự lãnh đạo của Đảng.' },
-                    { id: 'q3', text: 'Theo tư tưởng HCM, ai là chủ thể của khối đại đoàn kết?', options: [{ id: 'a', text: 'Chỉ công nhân và nông dân' }, { id: 'b', text: 'Toàn dân, bất cứ ai có lòng yêu nước' }, { id: 'c', text: 'Những người theo Đảng' }, { id: 'd', text: 'Chỉ những người không theo tôn giáo nào' }], correctOptionId: 'b', rationale: '"Dân" bao gồm mọi người Việt Nam yêu nước, không phân biệt dân tộc, tôn giáo, giai cấp, giới tính, lứa tuổi. Bất cứ ai có lòng yêu nước đều được tập hợp.' },
-                    { id: 'q4', text: 'Điều kiện tiên quyết để xây dựng khối đại đoàn kết vững chắc là gì?', options: [{ id: 'a', text: 'Kinh tế phát triển' }, { id: 'b', text: 'Sự giúp đỡ quốc tế' }, { id: 'c', text: 'Phải có Đảng Cộng sản vững mạnh lãnh đạo' }, { id: 'd', text: 'Có quân đội mạnh' }], correctOptionId: 'c', rationale: 'Đảng Cộng sản vững mạnh lãnh đạo là điều kiện tiên quyết để khối đại đoàn kết có định hướng đúng đắn, không bị phân tán, chệch hướng.' }
+                title: 'Kiểm tra nhanh — Bài 4.1 & 4.2: Bản chất Độc quyền & 5 đặc điểm của Lênin',
+                passingScore: 75,
+                questions: [
+                    {
+                        id: 'fq4_1',
+                        text: 'Theo C. Mác và V.I. Lênin, mối quan hệ giữa cạnh tranh tự do và độc quyền là gì?',
+                        options: [
+                            { id: 'a', text: 'Độc quyền sinh ra từ cạnh tranh tự do và thủ tiêu hoàn toàn cạnh tranh' },
+                            { id: 'b', text: 'Tự do cạnh tranh đẻ ra tập trung sản xuất, tập trung sản xuất phát triển dẫn tới độc quyền' },
+                            { id: 'c', text: 'Độc quyền xuất hiện trước, sau đó mới sinh ra cạnh tranh tự do' },
+                            { id: 'd', text: 'Cạnh tranh và độc quyền hoàn toàn không có mối liên hệ lịch sử nào' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 112-113 trích dẫn Lênin: Tự do cạnh tranh đẻ ra tập trung sản xuất và sự tập trung sản xuất này phát triển tới mức độ nhất định lại dẫn tới độc quyền.'
+                    },
+                    {
+                        id: 'fq4_2',
+                        text: 'Tư bản tài chính là kết quả của sự hợp nhất giữa:',
+                        options: [
+                            { id: 'a', text: 'Tư bản thương nghiệp và tư bản nông nghiệp' },
+                            { id: 'b', text: 'Tư bản ngân hàng của một số ít ngân hàng độc quyền lớn nhất với tư bản của những liên minh độc quyền công nghiệp' },
+                            { id: 'c', text: 'Tư bản nhà nước và tư bản nước ngoài' },
+                            { id: 'd', text: 'Tư bản cho vay và tư bản giả trên thị trường vàng' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 126 định nghĩa chuẩn của V.I. Lênin: Tư bản tài chính là kết quả của sự hợp nhất giữa tư bản ngân hàng độc quyền với tư bản của liên minh độc quyền các nhà công nghiệp.'
+                    },
+                    {
+                        id: 'fq4_3',
+                        text: 'Hình thức tổ chức độc quyền nào mà các xí nghiệp thành viên vẫn giữ độc lập về sản xuất nhưng mất độc lập ở khâu lưu thông?',
+                        options: [
+                            { id: 'a', text: 'Cartel' },
+                            { id: 'b', text: 'Syndicate' },
+                            { id: 'c', text: 'Trust' },
+                            { id: 'd', text: 'Consortium' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 124: Các xí nghiệp tham gia Syndicate vẫn giữ độc lập về sản xuất, chỉ không độc lập ở khâu lưu thông hàng hóa.'
+                    },
+                    {
+                        id: 'fq4_4',
+                        text: 'Trong giai đoạn chủ nghĩa tư bản tự do cạnh tranh, xuất khẩu hàng hóa là chủ yếu. Còn trong giai đoạn CNTB độc quyền, hình thức nào trở thành phổ biến?',
+                        options: [
+                            { id: 'a', text: 'Xuất khẩu vàng bạc' },
+                            { id: 'b', text: 'Xuất khẩu tư bản' },
+                            { id: 'c', text: 'Xuất khẩu lao động thủ công' },
+                            { id: 'd', text: 'Xuất khẩu nông sản' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 127: Xuất khẩu tư bản (xuất khẩu giá trị ra nước ngoài) trở thành phổ biến, gắn liền với sự tồn tại của các tổ chức độc quyền.'
+                    }
                 ]
             },
             'M4-FQ2': {
-                title: 'Kiểm tra — Bài 4.3 & 4.4', passingScore: 70, questions: [
-                    { id: 'q5', text: 'Tổ chức nào là hình thức thực tế của khối đại đoàn kết toàn dân tộc?', options: [{ id: 'a', text: 'Hội Phụ nữ' }, { id: 'b', text: 'Mặt trận dân tộc thống nhất' }, { id: 'c', text: 'Đoàn Thanh niên' }, { id: 'd', text: 'Công đoàn' }], correctOptionId: 'b', rationale: 'Mặt trận dân tộc thống nhất (nay là Mặt trận Tổ quốc VN) là tổ chức thực tế quy tụ mọi tổ chức, cá nhân yêu nước.' },
-                    { id: 'q6', text: 'Đâu là nguyên tắc hoạt động của Mặt trận dân tộc thống nhất?', options: [{ id: 'a', text: 'Mệnh lệnh từ trên xuống' }, { id: 'b', text: 'Hiệp thương dân chủ, đoàn kết lâu dài, tự phê bình và phê bình' }, { id: 'c', text: 'Tập trung dân chủ như trong Đảng' }, { id: 'd', text: 'Phân hóa giai cấp' }], correctOptionId: 'b', rationale: 'Mặt trận hoạt động dựa trên nguyên tắc hiệp thương dân chủ (bàn bạc, không áp đặt), đoàn kết lâu dài, chặt chẽ, chân thành, tự phê bình và phê bình.' },
-                    { id: 'q7', text: 'Mục đích chính của đoàn kết quốc tế theo HCM là gì?', options: [{ id: 'a', text: 'Để dựa dẫm vào các nước lớn' }, { id: 'b', text: 'Kết hợp sức mạnh dân tộc và sức mạnh thời đại tạo sức mạnh tổng hợp' }, { id: 'c', text: 'Xin viện trợ kinh tế' }, { id: 'd', text: 'Tham gia các liên minh quân sự' }], correctOptionId: 'b', rationale: 'Đoàn kết quốc tế nhằm kết hợp sức mạnh dân tộc với sức mạnh thời đại, tạo sức mạnh tổng hợp để đánh thắng chủ nghĩa đế quốc và xây dựng đất nước.' },
-                    { id: 'q8', text: 'Lực lượng nào là nòng cốt trong đoàn kết quốc tế theo tư tưởng HCM?', options: [{ id: 'a', text: 'Các nước tư bản' }, { id: 'b', text: 'Phong trào cộng sản và công nhân quốc tế' }, { id: 'c', text: 'Các tổ chức phi chính phủ' }, { id: 'd', text: 'Các nước trong khu vực Đông Nam Á' }], correctOptionId: 'b', rationale: 'HCM xác định phong trào cộng sản và công nhân quốc tế là lực lượng nòng cốt, vì những người cộng sản cùng chung lý tưởng giải phóng giai cấp, giải phóng con người.' }
+                title: 'Kiểm tra nhanh — Bài 4.3 & 4.4: Độc quyền Nhà nước & Các biểu hiện mới',
+                passingScore: 75,
+                questions: [
+                    {
+                        id: 'fq4_1_2',
+                        text: 'Bản chất của Độc quyền nhà nước trong chủ nghĩa tư bản là gì?',
+                        options: [
+                            { id: 'a', text: 'Xóa bỏ giai cấp tư sản để thiết lập nền chuyên chính vô sản' },
+                            { id: 'b', text: 'Sự kết hợp sức mạnh của độc quyền tư nhân với sức mạnh nhà nước phục vụ lợi ích của tư bản độc quyền' },
+                            { id: 'c', text: 'Nhà nước đại diện công bằng bảo vệ tuyệt đối người lao động nghèo' },
+                            { id: 'd', text: 'Nhà nước từ bỏ hoàn toàn quyền can thiệp vào nền kinh tế thị trường' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 118: Độc quyền nhà nước hình thành nhằm phục vụ lợi ích của các tổ chức độc quyền tư nhân và duy trì phát triển chủ nghĩa tư bản.'
+                    },
+                    {
+                        id: 'fq4_2_2',
+                        text: 'Tổ chức độc quyền đa ngành ra đời nhằm đối phó với luật chống độc quyền ở các nước tư bản được gọi là:',
+                        options: [
+                            { id: 'a', text: 'Cartel' },
+                            { id: 'b', text: 'Concern' },
+                            { id: 'c', text: 'Syndicate' },
+                            { id: 'd', text: 'Xí nghiệp gia công' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 135: Concern là tổ chức độc quyền đa ngành gồm hàng trăm xí nghiệp thuộc các ngành khác nhau, ra đời để đối phó với luật chống độc quyền 100% trong 1 ngành.'
+                    },
+                    {
+                        id: 'fq4_3_2',
+                        text: 'Trong điều kiện ngày nay, dòng xuất khẩu tư bản chủ yếu diễn ra theo hướng nào?',
+                        options: [
+                            { id: 'a', text: 'Chủ yếu từ các nước thuộc địa sang các nước đế quốc' },
+                            { id: 'b', text: 'Đại bộ phận dòng đầu tư chảy qua lại giữa các nước tư bản phát triển với nhau' },
+                            { id: 'c', text: 'Chỉ chảy vào các quốc gia thuần nông nghiệp châu Phi' },
+                            { id: 'd', text: 'Hoàn toàn dừng lại do các nước đóng cửa biên giới' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 138: Những thập kỷ gần đây đại bộ phận dòng đầu tư lại chảy qua lại giữa các nước tư bản phát triển với nhau vì nơi đây có hàm lượng khoa học kỹ thuật và vốn cao.'
+                    },
+                    {
+                        id: 'fq4_4_2',
+                        text: '"Chiến lược biên giới mềm" của các cường quốc tư bản ngày nay có đặc điểm gì?',
+                        options: [
+                            { id: 'a', text: 'Dùng quân đội chiếm đóng trực tiếp lãnh thổ như thời thực dân cũ' },
+                            { id: 'b', text: 'Bành trướng "biên giới kinh tế" rộng hơn biên giới địa lý, ràng buộc các nước lệ thuộc về vốn và công nghệ' },
+                            { id: 'c', text: 'Ký hiệp ước xóa bỏ biên giới quốc gia để thành lập một nhà nước toàn cầu duy nhất' },
+                            { id: 'd', text: 'Chỉ diễn ra ở khu vực Nam Cực' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 140: Thực hiện "chiến lược biên giới mềm", bành trướng "biên giới kinh tế" rộng hơn biên giới địa lý, ràng buộc lệ thuộc về vốn, công nghệ và chính trị.'
+                    }
                 ]
             },
             'M4-FQ3': {
-                title: 'Kiểm tra — Bài 4.5 & 4.6', passingScore: 70, questions: [
-                    { id: 'q9', text: 'Đoàn kết quốc tế phải dựa trên cơ sở nào?', options: [{ id: 'a', text: 'Lợi ích của nước lớn' }, { id: 'b', text: 'Thống nhất mục tiêu và lợi ích, có lý có tình' }, { id: 'c', text: 'Sự chỉ đạo của một trung tâm quốc tế duy nhất' }, { id: 'd', text: 'Mục đích kinh tế đơn thuần' }], correctOptionId: 'b', rationale: 'Đoàn kết phải dựa trên lợi ích chung là độc lập, tự do, hòa bình và tiến bộ, giải quyết bất đồng trên tinh thần "có lý có tình".' },
-                    { id: 'q10', text: 'Nguyên tắc nào sau đây thể hiện tính nội lực trong đoàn kết quốc tế của HCM?', options: [{ id: 'a', text: 'Phụ thuộc viện trợ' }, { id: 'b', text: 'Chờ đợi sự giúp đỡ' }, { id: 'c', text: 'Độc lập tự chủ, tự lực cánh sinh' }, { id: 'd', text: 'Dựa hẳn vào phe XHCN' }], correctOptionId: 'c', rationale: 'HCM luôn nhấn mạnh "Độc lập tự chủ, tự lực cánh sinh". Tranh thủ ủng hộ quốc tế là cần thiết nhưng cốt lõi vẫn là nội lực của dân tộc.' },
-                    { id: 'q11', text: 'Trong giai đoạn hiện nay, Việt Nam thực hiện đường lối đối ngoại như thế nào để vận dụng tư tưởng HCM?', options: [{ id: 'a', text: 'Chỉ chơi với nước lớn' }, { id: 'b', text: 'Độc lập, tự chủ, đa phương hóa, đa dạng hóa quan hệ quốc tế' }, { id: 'c', text: 'Chỉ hợp tác về kinh tế, đóng cửa văn hóa' }, { id: 'd', text: 'Liên minh quân sự với một siêu cường' }], correctOptionId: 'b', rationale: 'Việt Nam thực hiện đường lối đối ngoại độc lập, tự chủ, đa phương hóa, đa dạng hóa, là bạn, là đối tác tin cậy của cộng đồng quốc tế.' },
-                    { id: 'q12', text: '3 trụ cột của ngoại giao Việt Nam hiện nay là gì?', options: [{ id: 'a', text: 'Ngoại giao Đảng, ngoại giao Nhà nước, ngoại giao nhân dân' }, { id: 'b', text: 'Kinh tế, Quốc phòng, Văn hóa' }, { id: 'c', text: 'Ngoại giao song phương, đa phương, khu vực' }, { id: 'd', text: 'Chính trị, Kinh tế, An ninh' }], correctOptionId: 'a', rationale: 'Hiện nay Việt Nam triển khai đồng bộ 3 trụ cột đối ngoại: đối ngoại Đảng, ngoại giao Nhà nước và ngoại giao nhân dân để phát huy tối đa sức mạnh.' }
+                title: 'Kiểm tra nhanh — Bài 4.5 & 4.6: Biểu hiện mới ĐQNN & Giới hạn lịch sử CNTB',
+                passingScore: 75,
+                questions: [
+                    {
+                        id: 'fq4_1_3',
+                        text: 'Tại một số nước tư bản phát triển có phúc lợi xã hội cao, giáo dục và y tế miễn phí, bản chất thực sự của hiện tượng này là gì?',
+                        options: [
+                            { id: 'a', text: 'Sự thức tỉnh đạo đức của giai cấp tư sản cầm quyền' },
+                            { id: 'b', text: 'Thành quả đấu tranh bền bỉ của nhân dân tiến bộ, là sự chuẩn bị vật chất của CNXH trong lòng CNTB' },
+                            { id: 'c', text: 'Chủ nghĩa tư bản đã hoàn toàn chuyển hóa thành chủ nghĩa xã hội' },
+                            { id: 'd', text: 'Do các tập đoàn độc quyền tự nguyện từ bỏ lợi nhuận' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 142-143: Đó là thành quả của cuộc đấu tranh bền bỉ nhiều năm của nhân dân tiến bộ, là những sự "chuẩn bị vật chất của chủ nghĩa xã hội" mà CNTB tạo ra.'
+                    },
+                    {
+                        id: 'fq4_2_3',
+                        text: 'Mâu thuẫn cơ bản của chủ nghĩa tư bản là mâu thuẫn giữa:',
+                        options: [
+                            { id: 'a', text: 'Nền kinh tế nông nghiệp và nền kinh tế công nghiệp' },
+                            { id: 'b', text: 'Trình độ xã hội hóa ngày càng cao của lực lượng sản xuất với chế độ chiếm hữu tư nhân TBCN về tư liệu sản xuất' },
+                            { id: 'c', text: 'Người tiêu dùng và người bán hàng ở chợ truyền thống' },
+                            { id: 'd', text: 'Các nước phương Tây và các nước phương Đông' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 149-150: Đó là mâu thuẫn giữa trình độ xã hội hóa ngày càng cao của LLSX với QHSX dựa trên quan hệ chiếm hữu tư nhân TBCN về TLSX.'
+                    },
+                    {
+                        id: 'fq4_3_3',
+                        text: 'Mặt tích cực lịch sử lớn nhất của chủ nghĩa tư bản đối với sự phát triển của nhân loại là:',
+                        options: [
+                            { id: 'a', text: 'Xóa bỏ hoàn toàn tình trạng người bóc lột người' },
+                            { id: 'b', text: 'Thúc đẩy lực lượng sản xuất phát triển mạnh mẽ và thực hiện xã hội hóa sản xuất' },
+                            { id: 'c', text: 'Ngăn chặn hoàn toàn mọi nguy cơ khủng hoảng và chiến tranh' },
+                            { id: 'd', text: 'Phân phối của cải bình đẳng tuyệt đối cho toàn xã hội' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 144-145: CNTB có công lớn thúc đẩy LLSX phát triển nhanh chóng qua các cuộc cách mạng công nghiệp và thực hiện xã hội hóa sản xuất cả về bề rộng lẫn chiều sâu.'
+                    },
+                    {
+                        id: 'fq4_4_3',
+                        text: 'Theo quy luật quan hệ sản xuất phải phù hợp với trình độ phát triển của lực lượng sản xuất, chủ nghĩa tư bản sẽ:',
+                        options: [
+                            { id: 'a', text: 'Tồn tại vĩnh viễn không bao giờ suy chuyển' },
+                            { id: 'b', text: 'Tất yếu bị thay thế bởi một hình thái kinh tế - xã hội mới tiến bộ hơn' },
+                            { id: 'c', text: 'Tự quay trở lại phương thức sản xuất phong kiến' },
+                            { id: 'd', text: 'Xóa bỏ hoàn toàn thị trường để trở về tự cấp tự túc' }
+                        ],
+                        correctOptionId: 'b',
+                        rationale: 'Giáo trình trang 150: Lý luận chủ nghĩa Mác - Lênin khẳng định: chủ nghĩa tư bản không tồn tại vĩnh viễn, mà phát triển đến một trình độ nhất định sẽ bị thay thế bởi một hình thái kinh tế - xã hội mới tiến bộ hơn.'
+                    }
                 ]
             }
         };
 
+        /* MODULE 4 QUIZ - 12 MCQs */
         window.MODULE_QUIZ_M4 = {
-            title: 'Kiểm tra tổng kết Module 4 — Tư tưởng HCM về đại đoàn kết toàn dân tộc và đoàn kết quốc tế', passingScore: 75, achievement: 'unity-champion',
+            title: 'Kiểm tra tổng kết Module 4 — Cạnh tranh và Độc quyền trong KTTT',
+            passingScore: 75,
+            achievement: 'monopoly-scholar',
             questions: [
-                { id: 'm1', text: 'Theo HCM, đại đoàn kết dân tộc có vai trò gì?', options: [{ id: 'a', text: 'Là sách lược tạm thời' }, { id: 'b', text: 'Là vấn đề có ý nghĩa chiến lược, quyết định thành bại của cách mạng' }, { id: 'c', text: 'Chỉ cần thiết khi có chiến tranh' }, { id: 'd', text: 'Chỉ là mục tiêu kinh tế' }], correctOptionId: 'b', rationale: 'Đoàn kết là vấn đề chiến lược lâu dài, nhất quán, quyết định sự sống còn của cách mạng Việt Nam.' },
-                { id: 'm2', text: 'Nền tảng của khối đại đoàn kết toàn dân tộc là?', options: [{ id: 'a', text: 'Công - Nông - Trí thức' }, { id: 'b', text: 'Công - Nông - Tư sản' }, { id: 'c', text: 'Toàn thể nhân dân' }, { id: 'd', text: 'Trí thức và học sinh' }], correctOptionId: 'a', rationale: 'Nòng cốt và nền tảng của đại đoàn kết là liên minh công - nông - trí, dưới sự lãnh đạo của Đảng Cộng sản.' },
-                { id: 'm3', text: 'Mặt trận dân tộc thống nhất hoạt động dựa trên nguyên tắc cơ bản nào?', options: [{ id: 'a', text: 'Tập trung dân chủ tuyệt đối' }, { id: 'b', text: 'Hiệp thương dân chủ, đoàn kết chân thành, lâu dài' }, { id: 'c', text: 'Cấp dưới phục tùng cấp trên' }, { id: 'd', text: 'Mọi thành viên đều bình đẳng tuyệt đối không có tổ chức lãnh đạo' }], correctOptionId: 'b', rationale: 'Mặt trận hoạt động trên cơ sở hiệp thương dân chủ, không áp đặt, đoàn kết chân thành, gắn với phê bình và tự phê bình.' },
-                { id: 'm4', text: 'Để xây dựng khối đại đoàn kết, điều kiện nào thuộc về truyền thống dân tộc được HCM nhấn mạnh?', options: [{ id: 'a', text: 'Tinh thần thượng võ' }, { id: 'b', text: 'Kế thừa truyền thống yêu nước, nhân nghĩa' }, { id: 'c', text: 'Truyền thống hiếu học' }, { id: 'd', text: 'Truyền thống thương mại' }], correctOptionId: 'b', rationale: 'Truyền thống yêu nước, nhân nghĩa là chất keo dính quy tụ toàn dân, là điều kiện tiên quyết để xây dựng khối đại đoàn kết.' },
-                { id: 'm5', text: 'Mục đích tối thượng của đoàn kết quốc tế trong tư tưởng HCM là gì?', options: [{ id: 'a', text: 'Làm suy yếu kẻ thù' }, { id: 'b', text: 'Kết hợp sức mạnh dân tộc và thời đại để giành độc lập, xây dựng đất nước và góp phần hòa bình thế giới' }, { id: 'c', text: 'Hội nhập kinh tế toàn cầu' }, { id: 'd', text: 'Tìm kiếm viện trợ không hoàn lại' }], correctOptionId: 'b', rationale: 'Mục đích là tạo sức mạnh tổng hợp (dân tộc + thời đại), phục vụ sự nghiệp giải phóng dân tộc và đóng góp cho thế giới.' },
-                { id: 'm6', text: 'Theo HCM, nguyên tắc "Độc lập tự chủ, tự lực cánh sinh" có ý nghĩa gì trong quan hệ quốc tế?', options: [{ id: 'a', text: 'Không cần ai giúp đỡ' }, { id: 'b', text: 'Sức mạnh nội lực là quyết định, là cơ sở để tiếp nhận hiệu quả sự giúp đỡ quốc tế' }, { id: 'c', text: 'Chống lại hội nhập quốc tế' }, { id: 'd', text: 'Bế quan tỏa cảng' }], correctOptionId: 'b', rationale: '"Một dân tộc không tự lực cánh sinh mà cứ ngồi chờ... thì không xứng đáng được độc lập." Nội lực là cốt lõi để kết hợp với ngoại lực.' },
-                { id: 'm7', text: 'Phong trào đấu tranh giải phóng dân tộc thuộc về?', options: [{ id: 'a', text: 'Lực lượng đại đoàn kết trong nước' }, { id: 'b', text: 'Một trong các lực lượng đoàn kết quốc tế' }, { id: 'c', text: 'Kẻ thù của cách mạng' }, { id: 'd', text: 'Lực lượng trung lập' }], correctOptionId: 'b', rationale: '3 lực lượng đoàn kết quốc tế: Phong trào cộng sản/công nhân quốc tế, phong trào giải phóng dân tộc, phong trào hòa bình dân chủ thế giới.' },
-                { id: 'm8', text: 'Việc Việt Nam hiện nay đa phương hóa, đa dạng hóa quan hệ đối ngoại thể hiện điều gì trong tư tưởng HCM?', options: [{ id: 'a', text: 'Sự thay đổi mục tiêu' }, { id: 'b', text: 'Vận dụng nguyên tắc "thêm bạn bớt thù", đoàn kết trên cơ sở lợi ích chung, độc lập tự chủ' }, { id: 'c', text: 'Từ bỏ nguyên tắc giai cấp' }, { id: 'd', text: 'Phụ thuộc vào các nước tư bản' }], correctOptionId: 'b', rationale: 'Chính sách đa phương hóa là sự vận dụng sáng tạo tư tưởng thêm bạn bớt thù, "Việt Nam muốn làm bạn với tất cả" trên cơ sở độc lập tự chủ.' },
-                { id: 'm9', text: 'Hồ Chí Minh dùng khái niệm "có lý, có tình" khi nói về vấn đề gì?', options: [{ id: 'a', text: 'Xử lý các vi phạm pháp luật' }, { id: 'b', text: 'Đoàn kết quốc tế, đặc biệt là trong giải quyết bất đồng với các nước anh em' }, { id: 'c', text: 'Phân chia ruộng đất' }, { id: 'd', text: 'Chỉ đạo chiến thuật quân sự' }], correctOptionId: 'b', rationale: 'Trong đoàn kết quốc tế (nhất là phong trào cộng sản), Người khuyên giải quyết bất đồng trên cơ sở Mác-Lênin, vừa có nguyên tắc (có lý) vừa tôn trọng, tương trợ lẫn nhau (có tình).' },
-                { id: 'm10', text: 'Vì sao Đảng Cộng sản là điều kiện bắt buộc để xây dựng khối đại đoàn kết toàn dân tộc?', options: [{ id: 'a', text: 'Vì Đảng có quân đội' }, { id: 'b', text: 'Vì Đảng mang lại định hướng đúng đắn, thức tỉnh và tổ chức quần chúng tạo thành sức mạnh vô địch' }, { id: 'c', text: 'Vì Đảng nắm tài chính' }, { id: 'd', text: 'Vì Đảng có quan hệ quốc tế tốt' }], correctOptionId: 'b', rationale: 'Đảng là hạt nhân lãnh đạo, có đường lối đúng đắn để tập hợp, giác ngộ và tổ chức quần chúng đấu tranh.' }
+                {
+                    id: 'mq4_1',
+                    text: 'Tập trung sản xuất đến một trình độ nhất định tất yếu sinh ra hiện tượng gì?',
+                    options: [
+                        { id: 'a', text: 'Kinh tế tự cấp tự túc' },
+                        { id: 'b', text: 'Độc quyền' },
+                        { id: 'c', text: 'Xóa bỏ phân công lao động' },
+                        { id: 'd', text: 'Triệt tiêu hoàn toàn ứng dụng khoa học kỹ thuật' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 112-113: Tự do cạnh tranh đẻ ra tập trung sản xuất và sự tập trung sản xuất này phát triển tới mức nhất định lại dẫn tới độc quyền.'
+                },
+                {
+                    id: 'mq4_2',
+                    text: 'Giá cả độc quyền gồm những bộ phận nào?',
+                    options: [
+                        { id: 'a', text: 'Giá cả độc quyền cao khi bán và giá cả độc quyền thấp khi mua' },
+                        { id: 'b', text: 'Giá trị hàng hóa cộng với chi phí vận chuyển' },
+                        { id: 'c', text: 'Chi phí sản xuất cộng với địa tô chênh lệch' },
+                        { id: 'd', text: 'Giá niêm yết do ngân hàng quốc tế ấn định' }
+                    ],
+                    correctOptionId: 'a',
+                    rationale: 'Giáo trình trang 115-116: Giá cả độc quyền gồm có giá cả độc quyền cao (khi bán) và giá cả độc quyền thấp (khi mua).'
+                },
+                {
+                    id: 'mq4_3',
+                    text: 'Tổ chức độc quyền trong đó các thành viên thống nhất cả khâu sản xuất và tiêu thụ, các nhà tư bản trở thành cổ đông được gọi là:',
+                    options: [
+                        { id: 'a', text: 'Cartel' },
+                        { id: 'b', text: 'Syndicate' },
+                        { id: 'c', text: 'Trust' },
+                        { id: 'd', text: 'Conglomerate' }
+                    ],
+                    correctOptionId: 'c',
+                    rationale: 'Giáo trình trang 124: Trong Trust thì cả việc sản xuất, tiêu thụ hàng hóa đều do một ban quản trị chung thống nhất quản lý; các xí nghiệp trở thành cổ đông.'
+                },
+                {
+                    id: 'mq4_4',
+                    text: 'Tư bản tài chính là sự thâm nhập, liên kết giữa:',
+                    options: [
+                        { id: 'a', text: 'Tư bản độc quyền ngân hàng và tư bản độc quyền công nghiệp' },
+                        { id: 'b', text: 'Tư bản thương nghiệp và chủ đất nông nghiệp' },
+                        { id: 'c', text: 'Nhà nước tư sản và các tổ chức từ thiện' },
+                        { id: 'd', text: 'Tư bản trong nước và các hộ cá thể' }
+                    ],
+                    correctOptionId: 'a',
+                    rationale: 'Giáo trình trang 126: Tư bản tài chính là kết quả của sự hợp nhất giữa tư bản ngân hàng của một số ít ngân hàng độc quyền lớn nhất với tư bản của những liên minh độc quyền các nhà công nghiệp.'
+                },
+                {
+                    id: 'mq4_5',
+                    text: 'Tài phiệt chi phối các công ty trong tập đoàn kinh tế chủ yếu thông qua cơ chế nào?',
+                    options: [
+                        { id: 'a', text: 'Mệnh lệnh quân sự' },
+                        { id: 'b', text: '"Chế độ tham dự"' },
+                        { id: 'c', text: 'Hợp đồng lao động trực tiếp' },
+                        { id: 'd', text: 'Bầu cử dân chủ phổ thông' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 126-127: Các tài phiệt thực hiện sự thống trị thông qua "chế độ tham dự" (công ty mẹ mua cổ phiếu khống chế công ty con, công ty con chi phối công ty cháu).'
+                },
+                {
+                    id: 'mq4_6',
+                    text: 'Hình thức xuất khẩu tư bản để xây dựng xí nghiệp mới hoặc mua lại xí nghiệp ở nước ngoài để trực tiếp kinh doanh được gọi là:',
+                    options: [
+                        { id: 'a', text: 'Đầu tư trực tiếp (FDI)' },
+                        { id: 'b', text: 'Đầu tư gián tiếp' },
+                        { id: 'c', text: 'Cho vay thương mại' },
+                        { id: 'd', text: 'Viện trợ không hoàn lại' }
+                    ],
+                    correctOptionId: 'a',
+                    rationale: 'Giáo trình trang 127: Đầu tư trực tiếp là hình thức xuất khẩu tư bản để xây dựng xí nghiệp mới hoặc mua lại xí nghiệp ở nước ngoài để trực tiếp quản lý kinh doanh.'
+                },
+                {
+                    id: 'mq4_7',
+                    text: 'Đâu KHÔNG PHẢI là một trong 5 đặc điểm kinh tế cơ bản của độc quyền tư bản chủ nghĩa theo Lênin?',
+                    options: [
+                        { id: 'a', text: 'Tập trung sản xuất và các tổ chức độc quyền' },
+                        { id: 'b', text: 'Tư bản tài chính và bọn đầu sỏ tài chính' },
+                        { id: 'c', text: 'Xuất khẩu tư bản' },
+                        { id: 'd', text: 'Xóa bỏ triệt để quan hệ bóc lột làm thuê' }
+                    ],
+                    correctOptionId: 'd',
+                    rationale: 'Giáo trình trang 123-130: 5 đặc điểm gồm tập trung SX, tư bản tài chính, xuất khẩu tư bản, phân chia thị trường thế giới, phân chia lãnh thổ thế giới. Độc quyền không xóa bỏ bóc lột.'
+                },
+                {
+                    id: 'mq4_8',
+                    text: 'Cơ chế điều tiết kinh tế của độc quyền nhà nước là sự dung hợp của 3 cơ chế nào?',
+                    options: [
+                        { id: 'a', text: 'Kế hoạch hóa, tự cung tự cấp và chỉ huy quân sự' },
+                        { id: 'b', text: 'Thị trường, độc quyền tư nhân và điều tiết của nhà nước' },
+                        { id: 'c', text: 'Quốc tế, địa phương và tôn giáo' },
+                        { id: 'd', text: 'Tập trung quan liêu, bao cấp và tem phiếu' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 134: Cơ chế điều tiết kinh tế độc quyền nhà nước là sự dung hợp cả ba cơ chế: thị trường, độc quyền tư nhân và điều tiết của nhà nước.'
+                },
+                {
+                    id: 'mq4_9',
+                    text: 'Hình thức tổ chức độc quyền kết hợp hàng chục hãng vừa và nhỏ không liên quan về sản xuất để kinh doanh tài chính, chứng khoán là:',
+                    options: [
+                        { id: 'a', text: 'Concern' },
+                        { id: 'b', text: 'Conglomerate' },
+                        { id: 'c', text: 'Cartel' },
+                        { id: 'd', text: 'Hợp tác xã' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 135: Conglomerate là sự kết hợp của hàng chục hãng vừa và nhỏ không có sự liên quan trực tiếp về sản xuất, mục đích chủ yếu là thu lợi nhuận từ chứng khoán.'
+                },
+                {
+                    id: 'mq4_10',
+                    text: 'Trong xuất khẩu tư bản hiện đại, các hình thức hợp đồng mới nào xuất hiện phổ biến?',
+                    options: [
+                        { id: 'a', text: 'BOT (Xây dựng - Kinh doanh - Chuyển giao) và BT (Xây dựng - Chuyển giao)' },
+                        { id: 'b', text: 'Hợp đồng chiếm đoạt thuộc địa' },
+                        { id: 'c', text: 'Hiệp ước cống nạp phong kiến' },
+                        { id: 'd', text: 'Hợp đồng trưng thu không bồi thường' }
+                    ],
+                    correctOptionId: 'a',
+                    rationale: 'Giáo trình trang 138-139: Trong đầu tư trực tiếp xuất hiện những hình thức mới như BOT (Build-Operate-Transfer) và BT (Built and Transfer).'
+                },
+                {
+                    id: 'mq4_11',
+                    text: 'Đâu là một trong những tác động tiêu cực của độc quyền đối với nền kinh tế?',
+                    options: [
+                        { id: 'a', text: 'Tạo khả năng đầu tư vào nghiên cứu khoa học công nghệ lớn' },
+                        { id: 'b', text: 'Kìm hãm tiến bộ kỹ thuật khi vị thế độc quyền không bị đe dọa và gây thiệt hại cho người tiêu dùng' },
+                        { id: 'c', text: 'Thúc đẩy sản xuất quy mô lớn' },
+                        { id: 'd', text: 'Tăng cường liên kết chuỗi cung ứng quốc tế' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 120-121: Độc quyền áp đặt giá cao mua rẻ, kìm hãm tiến bộ kỹ thuật khi vị thế chưa bị đe dọa, làm tăng phân hóa giàu nghèo.'
+                },
+                {
+                    id: 'mq4_12',
+                    text: 'Cơ sở sâu xa dẫn đến việc chủ nghĩa tư bản tất yếu bị thay thế bởi một hình thái kinh tế - xã hội tiến bộ hơn là:',
+                    options: [
+                        { id: 'a', text: 'Quy luật lưu thông tiền tệ và lạm phát' },
+                        { id: 'b', text: 'Quy luật quan hệ sản xuất phải phù hợp với trình độ phát triển của lực lượng sản xuất' },
+                        { id: 'c', text: 'Sự cạn kiệt tuyệt đối của tài nguyên khoáng sản' },
+                        { id: 'd', text: 'Sự đồng thuận tự nguyện của các tập đoàn tài phiệt' }
+                    ],
+                    correctOptionId: 'b',
+                    rationale: 'Giáo trình trang 150: Đó là do yêu cầu của quy luật quan hệ sản xuất phải phù hợp với trình độ phát triển của lực lượng sản xuất quy định.'
+                }
             ]
         };
 
-        const AI_M4 = {
-            'chiến lược': { answer: 'Đại đoàn kết toàn dân tộc là vấn đề có ý nghĩa chiến lược, quyết định thành công của cách mạng. Không phải là sách lược tạm thời mà là chính sách lâu dài, xuyên suốt. "Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công".', sourceRef: 'Chương V, Mục I.1 — Giáo trình Tư tưởng HCM 2021' },
-            'lực lượng': { answer: 'Lực lượng đại đoàn kết toàn dân tộc bao gồm toàn dân (bất cứ ai có lòng yêu nước). Nhưng nền tảng cốt lõi là liên minh công nhân - nông dân - trí thức, dưới sự lãnh đạo của Đảng Cộng sản.', sourceRef: 'Chương V, Mục I.2 — Giáo trình Tư tưởng HCM 2021' },
-            'mặt trận': { answer: 'Mặt trận dân tộc thống nhất là hình thức tổ chức của đại đoàn kết. Nguyên tắc hoạt động: Dưới sự lãnh đạo của Đảng; hiệp thương dân chủ; đoàn kết lâu dài, chặt chẽ, chân thành; tự phê bình và phê bình.', sourceRef: 'Chương V, Mục I.4 — Giáo trình Tư tưởng HCM 2021' },
-            'quốc tế': { answer: 'Đoàn kết quốc tế để kết hợp sức mạnh dân tộc và sức mạnh thời đại. Lực lượng: phong trào cộng sản, phong trào giải phóng dân tộc, phong trào hòa bình dân chủ. Nguyên tắc: thống nhất mục tiêu, độc lập tự chủ, có lý có tình.', sourceRef: 'Chương V, Mục II — Giáo trình Tư tưởng HCM 2021' },
-            'hiện nay': { answer: 'Vận dụng hiện nay: Củng cố khối đại đoàn kết vững chắc trên nền tảng liên minh công-nông-trí. Đa phương hóa, đa dạng hóa đối ngoại. Triển khai 3 trụ cột: đối ngoại Đảng, ngoại giao Nhà nước, ngoại giao nhân dân.', sourceRef: 'Chương V, Mục III — Giáo trình Tư tưởng HCM 2021' }
+        let currentQuizData = null;
+        let currentQuizAnswers = {};
+        let currentQuizSubmitted = false;
+
+        function openFormativeQuiz(id) {
+            const q = window.FORMATIVE_QUIZZES_M4[id];
+            if (!q) return;
+            currentQuizData = { ...q, id };
+            currentQuizAnswers = {};
+            currentQuizSubmitted = false;
+            renderQuizModal(q);
+            document.getElementById('quiz-modal').classList.remove('hidden');
+        }
+
+        function openModuleQuiz() {
+            currentQuizData = window.MODULE_QUIZ_M4;
+            currentQuizAnswers = {};
+            currentQuizSubmitted = false;
+            renderQuizModal(window.MODULE_QUIZ_M4);
+            document.getElementById('quiz-modal').classList.remove('hidden');
+        }
+
+        function renderQuizModal(quiz) {
+            document.getElementById('quiz-modal-title').textContent = quiz.title;
+            document.getElementById('quiz-modal-sub').textContent = 'Cần đạt ' + quiz.passingScore + '% • ' + quiz.questions.length + ' câu hỏi chuẩn giáo trình';
+            let h = '<div class="space-y-6">';
+            quiz.questions.forEach((q, i) => {
+                h += `<div class="quiz-question" data-qid="${q.id}">
+                    <p class="font-medium text-sm mb-3">${i + 1}. ${q.text}</p>
+                    <div class="space-y-2">`;
+                q.options.forEach(o => {
+                    h += `<label class="quiz-option flex items-start gap-3 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-philo-gold/50 hover:bg-white/5 transition-all">
+                        <input type="radio" name="q_${q.id}" value="${o.id}" onclick="selectAnswer('${q.id}','${o.id}')" class="mt-0.5 flex-shrink-0 text-philo-gold focus:ring-philo-gold">
+                        <span class="text-xs md:text-sm text-philo-ivory/90">${o.text}</span>
+                    </label>`;
+                });
+                h += `</div></div>`;
+            });
+            h += `</div>
+            <div class="mt-6 flex justify-end gap-3 pt-4 border-t border-white/10">
+                <button onclick="closeQuizModal()" class="px-5 py-2.5 rounded-xl border border-white/20 text-xs text-philo-ivory/70 hover:bg-white/5">Đóng</button>
+                <button onclick="submitQuiz()" id="btn-submit-quiz" class="bg-white/10 text-white/40 font-bold px-8 py-2.5 rounded-xl cursor-not-allowed text-xs" data-ready="false">Nộp bài</button>
+            </div>`;
+            document.getElementById('quiz-modal-body').innerHTML = h;
+        }
+
+        function selectAnswer(q, o) {
+            currentQuizAnswers[q] = o;
+            const all = currentQuizData.questions.every(x => currentQuizAnswers[x.id]);
+            const b = document.getElementById('btn-submit-quiz');
+            if (b) {
+                if (all) {
+                    b.setAttribute('data-ready', 'true');
+                    b.className = 'philo-btn-gold font-bold px-8 py-2.5 rounded-xl cursor-pointer text-xs';
+                } else {
+                    b.setAttribute('data-ready', 'false');
+                    b.className = 'bg-white/10 text-white/40 font-bold px-8 py-2.5 rounded-xl cursor-not-allowed text-xs';
+                }
+            }
+        }
+
+        function submitQuiz() {
+            const b = document.getElementById('btn-submit-quiz');
+            if (b && b.getAttribute('data-ready') !== 'true') return;
+            if (currentQuizSubmitted) return;
+            currentQuizSubmitted = true;
+            const quiz = currentQuizData;
+            let correct = 0;
+
+            quiz.questions.forEach(q => {
+                const u = currentQuizAnswers[q.id], ok = u === q.correctOptionId;
+                if (ok) correct++;
+                const qEl = document.querySelector(`[data-qid="${q.id}"]`);
+                if (!qEl) return;
+                qEl.querySelectorAll('.quiz-option').forEach(l => {
+                    const r = l.querySelector('input');
+                    if (!r) return;
+                    if (r.value === q.correctOptionId) {
+                        l.classList.add('border-emerald-500', 'bg-emerald-950/30');
+                    }
+                    if (r.value === u && !ok) {
+                        l.classList.add('border-red-500', 'bg-red-950/30');
+                    }
+                });
+                const re = document.createElement('div');
+                re.className = 'mt-2 p-3 bg-philo-gold/10 border border-philo-gold/20 rounded-lg text-xs';
+                re.innerHTML = '<strong class="text-philo-gold">📖 Trích dẫn Giáo trình 2021:</strong> ' + q.rationale;
+                qEl.appendChild(re);
+            });
+
+            const score = Math.round((correct / quiz.questions.length) * 100);
+            const passed = score >= quiz.passingScore;
+            M4_STATE.quizResults[quiz.id || 'module_quiz'] = { score, correct, total: quiz.questions.length, passed, timestamp: Date.now() };
+            saveM4State();
+
+            const rh = `<div class="mb-6 p-4 rounded-2xl text-center border ${passed ? 'bg-emerald-950/30 border-emerald-500/50' : 'bg-red-950/30 border-red-500/50'}">
+                <p class="text-3xl mb-1">${passed ? '🎉' : '📚'}</p>
+                <p class="text-xl font-bold ${passed ? 'text-emerald-400' : 'text-red-400'}">${score}% (${correct}/${quiz.questions.length} câu đúng)</p>
+                <p class="text-xs mt-1 ${passed ? 'text-emerald-400' : 'text-red-400'}">${passed ? '✅ Đạt yêu cầu chuẩn kiến thức!' : '❌ Chưa đạt (Yêu cầu ' + quiz.passingScore + '%). Hãy xem lại giải thích và thử lại!'}</p>
+            </div>`;
+            document.getElementById('quiz-modal-body').insertAdjacentHTML('afterbegin', rh);
+
+            b.textContent = passed ? 'Hoàn tất ✓' : 'Làm lại';
+            b.onclick = passed ? closeQuizModal : () => {
+                closeQuizModal();
+                setTimeout(() => openModuleQuiz(), 300);
+            };
+
+            if (passed && quiz.achievement) {
+                showAchievement(quiz.achievement);
+            }
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quiz-modal').classList.add('hidden');
+        }
+
+        const M4_ACHIEVEMENTS = {
+            'monopoly-scholar': { name: 'Chuyên Gia Lý Luận Độc Quyền', icon: '🏛️', desc: 'Đạt ≥75% bài kiểm tra tổng kết Chương 4 — +15 XP' }
         };
-        function getAIResponse(q) { const l = q.toLowerCase(); for (const [k, r] of Object.entries(AI_M4)) { if (l.includes(k)) return r; } return { answer: 'Module 4 tập trung: vai trò đoàn kết, nội dung đại đoàn kết dân tộc, Mặt trận thống nhất, đoàn kết quốc tế, ngoại giao nhân dân và vận dụng ngày nay. Hỏi về những chủ đề này nhé!', sourceRef: 'Chương 4 — Giáo trình Tư tưởng HCM 2021' }; }
-        function sendAIPrompt(p) { document.getElementById('ai-input').value = p; sendAIMessage(); }
-        function sendAIMessage() { const i = document.getElementById('ai-input'), q = i.value.trim(); if (!q) return; i.value = ''; const h = document.getElementById('ai-chat-history'); h.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bg-philo-warmGold text-white rounded-xl p-3 max-w-[85%]"><p class="text-sm">${q}</p></div></div>`); const lid = 'l' + Date.now(); h.insertAdjacentHTML('beforeend', `<div id="${lid}" class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs">⏳ Đang tra cứu...</p></div>`); h.scrollTop = h.scrollHeight; setTimeout(() => { const r = getAIResponse(q); const le = document.getElementById(lid); if (le) le.outerHTML = `<div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-3"><p class="text-xs font-bold text-emerald-700 mb-1">🤖 AI HCM Module 4</p><p class="text-sm mb-2">${r.answer}</p><p class="text-xs text-gray-400 border-t pt-1">📖 <em>${r.sourceRef}</em></p></div>`; h.scrollTop = h.scrollHeight; }, 800); }
-        document.addEventListener('DOMContentLoaded', () => { loadM4State(); updateProgress(); if (M4_STATE.completedLessons.size > 0) { showLesson(M4_LESSONS[Math.min(M4_STATE.completedLessons.size, 5)]); } else showLesson('M4-L1'); if (M4_STATE.completedLessons.size === 6) { const b = document.getElementById('module-quiz-banner'); if (b) b.classList.remove('hidden'); } M4_STATE.completedLessons.forEach(id => { const b = document.getElementById('btn-complete-' + id); if (b) { b.classList.remove('bg-philo-warmGold', 'hover:bg-philo-blackBurgundyGold'); b.classList.add('bg-green-500', 'hover:bg-green-600'); b.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã hoàn thành ✓'; } }); });
+
+        function showAchievement(slug) {
+            const a = M4_ACHIEVEMENTS[slug];
+            if (!a) return;
+            document.getElementById('achievement-icon').textContent = a.icon;
+            document.getElementById('achievement-name').textContent = a.name;
+            document.getElementById('achievement-desc').textContent = a.desc;
+            const t = document.getElementById('achievement-toast');
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 4000);
+        }
+
+        let aiPanelOpen = false;
+        function toggleAIPanel() {
+            aiPanelOpen = !aiPanelOpen;
+            const p = document.getElementById('ai-panel');
+            if (aiPanelOpen) p.classList.remove('hidden-panel');
+            else p.classList.add('hidden-panel');
+        }
+
+        const AI_M4 = {
+            '5 đặc điểm': { answer: 'V.I. Lênin nêu 5 đặc điểm kinh tế cơ bản của độc quyền: 1) Tích tụ tập trung sản xuất cao sinh ra các tổ chức độc quyền; 2) Tư bản tài chính và đầu sỏ tài chính; 3) Xuất khẩu tư bản trở thành phổ biến; 4) Phân chia thị trường thế giới giữa các liên minh độc quyền; 5) Phân chia lãnh thổ thế giới giữa các cường quốc.', sourceRef: 'Chương 4, Mục II.1 — Giáo trình KTCT 2021 (tr. 123-130)' },
+            'tư bản tài chính': { answer: 'Tư bản tài chính là sự hợp nhất giữa tư bản độc quyền ngân hàng với tư bản độc quyền công nghiệp. Sự phát triển này hình thành nhóm nhỏ tài phiệt thống trị thông qua "chế độ tham dự" (công ty mẹ - con - cháu) và chi phối toàn bộ nhà nước tư sản.', sourceRef: 'Chương 4, Mục II.1.b — Giáo trình KTCT 2021 (tr. 125-127)' },
+            'độc quyền nhà nước': { answer: 'Độc quyền nhà nước là sự kết hợp sức mạnh của các tổ chức độc quyền tư nhân với sức mạnh kinh tế của nhà nước tư sản thành một cơ chế thống nhất. Nhà nước trở thành một nhà tư bản tập thể khổng lồ nhằm bảo vệ lợi ích và vị thế thống trị của giai cấp tư sản độc quyền.', sourceRef: 'Chương 4, Mục II.2 — Giáo trình KTCT 2021 (tr. 130-134)' },
+            'concern': { answer: 'Concern là tổ chức độc quyền đa ngành gồm hàng trăm xí nghiệp thuộc các ngành khác nhau phân bố ở nhiều quốc gia, ra đời để phân tán rủi ro cạnh tranh và đối phó với luật chống độc quyền cấm chiếm 100% trong 1 ngành đơn lẻ.', sourceRef: 'Chương 4, Mục III.1.a — Giáo trình KTCT 2021 (tr. 135)' },
+            'conglomerate': { answer: 'Conglomerate là sự kết hợp của hàng chục hãng vừa và nhỏ không có sự liên quan trực tiếp về sản xuất nhằm thu lợi nhuận từ đầu cơ chứng khoán và kinh doanh tài chính trong điều kiện thế giới biến động.', sourceRef: 'Chương 4, Mục III.1.a — Giáo trình KTCT 2021 (tr. 135)' },
+            'giới hạn lịch sử': { answer: 'Giới hạn lịch sử của CNTB bắt nguồn từ mâu thuẫn cơ bản: Lực lượng sản xuất đã xã hội hóa ngày càng cao nhưng quan hệ sản xuất lại dựa trên chế độ chiếm hữu tư nhân TBCN về tư liệu sản xuất. Vì vậy, CNTB không thể tồn tại vĩnh viễn mà tất yếu bị thay thế bởi CNXH.', sourceRef: 'Chương 4, Mục III.3 — Giáo trình KTCT 2021 (tr. 145-151)' }
+        };
+
+        function getAIResponse(q) {
+            const l = q.toLowerCase();
+            for (const [k, r] of Object.entries(AI_M4)) {
+                if (l.includes(k)) return r;
+            }
+            return {
+                answer: 'Module 4 trọng tâm: Khái niệm độc quyền, 5 đặc điểm kinh tế của Lênin, độc quyền nhà nước, Concern & Conglomerate, xuất khẩu tư bản mới, chiến lược biên giới mềm, và mâu thuẫn cơ bản dẫn đến giới hạn lịch sử của CNTB. Hãy đặt câu hỏi cụ thể nhé!',
+                sourceRef: 'Chương 4 — Giáo trình KTCT Mác - Lênin 2021'
+            };
+        }
+
+        function sendAIPrompt(p) {
+            document.getElementById('ai-input').value = p;
+            sendAIMessage();
+        }
+
+        function sendAIMessage() {
+            const i = document.getElementById('ai-input'), q = i.value.trim();
+            if (!q) return;
+            i.value = '';
+            const h = document.getElementById('ai-chat-history');
+            h.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bg-philo-gold text-black font-medium rounded-xl p-3 max-w-[85%] text-xs md:text-sm"><p>${q}</p></div></div>`);
+            const lid = 'l' + Date.now();
+            h.insertAdjacentHTML('beforeend', `<div id="${lid}" class="bg-white/5 rounded-xl p-3 text-xs"><p>⏳ Đang tra cứu Giáo trình 2021...</p></div>`);
+            h.scrollTop = h.scrollHeight;
+            setTimeout(() => {
+                const r = getAIResponse(q);
+                const le = document.getElementById(lid);
+                if (le) le.outerHTML = `<div class="bg-white/5 rounded-xl p-3 border border-philo-gold/20 text-xs md:text-sm"><p class="text-xs font-bold text-philo-gold mb-1">🤖 AI Giáo trình MLN131</p><p class="text-philo-ivory/90 leading-relaxed mb-2">${r.answer}</p><p class="text-[10px] text-philo-gold/70 border-t border-white/10 pt-1">📖 <em>${r.sourceRef}</em></p></div>`;
+                h.scrollTop = h.scrollHeight;
+            }, 600);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadM4State();
+            updateProgress();
+            if (M4_STATE.completedLessons.size > 0) {
+                showLesson(M4_LESSONS[Math.min(M4_STATE.completedLessons.size, 5)]);
+            } else {
+                showLesson('M4-L1');
+            }
+            if (M4_STATE.completedLessons.size === 6) {
+                const b = document.getElementById('module-quiz-banner');
+                if (b) b.classList.remove('hidden');
+            }
+            M4_STATE.completedLessons.forEach(id => {
+                const b = document.getElementById('btn-complete-' + id);
+                if (b) {
+                    b.classList.remove('philo-btn-gold');
+                    b.classList.add('bg-emerald-600', 'text-white');
+                    b.innerHTML = '<span class="material-symbols-outlined text-[16px]">check_circle</span> Đã hoàn thành ✓';
+                }
+            });
+        });
     </script>
 </body>
 

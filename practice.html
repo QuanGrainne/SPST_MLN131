@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>PhiloVerse - Thực hành tư duy</title>
+  <title>Thực hành & Ôn thi FE — Kinh tế chính trị Mác - Lênin (MLN131)</title>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link
@@ -62,23 +62,48 @@
     }
     
     /* Quiz option grading states (Ôn tập + Thi thử) */
+    .fe-opt {
+      background-color: rgba(20, 3, 3, 0.6) !important;
+      border: 1px solid rgba(255, 211, 78, 0.25) !important;
+      transition: all 0.25s ease !important;
+    }
+    .fe-opt:hover {
+      background-color: rgba(255, 211, 78, 0.08) !important;
+      border-color: rgba(255, 211, 78, 0.5) !important;
+    }
+    .fe-opt span {
+      color: #FFF4DC !important;
+    }
     .fe-opt.correct-answer {
       border-color: #10b981 !important;
-      background-color: #ecfdf5 !important;
+      background-color: rgba(16, 185, 129, 0.25) !important;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25) !important;
+    }
+    .fe-opt.correct-answer span,
+    .fe-opt.correct-answer .text-philo-ivory {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
     }
     .fe-opt.wrong-answer {
       border-color: #ef4444 !important;
-      background-color: #fef2f2 !important;
+      background-color: rgba(239, 68, 68, 0.25) !important;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.25) !important;
+    }
+    .fe-opt.wrong-answer span,
+    .fe-opt.wrong-answer .text-philo-ivory {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
     }
     .fe-opt.correct-answer .radio-circle {
-      background-color: #10b981;
-      border-color: #10b981;
+      background-color: #10b981 !important;
+      border-color: #10b981 !important;
     }
     .fe-opt.wrong-answer .radio-circle {
-      background-color: #ef4444;
-      border-color: #ef4444;
+      background-color: #ef4444 !important;
+      border-color: #ef4444 !important;
     }
-
     .tab-btn.active {
       background-color: #D4A017 !important;
       color: #FAF8F3 !important;
@@ -193,20 +218,20 @@
           <div class="philo-breadcrumb">
             <a href="home.html">TRANG CHỦ</a>
             <span class="sep">/</span>
-            <span>THỰC HÀNH TƯ DUY</span>
+            <span>THỰC HÀNH & ÔN THI</span>
           </div>
           <h1 class="text-3xl md:text-4xl font-heading font-bold text-philo-ivory leading-tight max-w-3xl">
-            Thực hành Tư tưởng Hồ Chí Minh<br /><span class="text-philo-gold italic font-normal">cho đời sống cá nhân</span>
+            Thực hành Kinh tế chính trị Mác - Lênin<br /><span class="text-philo-gold italic font-normal">(Học phần MLN131 chuẩn 2021)</span>
           </h1>
           <p class="text-philo-ivory/70 max-w-2xl text-sm leading-relaxed">
-            Chào mừng bạn đến với <strong class="text-philo-ivory">Phòng thực hành Tư tưởng Hồ Chí Minh Tương tác</strong>. Tại đây, những bài học về đạo đức, con đường cách mạng và tư tưởng của Bác sẽ trở thành các mô phỏng trực quan giúp bạn phản tư cuộc sống và rèn luyện bản thân mỗi ngày.
+            Chào mừng bạn đến với <strong class="text-philo-ivory">Phòng thực hành & Ôn thi MLN131 Tương tác</strong>. Tại đây, các quy luật kinh tế thị trường, cơ chế giá trị thặng dư và ngân hàng 60+ câu hỏi ôn thi FE bám sát giáo trình chuẩn Bộ GD&ĐT giúp bạn nắm vững kiến thức và bứt phá điểm số.
           </p>
         </div>
-        <a href="assets/docs/1. Giao trinh Tu tuong Ho Chi Minh.pdf" download="SGK_Tu_Tuong_HCM.pdf">
+        <a href="Overview.html">
           <button
             class="philo-btn-ghost flex items-center gap-2 shrink-0">
-            <span class="material-symbols-outlined text-[20px]">download</span>
-            <span>Tải tài liệu SGK PDF</span>
+            <span class="material-symbols-outlined text-[20px]">menu_book</span>
+            <span>Khung Giáo trình 6 Chương</span>
           </button>
         </a>
       </div>
@@ -228,7 +253,7 @@
           <span class="material-symbols-outlined text-2xl">explore</span>
         </div>
         <div>
-          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Thế giới quan của bạn</h4>
+          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Thế giới quan Kinh tế</h4>
           <p id="dashboard-worldview-title" class="text-sm font-bold text-philo-ivory truncate max-w-[200px]">Chưa trắc nghiệm</p>
         </div>
       </div>
@@ -237,68 +262,68 @@
           <span class="material-symbols-outlined text-2xl">insights</span>
         </div>
         <div>
-          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Cấp độ Tu dưỡng Đạo đức</h4>
-          <p id="dashboard-dialectics-level" class="text-lg font-bold text-philo-ivory">Cấp 1: Sơ cấp</p>
+          <h4 class="text-xs text-philo-gold/60 font-bold uppercase tracking-wider">Cấp độ Tư duy Kinh tế</h4>
+          <p id="dashboard-dialectics-level" class="text-lg font-bold text-philo-ivory">Cấp 1: Cơ bản</p>
         </div>
       </div>
     </section>
 
     <!-- Main Navigation Tab Bar -->
     <div class="flex flex-wrap gap-2 border-b border-philo-gold/20 pb-4 mb-8">
-      <button onclick="switchTab('sandbox')" id="tab-sandbox"
+      <button onclick="switchTab('fereview')" id="tab-fereview"
         class="tab-btn active flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
+        <span class="material-symbols-outlined text-[20px]">quiz</span>
+        1. Ôn thi FE (Ngân hàng MLN131)
+      </button>
+      <button onclick="switchTab('sandbox')" id="tab-sandbox"
+        class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
         <span class="material-symbols-outlined text-[20px]">science</span>
-        1. Hộp cát Thực hành Tư tưởng HCM
+        2. Hộp cát Mô phỏng Quy luật
       </button>
       <button onclick="switchTab('compass')" id="tab-compass"
         class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
         <span class="material-symbols-outlined text-[20px]">explore</span>
-        2. Bản đồ Thế giới quan
+        3. Bản đồ Thế giới quan
       </button>
       <button onclick="switchTab('greenhouse')" id="tab-greenhouse"
         class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
         <span class="material-symbols-outlined text-[20px]">yard</span>
-        3. Vườn ươm Phản tư
-      </button>
-      <button onclick="switchTab('fereview')" id="tab-fereview"
-        class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-philo-ivory/80 hover:text-philo-gold hover:bg-philo-gold/5 border border-transparent transition-all">
-        <span class="material-symbols-outlined text-[20px]">quiz</span>
-        4. Ôn thi FE
+        4. Vườn ươm Phản tư
       </button>
     </div>
 
     <!-- TAB 1: DIALECTICAL LAW SANDBOX -->
-    <div id="content-sandbox" class="tab-content block">
+    <div id="content-sandbox" class="tab-content hidden">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Sidebar controls -->
         <div class="lg:col-span-4 flex flex-col gap-4">
           <div class="bg-philo-blackBurgundy  p-6 rounded-2xl shadow-cinematic border border-philo-warmGold/30">
             <h3 class="text-lg font-heading font-bold text-philo-ivory mb-4 flex items-center gap-2">
               <span class="text-philo-warmGold material-symbols-outlined">tune</span>
-              Chọn nội dung thực hành
+              Chọn nội dung mô phỏng
             </h3>
             <div class="flex flex-col gap-2">
               <button onclick="switchSandboxLaw('quantity')" id="law-btn-quantity"
- class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 bg-philo-warmGold/10 text-philo-warmGold font-bold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/20">
+                class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 bg-philo-warmGold/10 text-philo-warmGold font-bold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/20">
                 <span class="material-symbols-outlined text-lg">water_drop</span>
-                Tu dưỡng Đạo đức Cách mạng
+                Quy luật Lượng - Chất trong Tích lũy Tư bản
               </button>
               <button onclick="switchSandboxLaw('contradiction')" id="law-btn-contradiction"
- class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
+                class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
                 <span class="material-symbols-outlined text-lg">balance</span>
-                Độc lập Dân tộc & CNXH
+                Mâu thuẫn Kinh tế: Cạnh tranh & Độc quyền
               </button>
               <button onclick="switchSandboxLaw('negation')" id="law-btn-negation"
- class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
+                class="w-full text-left p-3.5 rounded-xl border border-philo-warmGold/30 text-philo-ivory/80 font-semibold text-sm flex items-center gap-3 transition-all hover:bg-philo-warmGold/10 hover:text-philo-gold">
                 <span class="material-symbols-outlined text-lg">cyclone</span>
-                Hành trình Tìm đường Cứu nước
+                Quy luật Phủ định của Phủ định trong HTKT-XH
               </button>
             </div>
           </div>
 
-          <div class="bg-philo-warmGold/10 p-6 rounded-2xl border border-philo-warmGold/30 text-philo-ivory/80 text-xs leading-relaxed">
-            <span class="font-bold text-philo-warmGold text-sm block mb-1">💡 Hướng dẫn</span>
-            Hãy chọn một trong ba nội dung cốt lõi của Tư tưởng Hồ Chí Minh để tương tác. Các mô phỏng trực quan giúp bạn thấu hiểu và tự soi lại quá trình tu dưỡng, con đường cách mạng của dân tộc qua góc nhìn tư tưởng của Bác.
+          <div class="bg-philo-warmGold/10 p-6 rounded-2xl border border-philo-warmGold/30 text-philo-ivory/90 text-xs leading-relaxed">
+            <span class="font-bold text-philo-gold text-sm block mb-1">💡 Hướng dẫn Mô phỏng</span>
+            Hãy chọn một trong ba quy luật triết học và kinh tế chính trị cốt lõi để tương tác trực quan. Mô phỏng giúp bạn làm sáng tỏ cơ chế vận động của quy luật Lượng - Chất, biện chứng Mâu thuẫn và Phủ định của Phủ định trong thực tiễn.
           </div>
         </div>
 
@@ -308,24 +333,24 @@
           <div id="sandbox-quantity" class="law-sandbox-content block bg-philo-blackBurgundy  rounded-3xl p-8 shadow-card border border-philo-warmGold/30">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
               <div>
-                <span class="text-xs font-bold text-philo-warmGold uppercase tracking-widest block">TƯ TƯỞNG HỒ CHÍ MINH VỀ ĐẠO ĐỨC</span>
-                <h4 class="text-2xl font-heading font-bold text-philo-ivory">Đạo đức Cách mạng: rèn luyện bền bỉ như rửa mặt hằng ngày</h4>
+                <span class="text-xs font-bold text-philo-gold uppercase tracking-widest block">TRIẾT HỌC MÁC - LÊNIN • QUY LUẬT LƯỢNG - CHẤT</span>
+                <h4 class="text-2xl font-heading font-bold text-philo-ivory">Chuyển hóa từ Biến đổi về Lượng thành Biến đổi về Chất</h4>
               </div>
-              <div class="px-3.5 py-1.5 bg-philo-warmGold/10 border border-philo-warmGold/30 text-philo-warmGold text-xs font-bold rounded-lg">
-                Cấp độ hiện tại: <span id="current-quality-badge" class="uppercase">Sơ cấp</span>
+              <div class="px-3.5 py-1.5 bg-philo-warmGold/10 border border-philo-gold/40 text-philo-gold text-xs font-bold rounded-lg">
+                Trình độ nhận thức: <span id="current-quality-badge" class="uppercase font-extrabold text-white pl-1">Sơ cấp</span>
               </div>
             </div>
 
-            <p class="text-philo-ivory/70 text-sm mb-8 leading-relaxed">
-              Hồ Chí Minh dạy rằng "Đạo đức cách mạng không phải trên trời sa xuống. Nó do đấu tranh, rèn luyện bền bỉ hằng ngày mà phát triển và củng cố. Cũng như ngọc càng mài càng sáng, vàng càng luyện càng trong." Hãy tích lũy <strong>Cần - Kiệm - Liêm - Chính</strong> qua từng hành động nhỏ mỗi ngày. Khi tích lũy đạt tới <strong>Điểm Nút (100)</strong>, bạn sẽ thực hiện một <strong>Bước Nhảy</strong> lên cấp độ đạo đức mới!
+            <p class="text-philo-ivory/90 text-sm mb-8 leading-relaxed font-body">
+              Theo phép biện chứng duy vật của C. Mác và Ph. Ăngghen: Mọi sự vật, hiện tượng đều là sự thống nhất giữa chất và lượng. Quá trình tích lũy dần dần về lượng (trong giới hạn độ) khi đạt tới <strong class="text-philo-gold">Điểm Nút (100)</strong> sẽ phá vỡ độ cũ, tạo ra <strong class="text-philo-gold">Bước Nhảy</strong> căn bản để chuyển hóa sang một chất mới cao hơn!
             </p>
 
             <!-- Visual simulation tank -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-8">
               <div class="md:col-span-4 flex justify-center">
-                <div class="relative w-28 h-60 bg-philo-warmGold/20  border-4 border-slate-700 rounded-b-2xl rounded-t-lg overflow-hidden shadow-inner flex flex-col justify-end">
+                <div class="relative w-32 h-64 bg-black/70 border-2 border-philo-gold/50 rounded-b-2xl rounded-t-lg overflow-hidden shadow-[inset_0_2px_12px_rgba(0,0,0,0.9)] flex flex-col justify-end">
                   <!-- Measurement markings -->
-                  <div class="absolute inset-y-0 right-1.5 flex flex-col justify-between text-[9px] text-philo-ivory/50 /50 py-4 font-mono select-none">
+                  <div class="absolute inset-y-0 right-2 flex flex-col justify-between text-[10px] text-[#FFD34E] font-bold py-4 font-mono select-none z-10 drop-shadow">
                     <span>- 100 (Điểm Nút)</span>
                     <span>- 75</span>
                     <span>- 50</span>
@@ -333,44 +358,43 @@
                     <span>- 0</span>
                   </div>
                   <!-- Liquid / Energy level -->
-                  <div id="liquid-energy" class="w-full bg-gradient-to-t from-blue-600 to-cyan-400 transition-all duration-500 shadow-lg relative" style="height: 0%;">
-                    <!-- Bubbles or glowing effect inside -->
-                    <div class="absolute inset-0 bg-philo-blackBurgundy /20 animate-pulse"></div>
+                  <div id="liquid-energy" class="w-full bg-gradient-to-t from-amber-600 via-yellow-500 to-amber-300 transition-all duration-500 shadow-[0_0_15px_rgba(255,211,78,0.5)] relative" style="height: 0%;">
+                    <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
                   </div>
                   <!-- Level text -->
-                  <div class="absolute inset-0 flex items-center justify-center font-bold text-lg text-philo-ivory mix-blend-difference" id="tank-percent-text">
+                  <div class="absolute inset-0 flex items-center justify-center font-black text-xl text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] z-20" id="tank-percent-text">
                     0 / 100
                   </div>
                 </div>
               </div>
               
               <div class="md:col-span-8 flex flex-col gap-4">
-                <h5 class="text-xs font-bold uppercase text-philo-ivory/50 /50 tracking-wider">Hành động rèn luyện hằng ngày</h5>
+                <h5 class="text-xs font-black uppercase text-[#FFD34E] tracking-wider">Hành động tích lũy tri thức & thực tiễn</h5>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <button onclick="addQuantity(10)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
-                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+10</span>
-                    <span class="font-bold text-philo-ivory text-xs block mb-1">Cần - Kiệm</span>
-                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Chăm chỉ, tiết kiệm trong học tập & công việc</span>
+                  <button onclick="addQuantity(10)" class="p-4 bg-[#200505] border-2 border-[#FFD34E]/30 rounded-2xl text-left hover:border-[#FFD34E] hover:bg-[#320808] transition-all group shadow-md">
+                    <span class="size-9 rounded-lg bg-[#FFD34E]/20 text-[#FFD34E] flex items-center justify-center mb-2 font-black text-sm group-hover:scale-110 transition-transform shadow-inner">+10</span>
+                    <span class="font-bold text-white text-sm block mb-1">Tích lũy Tri thức</span>
+                    <span class="text-xs text-[#FAF8F3]/85 leading-tight block">Nghiên cứu nguyên lý & quy luật giá trị Mác - Lênin</span>
                   </button>
-                  <button onclick="addQuantity(15)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
-                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+15</span>
-                    <span class="font-bold text-philo-ivory text-xs block mb-1">Liêm - Chính</span>
-                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Trung thực, ngay thẳng trong mọi việc</span>
+                  <button onclick="addQuantity(15)" class="p-4 bg-[#200505] border-2 border-[#FFD34E]/30 rounded-2xl text-left hover:border-[#FFD34E] hover:bg-[#320808] transition-all group shadow-md">
+                    <span class="size-9 rounded-lg bg-[#FFD34E]/20 text-[#FFD34E] flex items-center justify-center mb-2 font-black text-sm group-hover:scale-110 transition-transform shadow-inner">+15</span>
+                    <span class="font-bold text-white text-sm block mb-1">Rèn luyện Tư duy</span>
+                    <span class="text-xs text-[#FAF8F3]/85 leading-tight block">Phân tích mâu thuẫn biện chứng và dữ liệu kinh tế</span>
                   </button>
-                  <button onclick="addQuantity(20)" class="p-4 bg-philo-warmGold/5  border border-philo-warmGold/30 rounded-2xl text-left hover:border-philo-warmGold hover:bg-philo-warmGold/10/30 transition-all group">
-                    <span class="size-9 rounded-lg bg-philo-warmGold/10 text-philo-warmGold flex items-center justify-center mb-2 font-bold group-hover:scale-110 transition-transform">+20</span>
-                    <span class="font-bold text-philo-ivory text-xs block mb-1">Nêu gương</span>
-                    <span class="text-[10px] text-philo-ivory/70 leading-tight block">Nói đi đôi với làm, làm gương cho tập thể</span>
+                  <button onclick="addQuantity(20)" class="p-4 bg-[#200505] border-2 border-[#FFD34E]/30 rounded-2xl text-left hover:border-[#FFD34E] hover:bg-[#320808] transition-all group shadow-md">
+                    <span class="size-9 rounded-lg bg-[#FFD34E]/20 text-[#FFD34E] flex items-center justify-center mb-2 font-black text-sm group-hover:scale-110 transition-transform shadow-inner">+20</span>
+                    <span class="font-bold text-white text-sm block mb-1">Vận dụng Thực tiễn</span>
+                    <span class="text-xs text-[#FAF8F3]/85 leading-tight block">Giải quyết bài toán kinh tế theo phương pháp duy vật</span>
                   </button>
                 </div>
 
                 <!-- Leap control -->
-                <div class="mt-4 pt-4 border-t border-philo-warmGold/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div class="text-xs text-philo-ivory/70 text-center sm:text-left">
-                    Nhấn các nút trên để rèn luyện mỗi ngày. Khi tích đủ 100%, nút <strong>Thực hiện Bước nhảy</strong> sẽ phát sáng!
+                <div class="mt-4 pt-4 border-t border-[#FFD34E]/25 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div class="text-xs text-[#FAF8F3]/90 text-center sm:text-left leading-relaxed">
+                    Nhấn các hành động để tích lũy lượng tri thức. Khi đạt <strong>Điểm Nút (100%)</strong>, nút <strong class="text-[#FFD34E]">Thực hiện Bước nhảy</strong> sẽ kích hoạt để biến đổi về Chất!
                   </div>
                   <button id="leap-btn" disabled onclick="executeLeap()"
- class="px-6 py-3 bg-slate-200 text-philo-ivory/70 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2">
+                    class="px-6 py-3 bg-[#240505] text-[#FFD34E]/50 border border-[#FFD34E]/30 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2">
                     <span class="material-symbols-outlined text-lg">bolt</span>
                     Thực hiện Bước nhảy
                   </button>
@@ -752,8 +776,8 @@
       </div>
     </div>
 
-    <!-- TAB 4: FE REVIEW QUIZ -->
-    <div id="content-fereview" class="tab-content hidden">
+    <!-- TAB 1: FE REVIEW QUIZ -->
+    <div id="content-fereview" class="tab-content block">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Sidebar: scope filter + AI helper note -->
         <div class="lg:col-span-4 flex flex-col gap-4">
@@ -1080,7 +1104,12 @@
     // ------------------------------------------------------------------------
     let quantityValue = parseInt(localStorage.getItem('philosophyQty')) || 0;
     let qualityLevel = parseInt(localStorage.getItem('philosophyQualLevel')) || 1;
-    const qualityTitles = ["Sơ cấp: Học và làm theo", "Trung cấp: Thực hành thường xuyên", "Cao cấp: Nêu gương", "Gương mẫu: Chuẩn mực Đạo đức mới"];
+    const qualityTitles = [
+      "Cấp 1: Tích lũy Tri thức Cơ bản",
+      "Cấp 2: Nhận thức Bản chất Kinh tế",
+      "Cấp 3: Vận dụng Lý luận Thực tiễn",
+      "Cấp 4: Đỉnh cao Tư duy Biện chứng"
+    ];
 
     function updateQuantityUI() {
       const liquid = document.getElementById('liquid-energy');
@@ -1102,15 +1131,15 @@
       // Badges
       const qualTitle = qualityTitles[qualityLevel - 1] || qualityTitles[0];
       document.getElementById('current-quality-badge').innerText = qualTitle;
-      dialLevelText.innerText = `Cấp ${qualityLevel}: ${qualTitle.split(' ')[0]}`;
+      dialLevelText.innerText = `Cấp ${qualityLevel}: ${qualTitle.split(':')[1] || qualTitle}`;
 
       // Enable leap when full
       if (quantityValue >= 100) {
         leapBtn.removeAttribute('disabled');
-        leapBtn.className = "px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-2xl hover:scale-105 shrink-0 flex items-center gap-2 leap-ready animate-pulse-scale";
+        leapBtn.className = "px-6 py-3 bg-gradient-to-r from-[#FFD34E] via-[#FBBF24] to-[#F59E0B] text-[#140303] rounded-xl font-black text-sm transition-all shadow-[0_0_20px_rgba(255,211,78,0.7)] hover:scale-105 shrink-0 flex items-center gap-2 leap-ready animate-pulse cursor-pointer";
       } else {
         leapBtn.setAttribute('disabled', 'true');
-        leapBtn.className = "px-6 py-3 bg-slate-200 text-philo-ivory/70 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2";
+        leapBtn.className = "px-6 py-3 bg-[#240505] text-[#FFD34E]/50 border border-[#FFD34E]/30 rounded-xl font-bold text-sm cursor-not-allowed transition-all shadow-md shrink-0 flex items-center gap-2";
       }
     }
 
@@ -1144,10 +1173,10 @@
 
       const explanations = [
         "", // index 0 unused
-        "Chúc mừng! Bạn quay lại cấp Sơ cấp để bắt đầu một vòng rèn luyện mới. Đạo đức cách mạng không có điểm dừng — mỗi vòng lặp lại giúp bạn thấm nhuần Cần - Kiệm - Liêm - Chính sâu sắc hơn.",
-        "Bạn đã đạt cấp TRUNG CẤP: Thực hành thường xuyên. Những hành động nhỏ mỗi ngày đã trở thành thói quen — bạn không còn phải cố gắng để Cần - Kiệm - Liêm - Chính, mà nó đã tự nhiên trong cách bạn sống và làm việc.",
-        "XUẤT SẮC! Đạt cấp CAO CẤP: Nêu gương. Đúng như lời Bác dạy 'một tấm gương sống còn có giá trị hơn một trăm bài diễn văn tuyên truyền' — giờ đây chính bạn là tấm gương truyền cảm hứng cho người xung quanh.",
-        "PHI THƯỜNG! Bạn đã vươn tới cấp GƯƠNG MẪU. Đạo đức cách mạng đã trở thành chuẩn mực sống của bạn — nói đi đôi với làm, đặt lợi ích tập thể lên trên lợi ích cá nhân trong mọi việc."
+        "Chúc mừng! Bạn đã hoàn thành một chu kỳ chuyển hóa Lượng - Chất và bước vào vòng tích lũy tri thức chuyên sâu mới.",
+        "BƯỚC NHẢY THÀNH CÔNG! Đạt cấp 2: Nhận thức Bản chất Kinh tế. Quá trình tích lũy lượng tri thức đủ độ đã dẫn đến sự thay đổi về chất trong nhận thức các quy luật giá trị và tích lũy tư bản.",
+        "XUẤT SẮC! Đạt cấp 3: Vận dụng Lý luận Thực tiễn. Bạn đã chuyển hóa nhận thức từ cảm tính sang lý tính, vận dụng sáng tạo phương pháp biện chứng duy vật vào giải quyết thực tiễn.",
+        "PHI THƯỜNG! Đạt cấp 4: Đỉnh cao Tư duy Biện chứng. Nhận thức đã đạt tới bước nhảy toàn bộ, thấu suốt bản chất và quy luật vận động của kinh tế chính trị thị trường định hướng XHCN."
       ];
 
       expText.innerText = explanations[qualityLevel] || "Bạn vừa chuyển hóa thành công lượng thành chất!";

@@ -4,60 +4,116 @@
 
   const QUESTIONS = [
     {
-      chapter: "Chương III",
-      prompt: "Theo tên Chương III, tư tưởng Hồ Chí Minh về độc lập dân tộc được nghiên cứu gắn với nội dung nào?",
-      answer: ["CHỦ", "NGHĨA", "XÃ", "HỘI"],
-      distractors: ["ĐẠO", "ĐỨC"],
-      explanation: "Chương III của giáo trình có chủ đề: Tư tưởng Hồ Chí Minh về độc lập dân tộc và chủ nghĩa xã hội."
+      chapter: "Chương I: Nhập môn KTCT",
+      prompt: "Đối tượng nghiên cứu trọng tâm của Kinh tế chính trị Mác - Lênin là gì?",
+      answer: ["QUAN", "HỆ", "SẢN", "XUẤT"],
+      distractors: ["LỰC", "LƯỢNG", "THỊ", "TRƯỜNG"],
+      explanation: "Kinh tế chính trị Mác - Lênin nghiên cứu quan hệ xã hội của sản xuất và trao đổi (quan hệ sản xuất) đặt trong mối quan hệ biện chứng với lực lượng sản xuất."
     },
     {
-      chapter: "Chương IV",
-      prompt: "Hoàn thành cụm từ trong tên Chương IV: Nhà nước của ___, do ___, vì ___.",
-      answer: ["NHÂN", "DÂN"],
-      distractors: ["QUỐC", "TẾ", "VĂN", "HÓA"],
-      explanation: "Chương IV nghiên cứu Nhà nước của nhân dân, do nhân dân, vì nhân dân."
+      chapter: "Chương I: Nhập môn KTCT",
+      prompt: "Phương pháp nghiên cứu đặc thù và cốt lõi nhất của môn Kinh tế chính trị Mác - Lênin là gì?",
+      answer: ["TRỪU", "TƯỢNG", "HÓA", "KHOA", "HỌC"],
+      distractors: ["THỰC", "NGHIỆM", "LỊCH", "SỬ"],
+      explanation: "Trừu tượng hóa khoa học là phương pháp gạt bỏ những hiện tượng ngẫu nhiên, bề ngoài để đi sâu nắm bắt bản chất và quy luật vận động khách quan."
     },
     {
-      chapter: "Chương V",
-      prompt: "Giải mã phạm vi của khái niệm “đại đoàn kết” trong tên Chương V.",
-      answer: ["TOÀN", "DÂN", "TỘC"],
-      distractors: ["XÃ", "HỘI", "QUỐC"],
-      explanation: "Tên Chương V nêu rõ: đại đoàn kết toàn dân tộc và đoàn kết quốc tế."
+      chapter: "Chương II: Hàng hóa & Thị trường",
+      prompt: "Phát hiện thiên tài của C. Mác: Mặt nào của lao động sản xuất tạo ra giá trị hàng hóa?",
+      answer: ["LAO", "ĐỘNG", "TRỪU", "TƯỢNG"],
+      distractors: ["CỤ", "THỂ", "PHỨC", "TẠP"],
+      explanation: "Lao động trừu tượng là sự hao phí sức lao động nói chung của con người, tạo ra thực thể giá trị của hàng hóa."
     },
     {
-      chapter: "Chương V",
-      prompt: "Bên cạnh đại đoàn kết toàn dân tộc, Chương V còn nghiên cứu đoàn kết ở phạm vi nào?",
-      answer: ["QUỐC", "TẾ"],
-      distractors: ["NHÂN", "DÂN", "ĐẠO", "ĐỨC"],
-      explanation: "Nội dung còn lại trong tên Chương V là đoàn kết quốc tế."
+      chapter: "Chương II: Giá trị thặng dư",
+      prompt: "Hòn đá tảng trong toàn bộ học thuyết kinh tế của C. Mác nghiên cứu về phạm trù nào?",
+      answer: ["GIÁ", "TRỊ", "THẶNG", "DƯ"],
+      distractors: ["TIỀN", "TỆ", "TƯ", "BẢN"],
+      explanation: "Học thuyết giá trị thặng dư được V.I. Lênin coi là 'hòn đá tảng' trong toàn bộ hệ thống lý luận kinh tế của C. Mác."
     },
     {
-      chapter: "Chương VI",
-      prompt: "Chương VI gồm văn hóa, đạo đức và nội dung nào dưới đây?",
-      answer: ["CON", "NGƯỜI"],
-      distractors: ["NHÂN", "DÂN", "ĐỘC", "LẬP"],
-      explanation: "Chương VI có chủ đề: Tư tưởng Hồ Chí Minh về văn hóa, đạo đức, con người."
+      chapter: "Chương II: Giá trị thặng dư",
+      prompt: "Bộ phận tư bản tồn tại dưới hình thái tư liệu sản xuất không thay đổi lượng giá trị gọi là gì?",
+      answer: ["TƯ", "BẢN", "BẤT", "BIẾN"],
+      distractors: ["KHẢ", "BIẾN", "LƯU", "ĐỘNG"],
+      explanation: "Tư bản bất biến (c) là bộ phận tư bản dùng mua tư liệu sản xuất, giá trị được bảo tồn và chuyển nguyên vẹn vào sản phẩm mới."
     },
     {
-      chapter: "Chương IV",
-      prompt: "Giải mã tên tổ chức được nghiên cứu cùng với Nhà nước trong Chương IV.",
-      answer: ["ĐẢNG", "CỘNG", "SẢN", "VIỆT", "NAM"],
-      distractors: ["ĐOÀN", "KẾT"],
-      explanation: "Chương IV nghiên cứu tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam và Nhà nước."
+      chapter: "Chương II: Giá trị thặng dư",
+      prompt: "Bộ phận tư bản mua sức lao động và tự tăng thêm lượng giá trị trong sản xuất gọi là gì?",
+      answer: ["TƯ", "BẢN", "KHẢ", "BIẾN"],
+      distractors: ["BẤT", "BIẾN", "CỐ", "ĐỊNH"],
+      explanation: "Tư bản khả biến (v) là bộ phận tư bản dùng mua sức lao động, nguồn gốc trực tiếp tạo ra giá trị mới và giá trị thặng dư."
     },
     {
-      chapter: "Toàn môn",
-      prompt: "Ghép đúng tên môn học mà website đang hướng tới.",
-      answer: ["TƯ", "TƯỞNG", "HỒ", "CHÍ", "MINH"],
-      distractors: ["TRIẾT", "HỌC"],
-      explanation: "Tên môn học là Tư tưởng Hồ Chí Minh."
+      chapter: "Chương II: Hàng hóa đặc biệt",
+      prompt: "Hàng hóa đặc biệt khi sử dụng có thể tạo ra lượng giá trị mới lớn hơn giá trị bản thân là gì?",
+      answer: ["SỨC", "LAO", "ĐỘNG"],
+      distractors: ["MÁY", "MÓC", "TIỀN", "VÀNG"],
+      explanation: "Sức lao động là hàng hóa đặc biệt, việc tiêu dùng nó là quá trình sáng tạo ra giá trị và giá trị thặng dư cho nhà tư bản."
     },
     {
-      chapter: "Chương II",
-      prompt: "Hoàn thành tên Chương II: Cơ sở, quá trình hình thành và ___ tư tưởng Hồ Chí Minh.",
-      answer: ["PHÁT", "TRIỂN"],
-      distractors: ["VĂN", "HÓA", "ĐOÀN", "KẾT"],
-      explanation: "Chương II tập trung vào cơ sở, quá trình hình thành và phát triển tư tưởng Hồ Chí Minh."
+      chapter: "Chương III: Cạnh tranh & Độc quyền",
+      prompt: "Hình thức liên minh giữa các xí nghiệp lớn nhằm chi phối sản xuất và giá cả thu lợi nhuận cao là gì?",
+      answer: ["ĐỘC", "QUYỀN"],
+      distractors: ["CẠNH", "TRANH", "TỰ", "DO"],
+      explanation: "Độc quyền sinh ra từ cạnh tranh tự do khi tích tụ và tập trung sản xuất đạt đến trình độ cao."
+    },
+    {
+      chapter: "Chương III: Độc quyền trong CNTB",
+      prompt: "Lực lượng kinh tế chi phối xã hội sinh ra từ sự hòa hợp giữa độc quyền ngân hàng và công nghiệp là gì?",
+      answer: ["TƯ", "BẢN", "TÀI", "CHÍNH"],
+      distractors: ["THƯƠNG", "NGHIỆP", "CHO", "VAY"],
+      explanation: "Tư bản tài chính là sự thâm nhập hòa hợp lẫn nhau giữa tư bản độc quyền ngân hàng và tư bản độc quyền công nghiệp."
+    },
+    {
+      chapter: "Chương III: Độc quyền nhà nước",
+      prompt: "Sự kết hợp sức mạnh giữa tổ chức độc quyền tư nhân và bộ máy nhà nước tư sản gọi là gì?",
+      answer: ["ĐỘC", "QUYỀN", "NHÀ", "NƯỚC"],
+      distractors: ["QUÂN", "SỰ", "TOÀN", "CẦU"],
+      explanation: "Chủ nghĩa tư bản độc quyền nhà nước là sự kết hợp sức mạnh của các tổ chức độc quyền với sức mạnh của nhà nước tư sản thành một cơ chế thống nhất."
+    },
+    {
+      chapter: "Chương IV: KTTT định hướng XHCN",
+      prompt: "Thành phần kinh tế giữ vai trò chủ đạo trong nền kinh tế thị trường định hướng XHCN ở Việt Nam là gì?",
+      answer: ["KINH", "TẾ", "NHÀ", "NƯỚC"],
+      distractors: ["TƯ", "NHÂN", "TẬP", "THỂ"],
+      explanation: "Kinh tế nhà nước giữ vai trò chủ đạo, là công cụ vật chất hàng đầu để Nhà nước định hướng và điều tiết nền kinh tế vĩ mô."
+    },
+    {
+      chapter: "Chương IV: Quan hệ phân phối",
+      prompt: "Hình thức phân phối giữ vai trò chủ đạo và phản ánh bản chất ưu việt trong thời kỳ quá độ ở Việt Nam là gì?",
+      answer: ["PHÂN", "PHỐI", "THEO", "LAO", "ĐỘNG"],
+      distractors: ["VỐN", "GÓP", "PHÚC", "LỢI"],
+      explanation: "Phân phối theo kết quả lao động và hiệu quả kinh tế là hình thức phân phối chủ đạo của nền kinh tế thị trường định hướng XHCN."
+    },
+    {
+      chapter: "Chương V: CNH - HĐH & CMCN 4.0",
+      prompt: "Quá trình chuyển đổi căn bản các hoạt động sản xuất từ thủ công sang sử dụng máy móc hiện đại là gì?",
+      answer: ["CÔNG", "NGHIỆP", "HÓA"],
+      distractors: ["HIỆN", "ĐẠI", "TỰ", "DO"],
+      explanation: "Công nghiệp hóa là nhiệm vụ trọng tâm xuyên suốt thời kỳ quá độ nhằm xây dựng cơ sở vật chất - kỹ thuật vững mạnh cho CNXH."
+    },
+    {
+      chapter: "Chương V: Kinh tế tri thức",
+      prompt: "Nền kinh tế mà sự sản sinh và ứng dụng tri thức đóng vai trò quyết định tăng trưởng gọi là gì?",
+      answer: ["KINH", "TẾ", "TRI", "THỨC"],
+      distractors: ["NÔNG", "NGHIỆP", "CÔNG", "NGHIỆP"],
+      explanation: "Kinh tế tri thức là nền kinh tế dựa trực tiếp vào việc sản xuất, phân phối và sử dụng tri thức và thông tin."
+    },
+    {
+      chapter: "Chương V: Hội nhập kinh tế quốc tế",
+      prompt: "Nguyên tắc then chốt trong hội nhập kinh tế quốc tế để bảo đảm chủ quyền và lợi ích quốc gia dân tộc là gì?",
+      answer: ["ĐỘC", "LẬP", "TỰ", "CHỦ"],
+      distractors: ["LỆ", "THUỘC", "ĐÓNG", "CỬA"],
+      explanation: "Hội nhập kinh tế quốc tế phải đi đôi với xây dựng nền kinh tế độc lập tự chủ, tự lực tự cường."
+    },
+    {
+      chapter: "Chương VI: Quan hệ lợi ích kinh tế",
+      prompt: "Động lực trực tiếp của các chủ thể tham gia vào các hoạt động sản xuất kinh doanh là gì?",
+      answer: ["LỢI", "ÍCH", "KINH", "TẾ"],
+      distractors: ["DANH", "VỌNG", "QUYỀN", "LỰC"],
+      explanation: "Lợi ích kinh tế là lợi ích vật chất thu được từ các hoạt động kinh tế, là động lực trực tiếp của các chủ thể kinh tế - xã hội."
     }
   ];
 
@@ -67,20 +123,18 @@
   function buildQuestionSet() {
     let randomized = shuffle(QUESTIONS);
 
-    // Tránh cảm giác "không random" khi câu đầu vô tình lặp lại lượt vừa trước.
-    // sessionStorage vẫn giữ khi reload/quay lại trong cùng tab.
     try {
-      const lastFirstPrompt = sessionStorage.getItem("hcm_decode_last_first_prompt");
+      const lastFirstPrompt = sessionStorage.getItem("mln131_decode_last_first_prompt");
       if (lastFirstPrompt && randomized.length > 1 && randomized[0].prompt === lastFirstPrompt) {
         const swapIndex = 1 + Math.floor(Math.random() * (randomized.length - 1));
         [randomized[0], randomized[swapIndex]] = [randomized[swapIndex], randomized[0]];
       }
-      sessionStorage.setItem("hcm_decode_last_first_prompt", randomized[0].prompt);
+      sessionStorage.setItem("mln131_decode_last_first_prompt", randomized[0].prompt);
     } catch (_) {
       // Game vẫn chạy bình thường nếu trình duyệt chặn storage.
     }
 
-    return randomized;
+    return randomized.slice(0, 10);
   }
 
   let state = {
@@ -115,12 +169,12 @@
           <div class="inline-flex self-start items-center gap-2 rounded-full border border-philo-gold/40 bg-philo-gold/10 px-3.5 py-1.5 text-xs font-bold tracking-widest text-philo-gold mb-5 shadow-sm">
             <span class="material-symbols-outlined text-base">encrypted</span> GAME 01 · GIẢI MÃ
           </div>
-          <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-philo-ivory leading-tight">Giải mã<br><span class="text-philo-gold">câu hỏi HCM</span></h1>
-          <p class="mt-5 text-philo-ivory/80 text-base md:text-lg leading-relaxed max-w-xl">Đọc câu hỏi, sau đó bấm các mảnh từ khóa theo đúng thứ tự để tạo đáp án. Càng ít dùng gợi ý, điểm càng cao.</p>
+          <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-philo-ivory leading-tight">Giải mã<br><span class="text-philo-gold">Thuật ngữ KTCT</span></h1>
+          <p class="mt-5 text-philo-ivory/80 text-base md:text-lg leading-relaxed max-w-xl">Đọc gợi ý từ giáo trình MLN131, sau đó bấm các mảnh từ khóa theo đúng thứ tự để tạo đáp án. Càng ít dùng gợi ý, điểm thưởng càng cao.</p>
           <div class="grid sm:grid-cols-3 gap-3 mt-7 max-w-2xl">
-            ${statCard("8", "Câu giải mã", "grid_view")}
+            ${statCard("10", "Câu giải mã/lượt", "grid_view")}
             ${statCard("100", "Điểm tối đa/câu", "stars")}
-            ${statCard("Combo", "Thưởng liên tiếp", "bolt")}
+            ${statCard("Combo", "Thưởng chuỗi đúng", "bolt")}
           </div>
           <button id="decode-start" class="mt-8 inline-flex self-start items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-philo-warmGold to-philo-gold text-philo-deep font-bold text-base shadow-goldGlow hover:scale-105 transition-all duration-300">
             Bắt đầu giải mã <span class="material-symbols-outlined">arrow_forward</span>
@@ -134,12 +188,12 @@
               <span class="material-symbols-outlined text-base">menu_book</span> CÁCH CHƠI
             </div>
             <div class="space-y-3.5">
-              ${stepCard(1,"Đọc gợi ý","Xác định khái niệm hoặc cụm từ cần tìm.")}
-              ${stepCard(2,"Ghép mảnh","Bấm các mảnh từ theo đúng thứ tự.")}
-              ${stepCard(3,"Kiểm tra","Nhận điểm và phần giải thích ngay lập tức.")}
+              ${stepCard(1,"Đọc gợi ý","Xác định phạm trù hoặc quy luật kinh tế cần tìm.")}
+              ${stepCard(2,"Ghép mảnh","Bấm các mảnh từ theo đúng thứ tự thuật ngữ.")}
+              ${stepCard(3,"Kiểm tra","Nhận điểm và xem trích dẫn sách giáo trình 2021.")}
             </div>
             <div class="mt-7 rounded-2xl border border-philo-gold/20 bg-philo-blackBurgundy/70 p-4 text-xs md:text-sm text-philo-ivory/80 leading-relaxed shadow-sm">
-              <b class="text-philo-gold">Demo nội dung:</b> sử dụng tên chương và các khái niệm cốt lõi trong cấu trúc Giáo trình Tư tưởng Hồ Chí Minh.
+              <b class="text-philo-gold">Nội dung chuẩn:</b> sử dụng hệ thống phạm trù và quy luật kinh tế cốt lõi trong Giáo trình Kinh tế chính trị Mác - Lênin 2021 (MLN131).
             </div>
           </div>
         </div>

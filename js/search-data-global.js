@@ -1,33 +1,55 @@
-// Search data for PhiloVerse
+// Search data for PhiloVerse - Kinh tế chính trị Mác - Lênin (MLN131)
 window.searchData = [
-    { title: "Module 1: Định vị bản thân trong thế giới", subtitle: "Khám phá nền tảng của tư duy nhân loại", url: "module1.html", keywords: ["triết học", "khái niệm", "thế giới quan", "phương pháp luận", "module 1", "m1", "định vị"], type: "module", icon: "school" },
-    { title: "Module 2: Nghệ thuật đối mặt với thay đổi và áp lực", subtitle: "Tìm hiểu về bản ngã, ý thức qua lăng kính triết học", url: "module2.html", keywords: ["lượng chất", "mâu thuẫn", "phủ định", "biện chứng", "quy luật", "module 2", "m2", "thay đổi", "áp lực"], type: "module", icon: "change_circle" },
-    { title: "Module 3: Hành trình tri thức", subtitle: "Áp dụng tư duy triết học để giải quyết vấn đề thực tiễn", url: "module3.html", keywords: ["nhận thức", "thực tiễn", "lý thuyết", "chân lý", "module 3", "m3", "tri thức", "hành trình"], type: "module", icon: "psychology" },
-    { title: "Module 4: Luật chơi của xã hội", subtitle: "Khám phá trí tuệ từ các triết gia vĩ đại", url: "module4.html", keywords: ["xã hội", "lịch sử", "kinh tế", "chính trị", "module 4", "m4", "duy vật", "luật chơi"], type: "module", icon: "groups" },
-    { title: "Module 5: Con người – Mục tiêu & Động lực", subtitle: "Hành trình khám phá bản chất nhân sinh", url: "module5.html", keywords: ["con người", "bản chất", "tha hóa", "giải phóng", "module 5", "m5", "mục tiêu", "động lực"], type: "module", icon: "person" },
-    { title: "Module 6: Biện chứng CSHT & KTTT", subtitle: "Cơ sở Hạ tầng, Kiến trúc Thượng tầng và Nhà nước", url: "module6.html", keywords: ["cơ sở hạ tầng", "kiến trúc thượng tầng", "csht", "kttt", "nhà nước", "quan hệ sản xuất", "đổi mới 1986", "module 6", "m6", "biện chứng", "quy luật"], type: "module", icon: "account_balance" },
-    { title: "Thực hành", subtitle: "Bài tập và câu hỏi ôn tập", url: "practice.html", keywords: ["thực hành", "bài tập", "ôn tập", "practice"], type: "practice", icon: "edit_note" },
-    { title: "Góc nhìn", subtitle: "Tuyển tập bài viết và góc nhìn triết học", url: "articles.html", keywords: ["góc nhìn", "bài viết", "triết học", "articles", "news"], type: "page", icon: "newspaper" },
-
-    // Articles
-    { title: "Tìm hiểu sự tiến hóa của bộ não và nguồn gốc ý thức (Góc độ khoa học)", subtitle: "Nguồn gốc tự nhiên - Báo Tuổi Trẻ", url: "articles/top-7-cau-noi-truyen-cam-hung.html", keywords: ["vật chất", "ý thức", "tiến hóa", "bộ não", "thần kinh", "não bộ", "tự nhiên", "khoa học", "tuổi trẻ"], type: "article", icon: "article" },
-    { title: "Tranh luận: Liệu Trí tuệ nhân tạo (AI) có thể hình thành ý thức và ngôn ngữ tự chủ?", subtitle: "Tranh biện hiện đại - Báo CafeF", url: "articles/toi-la-ai-kham-pha-ban-than.html", keywords: ["ai", "trí tuệ nhân tạo", "ý thức", "ngôn ngữ", "silicon", "máy tính", "công nghệ", "cafef"], type: "article", icon: "article" },
-    { title: "Bàn về nguồn gốc xã hội: Vai trò của lao động và ngôn ngữ trong tiến hóa loài người", subtitle: "Nguồn gốc xã hội - Báo VnExpress", url: "articles/stress-nguyen-nhan-va-cach-dieu-tri.html", keywords: ["nguồn gốc xã hội", "lao động", "ngôn ngữ", "tiến hóa", "con người", "giao tiếp", "xã hội", "vnexpress"], type: "article", icon: "article" },
-    { title: "Bản chất ý thức trong Triết học: Bí ẩn linh hồn và sự giải mã của khoa học hiện đại", subtitle: "Bản chất phản ánh - Báo Tuổi Trẻ", url: "articles/ap-luc-hoc-tap.html", keywords: ["bản chất", "ý thức", "linh hồn", "khoa học", "phản ánh", "duy vật", "duy tâm", "não bộ", "tuổi trẻ"], type: "article", icon: "article" },
-    { title: "Bản chất sáng tạo của con người trong công việc và đời sống xã hội", subtitle: "Năng động sáng tạo - Báo VnExpress", url: "articles/khai-niem-tha-hoa.html", keywords: ["sáng tạo", "chủ động", "năng động", "phản ánh sáng tạo", "con người", "công việc", "xã hội", "vnexpress"], type: "article", icon: "article" },
-    { title: "Bertrand Russell và tư duy triết học: Cách con người phản ánh thế giới khách quan", subtitle: "Phản ánh hiện thực - Báo Tuổi Trẻ", url: "articles/giai-phong-con-nguoi-mac.html", keywords: ["bertrand russell", "tư duy", "triết học", "phản ánh", "lô-gíc", "khách quan", "tuổi trẻ"], type: "article", icon: "article" },
-    { title: "Phân tâm học: Tìm hiểu về \"Tiềm thức\" và \"Vô thức\" dưới lăng kính Triết học biện chứng", subtitle: "Chiều sâu nhận thức - Báo VnExpress", url: "articles/dao-tao-dai-hoc-thuc-tien.html", keywords: ["phân tâm học", "tiềm thức", "vô thức", "freud", "biện chứng", "tâm lý", "vnexpress"], type: "article", icon: "article" },
-    { title: "Khai thác sức mạnh của \"Ý chí\" và \"Tri thức\" trong kỷ nguyên Trí tuệ nhân tạo", subtitle: "Nhân tố quyết định - Báo CafeF", url: "articles/5-thoi-quen-thay-doi-doi-nguoi.html", keywords: ["ý chí", "tri thức", "quyết định", "kết cấu ý thức", "kỷ nguyên ai", "sa thải", "học tập", "cafef"], type: "article", icon: "article" },
-    { title: "Hành trình Ánh sáng thời đại: Tổng hợp ôn thi Triết học Mác - Lênin cho sinh viên", subtitle: "Học tập sinh viên - Báo Tuổi Trẻ", url: "articles/song-mon-nguoi-tre-tu-hai-minh.html", keywords: ["ôn thi", "triết học", "mác-lênin", "ánh sáng thời đại", "sinh viên", "học tập", "tài liệu", "tuổi trẻ"], type: "article", icon: "article" },
-
-    { title: "Quy luật Lượng - Chất", subtitle: "Module 2", url: "module2.html", keywords: ["lượng", "chất", "độ", "điểm nút", "bước nhảy"], type: "concept", icon: "science" },
-    { title: "Quy luật Mâu thuẫn", subtitle: "Module 2", url: "module2.html", keywords: ["mâu thuẫn", "đối lập", "đấu tranh"], type: "concept", icon: "balance" },
-    { title: "Quy luật Phủ định", subtitle: "Module 2", url: "module2.html", keywords: ["phủ định", "xoáy ốc", "kế thừa"], type: "concept", icon: "autorenew" },
-    { title: "Trang chủ", subtitle: "Tổng quan về PhiloVerse", url: "home.html", keywords: ["trang chủ", "home", "overview"], type: "page", icon: "home" },
-
-    // Games
-    { title: "Xây Thế Giới Quan", subtitle: "Trò chơi Simulation - Tự tay xây dựng hệ tư duy", url: "worldview-game.html", keywords: ["game", "trò chơi", "thế giới quan", "simulation", "kéo thả", "xây dựng"], type: "game", icon: "hub" },
-    { title: "Ghép đôi Triết gia", subtitle: "Trò chơi Tương tác - Thử thách trí nhớ", url: "philosopher-match-game.html", keywords: ["game", "trò chơi", "ghép đôi", "triết gia", "trí nhớ", "match"], type: "game", icon: "psychology" },
-    { title: "Khám phá Triết lý sống", subtitle: "Trò chơi Roleplay - Ứng dụng triết học vào đời sống", url: "philosophy-game-enhanced.html", keywords: ["game", "trò chơi", "triết lý sống", "roleplay", "tình huống", "khám phá"], type: "game", icon: "explore" },
-    { title: "Danh sách Trò chơi", subtitle: "Kho trò chơi triết học tương tác", url: "games.html", keywords: ["game", "trò chơi", "games", "play"], type: "page", icon: "sports_esports" }
+    { 
+        title: "Chương 1: Đối tượng, phương pháp nghiên cứu và chức năng của KTCT Mác - Lênin", 
+        subtitle: "Lịch sử hình thành, đối tượng nghiên cứu và 4 chức năng cốt lõi", 
+        url: "module1.html", 
+        keywords: ["kinh tế chính trị", "đối tượng", "phương pháp", "trọng thương", "trọng nông", "cổ điển anh", "trừu tượng hóa", "chức năng", "quy luật kinh tế", "chính sách kinh tế", "mác - lênin", "module 1", "chương 1", "m1"], 
+        type: "module", 
+        icon: "school" 
+    },
+    { 
+        title: "Chương 2: Hàng hóa, thị trường và vai trò của các chủ thể tham gia thị trường", 
+        subtitle: "Sản xuất hàng hóa, 2 thuộc tính, tính 2 mặt lao động, tiền tệ và quy luật thị trường", 
+        url: "module2.html", 
+        keywords: ["hàng hóa", "giá trị", "giá trị sử dụng", "lao động cụ thể", "lao động trừu tượng", "lượng giá trị", "thời gian lao động xã hội cần thiết", "tiền tệ", "quy luật giá trị", "cung cầu", "cạnh tranh", "lưu thông tiền tệ", "module 2", "chương 2", "m2"], 
+        type: "module", 
+        icon: "shopping_cart" 
+    },
+    { 
+        title: "Chương 3: Giá trị thặng dư trong nền kinh tế thị trường", 
+        subtitle: "Nguồn gốc m, sức lao động, tư bản bất biến & khả biến, tích lũy, lợi nhuận, lợi tức, địa tô", 
+        url: "module3.html", 
+        keywords: ["giá trị thặng dư", "sức lao động", "tư bản bất biến", "tư bản khả biến", "tư bản cố định", "tư bản lưu động", "gttd tuyệt đối", "gttd tương đối", "gttd siêu ngạch", "tích lũy tư bản", "cấu tạo hữu cơ", "lợi nhuận", "lợi nhuận bình quân", "giá cả sản xuất", "lợi tức", "địa tô", "module 3", "chương 3", "m3"], 
+        type: "module", 
+        icon: "trending_up" 
+    },
+    { 
+        title: "Chương 4: Cạnh tranh và độc quyền trong nền kinh tế thị trường", 
+        subtitle: "5 đặc điểm kinh tế của độc quyền theo Lênin, độc quyền nhà nước & biểu hiện mới", 
+        url: "module4.html", 
+        keywords: ["độc quyền", "độc quyền nhà nước", "5 đặc điểm lênin", "tư bản tài chính", "đầu sỏ tài chính", "xuất khẩu tư bản", "cartel", "syndicate", "trust", "consortium", "concern", "conglomerate", "vai trò lịch sử cntb", "module 4", "chương 4", "m4"], 
+        type: "module", 
+        icon: "corporate_fare" 
+    },
+    { 
+        title: "Chương 5: Kinh tế thị trường định hướng XHCN và các quan hệ lợi ích kinh tế ở Việt Nam", 
+        subtitle: "Tính tất yếu, đặc trưng thể chế kinh tế và phương thức hài hòa lợi ích", 
+        url: "module5.html", 
+        keywords: ["kinh tế thị trường định hướng xhcn", "thể chế kinh tế", "thành phần kinh tế", "kinh tế nhà nước", "kinh tế tư nhân", "phân phối", "công bằng xã hội", "lợi ích kinh tế", "quan hệ lợi ích", "lợi ích nhóm", "module 5", "chương 5", "m5"], 
+        type: "module", 
+        icon: "flag" 
+    },
+    { 
+        title: "Chương 6: Công nghiệp hóa, hiện đại hóa và hội nhập kinh tế quốc tế của Việt Nam", 
+        subtitle: "Lịch sử CMCN, thích ứng CMCN 4.0, kinh tế tri thức, hội nhập & kinh tế độc lập tự chủ", 
+        url: "module6.html", 
+        keywords: ["công nghiệp hóa", "hiện đại hóa", "cách mạng công nghiệp", "công nghiệp 4.0", "kinh tế tri thức", "hội nhập kinh tế quốc tế", "toàn cầu hóa", "kinh tế độc lập tự chủ", "fta", "wto", "module 6", "chương 6", "m6"], 
+        type: "module", 
+        icon: "public" 
+    },
+    { title: "Thực hành & Ôn thi trắc nghiệm", subtitle: "Ngân hàng đề thi và trắc nghiệm chuẩn MLN131", url: "practice.html", keywords: ["thực hành", "bài tập", "ôn tập", "trắc nghiệm", "đề thi", "practice"], type: "practice", icon: "edit_note" },
+    { title: "Trợ lý AI Học thuật", subtitle: "Hỏi đáp kiến thức bám sát Giáo trình MLN131 (2021)", url: "ai-assistants.html", keywords: ["ai", "hỏi đáp", "trợ giảng", "tư vấn", "tra cứu giáo trình"], type: "page", icon: "smart_toy" },
+    { title: "Góc nhìn học thuật", subtitle: "Tuyển tập bài viết và phân tích triết học & kinh tế chính trị", url: "articles.html", keywords: ["góc nhìn", "bài viết", "kinh tế chính trị", "triết học", "articles", "news"], type: "page", icon: "newspaper" },
+    { title: "Trang chủ PhiloVerse", subtitle: "Cổng học tập Kinh tế chính trị Mác - Lênin", url: "home.html", keywords: ["trang chủ", "home", "mln131", "overview"], type: "page", icon: "home" }
 ];
