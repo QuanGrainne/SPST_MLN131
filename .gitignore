@@ -1,17 +1,41 @@
 # Environment variables (NEVER commit this!)
 .env
+.env.local
+.env.*.local
 
-# Node modules
+# Dependencies
 node_modules/
+package-lock.json.bak
+
+# Large binary tools & archives
+poppler/
+*.zip
+*.tar.gz
+*.7z
+*.rar
+
+# OCR traineddata & test artifacts
+*.traineddata
+test_*.png
+test_*.jpg
+
+# Large docs / PDFs (Upload to Cloud/Drive instead of Git)
+assets/docs/*.pdf
+assets/docs/*.doc
 
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# OS files
+# OS system files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# IDE & Editors
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
