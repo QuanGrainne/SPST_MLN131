@@ -379,7 +379,7 @@ const incomingQuestion = new URLSearchParams(window.location.search).get("q");
 
 if (!incomingQuestion) {
   appendMessage(
-    formatAnswer("Yo! Mình là Minh 👋 Mình rành Tư tưởng HCM lắm. Thắc mắc gì cứ hỏi nhé, nhưng nhớ là mình chỉ biết trong **giáo trình** thôi đó! 📚"),
+    formatAnswer("Xin chào! Mình là Nhóm 5 👋 Mình hỗ trợ giải đáp các thắc mắc về môn **Kinh tế chính trị Mác - Lênin (MLN131)**. Thắc mắc gì cứ hỏi nhé, nhưng nhớ là mình chỉ giải đáp dựa trên **giáo trình** thôi đó! 📚"),
     "ai",
     true
   );

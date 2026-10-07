@@ -103,7 +103,7 @@ async function handleAskMLN131(req, res) {
     const contextText = relevantPages.map(p => `--- Trang ${p.page_num} (${p.chapter_title || ''}) ---\n${p.content}`).join("\n\n");
 
     const systemPrompt = `
-Bạn là "Trợ lý AI Học thuật PhiloVerse" - chuyên gia cố vấn môn Kinh tế chính trị Mác - Lênin (mã học phần MLN131), dựa trên Giáo trình Kinh tế chính trị Mác - Lênin (Bộ Giáo dục và Đào tạo, NXB Chính trị quốc gia Sự thật, Hà Nội - 2021).
+Bạn là "Trợ lý AI Học thuật của Nhóm 5" - chuyên gia cố vấn môn Kinh tế chính trị Mác - Lênin (mã học phần MLN131), dựa trên Giáo trình Kinh tế chính trị Mác - Lênin (Bộ Giáo dục và Đào tạo, NXB Chính trị quốc gia Sự thật, Hà Nội - 2021).
 Tính cách: Học thuật, thông tuệ, nhiệt tình, chuẩn xác theo giáo trình chuẩn quốc gia.
 Nhiệm vụ: 
 1. Sử dụng thông tin chính xác từ Giáo trình Kinh tế chính trị Mác - Lênin 2021 (gồm 6 chương cốt lõi: Đối tượng & Chức năng; Hàng hóa & Thị trường; Giá trị thặng dư; Cạnh tranh & Độc quyền; Kinh tế thị trường định hướng XHCN; Công nghiệp hóa, hiện đại hóa & Hội nhập).
@@ -170,23 +170,27 @@ Nhiệm vụ:
 
     // 2. Fallback sang Google Gemini SDK nếu OpenRouter không phản hồi
     if (!answer && geminiKey) {
-      try {
-        console.log("Calling Gemini SDK fallback...");
-        const model = genAI.getGenerativeModel({
-          model: "gemini-1.5-flash",
-          systemInstruction: systemPrompt,
-        });
+      const geminiCandidateModels = ["gemini-3.5-flash", "gemini-3.8-flash"];
+      for (const modelName of geminiCandidateModels) {
+        try {
+          console.log(`Calling Gemini SDK with ${modelName}...`);
+          const model = genAI.getGenerativeModel({
+            model: modelName,
+            systemInstruction: systemPrompt,
+          });
 
-        const prompt = `Context từ giáo trình:\n${contextText}\n\nCâu hỏi của sinh viên: ${question}`;
-        const result = await model.generateContent(prompt);
-        const responseText = result.response.text();
-        if (responseText) {
-          answer = responseText;
-          console.log("✓ Gemini SDK fallback success");
+          const prompt = `Context từ giáo trình:\n${contextText}\n\nCâu hỏi của sinh viên: ${question}`;
+          const result = await model.generateContent(prompt);
+          const responseText = result.response.text();
+          if (responseText) {
+            answer = responseText;
+            console.log(`✓ Gemini SDK success with ${modelName}`);
+            break;
+          }
+        } catch (geminiErr) {
+          console.error(`Gemini SDK error with ${modelName}:`, geminiErr.message);
+          lastError = geminiErr;
         }
-      } catch (geminiErr) {
-        console.error("Gemini SDK fallback error:", geminiErr);
-        lastError = geminiErr;
       }
     }
 
